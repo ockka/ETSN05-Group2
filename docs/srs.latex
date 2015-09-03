@@ -1,0 +1,44 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{float}
+
+\title{SRS - Software Requirements Specification}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+
+\pagebreak
+\setcounter{tocdepth}{2}
+\tableofcontents
+\pagebreak
+
+\section{Introduction}
+This document describes the requirements created for the Application to control MVD devices. The application controls both the sensor device and a light bulb.
+\section{Reference documents}
+Reference document: PUS15001.
+\section{Background and goals}
+\subsection{Main goals}
+The application contains three views named MyDevices view, Sensor Device view and Light Bulb view. The user should through the application be able to control MVD devices.
+\subsection{Actors and their objectives}
+\textbf{Lamp Controller Android Application} is used as a controller for the light bulbs. Can be used to scan for devices, talk to a specific sensor or talk to a light bulb.
+\newline \newline
+\textbf{Back End} is the endpoint which the app talks to, to control the light bulbs and to get sensor data. Is accessed through a REST API. 
+\section{Terminology}
+\textbf{REST API}, representational state transfer application  program interface. An HTTP endpoint to which the application talks in HTTP packages in order to communicate with the back end. 
+\newline \newline
+\textbf{MVD} Minimal viable device to scan for Bluetooth Low Energy (BLE) devices, collect and pass the data to the remote server using MQTT protocol.
+\section{Functional requirements}
+\section{Quality requirements}
+\section{Project requirements}
+              
+\end{document}
