@@ -1,0 +1,14 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}
+\contentsline {section}{\numberline {2}Reference documents}{3}{section.2}
+\contentsline {section}{\numberline {3}Background and goals}{3}{section.3}
+\contentsline {subsection}{\numberline {3.1}Main goals}{3}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Actors and their objectives}{3}{subsection.3.2}
+\contentsline {section}{\numberline {4}Terminology}{3}{section.4}
+\contentsline {section}{\numberline {5}Functional requirements}{3}{section.5}
+\contentsline {subsection}{\numberline {5.1}Use cases}{4}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}The MyDevices View}{6}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}The Sensor View}{6}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}The Light bulb View}{8}{subsection.5.4}
+\contentsline {section}{\numberline {6}Quality requirements}{9}{section.6}
+\contentsline {section}{\numberline {7}Project requirements}{9}{section.7}
