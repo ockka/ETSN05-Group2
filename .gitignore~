@@ -8,6 +8,6 @@
 /docs/*.aux
 /docs/*.pdf
 /docs/*.toc
-/docs/*.synctex.gz
+/docs/*.synctex
 /docs/*.dvi
 /docs/*.log

@@ -1,0 +1,17 @@
+% a special list package
+%
+%
+%
+%
+%
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{testlist}[2015/09/8]
+
+\RequirePackage{enumitem, calc}
+
+\newlength{\testlabellength}
+\settowidth{\testlabellength}{Test 10.10.10}
+
+\newenvironment{testlist}{\begin{enumerate}[label=\bfseries Test \thesubsection.\arabic* , labelindent=0pt, labelwidth=\testlabellength , leftmargin=2cm]}{\end{enumerate}}
+
+\endinput
