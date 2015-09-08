@@ -138,29 +138,29 @@ Acceptance tests are performed by the costumer before completion of the project.
 \section{Function test specification} \label{appendix:section:functiontest}
 This is appendix A where we list all function test specifications.
 
-\subsection{General test}
+\subsection{General tests}
 %
 % Detta avsnittet bör granskas så att alla tester är formulerade i presens. Dvs. "Appen gör så här", "Det funkar på detta viset", dvs inte "Den ska göra så här". = Det ska vara ett påstående som går att svar med ja eller nej.
 %
 \begin{enumerate}[label=\bfseries Test \thesubsection.\arabic*,labelwidth=\widthof{\text{Test 10.10.10}},leftmargin=!]
-	\item The first screen that is shown on startup is the MyDevicesView. (Req 5.2.1)
-	\item After pressing "Get Devices" button a list of temperature sensors are shown. (Req 5.1.1)
-	\item After pressing  "Get Devices" button a list of lightbulbs are shown on a list. (Req 5.1.1)
+    \item The first screen shown on startup is MyDevicesView. (Req 5.2.1)
+    \item After pressing the "Get Devices" button a list of temperature sensors are shown. (Req 5.1.1)
+    \item After pressing  "Get Devices" button a list of light bulbs are shown on a list. (Req 5.1.1)
     \item With no connected devices, then a pop up message with the text "No devices found" should be shown. (Req 5.1.1)
-	\item The lightbulb should turn off, when the onoff button is pressed from the controll device screen. (Req 5.1.2)
-    \item With no lightbulb connected, a error message should appear with the text "No device selected". (Req 5.1.2) \label{appfunctest:no_lightbulb}
-    \item The user can change the color of the light from red to green in the controll device screen. (Req 5.1.3)
+    \item The light bulb should turn off, when the on off button is pressed from the control device screen. (Req 5.1.2)
+    \item With no light bulb connected, a error message should appear with the text "No device selected". (Req 5.1.2) \label{appfunctest:no_lightbulb}
+    \item The user can change the color of the light from red to green in the control device screen. (Req 5.1.3)
     \item If no device is selected the error message should appear as in test \ref{appfunctest:no_lightbulb}. (Req 5.1.3)
     \item The user can extract temperature data from the sensor using the Get button on the Sensor View. (Req 5.1.4)
     \item If no device is selected then the the error message should appear as in test \ref{appfunctest:no_lightbulb}. (Req 5.1.4)
-    \item If no data is avalaible, the a pop upp message should appear and read: "No sensor data available". (Req 5.1.4)
+    \item If no data is available, the a pop upp message should appear and read: "No sensor data available". (Req 5.1.4)
 \end{enumerate}
 
 \subsection{MyDevices View Tests}
 \begin{enumerate}[label=\bfseries Test \thesubsection.\arabic*,labelwidth=\widthof{\text{Test 10.10.10}},leftmargin=!]
-	\item The list on the MyDevices view is scrollable. (Req 5.2.1)
-    \item The items on he list is be selectable. (Req 5.2.3)
-    \item When no device is selected, then the "Controll device" button is not clickable. (Req 5.2.4)
+    \item The list on the MyDevices view is scroll-able. (Req 5.2.1)
+    \item The items on the list is selectable. (Req 5.2.3)
+    \item When no device is selected the "Control device" button is not clickable. (Req 5.2.4)
     \item The screen displays the number of items in the list. (Req 5.2.5)
     \item When the application is started the list of available devices is be empty. (Req 5.2.6)
     \item The devices are named in accordance with relevant documen. (Which document is unknown at present...) (Req 5.2.7)
@@ -175,10 +175,10 @@ This is appendix A where we list all function test specifications.
 
 \subsection{Lightbulb View}
 \begin{enumerate}[label=\bfseries Test \thesubsection.\arabic*,labelwidth=\widthof{\text{Test 10.10.10}},leftmargin=!]
-	\item The Light Bulb View opens when a light bulb is chosen in the MyDevices View. (req 5.4.1)
+    \item The Light Bulb View opens when a light bulb is chosen in the MyDevices View. (req 5.4.1)
     \item The name (Which document is unknown at present...), is shown in the top of the View.
     \item
-\end{enumerate}	
+\end{enumerate} 
 
 \subsubsection{This is a subsubsection}
 
@@ -209,4 +209,4 @@ This is appendix C where we list all regression test specifications.
 \end{appendices}
 
 
-\end{document}
+\end{document}re specified.
