@@ -10,3 +10,4 @@
 /docs/*.toc
 /docs/*.synctex
 /docs/*.dvi
+/docs/*.log
