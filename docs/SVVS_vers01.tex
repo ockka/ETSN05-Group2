@@ -3,6 +3,7 @@
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
+\usepackage{enumitem}%can be used for automatic numbering of requirements/tests.
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage[colorinlistoftodos]{todonotes}
@@ -26,14 +27,32 @@
 \tableofcontents
 \pagebreak
 
+
 %--------------------Introduction ---------------------------------------
 \section{Introduction}
-The Software Verification and Validation Specification (SVVS) describes all tests and reviews conducted during the development of the project \textbf{(project name here)}. \textcolor{red}{Write something more here, tell  the reader about the various appendices etc...}
+The Software Verification and Validation Specification (SVVS) describes all tests and reviews conducted during the development of the project \textbf{(project name here)}. The document acts as a base for the SVVI (Software Verification and Validation Instruction).
+In the main document, there are instructions for reviews as well as information about what types of tests should be performed and by whom. In the appendices, test cases are specified.
 
 %--------------------Reference Documents ---------------------------------------
 \section{Reference documents}
-Reference document: PUS15001.
+\begin{enumerate}
+\item SRS \label{refdocs:srs}
+\item Programvaruutveckling för stora system - Projekthandledning (\textit{Institutionen för datavetenskap}, Lunds Univeritet 2015) \label{refdocs:projekthandledning}
+\end{enumerate}
 
+%--------------------Definitions-------------------------------------------
+\section{Definitions}
+\begin{description}
+\item[SDP] Software Development Plan
+\item[SRS] Software Requirements Specification
+\item[SVVS] Software Verification and Validation Specification
+\item[SVVI] Software Verification and Validation Instruction
+\item[STLDD] Software Top Level Design Document
+\item[SDDD] Software Detailed Design Document
+\item[SVVR] Software Verification and Validation Report
+\item[SSD] Software Specification Document
+\item[PFR] Project Final Report
+\end{description}
 %--------------------Testing ---------------------------------------
 \section{Testing}
 In order to validate and verify that the system fulfills the customers expectations, various tests are conducted during the development phases. Types of test i.e. unit tests, function tests etc. can be divided into two categories: white-box tests and black-box tests, which are described below.   
@@ -48,19 +67,14 @@ A function test or black-box test examines the functionality of a system from an
 %--------------------Reviews ---------------------------------------
 \section{Reviews}
 
-\subsection{Informal Reviews}
-Informal Reviews are to be held at least ten hours before the deadline for the Formal Review. The documents up for review should be made available in the project library at least 24 hours before the informal review.
+\subsection{Formal Reviews}
+Formal reviews are conducted according to ref \ref{refdocs:projekthandledning}.
 
-The Test group is responsible for appointing a coordinator before each informal review, whose responsibility it is to select reviewers for each document. The coordinator should make these selections such that the author of a document will not review the same document. Among these reviewers, one should be randomly appointed review group leader. The coordinator should also appoint one moderator and one secretary for the review. These selections should be emailed to the entire project group at least 24 hours before the informal review.
-
-Each reviewer is responsible for reading their appointed document and sending an email with their comments and issues to their review group leader at least two hours before the review.
-
-During the review, the moderator is responsible for managing time to make sure that each document can be reviewed during the allotted time frame. The secretary is responsible for correctly recording the problems that surface during the review. Each review group leader is responsible for presenting the issues submitted to them from the rest of the group.
+The scheduled formal reviews in this project:
 
 \begin{enumerate}
 
-
-\item Software Specification Review (SSR) - \textcolor{red}{DATE HERE}
+\item Software Specification Review (SSR)
 \begin{itemize}
 \item SDP
 \item SRS
@@ -68,14 +82,14 @@ During the review, the moderator is responsible for managing time to make sure t
 \end{itemize}
 
 
-\item Preliminary Design Review (PDR) - \textcolor{red}{DATE HERE}
+\item Preliminary Design Review (PDR)
 \begin{itemize}
 \item SVVI
 \item STLDD
 \end{itemize}
 
 
-\item Product Review (PR) - \textcolor{red}{DATE HERE}
+\item Product Review (PR)
 \begin{itemize}
 \item SVVR
 \item SSD
@@ -85,35 +99,81 @@ During the review, the moderator is responsible for managing time to make sure t
 
 \end{enumerate}
 
+
+\subsection{Informal Reviews}
+Informal Reviews are to be held at least ten hours before the deadline for the Formal Review. The documents up for review should be made available in the project library at least 24 hours before the informal review.
+
+The Test group is responsible for appointing a coordinator before each informal review, whose responsibility it is to select reviewers for each document. The coordinator should make these selections such that the author of a document will not review the same document. Among these reviewers, one should be randomly appointed review group leader. The coordinator should also appoint one moderator and one secretary for the review. These selections should be emailed to the entire project group at least 24 hours before the informal review.
+
+Each reviewer is responsible for reading their appointed document and sending an email with their comments and issues to their review group leader at least two hours before the review.
+
+During the review, the moderator is responsible for managing time to make sure that each document can be reviewed during the allotted time frame. The secretary is responsible for correctly recording the problems that surface during the review. Each review group leader is responsible for presenting the issues submitted to them from the rest of the group.
+
 %--------------------Test environments ---------------------------------------
 \section{Test environments}
-\textit{I SVVS skall även anges vad som skall testas i utvecklingsmiljön respektive på målmaskinen.}
+All tests specified in this document should be performed on appropriate emulator software. If possible, the tests should also be run on a physical device.
 
 %--------------------Test cases ----------------------------------------------
-\section{Test cases}
+\section{Types of tests}
 
 \subsection{Unit tests}
-Done by the developer group, white-box and black-box tests.
+The developer group should perform unit tests, both black-box tests and white-box tests. These tests should be performed continuously during development.
 
 \subsection{Function tests}
+All functions of the system should be tested according to appendix \ref{appendix:section:functiontest}. The test group is responsible for  performing these tests.
 
 \subsection{System tests}
-Complete test of the system...
+The entire system should be tested according to appendix \ref{appendix:section:systemtest}. The test group is responsible for performing these tests. 
 
 \subsection{Regression tests}
-Used to check consistency with old code.  
+After any changes, all System tests should be performed again to ensure that previously functional code is still working. The test group is responsible for performing these tests.
 
 \subsection{Acceptance tests}
-Test done by the customer...
+Acceptance tests are performed by the costumer before completion of the project. The costumer is responsible for selecting tests to ensure that the software meets their demands.
 
 %--------------------Appendix A: Function test Specification ----------------
 \newpage
 \begin{appendices}
 
-\section{Function test specification}
+\section{Function test specification} \label{appendix:section:functiontest}
 This is appendix A where we list all function test specifications.
 
-\subsection{This is a subsection}
+\subsection{General test}
+%
+% Detta avsnittet bör granskas så att alla tester är formulerade i presens. Dvs. "Appen gör så här", "Det funkar på detta viset", dvs inte "Den ska göra så här". = Det ska vara ett påstående som går att svar med ja eller nej.
+%
+\begin{enumerate}[label=\bfseries Test \thesubsection.\arabic*,labelwidth=\widthof{\text{Test 10.10.10}},leftmargin=!]
+	\item The first screen that is shown on startup is the MyDevicesView. (Req 5.2.1)
+	\item After pressing "Get Devices" button a list of temperature sensors are shown. (Req 5.1.1)
+	\item After pressing  "Get Devices" button a list of lightbulbs are shown on a list. (Req 5.1.1)
+    \item With no connected devices, then a pop up message with the text "No devices found" should be shown. (Req 5.1.1)
+	\item The lightbulb should turn off, when the onoff button is pressed from the controll device screen. (Req 5.1.2)
+    \item With no lightbulb connected, a error message should appear with the text "No device selected". (Req 5.1.2) \label{appfunctest:no_lightbulb}
+    \item The user can change the color of the light from red to green in the controll device screen. (Req 5.1.3)
+    \item If no device is selected the error message should appear as in test \ref{appfunctest:no_lightbulb}. (Req 5.1.3)
+    \item The user can extract temperature data from the sensor using the Get button on the Sensor View. (Req 5.1.4)
+    \item If no device is selected then the the error message should appear as in test \ref{appfunctest:no_lightbulb}. (Req 5.1.4)
+    \item If no data is avalaible, the a pop upp message should appear and read: "No sensor data available". (Req 5.1.4)
+\end{enumerate}
+
+\subsection{MyDevices View Tests}
+\begin{enumerate}[label=\bfseries Test \thesubsection.\arabic*,labelwidth=\widthof{\text{Test 10.10.10}},leftmargin=!]
+	\item The list on the MyDevices view is scrollable. (Req 5.2.1)
+    \item The items on he list is be selectable. (Req 5.2.3)
+    \item When no device is selected, then the "Controll device" button is not clickable. (Req 5.2.4)
+    \item The screen displays the number of items in the list. (Req 5.2.5)
+    \item When the application is started the list of available devices is be empty. (Req 5.2.6)
+    \item The devices are named in accordance with relevant documen. (Which document is unknown at present...) (Req 5.2.7)
+    \item The "Get Devices" button initiates a scan with the MVD. (Req 5.2.8)
+    \item The scan with the MVD is halted after X seconds. (Exact number of seconds is unspecified in SRS at the moment.) (Req 5.2.9)
+\end{enumerate}
+
+\subsection{Sensor View Tests}
+
+\subsection{Lightbulb View}
+\begin{enumerate}[label=\bfseries Test \thesubsection.\arabic*,labelwidth=\widthof{\text{Test 10.10.10}},leftmargin=!]
+	\item The Light Bulb 
+\end{enumerate}	
 
 \subsubsection{This is a subsubsection}
 
@@ -123,7 +183,7 @@ This is appendix A where we list all function test specifications.
 \newpage
 \begin{appendices}
 
-\section{System test specification}
+\section{System test specification} \label{appendix:section:systemtest}
 This is appendix B where we list all system test specifications.
 
 \subsection{This is a subsection}
