@@ -178,14 +178,15 @@ This is appendix A where we list all function test specifications.
 
 \subsection{MyDevices View Tests}
 \begin{testlist}
-	\item The list on the MyDevices view is scrollable. (Req 5.2.1)
-    \item The items on the list is selectable. (Req 5.2.3)
-    \item When no device is selected, the "Controll device" button is not clickable. (Req 5.2.4)
-    \item The screen displays the number of items in the list. (Req 5.2.5)
-    \item When the application is started the list of available devices is empty. (Req 5.2.6)
-    \item The devices are named in accordance with relevant document. (Which document is unknown at present.) (Req 5.2.7)
-    \item The "Get Devices" button initiates a scan with the MVD. (Req 5.2.8)
-    \item The scan with the MVD is halted after X seconds. (Exact number of seconds is unspecified in SRS at the moment.) (Req 5.2.9)
+	\item The list on the MyDevices view is scrollable. (Req. 5.2.3)
+    \item The list of available devices is empty on application start up. (Req. 5.2.2)
+    \item The items on the list are selectable. (Req 5.2.4)
+    \item Only one device can be selected at a time. (Req. 5.2.5)
+    \item When no device is selected and the "Control Device" -button is pressed, a pop-up message "Please select device" is displayed. (Req. 5.2.6)
+    \item Sensors are displayed in the list of available devices as "Sensor" as name, and it's MAC address as address. (Req. 5.2.7)
+    \item Light bulbs are displayed in the list of available devices as "Light Bulb" as name and it's MAC address as address. (Req. 5.2.8)
+    \item The "Get Devices" -button performs a scan for available devices when pressed. (Req. 5.2.9)
+    \item When the back button is pressed the application is closed (Req. 5.2.10)
 \end{testlist}
 
 %--------------------------Sensor view tests --------------------------------------
