@@ -11,6 +11,10 @@
 \usepackage{float}
 \usepackage[titletoc]{appendix}
 
+\newlength{\testlabellength}
+\settowidth{\testlabellength}{Test 100.10.10}
+\newenvironment{testlist}{\begin{enumerate}[label=\bfseries Test \thesubsection.\arabic* , labelindent=0pt, labelwidth=\testlabellength , leftmargin=2cm]}{\end{enumerate}}
+
 %-------------------------TITLE-----------------------------------------
 
 \title{SVVS - Software Verification and Validation Specification}
@@ -135,47 +139,78 @@ Acceptance tests are performed by the costumer before completion of the project.
 \section{Function test specification} \label{appendix:section:functiontest}
 This is appendix A where we list all function test specifications.
 
-\subsection{General tests}
+\subsection{General test}
 %
 % Detta avsnittet bör granskas så att alla tester är formulerade i presens. Dvs. "Appen gör så här", "Det funkar på detta viset", dvs inte "Den ska göra så här". = Det ska vara ett påstående som går att svar med ja eller nej.
 %
-\begin{enumerate}[label=\bfseries Test \thesubsection.\arabic*,labelwidth=\widthof{\text{Test 10.10.10}},leftmargin=!]
-    \item The first screen shown on startup is MyDevicesView. (Req 5.2.1)
-    \item After pressing the "Get Devices" button a list of temperature sensors are shown. (Req 5.1.1)
-    \item After pressing  "Get Devices" button a list of light bulbs are shown on a list. (Req 5.1.1)
+
+\begin{testlist}
+	\item The first screen that is shown on startup is the MyDevicesView. (Req 5.2.1)
+	\item After pressing "Get Devices" button a list of temperature sensors are shown. (Req 5.1.1)
+	\item After pressing "Get Devices" button a list of lightbulbs are shown. (Req 5.1.1)
     \item With no connected devices, then a pop up message with the text "No devices found" should be shown. (Req 5.1.1)
-    \item The light bulb should turn off, when the on off button is pressed from the control device screen. (Req 5.1.2)
-    \item With no light bulb connected, a error message should appear with the text "No device selected". (Req 5.1.2) \label{appfunctest:no_lightbulb}
-    \item The user can change the color of the light from red to green in the control device screen. (Req 5.1.3)
+	\item The lightbulb should turn off, when the onoff button is pressed from the controll device screen. (Req 5.1.2)
+    \item With no lightbulb connected, a error message should appear with the text "No device selected". (Req 5.1.2) \label{appfunctest:no_lightbulb}
+    \item The user can change the color of the light from red to green in the controll device screen. (Req 5.1.3)
     \item If no device is selected the error message should appear as in test \ref{appfunctest:no_lightbulb}. (Req 5.1.3)
     \item The user can extract temperature data from the sensor using the Get button on the Sensor View. (Req 5.1.4)
     \item If no device is selected then the the error message should appear as in test \ref{appfunctest:no_lightbulb}. (Req 5.1.4)
-    \item If no data is available, the a pop upp message should appear and read: "No sensor data available". (Req 5.1.4)
-\end{enumerate}
+    \item If no data is avalaible, the a pop upp message should appear and read: "No sensor data available". (Req 5.1.4)
+\end{testlist}
 
 \subsection{MyDevices View Tests}
-\begin{enumerate}[label=\bfseries Test \thesubsection.\arabic*,labelwidth=\widthof{\text{Test 10.10.10}},leftmargin=!]
-    \item The list on the MyDevices view is scroll-able. (Req 5.2.1)
-    \item The items on the list is selectable. (Req 5.2.3)
-    \item When no device is selected the "Control device" button is not clickable. (Req 5.2.4)
+\begin{testlist}
+	\item The list on the MyDevices view is scrollable. (Req 5.2.1)
+    \item The items on he list is be selectable. (Req 5.2.3)
+    \item When no device is selected, then the "Controll device" button is not clickable. (Req 5.2.4)
     \item The screen displays the number of items in the list. (Req 5.2.5)
     \item When the application is started the list of available devices is be empty. (Req 5.2.6)
     \item The devices are named in accordance with relevant documen. (Which document is unknown at present...) (Req 5.2.7)
     \item The "Get Devices" button initiates a scan with the MVD. (Req 5.2.8)
     \item The scan with the MVD is halted after X seconds. (Exact number of seconds is unspecified in SRS at the moment.) (Req 5.2.9)
-\end{enumerate}
-
+\end{testlist}
+%--------------------------Sensor view tests --------------------------------------
 \subsection{Sensor View Tests}
-\begin{enumerate}[label=\bfseries Test \thesubsection.\arabic*,labelwidth=\widthof{\text{Test 10.10.10}},leftmargin=!]
-\item Blarg!
-\end{enumerate}
+\begin{testlist}
+\item When the sensor is selected and the "Control Device" button is clicked, the Sensor View is displayed and the sensor name and mac address is displayed in the top of the view.(Req. 5.3.1, 5.3.2, 5.3.2) 
+\item It is possible to change the on/off -status of the selected sensor with the switch. (Req. 5.3.4)
+\item The fields preceded by T,P,H,M,G and A are all editable. (Req. 5.3.5, 5.3.6, 5.3.7, 5.3.8, 5.3.9, 5.3.10)
+\item By pressing the corresponding button, the values of the T,P,H,M,G and A sensors are retrieved. (Req. 5.3.11, 5.3.12, 5.3.13, 5.3.14, 5.3.15, 5.3.16)
+\item If there is no data to retrieve for any of physical quantities T,P,H,M,G and A, the corresponding fields are empty.(Re1. 5.3.17, 5.3.18, 5.3.19, 5.3.20, 5.3.21, 5.3.22)
+\item The "Get all" -button gets the values for all available sensors.(\textcolor{red}{Req. xxx})
+\item The "clear-all" button clears all sensor fields from data. (\textcolor{red}{Req. xxx})
+\item When the "Get"-button for the X sensor is pressed, while the X sensor is unavailable, a pop-up message: "X sensor unavailable" is displayed. X represents any of the sensors T,P,H,M,G and A. (\textcolor{red}{Req. xxx})
+\item The on/off-switch is set according to the information from the REST API. (\textcolor{red}{Req. xxx})
+\item When the "Get all" button is pressed and no sensors are available a pop-up message: "No sensor available" is displayed. (\textcolor{red}{Req. xxx})
+\item When the back button is pressed the MyDevices View is opened. (\textcolor{red}{Req. xxx})
+
+\end{testlist}
+
+%
+%	\item The field of R-value is editable and preceded by "R:". (Req 5.4.4) 
+%   \item The field of G-value is editable and preceded by "G:". (Req 5.4.5)
+%   \item The field of B-value is editable and preceded by "B:". (Req 5.4.6)
+%   \item The field of W-value is editable and preceded by "W:". (Req 5.4.7)
+%
+
 
 \subsection{Lightbulb View}
-\begin{enumerate}[label=\bfseries Test \thesubsection.\arabic*,labelwidth=\widthof{\text{Test 10.10.10}},leftmargin=!]
-    \item The Light Bulb View opens when a light bulb is chosen in the MyDevices View. (req 5.4.1)
-    \item The name (Which document is unknown at present...), is shown in the top of the View.
-    \item
-\end{enumerate} 
+\begin{testlist}
+	\item The Light Bulb View opens when a light bulb is chosen in the MyDevices View. (Req 5.4.1)
+    \item The name (Which document is unknown at present...), is shown in the top of the View. (Req 5.4.2)
+    \item The state of the selected light bulb can be changed with a switch. (Req 5.4.3)
+    \item The field of R-, G-, B-, W-value is editable and preceded by "R:", "G:", "B:" and "W:" respectively. (Req 5.4.4, 5.4.5, 5.4.6, 5.4.7) 
+    \item When the Light Bulb View is opened, the fields are set according to the information from the REST API. (Req 5.4.8)
+    \item The "Get"-button receives the R-, G-, B-, W-values and present them in the fields specified in reguirement 5.4.4 to 5.4.7. (Req 5.4.9)
+    \item The "Set"-button sends user input values of the fields specified in reguirement 5.4.4 to 5.4.7 to the REST API for further forwarding of the information to the MVD and light bulb. (Req 5.4.10)
+    \item ???
+    \item The value representing the color of the fields is of maximum two characters. \textcolor{red}{(Req 5.4.12)}
+    \item A pop-up message saying "Color successfully changed" is displayed when the values of the light bulb were successfully set. (Reg 5.4.13)
+    \item The application checks the input values when the "Set"-button is pressed. If the values are out the specified range, a pop-up message is displayed saying: "Input values out of range" (\textcolor{red}{Syftningfel i SRS i Req 5.4.12})
+    \item When the light bulb is of, the "Set"-button is unavailable. (Req 5.4.13)
+    \item The color of the light bulb is given in hexadecimal number (Req 5.4.14)
+    \item 
+\end{testlist}	
 
 \subsubsection{This is a subsubsection}
 
@@ -206,4 +241,4 @@ This is appendix C where we list all regression test specifications.
 \end{appendices}
 
 
-\end{document}re specified.
+\end{document}
