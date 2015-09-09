@@ -4,3 +4,10 @@
 /.idea/libraries
 .DS_Store
 /build
+/docs/*.out
+/docs/*.aux
+/docs/*.pdf
+/docs/*.toc
+/docs/*.synctex.gz
+/docs/*.dvi
+/docs/*.log

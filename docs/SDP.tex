@@ -1,5 +1,6 @@
 \documentclass[a4paper]{article}
 \usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -65,7 +66,7 @@ Linnéa Claesson
 
 %---------------------- Introduction ---------------------------------%
 \section{Introduction}
-Vad handlar projektet om?
+A team of nineteen people will during the time span of almost two months develop an Android application that can, through a Minimum Viable Device, turn on and off a lamp, change its color and read data from a sensor.
 
 %----------------------- Goals ---------------------------------------%
 \section{Project Goals}
@@ -94,7 +95,7 @@ Another limitation to this project is its inflexibility, due to the fact that a 
 The section manager is the project group's top manager and is responsible for helping the group with non-technical problems that arises.
 
 \subsection{Reviewers}
-The reviewer is there to do the formal reviews and see to that the development model is being followed.
+The reviewer is there to do the formal reviews for quality control and make sure the development model is being followed.
 
 \subsection{Experts}
 There are three experts who can be consulted in the development of the product:
@@ -133,6 +134,27 @@ The customer has placed the order and is the end recipient of the finished produ
 \section{Time Plan}
 See Ref3.
 
+\begin{center}
+    \begin{tabular}{ | l | l | l | p{5cm} |}
+    \hline
+    \textbf{Activity} & \textbf{h total} & \textbf{h/person} & \textbf{Contributors} \\ \hline
+    SDP & 16 & 8 & Project manager. \\ \hline
+    SRS & 56 & 8/4 &  Primarily system architects, with help from developers.\\ \hline
+    SVVS & 48 & 8 & Testers\\ \hline
+    STLDD & 72 & 8/6 & Primarily system architects, with help from developers.\\ \hline
+    SVVI & 60 & 10 & Testers\\ \hline
+    SDDD & 200 & 25 & Developers\\ \hline
+    SVVR & 108 & 18 & Testers\\ \hline
+    PFR & 114 & 6 & Everyone\\ \hline
+    SSD & 20 & 10 & Project managers\\ \hline
+    IA \& TR & - & 14 & Everyone \\ \hline
+    Administration & 100 & 50 & Project managers \\ \hline
+    Meetings & 21 & 21 & Everyone \\ \hline
+    Reviews & 42 & 30 & Everyone \\ \hline
+    Unexpected issues & 50 & - & Everyone \\ \hline
+    \end{tabular}
+\end{center}
+
 Detaljerad nedbrytning av arbetet i aktiviteter, skattningar av arbetstid, ledtid(?) och datum när aktiviteter ska vara färdiga. Plus se lista s. 39 i PH.
 
 Vilka metoder har använts för att göra skattningarna av tid och kostnad? Vilka är de största osäkerheterna med skattningarna?
@@ -141,83 +163,129 @@ Vilka metoder har använts för att göra skattningarna av tid och kostnad? Vilk
 %------------------- Follow Up ---------------------------------------%
 \section{Follow Up and Quality Evaluation}
 
-Hur sker uppföljningen av t.ex tidsplanen under projektet? Vad händer om arbetet inte verkar gå enligt plan? Vilka rutiner finns för kvalitetsutvärdering under projektet?
+It is the project leaders' responsibility to see to that the time plan is being followed. They will check in with the system leader and architects to make sure that the developers are on schedule with everything and the test leader to make sure that the testers are on schedule.
 
+A formal review will be held at the end of phase 1, 2 and 4 for quality evaluation. Each formal review will be preceded by an internal informal review. Phase 3 will be followed by an informal review.
+
+%----------------- Configuration Management --------------------------%
+\section{Configuration Management}
+Identification of configuration items and version naming will follow the standard in Ref2. 
+
+All reports and code relating to the project will be available to all team members on a repository on GitHub. A Drive folder will also be used for project meeting protocols, time reports and other information relevant to the team members, such as contact information.
+
+Change management will follow the standard in Ref2.
 
 %------------------- Risk Analysis -----------------------------------%
 \section{Risk Analysis}
 
 Risk analysis is an important part of every new project. Below are some possible risks identified, analysed and actions to take to prevent and/or reduce damage of risk are presented.  
 
-\subsection{Personnel Dropouts (CHANGE)}
-There can be personnel shortfalls on several different levels within the team, with different probabilities and effects. The risk estimation is based on how many people are in the particular group and the level of commitment they have. A big group where each person does not have as much responsibility has been estimated to have a larger probability of personnel shortfalls than a smaller group where each person has a lot of responsibilities towards the team and project. In the same way, if a small group where each member has a lot of responsibilities has personnel shortfalls the outcome will be much more severe.
+\subsection{Loss of Personnel}
+There can be loss of personnel on several different levels within the team, with different probabilities and effects. The risk estimation is based on how many people are in the particular group and the level of commitment they have. A big group where each person does not have as much responsibility has been estimated to have a larger probability of losing personnel than a smaller group where each person has a lot of responsibilities towards the team and project. In the same way, the consequences of loss of personnel in a small group where each individual has a lot of responsibilities will be greater than for a large group with fewer responsibilities per individual.
 
-\begin{enumerate}
-\item Project Leaders, 2\\
-Risk: Low\\
-Damage Effect: High\\
-Prevention: -\\
-Damage Control: The other project leader will take on more responsibilities and also rely on and delegate more to the other group leaders.
 
-\item System Leader, 1\\
-Risk: Low\\
-Damage Effect: High\\
-Prevention: -\\
-Damage Control: The system architects will divide the system leaders responsibilities among them.
+\subsubsection{Project Leaders, 2}
+\begin{itemize}
+\item Risk: Low
+\item Damage Effect: High
+\item Prevention: -
+\item Damage Control: The other project leader will take on more responsibilities and also rely on and delegate more to the other group leaders.
+\end{itemize}
 
-\item System Architects, 2\\
-Risk: Low\\
-Damage Effect: High\\
-Prevention: -\\
-Damage Control: The remaining system architect and system leader will divide the responsibilities among them, but the system architect will take on the larger part of them.
+\subsubsection{System Leader, 1}
+\begin{itemize}
+\item Risk: Low
+\item Damage Effect: High
+\item Prevention: -
+\item Damage Control: The system architects will divide the system leaders responsibilities among them.
+\end{itemize}
 
-\item Group Leader, Developers, 1\\
-Risk: Low\\
-Damage Effect: Medium\\
-Prevention: -\\
+\subsubsection{System Architects, 2}
+\begin{itemize}
+\item Risk: Low
+\item Damage Effect: High
+\item Prevention: -
+\item Damage Control: The remaining system architect and system leader will divide the responsibilities among them, but the system architect will take on the larger part of them.
+\end{itemize}
+
+\subsubsection{Group Leader, Developers, 1}
+\begin{itemize}
+\item Risk: Low
+\item Damage Effect: Medium
+\item Prevention: -
 Damage Control: The developers will choose a new group leader among themselves.
+\end{itemize}
 
-\item Developers, 7\\
-Risk: Medium\\
-Damage Effect: Low\\
-Prevention: Create a good working environment among the developers, make sure they have what they need and know what is expected of them.\\
-Damage Control: The responsibilities of the lost developer will be divided among the other developers by the system architects and group leader of the developers.
+\subsubsection{Developers, 7}
+\begin{itemize}
+\item Risk: Medium
+\item Damage Effect: Low
+\item Prevention: Create a good working environment among the developers, make sure they have what they need and know what is expected of them.
+\item Damage Control: The responsibilities of the lost developer will be divided among the other developers by the system architects and group leader of the developers.
+\end{itemize}
 
-\item Test Leader, 1\\
-Risk: Low\\
-Damage Effect: High\\
-Prevention: -\\
-Damage Control: The testers will choose a new group leader among themselves.
+\subsubsection{Test Leader, 1}
+\begin{itemize}
+\item Risk: Low
+\item Damage Effect: High
+\item Prevention: -
+\item Damage Control: The testers will choose a new group leader among themselves.
+\end{itemize}
 
-\item Testers, 5\\
-Risk: Medium\\
-Damage Effect: Medium\\
-Prevention: Create a good working environment among the testers, make sure they have what they need and know what is expected of them.\\
-Damage Control: The responsibilities of the lost tester will be divided among the other testers by the test leader.
-\end{enumerate}
+\subsubsection{Testers, 5}
+\begin{itemize}
+\item Risk: Medium
+\item Damage Effect: Medium
+\item Prevention: Create a good working environment among the testers, make sure they have what they need and know what is expected of them.
+\item Damage Control: The responsibilities of the lost tester will be divided among the other testers by the test leader.
+\end{itemize}
 
 \subsection{Varying Knowledge Levels within Team}
+\begin{itemize}
+\item Risk: High
+\item Damage Effect: Medium
+\item Prevention: -
+\item Damage Control: The individuals with more knowledge are identified and are encouraged to share their knowledge and help where they can. Forums such as Piazza will also be used to enable the team members to ask each other questions. 
+\end{itemize}
 
 \subsection{Varying Ambition Levels within Team}
+\begin{itemize}
+\item Risk: High
+\item Damage Effect: Medium
+\item Prevention: Create a positive working environment for the entire team, to keep them motivated to do a continuously good job. This will be done through team activities outside of the work. Continuous and clear information on what needs to be done and when is also important.
+\item Damage Control: - 
+\end{itemize}
 
 \subsection{Not Enough Time Budgeted}
+\begin{itemize}
+\item Risk: Medium 
+\item Damage Effect: Medium
+\item Prevention: Good planning from the beginning, clear instructions on what needs to be done and when. Continuous meetings every week throughout the project.
+\item Damage Control: Extra work on evenings and/or weekends.
+\end{itemize}
 
 \subsection{Absence of Team Member(s)}
+\begin{itemize}
+\item Risk: High
+\item Damage Effect: Low
+\item Prevention: -
+\item Damage Control: Have the absent team member do the task when he/she gets back or delegate to other present team member if the task is time critical.
+\end{itemize}
 
 \subsection{Change of Demands on System During Development}
+\begin{itemize}
+\item Risk: High
+\item Damage Effect: Medium
+\item Prevention: Good planning and communications with customer early on and continuously throughout the project.
+\item Damage Control: Be clear with the customer with what can and cannot be done within the set budget and time frame of project.
+\end{itemize}
 
-\subsection{Lost Work due to Computer Crashing}
-
-\subsection{Misunderstanding of Hardware Functionality}
-
-
-
-Presentation av en riskanalys för projektet. Hur utförs riskanalys? Vilka är de viktigaste riskerna som indentifierats? T.ex förändring av önskemål från kunden
-
-För varje rapporterad risk ska följande anges: skattad sannolikhet (låg, medel, hög), skattad effekt (låg, medel, hög), möjliga indikatorer på att risken förverkligas samt lösningar på detta.
-
-
-
-
+\subsection{Lost Work due to Computer Crash}
+\begin{itemize}
+\item Risk: Low
+\item Damage Effect: High
+\item Prevention: Continuously uploading work done to GitHub server.
+\item Damage Control: Establish what work has been lost and how to get it back. Worst case scenario it has to be re-done.
+\end{itemize}
 
 \end{document}
