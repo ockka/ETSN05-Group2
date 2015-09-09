@@ -38,7 +38,7 @@ Oskar Fällström %Not entirely sure who this should be, possibly project leader
 ~
 \begin{minipage}{0.4\textwidth}
 \begin{flushright}
-PUSS154213 0.1 %Dokumentnummer enl. projekthandledning s. 22-23 och insidan av pärmen
+PUSS154213 v0.1 %Dokumentnummer enl. projekthandledning s. 22-23 och insidan av pärmen
 \today
 \end{flushright}
 \end{minipage}\\[3cm]
@@ -71,13 +71,13 @@ Jonathan Lundholm
 
 %--------------------Introduction ---------------------------------------
 \section{Introduction}
-The Software Verification and Validation Specification (SVVS) describes all tests and reviews conducted during the development of the project \textbf{(project name here)}. The document acts as a base for the SVVI (Software Verification and Validation Instruction).
+The Software Verification and Validation Specification (SVVS) describes all tests and reviews conducted during the development of the project. The document acts as a base for the SVVI (Software Verification and Validation Instruction).
 In the main document, there are instructions for reviews as well as information about what types of tests should be performed and by whom. In the appendices, test cases are specified.
 
 %--------------------Reference Documents ---------------------------------------
-\section{Reference documents}
+\section{Reference Documents}
 \begin{enumerate}
-\item PUSS1542xx - System Requirements Specification for the current project \label{refdocs:srs}
+\item PUSS154212 - System Requirements Specification for the current project \label{refdocs:srs}
 \item Programvaruutveckling för stora system - Projekthandledning (\textit{Institutionen för datavetenskap}, Lunds Univeritet 2015) \label{refdocs:projekthandledning}
 \end{enumerate}
 
@@ -97,12 +97,12 @@ In the main document, there are instructions for reviews as well as information 
 \end{description}
 %--------------------Testing ---------------------------------------
 \section{Testing}
-In order to validate and verify that the system fulfills the customers expectations, various tests are conducted during the development phases. Types of test i.e. unit tests, function tests etc. can be divided into two categories: white-box tests and black-box tests, which are described below.   
+In order to validate and verify that the system fulfills the customers expectations, various tests are conducted during the development phases. Types of test i.e. unit tests, function tests etc. can be divided into two categories: white-box tests and black-box tests, which are described below. Both of these should be performed.  
 
-\subsection{White-box testing}
-In a white-box test the developer tests the internal structure of the system, by means of making sure that all lines/units of code are executed at least once.
+\subsection{White-box Testing}
+In a white-box test the developer tests the internal structure of the system, by means of making sure that all lines/units of code are executed at least once. These are performed by the developer group during development.
 
-\subsection{Black-box testing}
+\subsection{Black-box Testing}
 A function test or black-box test examines the functionality of a system from an external point of view. Combinations of input data are chosen and the output data from the system is compared to a specification.
 
 
@@ -143,47 +143,47 @@ The scheduled formal reviews, and the documents up for review, in this project a
 
 
 \subsection{Informal Reviews}
-Informal Reviews are to be held at least ten hours before the deadline for the Formal Review. The documents up for review should be made available in the project library at least 24 hours before the informal review.
+Informal reviews are to be held before the deadline for the formal review, with enough time to correct any problems found during the informal review. The documents up for review should be made available in the project library at least 24 hours before the informal review.
 
 PG are the responsible coordinators for the informal review.
 
 %--------------------Test environments ---------------------------------------
-\section{Test environments}
+\section{Test Environments}
 All tests specified in this document should be performed on appropriate emulator software. If possible, the tests should also be run on a physical device.
 
 %--------------------Test cases ----------------------------------------------
-\section{Types of tests}
+\section{Types of Tests}
 
-\subsection{Unit tests}
+\subsection{Unit Tests}
 The developer group should perform unit tests, both black-box tests and white-box tests. These tests should be performed continuously during development.
 
-\subsection{Function tests}
+\subsection{Function Tests}
 All functions of the system should be tested according to appendix \ref{appendix:section:functiontest}. The test group is responsible for  performing these tests.
 
-\subsection{System tests}
+\subsection{System Tests}
 The entire system should be tested according to appendix \ref{appendix:section:systemtest}. The test group is responsible for performing these tests. 
 
-\subsection{Regression tests}
-After any changes, all System tests should be performed again to ensure that previously functional code is still working. The test group is responsible for performing these tests.
+\subsection{Regression Tests}
+After any changes, all system tests should be performed again to ensure that previously functional code is still working. The test group is responsible for performing these tests.
 
-\subsection{Acceptance tests}
+\subsection{Acceptance Tests}
 Acceptance tests are performed by the costumer before completion of the project. The costumer is responsible for selecting tests to ensure that the software meets their demands.
 
 %--------------------Appendix A: Function test Specification ----------------
 \newpage
 \begin{appendices}
 
-\section{Function test specification} \label{appendix:section:functiontest}
+\section{Function Test Specification} \label{appendix:section:functiontest}
 This is appendix A where we list all function test specifications.
 
 \subsection{MyDevices View Tests}
 \begin{testlist}
 	\item The list on the MyDevices view is scrollable. (Req 5.2.1)
-    \item The items on he list is be selectable. (Req 5.2.3)
-    \item When no device is selected, then the "Controll device" button is not clickable. (Req 5.2.4)
+    \item The items on the list is selectable. (Req 5.2.3)
+    \item When no device is selected, the "Controll device" button is not clickable. (Req 5.2.4)
     \item The screen displays the number of items in the list. (Req 5.2.5)
-    \item When the application is started the list of available devices is be empty. (Req 5.2.6)
-    \item The devices are named in accordance with relevant documen. (Which document is unknown at present...) (Req 5.2.7)
+    \item When the application is started the list of available devices is empty. (Req 5.2.6)
+    \item The devices are named in accordance with relevant document. (Which document is unknown at present.) (Req 5.2.7)
     \item The "Get Devices" button initiates a scan with the MVD. (Req 5.2.8)
     \item The scan with the MVD is halted after X seconds. (Exact number of seconds is unspecified in SRS at the moment.) (Req 5.2.9)
 \end{testlist}
@@ -192,10 +192,10 @@ This is appendix A where we list all function test specifications.
 \subsection{Sensor View Tests}
 \begin{testlist}
 \item When the sensor is selected and the "Control Device" button is clicked, the Sensor View is displayed and the sensor name and mac address is displayed in the top of the view.(Req. 5.3.1, 5.3.2, 5.3.2) 
-\item It is possible to change the on/off -status of the selected sensor with the switch. (Req. 5.3.4)
+\item It is possible to change the on/off -status of the selected sensor with a switch. (Req. 5.3.4)
 \item The fields preceded by T,P,H,M,G and A are all editable. (Req. 5.3.5, 5.3.6, 5.3.7, 5.3.8, 5.3.9, 5.3.10)
 \item By pressing the corresponding button, the values of the T,P,H,M,G and A sensors are retrieved. (Req. 5.3.11, 5.3.12, 5.3.13, 5.3.14, 5.3.15, 5.3.16)
-\item If there is no data to retrieve for any of physical quantities T,P,H,M,G and A, the corresponding fields are empty.(Re1. 5.3.17, 5.3.18, 5.3.19, 5.3.20, 5.3.21, 5.3.22)
+\item If there is no data to retrieve for any of physical quantities T,P,H,M,G and A, the corresponding fields are empty.(Req. 5.3.17, 5.3.18, 5.3.19, 5.3.20, 5.3.21, 5.3.22)
 \item The "Get all" -button gets the values for all available sensors.(\textcolor{red}{Req. xxx})
 \item The "clear-all" button clears all sensor fields from data. (\textcolor{red}{Req. xxx})
 \item When the "Get"-button for the X sensor is pressed, while the X sensor is unavailable, a pop-up message: "X sensor unavailable" is displayed. X represents any of the sensors T,P,H,M,G and A. (\textcolor{red}{Req. xxx})
@@ -217,27 +217,25 @@ This is appendix A where we list all function test specifications.
 \begin{testlist}
 	\item The Light Bulb View opens when a light bulb is chosen in the MyDevices View. (Req 5.4.1)
     \item The name (Which document is unknown at present...), is shown in the top of the View. (Req 5.4.2)
-    \item The state of the selected light bulb can be changed with a switch. (Req 5.4.3)
-    \item The field of R-, G-, B-, W-value is editable and preceded by "R:", "G:", "B:" and "W:" respectively. (Req 5.4.4, 5.4.5, 5.4.6, 5.4.7) 
-    \item When the Light Bulb View is opened, the fields are set according to the information from the REST API. (Req 5.4.8)
-    \item The "Get"-button receives the R-, G-, B-, W-values and present them in the fields specified in reguirement 5.4.4 to 5.4.7. (Req 5.4.9)
-    \item The "Set"-button sends user input values of the fields specified in reguirement 5.4.4 to 5.4.7 to the REST API for further forwarding of the information to the MVD and light bulb. (Req 5.4.10)
-    \item ???
-    \item The value representing the color of the fields is of maximum two characters. \textcolor{red}{(Req 5.4.12)}
+    \item The state of the selected light bulb can be changed with a switch. (Req. 5.4.3)
+    \item The field of R-, G-, B-, W-value is editable and preceded by "R:", "G:", "B:" and "W:" respectively. (Req. 5.4.4, 5.4.5, 5.4.6, 5.4.7) 
+    \item When the Light Bulb View is opened, the fields are set according to the information from the REST API. (Req. 5.4.8)
+    \item The "Get"-button receives the R-, G-, B-, W-values and present them in the fields specified in reguirement 5.4.4 to 5.4.7. (Req. 5.4.9)
+    \item The "Set"-button sends user input values of the fields specified in reguirement 5.4.4 to 5.4.7 to the REST API for further forwarding of the information to the MVD and light bulb. (Req. 5.4.10)
+    \item If an input value is left blank the value is set to 00. (Req. 5.4.11)
+    \item The value representing the color of the fields is of maximum two characters. \textcolor{red}{(Req. 5.4.12)}
     \item A pop-up message saying "Color successfully changed" is displayed when the values of the light bulb were successfully set. (Reg 5.4.13)
-    \item The application checks the input values when the "Set"-button is pressed. If the values are out the specified range, a pop-up message is displayed saying: "Input values out of range" (\textcolor{red}{Syftningfel i SRS i Req 5.4.12})
-    \item When the light bulb is of, the "Set"-button is unavailable. (Req 5.4.13)
-    \item The color of the light bulb is given in hexadecimal number (Req 5.4.14)
+    \item The application checks the input values when the "Set"-button is pressed. If the values are out the specified range, a pop-up message is displayed saying: "Input values out of range" (\textcolor{red}{Syftningfel i SRS i Req. 5.4.12})
+    \item When the light bulb is of, the "Set"-button is unavailable. (Req. 5.4.13)
+    \item The color of the light bulb is given in hexadecimal number (Req. 5.4.14)
     \item 
 
 \end{testlist}	
 
-\subsubsection{This is a subsubsection}
-
 %--------------------Appendix B: System test Specification ----------------
 \newpage
 
-\section{System test specification} \label{appendix:section:systemtest}
+\section{System Test Specification} \label{appendix:section:systemtest}
 This is appendix B where we list all system test specifications.
 
 \subsection{Use Cases}
@@ -263,20 +261,17 @@ This is appendix B where we list all system test specifications.
 \subsection{Appearance and Layout}
 
 \begin{testlist}
-	\item The first screen that is shown on startup is the MyDevicesView. (Req 5.2.1)
-	\item The layout of the MyDevices View resembles figure x in reference \ref{refdocs:srs} (Req 6.1).
-	\item The layout of the Sensor View resembles figure xx in reference \ref{refdocs:srs} (Req 6.2).
-	\item The layout of the Light Bulb View resembles figure xxx in reference \ref{refdocs:srs} (Req 6.3).
+	\item The first screen that is shown on startup is the MyDevicesView. (Req. 5.2.1)
+	\item The layout of the MyDevices View resembles figure x in reference \ref{refdocs:srs} (Req. 6.1).
+	\item The layout of the Sensor View resembles figure xx in reference \ref{refdocs:srs} (Req. 6.2).
+	\item The layout of the Light Bulb View resembles figure xxx in reference \ref{refdocs:srs} (Req. 6.3).
 \end{testlist}
 
 %--------------------Appendix C: Regression test Specification ----------------
 \newpage
-\section{Regression test specification}
+\section{Regression Test Specification}
 This is appendix C where we list all regression test specifications.
 
-\subsection{This is a subsection}
-
-\subsubsection{This is a subsubsection}
 \end{appendices}
 
 
