@@ -1,10 +1,12 @@
 \documentclass[a4paper]{article}
-
-\usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
-\usepackage{enumitem}%can be used for automatic numbering of requirements/tests.
+\usepackage{amsfonts}
+\usepackage{amssymb}
 \usepackage{graphicx}
+\usepackage{geometry}
+\usepackage[english]{babel}
+\usepackage{enumitem}%can be used for automatic numbering of requirements/tests.
 \usepackage{hyperref}
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{color} % Used to write in red,blue,green etc.
@@ -15,22 +17,57 @@
 \settowidth{\testlabellength}{Test 100.10.10}
 \newenvironment{testlist}{\begin{enumerate}[label=\bfseries Test \thesubsection.\arabic* , labelindent=0pt, labelwidth=\testlabellength , leftmargin=2cm]}{\end{enumerate}}
 
+\title{SVVS - Software Verification and Validation Specification}
+\author{Testgroup, Team 2}
+
+
 %-------------------------TITLE-----------------------------------------
 
-\title{SVVS - Software Verification and Validation Specification}
-
-\date{\today}
-\author{Test Group 2}
 \begin{document}
+\begin{titlepage}
+\newgeometry{left=2cm,top=1cm,right=2cm}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 
-\maketitle
+\begin{minipage}{0.5\textwidth}
+\begin{flushleft} % Responsible persons, write on separate lines
+\textit{Responsible for this document:}\\
+Oskar Fällström %Not entireky sure who this should be, possibly project leaders as well?
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright}
+PUSS154213 0.1 %Dokumentnummer enl. projekthandledning s. 22-23 och insidan av pärmen
+\today
+\end{flushright}
+\end{minipage}\\[3cm]
+
+\centering
+\textsc{\LARGE Team 2}\\[0.5cm]
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Software Verification and Validation Specification}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+
+\vfill
+\begin{flushleft}
+%Authors, write on separate lines
+\textit{Authors of this document:}\\
+Måns Andersson \\
+Hanna Autio \\
+Moa Eklöf \\
+Oskar Fällström \\
+Ulf Hörndahl \\
+Jonathan Lundholm
+\end{flushleft}
 
 
-\pagebreak
+\end{titlepage}
+\pagenumbering{gobble}
 \setcounter{tocdepth}{2}
 \tableofcontents
-\pagebreak
-
+\newpage
+\pagenumbering{arabic}
 
 %--------------------Introduction ---------------------------------------
 \section{Introduction}
