@@ -69,7 +69,7 @@ Daniel Olsson
 \section{Introduction}
 This document describes the requirements created for an application to control a MVD according to the instructions provided in the course \textit{Software development for large systems}, ETSN05, at LTH fall 2015.  The application controls sensor devices and a multi-color light bulb.
 \section{Reference documents}
-Reference document: PUS15001.
+No reference document in this version.
 \section{Background and goals}
 \subsection{Main goals}
 The main goal of this application is to provide a user-interface to remotely control and read data from a number of sensors and a light bulb. The user should through the application be able to control a MVD device which in turn communicates with the sensors and the light bulb.
@@ -81,9 +81,9 @@ The main goal of this application is to provide a user-interface to remotely con
 
 \textbf{Application} is short for Lamp Controller Android Application which is used as a controller for the light bulbs. The application can be used to scan for devices, communicate with a specific sensor or light bulb. 
 \newline \newline
-\textbf{Back End} is the endpoint which the app talks to, to control the light bulbs and to get sensor data. Is accessed through a REST API. 
+\textbf{Back-End} is the endpoint which the app talks to, to control the light bulbs and to get sensor data. Is accessed through a REST API. 
 \newline \newline
-\textbf{REST API}, representational state transfer application program interface. An HTTP endpoint to which the application talks in HTTP packages in order to communicate with the back end. 
+\textbf{REST API}, representational state transfer application program interface. An HTTP endpoint to which the application talks in HTTP packages in order to communicate with the back-end. 
 \newline \newline
 \textbf{MVD} Minimal viable device to scan for Bluetooth Low Energy (BLE) devices, collect and pass the data to the remote server using MQTT protocol.
 \newline \newline
@@ -95,7 +95,7 @@ The application is comprised of three views named MyDevices View, Sensor Device 
 \subsection{Use cases}
 \begin{description}
 \item[Scenario 5.1.1] Detecting devices
-\item[Precondition:] The user is in the MyDevice View. There is a light bulb and a temperature sensor within scan range for the MVD. No other detectable devices are within range of the MVD scan.
+\item[Precondition:] The user is in the MyDevices View. There is a light bulb and a temperature sensor within scan range for the MVD. No other detectable devices are within range of the MVD scan.
 \item[Use Case:]\mbox{}
 \begin{enumerate}
 \item The user presses the "Get Devices"-button.
@@ -106,18 +106,26 @@ The application is comprised of three views named MyDevices View, Sensor Device 
 \item[]
 \begin{itemize}
 \item [\ref{1}:] No devices found.
-\item The user is notified by the popup message: "No devices found.".
+\item The user is notified by the pop-up message: "No devices found.".
 \end{itemize}
 
 \item[]
 
 \item[Scenario 5.1.2] Connecting to the light bulb.
-\item[Precondition:] The user is in the MyDevice View and a light bulb is detected.
+\item[Precondition:] The user is in the MyDevices View and a light bulb is detected.
 \item[Postcondition:] The user is in the Light Bulb View.
 \item[Use Case:]\mbox{}
 \begin{enumerate}
-\item  The user selects the light bulb from the Devices list.
+\item \label{1_bulb} The user selects the light bulb from the Devices list and presses the "Control Device"-button.
 \end{enumerate}
+
+\item[Exceptions:]
+\item[]
+\begin{itemize}
+\item [\ref{1_bulb}:] No device selected.
+\item The user is notified by the pop-up message: "Please select a device.".
+\end{itemize}
+
 
 \item[]
 
@@ -126,8 +134,16 @@ The application is comprised of three views named MyDevices View, Sensor Device 
 \item[Postcondition:] The user is in the Sensor Device View.
 \item[Use Case:]\mbox{}
 \begin{enumerate}
-\item  The user selects the sensor device from the Device list.
+\item \label{1_sensor} The user selects the sensor device from the Device list and presses the "Control Device"-button.
 \end{enumerate}
+
+
+\item[Exceptions:]
+\item[]
+\begin{itemize}
+\item [\ref{1_sensor}:] No device selected.
+\item The user is notified by the pop-up message: "Please select a device.".
+\end{itemize}
 
 \item[]
 
@@ -136,7 +152,7 @@ The application is comprised of three views named MyDevices View, Sensor Device 
 \item[Postcondition:] The light bulb is turned off.
 \item[Use Case:]\mbox{}
 \begin{enumerate}
-\item  The user sets the onoff-switch to off.
+\item  The user sets the on/off-switch to off.
 \end{enumerate}
 
 \item[]
@@ -146,7 +162,7 @@ The application is comprised of three views named MyDevices View, Sensor Device 
 \item[Postcondition:] The light bulb is turned on.
 \item[Use Case:]\mbox{}
 \begin{enumerate}
-\item  The user sets the onoff-switch to on.
+\item  The user sets the on/off-switch to on.
 \end{enumerate}
 
 \item[]
@@ -156,7 +172,7 @@ The application is comprised of three views named MyDevices View, Sensor Device 
 \item[Postcondition:] The sensor device is turned off.
 \item[Use Case:]\mbox{}
 \begin{enumerate}
-\item  The user sets the onoff-switch to off.
+\item  The user sets the on/off-switch to off.
 \end{enumerate}
 
 \item[]
@@ -166,7 +182,7 @@ The application is comprised of three views named MyDevices View, Sensor Device 
 \item[Postcondition:] The sensor device is turned on.
 \item[Use Case:]\mbox{}
 \begin{enumerate}
-\item  The user sets the onoff-switch to on.
+\item  The user sets the on/off-switch to on.
 \end{enumerate}
 
 \item[]
@@ -186,7 +202,7 @@ The application is comprised of three views named MyDevices View, Sensor Device 
 
 \begin{itemize}
 \item [\ref{4}:] One or more fields are empty.
-\item The user is notified by the popup message: "Fill in all fields.".
+\item The user is notified by the pop-up message: "Fill in all fields.".
 \end{itemize}
 
 \item[]
@@ -272,94 +288,84 @@ The application is comprised of three views named MyDevices View, Sensor Device 
 
 \subsection{The MyDevices View}
 \begin{description}
-\item[Requirement 5.2.1:] When the application is started the MyDevices View should be opened.
+\item[Requirement 5.2.1:] When the application is started, the MyDevices View should be displayed.
 
-\item[Requirement 5.2.2:] Availble devices should be presented in a scrollable list.
+\item[Requirement 5.2.2:] When the application is started the list of available devices is empty.
 
-\item[Requirement 5.2.3:] Items in the list should be selectable.
+\item[Requirement 5.2.3:] Available devices should be presented in a scrollable list.
 
-\item[Requirement 5.2.4:] When no device is seleceted the "Controll device"-button is not clickable. 
+\item[Requirement 5.2.4:] Items in the list should be selectable.
 
-\item[Requirement 5.2.5:] The number of items in the list of availible devices should be displayed.
+\item[Requirement 5.2.5:] Only one item can be selected at a time.
 
-\item[Requirement 5.2.6:] When the application is started the list of availible devices is empty.
+\item[Requirement 5.2.6:] When no device is selected and the the "Control device"-button is pressed, a pop-up message "Please select a device." is displayed.
 
-\item[Requirement 5.2.7:] Available devices are displayed with their name according to specification XX.
+\item[Requirement 5.2.7:] Sensors are displayed in the list of available devices as "Sensor" as name and it's MAC address as address. 
 
-\item[Requirement 5.2.8:] There is a "Get devices"-button that when pressed instructs the MVD to perform a scan for available devices.
+\item[Requirement 5.2.8:] Light Bulbs are displayed in the list of available devices as "Light Bulb" as name and it's MAC address as address. 
 
-\item[Requirement 5.2.9:] The timeout for the scan is X seconds. 
+\item[Requirement 5.2.9:] The "Get devices"-button instructs the MVD to perform a scan for available devices when pressed.
+
+\item[Requirement 5.2.10:] When the back button is pressed the application is closed.
 
 \end{description}
 
 \subsection{The Sensor View}
 
 \begin{description}
-\item[Requirement 5.3.1:] When the "Controll Device"-button in the MyDevices View is clicked while a sensor is selected in the list of availible devices the Sensor View for the selected device is opened. 
+\item[Requirement 5.3.1:] When the "Control Device"-button in the MyDevices View is pressed and a sensor is selected, the Sensor View is opened. 
 
-\item[Requirement 5.3.2:] The name, according to specification xx, of the selected sensor is shown in the top of the View.
+\item[Requirement 5.3.2:] The name of the selected sensor is shown in the top of the View.
 
-\item[Requirement 5.3.3:] The mac-adress of the selected sensor is shown in the top of the View.
+\item[Requirement 5.3.3:] The mac-address of the selected sensor is shown in the top of the View.
 
-\item[Requirement 5.3.4:] It is possible to change the on/off-status of the selected sensor by a switch.
+\item[Requirement 5.3.4:] It is possible to change the on/off-status of the selected sensor with a switch.
 
-\item[Requirement 5.3.5:] There is an editable field used to display temperature preceeded by "T:".
+\item[Requirement 5.3.5:] There is an text field used to display temperature preceded by "T:".
 
-\item[Requirement 5.3.6:] There is an editable field used to display pressure preceeded by "P:".
+\item[Requirement 5.3.6:] There is an text field used to display pressure preceded by "P:".
 
-\item[Requirement 5.3.7:] There is an editable field used to display humidity preceeded by "H:".
+\item[Requirement 5.3.7:] There is an text field used to display humidity preceded by "H:".
 
-\item[Requirement 5.3.8:] There is an editable field used to display ?????? preceeded by "M:".
+\item[Requirement 5.3.8:] There is an text field used to display magnetic field preceded by "M:".
 
-\item[Requirement 5.3.9:] There is an editable field used to display gravity preceeded by "G:".
+\item[Requirement 5.3.9:] There is an text field used to display gyroscopic value preceded by "G:".
 
-\item[Requirement 5.3.10:] There is an editable field used to display acceleration preceeded by "A:".
+\item[Requirement 5.3.10:] There is an text field used to display acceleration preceded by "A:".
 
-\item[Requirement 5.3.11:] It should be possible to get the value of the T-sensor by pressing a button.
+\item[Requirement 5.3.11:] It should be possible to get the value of the T-sensor by pressing the "Get"-button next to the temperature field.
 
-\item[Requirement 5.3.12:] It should be possible to get the value of the P-sensor by pressing a button.
+\item[Requirement 5.3.12:] It should be possible to get the value of the P-sensor by pressing the "Get"-button next to the pressure field.
 
-\item[Requirement 5.3.13:] It should be possible to get the value of the H-sensor by pressing a button.
+\item[Requirement 5.3.13:] It should be possible to get the value of the H-sensor by pressing the "Get"-button next to the humidity field.
 
-\item[Requirement 5.3.14:] It should be possible to get the value of the M-sensor by pressing a button.
+\item[Requirement 5.3.14:] It should be possible to get the value of the M-sensor by pressing the "Get"-button next to the magnetic field.
 
-\item[Requirement 5.3.15:] It should be possible to get the value of the G-sensor by pressing a button.
+\item[Requirement 5.3.15:] It should be possible to get the value of the G-sensor by pressing the "Get"-button next to the gravity field.
 
-\item[Requirement 5.3.16:] It should be possible to get the value of the A-sensor by pressing a button.
+\item[Requirement 5.3.16:] It should be possible to get the value of the A-sensor by pressing the "Get"-button next to the acceleration field.
 
-\item[Requirement 5.3.17:] If there is no data to display in the T-field the T-field is empty.
+\item[Requirement 5.3.17:] There is a "Get all"-button that gets the value for all available sensor data.
 
-\item[Requirement 5.3.18:] If there is no data to display in the P-field the P-field is empty.
+\item[Requirement 5.3.18:] There is a "clear all"-button that clears content in the text field for all the sensor data.
 
-\item[Requirement 5.3.19:] If there is no data to display in the H-field the H-field is empty.
+\item[Requirement 5.3.19:] If the "Get"-button for T is pressed while the T sensor has no available data a message "No data available." is displayed in the T-field.
 
-\item[Requirement 5.3.20:] If there is no data to display in the M-field the M-field is empty.
+\item[Requirement 5.3.20:] If the "Get"-button for P is pressed while the P sensor has no available data a message "No data available." is displayed in the P-field.
 
-\item[Requirement 5.3.21:] If there is no data to display in the G-field the G-field is empty.
+\item[Requirement 5.3.21:] If the "Get"-button for H is pressed while the H sensor has no available data a message "No data available." is displayed in the H-field.
 
-\item[Requirement 5.3.22:] If there is no data to display in the A-field the A-field is empty.
+\item[Requirement 5.3.22:] If the "Get"-button for M is pressed while the M sensor has no available data a message "No data available." is displayed in the M-field.
 
-\item[Requirement 5.3.22:] There is a "Get all"-button that gets the value for all availible sensors.
+\item[Requirement 5.3.23:] If the "Get"-button for G is pressed while the G sensor has no available data a message "No data available." is displayed in the G-field.
 
-\item[Requirement 5.3.22:] There is a "clear all"-button that sets the value in all the fields specified in requirements 5.3.5 to 5.3.10 to "".
+\item[Requirement 5.3.24:] If the "Get"-button for A is pressed while the A sensor has no available data a message "No data available." is displayed in the A-field.
 
-\item[Requirement 5.3.23:] If the "Get"-button for T is pressed while the T sensor is unavailible a popup message "Temperature sensor unavailible" is displayed.
+\item[Requirement 5.3.25:] The on/off-switch is set according to the information from the REST API.
 
-\item[Requirement 5.3.24:] If the "Get"-button for P is pressed while the P sensor is unavailible a popup message "Pressure sensor unavailible" is displayed.
+\item[Requirement 5.3.26:] When the back button is pressed the MyDevices View should be opened.
 
-\item[Requirement 5.3.25:] If the "Get"-button for H is pressed while the H sensor is unavailible a popup message "Humidity sensor unavailible" is displayed.
-
-\item[Requirement 5.3.26:] If the "Get"-button for M is pressed while the M sensor is unavailible a popup message "????? sensor unavailible" is displayed.
-
-\item[Requirement 5.3.27:] If the "Get"-button for G is pressed while the G sensor is unavailible a popup message "Gravity sensor unavailible" is displayed.
-
-\item[Requirement 5.3.28:] If the "Get"-button for A is pressed while the A sensor is unavailible a popup message "Acceleration sensor unavailible" is displayed.
-
-\item[Requirement 5.3.29:] The on/off-switch is set according to the information from the REST API.
-
-\item[Requirement 5.3.30:] If the "Get all"-button is pressed while no sensors are availible a popup message "No sensors availible" is displayed.
-
-\item[Requirement 5.3.31:] When the back button is pressed the MyDevices View should be opened. 
+\item[Requirement 5.3.27:] When the Sensor View is opened the text fields are empty.
 
 \end{description}
 
@@ -367,9 +373,9 @@ The application is comprised of three views named MyDevices View, Sensor Device 
 \subsection{The Light bulb View}
 
 \begin{description}
-\item[Requirement 5.4.1:] When the "Controll Device"-button in the MyDevices View is clicked while a light bulb is selected in the list of available devices the Light Bulb View for the selected device is opened. 
+\item[Requirement 5.4.1:] When the "Control Device"-button in the MyDevices View is pressed and a light bulb is selected, the Light bulb View is opened.  
 
-\item[Requirement 5.4.2:] The name, according to specification xx, of the selected light bulb is shown in the top of the View.
+\item[Requirement 5.3.2:] The name of the selected light bulb is shown in the top of the View.
 
 \item[Requirement 5.4.3:] It is possible to change the on/off-status of the selected light bulb with a switch.
 
@@ -381,38 +387,58 @@ The application is comprised of three views named MyDevices View, Sensor Device 
 
 \item[Requirement 5.4.7:] There is an editable field used to display the W-value preceded by "W:".
 
-\item[Requirement 5.4.8] When the View is opened the fields specified in requirements 5.4.3 to 5.4.7 is set according to information from REST API.
+\item[Requirement 5.4.8] When the View is opened the fields are empty.
 
-\item[Requirment 5.4.9] There is a "Get"-button that retrieves the R,G,B,W values and presents them in the fields specified in requirements 5.4.3 to 5.4.7.
+\item[Requirment 5.4.9] There is a "Get"-button that retrieves the R,G,B,W values and presents them in their respective fields.
 
-\item[Requirement 5.4.10] There is a "Set"-button that forwards the input values of the fields specified in requirements 5.4.3 to 5.4.7 to the REST API for further forwarding to the MVD and light bulb.
+\item[Requirement 5.4.10] There is a "Set"-button that sets the color of the light bulb.
 
-\item[Requirement 5.4.11] If one of the fields specified in requirements 5.4.3 to 5.4.7 is "" while pressing the "Set"-button its value is interpreted as 00.
+\item[Requirement 5.4.11] If any of the fields is empty when pressing the "Set"-button its values are interpreted as 00.
 
-\item[Requirement 5.4.11] The maximum number of characters allowed in the fields specified in requirements 5.4.3 to 5.4.7 is two.
+\item[Requirement 5.4.12] The maximum number of characters allowed in the fields is two.
 
-\item[Requirement 5.4.12] If the values of the light bulb were successfully set a pop-up message "Color successfully changed" is displayed.
+\item[Requirement 5.4.13] The fields only accept hexadecimal numbers in the range from 00-FF.
 
-\item[Requirement 5.4.12] When pressing the "Set"-button the application checks that the input values are within the specified range for the light bulb according to specification xx and displays the message "Input values out of range" if the values of the input is out of the specified range.
+\item[Requirement 5.4.14] If the values of the light bulb were successfully set a pop-up message "Color successfully changed" is displayed.
 
-\item[Requirement 5.4.13] The "Set"-button is unavailable when the light bulb is turned off.
+\item[Requirement 5.4.15] If the values of the light bulb were unsuccessfully set a pop-up message "Error: Color unsuccessfully changed" is displayed.
 
-\item[Requirement 5.4.14] The color of the light bulb is given in hexadecimal numbers.
+\item[Requirement 5.4.16] The "Set"-button is disabled when the light bulb is turned off.
 
-\item[Requirement 5.4.15:] When the back button is pressed the MyDevices View should be opened.
+\item[Requirement 5.4.17:] When the back button is pressed the MyDevices View should be opened.
 
 \end{description}
 
 \section{Quality requirements}
 
 \begin{description}
-\item[Requirement 6.1] The layout of the MyDevices View should resemble figure x.
-\item[Requirement 6.2] The layout of the Sensor View should resemble figure x.
-\item[Requirement 6.3] The layout of the Light Bulb View should resemble figure x.
+\item[Requirement 6.1] The layout of the MyDevices View should resemble \ref{fig:mydeviceview}.
+\item[Requirement 6.2] The layout of the Sensor View should resemble figure \ref{fig:mysensorview}.
+\item[Requirement 6.3] The layout of the Light Bulb View should resemble figure \ref{fig:mylightbulbview}.
 \item[Requirement 6.4] Nine out of ten people should be able to use the application after five minutes of instruction. 
 
+\section{Appendix}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{pic1.png}
+    \caption{The layout of the My Devices View}
+    \label{fig:mydeviceview}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{pic2.png}
+    \caption{The layout of the My Sensor View}
+    \label{fig:mysensorview}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{pic3.png}
+    \caption{The layout of the Light Bulb View}
+    \label{fig:mylightbulbview}
+\end{figure}
+
 \end{description}
-
-
-\section{Project requirements}
 \end{document}
