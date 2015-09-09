@@ -191,17 +191,25 @@ This is appendix A where we list all function test specifications.
 %--------------------------Sensor view tests --------------------------------------
 \subsection{Sensor View Tests}
 \begin{testlist}
-\item When the sensor is selected and the "Control Device" button is clicked, the Sensor View is displayed and the sensor name and mac address is displayed in the top of the view.(Req. 5.3.1, 5.3.2, 5.3.2) 
+\item When the "Control Device"-button in the MyDevices View is pressed and a sensor is selected, the Sensor view is opened. (Req. 5.3.1)
+
+\item The sensor name and mac-address is shown in the top of the view (Req. 5.3.2, 5.3.3)
+ 
 \item It is possible to change the on/off -status of the selected sensor with a switch. (Req. 5.3.4)
-\item The fields preceded by T,P,H,M,G and A are all editable. (Req. 5.3.5, 5.3.6, 5.3.7, 5.3.8, 5.3.9, 5.3.10)
-\item By pressing the corresponding button, the values of the T,P,H,M,G and A sensors are retrieved. (Req. 5.3.11, 5.3.12, 5.3.13, 5.3.14, 5.3.15, 5.3.16)
-\item If there is no data to retrieve for any of physical quantities T,P,H,M,G and A, the corresponding fields are empty.(Req. 5.3.17, 5.3.18, 5.3.19, 5.3.20, 5.3.21, 5.3.22)
-\item The "Get all" -button gets the values for all available sensors.(\textcolor{red}{Req. xxx})
-\item The "clear-all" button clears all sensor fields from data. (\textcolor{red}{Req. xxx})
-\item When the "Get"-button for the X sensor is pressed, while the X sensor is unavailable, a pop-up message: "X sensor unavailable" is displayed. X represents any of the sensors T,P,H,M,G and A. (\textcolor{red}{Req. xxx})
-\item The on/off-switch is set according to the information from the REST API. (\textcolor{red}{Req. xxx})
-\item When the "Get all" button is pressed and no sensors are available a pop-up message: "No sensor available" is displayed. (\textcolor{red}{Req. xxx})
-\item When the back button is pressed the MyDevices View is opened. (\textcolor{red}{Req. xxx})
+
+\item There are text fields preceded by "T", "P", "H", "M", "G", "A" that are used to display temperature, pressure, humidity, magnetic field, gyroscopic value and acceleration. The displayed values correspond to the letter preceding the field.(Req. 5.3.5, 5.3.6, 5.3.7, 5.3.8, 5.3.9, 5.3.10)
+
+\item By pressing the corresponding "Get"-button, the values of the temperature, pressure, humidity, magnetic field, qyroscopic and acceleration sensors are retrieved and displayed. (Req. 5.3.11, 5.3.12, 5.3.13, 5.3.14, 5.3.15, 5.3.16)
+
+\item If there is no data to retrieve for any of the physical quantities temperature, pressure, humidity, magnetic field, gyroscopic and acceleration when a relevant "Get" button is pressed the corresponding text fields display "No data available".(Req. 5.3.19, 5.3.20, 5.3.21, 5.3.22, 5.3.23, 5.3.24)
+
+\item The "Get all" -button gets the values for all available sensors and displays them.(Req. 5.3.17)
+
+\item The "clear-all" button clears all sensor text fields from data. (Req. 5.3.18)
+
+\item The on/off-switch is set according to the information from the REST API. (5.3.25)
+
+\item When the sensor view is opened the temperature, pressure, humidity, magnetic field, gyroscopic and acceleration text fields are empty. (Req. 5.3.27)
 
 \end{testlist}
 
@@ -276,8 +284,17 @@ This is appendix B where we list all system test specifications.
 
 \begin{testlist}
 	\item The first screen that is shown on startup is the MyDevicesView. (Req. 5.2.1)
+	
+	\item When the back button is pressed in the MyDevices View, the application is closed. (Req. 5.2.10)	
+	
+	\item When the back button is pressed in the Sensor View, the MyDevices View is opened. (Req. 5.3.26)
+	
+	\item When the back button is pressed in the Light Buld View, the MyDevices View is opened. (Req. 5.4.17)
+	
 	\item The layout of the MyDevices View resembles figure x in reference \ref{refdocs:srs} (Req. 6.1).
+	
 	\item The layout of the Sensor View resembles figure xx in reference \ref{refdocs:srs} (Req. 6.2).
+	
 	\item The layout of the Light Bulb View resembles figure xxx in reference \ref{refdocs:srs} (Req. 6.3).
 \end{testlist}
 
