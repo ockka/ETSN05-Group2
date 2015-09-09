@@ -7,20 +7,64 @@
 \usepackage{hyperref}
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{float}
+\usepackage{geometry}
 
 \title{SRS - Software Requirements Specification}
-
-\date{\today}
+\author{Team 2}
 
 \begin{document}
+\begin{titlepage}
+\newgeometry{left=2cm,top=1cm,right=2cm}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 
-\maketitle
+\begin{minipage}{0.5\textwidth}
+\begin{flushleft} % Responsible persons, write on separate lines
+\textit{Responsible for this document:}\\
+Oscar Axelsson \\
+Daniel Olsson \\
+Jacob Mejvik
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright}
+PUSS154212 0.1
+\today
+\end{flushright}
+\end{minipage}\\[3cm]
+
+\centering
+\textsc{\LARGE Team 2}\\[0.5cm]
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Software Requirements Specification}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+
+\vfill
+\begin{flushleft}
+%Authors, write on separate lines
+\textit{Authors of this document:}\\
+Carl Rynegardh \\
+Daniel Dornlöv \\
+Fredrik Månsson \\
+Filip Månsson \\
+Marcus Hilliges \\
+Niklas Ovnell \\
+David Cartbo \\
+Madeleine Boström \\
+Jacob Mejvik \\
+Oscar Axelsson \\
+Daniel Olsson
+\end{flushleft}
 
 
-\pagebreak
+
+\end{titlepage}
+\pagenumbering{gobble}
 \setcounter{tocdepth}{2}
 \tableofcontents
-\pagebreak
+\newpage
+\pagenumbering{arabic}
 
 \section{Introduction}
 This document describes the requirements created for an application to control a MVD according to the instructions provided in the course \textit{Software development for large systems}, ETSN05, at LTH fall 2015.  The application controls sensor devices and a multi-color light bulb.
