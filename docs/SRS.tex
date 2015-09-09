@@ -86,21 +86,24 @@ The main goal of this application is to provide a user-interface to remotely con
 \textbf{REST API}, representational state transfer application program interface. An HTTP endpoint to which the application talks in HTTP packages in order to communicate with the back end. 
 \newline \newline
 \textbf{MVD} Minimal viable device to scan for Bluetooth Low Energy (BLE) devices, collect and pass the data to the remote server using MQTT protocol.
+\newline \newline
+\textbf{Sensor Device} is the device that contains the sensors for temperature, pressure, humidity, magnetic field, gyroscopic value and acceleration.
 \section{Functional requirements}
 
 The application is comprised of three views named MyDevices View, Sensor Device View and Light Bulb View. 
 
 \subsection{Use cases}
 \begin{description}
-\item[Scenario 5.1.1] Finding devices
-\item[Precondition:] There is a light bulb and a temperature sensor within scan range for the MVD. No other detectable devices are within range of the MVD scan.
+\item[Scenario 5.1.1] Detecting devices
+\item[Precondition:] The user is in the MyDevice View. There is a light bulb and a temperature sensor within scan range for the MVD. No other detectable devices are within range of the MVD scan.
+\item[Use Case:]\mbox{}
 \begin{enumerate}
-\item The user starts the application.
 \item The user presses the "Get Devices"-button.
 \item \label{1} A list of devices containing only the light bulb and temperature sensor is displayed in the MyDevices View.
 \end{enumerate}
 
 \item[Exceptions:]
+\item[]
 \begin{itemize}
 \item [\ref{1}:] No devices found.
 \item The user is notified by the popup message: "No devices found.".
@@ -108,31 +111,72 @@ The application is comprised of three views named MyDevices View, Sensor Device 
 
 \item[]
 
-\item[Scenario 5.1.2] Turning off devices
-\item[Precondition:] There is a light bulb in the list on the MyDevice View. The light bulb is turned on.
-\item[Postcondition:] The light bulb is turned off.
+\item[Scenario 5.1.2] Connecting to the light bulb.
+\item[Precondition:] The user is in the MyDevice View and a light bulb is detected.
+\item[Postcondition:] The user is in the Light Bulb View.
+\item[Use Case:]\mbox{}
 \begin{enumerate}
-\item The user selects the light bulb from the list.
-\item \label{2} The user presses the "Controll Device"-button to open the Light Bulb View.
-\item  The user sets the onoff-switch to off.
+\item  The user selects the light bulb from the Devices list.
 \end{enumerate}
-
-\item[Exceptions:]
-
-\begin{itemize}
-\item [\ref{2}:] No device selected.
-\item The user is notified by the popup message: "No device selected.".
-\end{itemize}
 
 \item[]
 
-\item[Scenario 5.1.3] Changing the color of light bulb
-\item[Precondition:] There is a light bulb in the list on the MyDevice View. The light bulb is turned on with color \#FF0000.
-\item[Postcondition:] The light bulb has color \#00FF00.
+\item[Scenario 5.1.3] Connecting to the sensor device.
+\item[Precondition:] The user is in the Sensor device View and a sensor device is detected.
+\item[Postcondition:] The user is in the Sensor Device View.
+\item[Use Case:]\mbox{}
 \begin{enumerate}
-\item The user selects the light bulb from the list.
-\item \label{3} The user presses the "Controll Device"-button to open the Light Bulb View.
-\item  \label{4} The user sets the R-field to 00, the G-field to FF and the B-field to 00 and the W-field to XX.
+\item  The user selects the sensor device from the Device list.
+\end{enumerate}
+
+\item[]
+
+\item[Scenario 5.1.4] Turning off the light bulb.
+\item[Precondition:] The user is in the Light Bulb View. The light bulb is turned on.
+\item[Postcondition:] The light bulb is turned off.
+\item[Use Case:]\mbox{}
+\begin{enumerate}
+\item  The user sets the onoff-switch to off.
+\end{enumerate}
+
+\item[]
+
+\item[Scenario 5.1.5] Turning on the light bulb.
+\item[Precondition:] The user is in the Light Bulb View. The light bulb is turned off.
+\item[Postcondition:] The light bulb is turned on.
+\item[Use Case:]\mbox{}
+\begin{enumerate}
+\item  The user sets the onoff-switch to on.
+\end{enumerate}
+
+\item[]
+
+\item[Scenario 5.1.6] Turning off the sensor device.
+\item[Precondition:] The user is in the Sensor Device View. The sensor device is turned on.
+\item[Postcondition:] The sensor device is turned off.
+\item[Use Case:]\mbox{}
+\begin{enumerate}
+\item  The user sets the onoff-switch to off.
+\end{enumerate}
+
+\item[]
+
+\item[Scenario 5.1.7] Turning on the sensor device.
+\item[Precondition:] The user is in the Sensor Device View. The sensor device is turned off.
+\item[Postcondition:] The sensor device is turned on.
+\item[Use Case:]\mbox{}
+\begin{enumerate}
+\item  The user sets the onoff-switch to on.
+\end{enumerate}
+
+\item[]
+
+\item[Scenario 5.1.8] Set the color of light bulb
+\item[Precondition:] The user is in the Light Bulb View. The light bulb is turned on with color yellow.
+\item[Postcondition:] The light bulb has color red.
+\item[Use Case:]\mbox{}
+\begin{enumerate}
+\item  \label{4} The user sets the R-field to FF, the G-field to 00 and the B-field to 00 and the W-field to FF.
 \item The user presses the "Set"-button.
 
 \end{enumerate}
@@ -141,60 +185,88 @@ The application is comprised of three views named MyDevices View, Sensor Device 
 \item[]
 
 \begin{itemize}
-\item [\ref{3}:] No device selected.
-\item The user is notified by the popup message: "No device selected.".
 \item [\ref{4}:] One or more fields are empty.
 \item The user is notified by the popup message: "Fill in all fields.".
-
 \end{itemize}
 
 \item[]
 
-\item[Scenario 5.1.2] Turning off devices
-\item[Precondition:] There is a light bulb in the list on the MyDevice View. The light bulb is turned on.
-\item[Postcondition:] The light bulb is turned off.
+\item[Scenario 5.1.9] Get the color of light bulb
+\item[Precondition:] The user is in the Light Bulb View. The light bulb is turned on with color yellow.
+\item[Postcondition:] All the color values are displayed in their respective field.
+\item[Use Case:]\mbox{}
 \begin{enumerate}
-\item The user selects the light bulb from the list.
-\item \label{5} The user presses the "Controll Device"-button to open the Light Bulb View.
-\item  The user sets the onoff-switch to off.
-\end{enumerate}
-
-\item[Exceptions:]
-
-\begin{itemize}
-\item [\ref{5}:] No device selected.
-\item The user is notified by the popup message: "No device selected.".
-\end{itemize}
-
-\item[]
-
-\item[Scenario 5.1.4] Getting sensor data
-\item[Precondition:] There is a temperatur sensor in the list on the MyDevice View. The sensor is turned on.
-\item[Postcondition:] The sensor temperature is displayed in the temperature(T) field.
-\begin{enumerate}
-\item The user selects the temperatur sensor from the list.
-\item \label{6} The user presses the "Controll Device"-button to open the Sensor View.
-\item \label{7} The user presses the "Get"-button next to the temperature(T) field.
-
+\item  \label{4} The user presses the "Get"-button.
 \end{enumerate}
 
 \item[Exceptions:]
 \item[]
 
 \begin{itemize}
-\item [\ref{6}:] No device selected.
-\item The user is notified by the popup message: "No device selected.".
+\item [\ref{4}:] One or more fields are empty.
+\item The text field is updated to: "No data available.".
 \end{itemize}
 
+\item[]
+
+\item[Scenario 5.1.10] Get sensor data
+\item[Precondition:] The user is in the Sensor Device View. The sensor is turned on.
+\item[Postcondition:] The sensor temperature is displayed in the temperature field.
+\item[Use Case:]\mbox{}
+\begin{enumerate}
+\item \label{7} The user presses the "Get"-button next to the temperature field.
+
+\end{enumerate}
+
+\item[Exceptions:]
+\item[]
+
 \begin{itemize}
-\item [\ref{7}:] No data availible.
-\item The user is notified by the popup message: "No sensor data availible.".
+\item [\ref{7}:] No data available.
+\item The text field is updated to: "No data available.".
 \end{itemize}
+
+\item[]
+
+\item[Scenario 5.1.11] Get all sensor data
+\item[Precondition:] The user is in the Sensor Device View. The sensor is turned on.
+\item[Postcondition:] All the sensor values is displayed in their respective field.
+\item[Use Case:]\mbox{}
+\begin{enumerate}
+\item \label{7} The user presses the "Get All"-button.
+
+\end{enumerate}
+
+\item[Exceptions:]
+\item[]
+
+\begin{itemize}
+\item [\ref{7}:] No data available.
+\item The text field is updated to: "No data available.".
+\end{itemize}
+
+\item[]
+
+\item[Scenario 5.1.12] Clear all sensor data
+\item[Precondition:] The user is in the Sensor Device View.
+\item[Postcondition:] The sensor values is cleared in their respective field.
+\item[Use Case:]\mbox{}
+\begin{enumerate}
+\item \label{7} The user presses the "Clear All"-button.
+\end{enumerate}
 
 \item[Requirement 5.1.1:] Scenario 5.1.1 should be supported.
 \item[Requirement 5.1.2:] Scenario 5.1.2 should be supported.
 \item[Requirement 5.1.3:] Scenario 5.1.3 should be supported.
 \item[Requirement 5.1.4:] Scenario 5.1.4 should be supported.
+\item[Requirement 5.1.5:] Scenario 5.1.5 should be supported.
+\item[Requirement 5.1.6:] Scenario 5.1.6 should be supported.
+\item[Requirement 5.1.7:] Scenario 5.1.7 should be supported.
+\item[Requirement 5.1.8:] Scenario 5.1.8 should be supported.
+\item[Requirement 5.1.9:] Scenario 5.1.9 should be supported.
+\item[Requirement 5.1.10:] Scenario 5.1.10 should be supported.
+\item[Requirement 5.1.11:] Scenario 5.1.11 should be supported.
+\item[Requirement 5.1.12:] Scenario 5.1.12 should be supported.
 
 \end{description}
 
@@ -212,9 +284,9 @@ The application is comprised of three views named MyDevices View, Sensor Device 
 
 \item[Requirement 5.2.6:] When the application is started the list of availible devices is empty.
 
-\item[Requirement 5.2.7:] Availible devices are displayed with their name according to specification XX.
+\item[Requirement 5.2.7:] Available devices are displayed with their name according to specification XX.
 
-\item[Requirement 5.2.8:] There is a "Get devices"-button that when pressed instructs the MVD to perform a scan for availible devices.
+\item[Requirement 5.2.8:] There is a "Get devices"-button that when pressed instructs the MVD to perform a scan for available devices.
 
 \item[Requirement 5.2.9:] The timeout for the scan is X seconds. 
 
@@ -295,19 +367,19 @@ The application is comprised of three views named MyDevices View, Sensor Device 
 \subsection{The Light bulb View}
 
 \begin{description}
-\item[Requirement 5.4.1:] When the "Controll Device"-button in the MyDevices View is clicked while a light bulb is selected in the list of availible devices the Light Bulb View for the selected device is opened. 
+\item[Requirement 5.4.1:] When the "Controll Device"-button in the MyDevices View is clicked while a light bulb is selected in the list of available devices the Light Bulb View for the selected device is opened. 
 
 \item[Requirement 5.4.2:] The name, according to specification xx, of the selected light bulb is shown in the top of the View.
 
 \item[Requirement 5.4.3:] It is possible to change the on/off-status of the selected light bulb with a switch.
 
-\item[Requirement 5.4.4:] There is an editable field used to display the R-value preceeded by "R:".
+\item[Requirement 5.4.4:] There is an editable field used to display the R-value preceded by "R:".
 
-\item[Requirement 5.4.5:] There is an editable field used to display the G-value preceeded by "G:".
+\item[Requirement 5.4.5:] There is an editable field used to display the G-value preceded by "G:".
 
-\item[Requirement 5.4.6:] There is an editable field used to display the B-value preceeded by "B:".
+\item[Requirement 5.4.6:] There is an editable field used to display the B-value preceded by "B:".
 
-\item[Requirement 5.4.7:] There is an editable field used to display the W-value preceeded by "W:".
+\item[Requirement 5.4.7:] There is an editable field used to display the W-value preceded by "W:".
 
 \item[Requirement 5.4.8] When the View is opened the fields specified in requirements 5.4.3 to 5.4.7 is set according to information from REST API.
 
@@ -317,13 +389,13 @@ The application is comprised of three views named MyDevices View, Sensor Device 
 
 \item[Requirement 5.4.11] If one of the fields specified in requirements 5.4.3 to 5.4.7 is "" while pressing the "Set"-button its value is interpreted as 00.
 
-\item[Requirement 5.4.11] The maximum number of charachters allowed in the fields specified in requirements 5.4.3 to 5.4.7 is two.
+\item[Requirement 5.4.11] The maximum number of characters allowed in the fields specified in requirements 5.4.3 to 5.4.7 is two.
 
-\item[Requirement 5.4.12] If the values of the light bulb were successfully set a popup message "Color successfully changed" is displayed.
+\item[Requirement 5.4.12] If the values of the light bulb were successfully set a pop-up message "Color successfully changed" is displayed.
 
 \item[Requirement 5.4.12] When pressing the "Set"-button the application checks that the input values are within the specified range for the light bulb according to specification xx and displays the message "Input values out of range" if the values of the input is out of the specified range.
 
-\item[Requirement 5.4.13] The "Set"-button is unavalible when the light bulb is turned off.
+\item[Requirement 5.4.13] The "Set"-button is unavailable when the light bulb is turned off.
 
 \item[Requirement 5.4.14] The color of the light bulb is given in hexadecimal numbers.
 
