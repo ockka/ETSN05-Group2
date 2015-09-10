@@ -178,8 +178,9 @@ This is appendix A where we list all function test specifications.
 
 \subsection{MyDevices View Tests}
 \begin{testlist}
-	\item The list on the MyDevices view is scrollable. (Req. 5.2.3)
-    \item The list of available devices is empty on application start up. (Req. 5.2.2)
+	\item The list of available devices is empty on application start up. (Req. 5.2.2)
+    \item The list on the MyDevices view is scrollable. (Req. 5.2.3)
+   
     \item The items on the list are selectable. (Req 5.2.4)
     \item Only one device can be selected at a time. (Req. 5.2.5)
     \item When no device is selected and the "Control Device" -button is pressed, a pop-up message "Please select device" is displayed. (Req. 5.2.6)
@@ -198,15 +199,12 @@ This is appendix A where we list all function test specifications.
  
 \item It is possible to change the on/off -status of the selected sensor with a switch. (Req. 5.3.4)
 
-\item There are text fields preceded by "T", "P", "H", "M", "G", "A" that are used to display temperature, pressure, humidity, magnetic field, gyroscopic value and acceleration. The displayed values correspond to the letter preceding the field.(Req. 5.3.5, 5.3.6, 5.3.7, 5.3.8, 5.3.9, 5.3.10)
+\item There are text fields preceded by "T", "P", "H", "M", "G", "A" that are used to, in the same order display temperature, pressure, humidity, magnetic field, gyroscopic value and acceleration. The displayed values correspond to the letter preceding the field.(Req. 5.3.5, 5.3.6, 5.3.7, 5.3.8, 5.3.9, 5.3.10)
 
 \item By pressing the corresponding "Get"-button, the values of the temperature, pressure, humidity, magnetic field, qyroscopic and acceleration sensors are retrieved and displayed. (Req. 5.3.11, 5.3.12, 5.3.13, 5.3.14, 5.3.15, 5.3.16)
-
-\item If there is no data to retrieve for any of the physical quantities temperature, pressure, humidity, magnetic field, gyroscopic and acceleration when a relevant "Get" button is pressed the corresponding text fields display "No data available".(Req. 5.3.19, 5.3.20, 5.3.21, 5.3.22, 5.3.23, 5.3.24)
-
 \item The "Get all" -button gets the values for all available sensors and displays them.(Req. 5.3.17)
-
 \item The "clear-all" button clears all sensor text fields from data. (Req. 5.3.18)
+\item If there is no data to retrieve for any of the physical quantities temperature, pressure, humidity, magnetic field, gyroscopic and acceleration when the corresponding "Get" button is pressed the corresponding text fields display "No data available".(Req. 5.3.19, 5.3.20, 5.3.21, 5.3.22, 5.3.23, 5.3.24)
 
 \item The on/off-switch is set according to the information from the REST API. (5.3.25)
 
@@ -225,19 +223,20 @@ This is appendix A where we list all function test specifications.
 \subsection{Lightbulb View}
 \begin{testlist}
 	\item The Light Bulb View opens when a light bulb is chosen in the MyDevices View. (Req 5.4.1)
-    \item The name of the selected light bulb, is shown in the top of the View. (Req 5.4.2)
+    \item The name of the selected light bulb is shown in the top of the View. (Req 5.4.2)    
     \item The state of the selected light bulb can be changed with a switch. (Req. 5.4.3)
     \item The field of R-, G-, B-, W-value is editable and preceded by "R:", "G:", "B:" and "W:" respectively. (Req. 5.4.4, 5.4.5, 5.4.6, 5.4.7) 
-    \item When the Light Bulb View is opened, the fields are empty. (Req. 5.4.8)
-    \item The "Get"-button receives the R-, G-, B-, W-values and present them in the fields specified in requirement 5.4.4 to 5.4.7. (Req. 5.4.9)
-    \item The "Set"-button sends user input values of the fields specified in reguirement 5.4.4 to 5.4.7 to the REST API for further forwarding of the information to the MVD and light bulb. (Req. 5.4.10)
-    \item If an input value is left blank the value is interpreted as 00. (Req. 5.4.11)
+%    \item When the Light Bulb View is opened, the fields are set according to the information from the REST API. (Req. 5.4.8)
+     \item When the View i opened the fields are empty. (Req 5.4.8)
+    \item The "Get"-button receives the R-, G-, B-, W-values and present them in the fields specified in reguirement 5.4.4 to 5.4.7. (Req. 5.4.9)
+%    \item The "Set"-button sends user input values of the fields specified in reguirement 5.4.4 to 5.4.7 to the REST API for further forwarding of the information to the MVD and light bulb. (Req. 5.4.10)
+	\item The "Set"-button sets the color of the light bulb. (Req 5.4.10)
+    \item If an input value is left blank when pressing "Set" the value is set to 00. (Req. 5.4.11)
     \item The value representing the color of the fields is of maximum two characters. (Req. 5.4.12)
-    \item The fields only accepts two characters that represent hexadecimal numbers (e.g. 00 to FF and all combinations inbetween). (Req 5.4.12, Req 5.4.13)
-    \item A pop-up message saying "Color successfully changed" is displayed when the values of the light bulb were successfully set. (Req 5.4.14)
-    \item The application checks the input values when the "Set"-button is pressed. If the values are out the specified range, a pop-up message is displayed saying: "Input values out of range" (Req 5.4.13 and Req 5.4.15)
-    \item When the light bulb is of, the "Set"-button is unavailable. (Req. 5.4.16)
-    \item When the back button is pressed the system switches to My Devices View. (Req. 5.4.17)
+    \item (Req 5.4.13)
+    \item A pop-up message saying "Color successfully changed" is displayed when the values of the light bulb were successfully set. (Reg 5.4.14)
+    \item If the values are out the specified range, a pop-up message is displayed saying: "Error: Color unsuccessfully changed" (Req. 5.4.15)
+    \item When the light bulb is off, the "Set"-button is disabled. (Req. 5.4.16)
 
 \end{testlist}	
 
@@ -249,34 +248,36 @@ This is appendix B where we list all system test specifications.
 
 \subsection{Use Cases}
 \begin{testlist}
-	\item Use case 5.1.1 in Ref \ref{refdocs:srs} is supported. (Req. 5.1.1)
+	\item Use case 5.1.1 is supported. (Req. 5.1.1)
 	\item The exception described in use case 5.1.1 can be generated by removing the devices from range while attempting use case 5.1.1. (Req 5.1.1)
 	
-	\item Use case 5.1.2 in Ref \ref{refdocs:srs} is supported. (Req. 5.1.2)
+	\item Use case 5.1.2 is supported. (Req. 5.1.2)
 	
-	\item Use case 5.1.3 in Ref \ref{refdocs:srs} is supported. (Req. 5.1.3)
+	\item Use case 5.1.3 is supported. (Req. 5.1.3)
 	
-	\item Use case 5.1.4 in Ref \ref{refdocs:srs} is supported. (Req. 5.1.4)
+	\item Use case 5.1.4 is supported. (Req. 5.1.4)
 	
-	\item Use case 5.1.5 in Ref \ref{refdocs:srs} is supported. (Req. 5.1.5)
+	\item Use case 5.1.5 is supported. (Req. 5.1.5)
 	
-	\item Use case 5.1.6 in Ref \ref{refdocs:srs} is supported. (Req. 5.1.6)
+	\item Use case 5.1.6 is supported. (Req. 5.1.6)
 	
-	\item Use case 5.1.7 in Ref \ref{refdocs:srs} is supported. (Req. 5.1.7)
+	\item Use case 5.1.7 is supported. (Req. 5.1.7)
 	
-	\item Use case 5.1.8 in Ref \ref{refdocs:srs} is supported. (Req. 5.1.8)
+	\item Use case 5.1.8 is supported. (Req. 5.1.8)
+	
 	\item A popup message reading "Fill in all fields" can be generated by not entering any data into some of the colour fields when attempting use case 5.1.8. (Req. 5.1.8)
 	
-	\item Use case 5.1.9 in Ref \ref{refdocs:srs} is supported. (Req. 5.1.9)
+	\item Use case 5.1.9 is supported. (Req. 5.1.9)
+	
 	\item If some data is unavailable when attempting use case 5.1.9, the text in the corresponding field is set to "No data available." (Req. 5.1.9)
 	
-	\item Use case 5.1.10 in Ref \ref{refdocs:srs}is supported. (Req. 5.1.10)
+	\item Use case 5.1.10 is supported. (Req. 5.1.10)
+	
 	\item If some data is unavailable when attempting use case 5.1.10, the text in the corresponding field is set to "No data available." (Req. 5.1.10)
 	
-	\item Use case 5.1.11 in Ref \ref{refdocs:srs} is supported. (Req. 5.1.11)
-	\item If some data is unavailable when attempting use case 5.1.11, the text in the corresponding field is set to "No data available." (Req. 5.1.11)
+	\item Use case 5.1.11 is supported. (Req. 5.1.11)
 	
-	\item Use case 5.1.12 In Ref \ref{refdocs:srs} is supported. (Req 5.1.12)
+	\item If some data is unavailable when attempting use case 5.1.11, the text in the corresponding field is set to "No data available." (Req. 5.1.12)
 \end{testlist}
 
 \subsection{Appearance and Layout}
@@ -290,10 +291,9 @@ This is appendix B where we list all system test specifications.
 	
 	\item When the back button is pressed in the Light Buld View, the MyDevices View is opened. (Req. 5.4.17)
 	
-	\item The layout of the MyDevices View resembles figure 1 in reference \ref{refdocs:srs} (Req. 6.1).
+	\item The layout of the MyDevices View resembles figure x in reference \ref{refdocs:srs} (Req. 6.1).
 	
-	\item The layout of the Sensor View resembles figure 2 in reference \ref{refdocs:srs} (Req. 6.2).
-	
+	\item The layout of the Sensor View resembles figure xx in reference \ref{refdocs:srs} (Req. 6.2).
 	\item The layout of the Light Bulb View resembles figure 3 in reference \ref{refdocs:srs} (Req. 6.3).
 	
 	\item Test of usability using persons without prior knowledge of the project or the app. (Req. 6.4)
