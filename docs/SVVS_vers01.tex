@@ -199,7 +199,7 @@ This is appendix A where we list all function test specifications.
  
 \item It is possible to change the on/off -status of the selected sensor with a switch. (Req. 5.3.4)
 
-\item There are text fields preceded by "T", "P", "H", "M", "G", "A" that are used to, in the same order display temperature, pressure, humidity, magnetic field, gyroscopic value and acceleration. The displayed values correspond to the letter preceding the field.(Req. 5.3.5, 5.3.6, 5.3.7, 5.3.8, 5.3.9, 5.3.10)
+\item There are text fields preceded by "T", "P", "H", "M", "G", "A" that are used to, respectively, display temperature, pressure, humidity, magnetic field, gyroscopic value and acceleration. The displayed values correspond to the letter preceding the field.(Req. 5.3.5, 5.3.6, 5.3.7, 5.3.8, 5.3.9, 5.3.10)
 
 \item By pressing the corresponding "Get"-button, the values of the temperature, pressure, humidity, magnetic field, qyroscopic and acceleration sensors are retrieved and displayed. (Req. 5.3.11, 5.3.12, 5.3.13, 5.3.14, 5.3.15, 5.3.16)
 \item The "Get all" -button gets the values for all available sensors and displays them.(Req. 5.3.17)
@@ -277,7 +277,9 @@ This is appendix B where we list all system test specifications.
 	
 	\item Use case 5.1.11 is supported. (Req. 5.1.11)
 	
-	\item If some data is unavailable when attempting use case 5.1.11, the text in the corresponding field is set to "No data available." (Req. 5.1.12)
+	\item If some data is unavailable when attempting use case 5.1.11, the text in the corresponding field is set to "No data available." (Req. 5.1.11)
+	
+	\item Use case 5.1.12 is supported (Req. 5.1.12)
 \end{testlist}
 
 \subsection{Appearance and Layout}
@@ -289,22 +291,17 @@ This is appendix B where we list all system test specifications.
 	
 	\item When the back button is pressed in the Sensor View, the MyDevices View is opened. (Req. 5.3.26)
 	
-	\item When the back button is pressed in the Light Buld View, the MyDevices View is opened. (Req. 5.4.17)
+	\item When the back button is pressed in the Light Bulb View, the MyDevices View is opened. (Req. 5.4.17)
 	
-	\item The layout of the MyDevices View resembles figure x in reference \ref{refdocs:srs} (Req. 6.1).
+	\item The layout of the MyDevices View resembles figure 1 in reference \ref{refdocs:srs} (Req. 6.1).
 	
-	\item The layout of the Sensor View resembles figure xx in reference \ref{refdocs:srs} (Req. 6.2).
+	\item The layout of the Sensor View resembles figure 2 in reference \ref{refdocs:srs} (Req. 6.2).
+	
 	\item The layout of the Light Bulb View resembles figure 3 in reference \ref{refdocs:srs} (Req. 6.3).
 	
 	\item Test of usability using persons without prior knowledge of the project or the app. (Req. 6.4)
 \end{testlist}
 
-%--------------------Appendix C: Regression test Specification ----------------
-\newpage
-\section{Regression Test Specification}
-This is appendix C where we list all regression test specifications.
-
 \end{appendices}
-
 
 \end{document}
