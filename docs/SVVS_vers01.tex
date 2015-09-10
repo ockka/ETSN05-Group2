@@ -225,19 +225,19 @@ This is appendix A where we list all function test specifications.
 \subsection{Lightbulb View}
 \begin{testlist}
 	\item The Light Bulb View opens when a light bulb is chosen in the MyDevices View. (Req 5.4.1)
-    \item The name (Which document is unknown at present...), is shown in the top of the View. (Req 5.4.2)
+    \item The name of the selected light bulb, is shown in the top of the View. (Req 5.4.2)
     \item The state of the selected light bulb can be changed with a switch. (Req. 5.4.3)
     \item The field of R-, G-, B-, W-value is editable and preceded by "R:", "G:", "B:" and "W:" respectively. (Req. 5.4.4, 5.4.5, 5.4.6, 5.4.7) 
-    \item When the Light Bulb View is opened, the fields are set according to the information from the REST API. (Req. 5.4.8)
-    \item The "Get"-button receives the R-, G-, B-, W-values and present them in the fields specified in reguirement 5.4.4 to 5.4.7. (Req. 5.4.9)
+    \item When the Light Bulb View is opened, the fields are empty. (Req. 5.4.8)
+    \item The "Get"-button receives the R-, G-, B-, W-values and present them in the fields specified in requirement 5.4.4 to 5.4.7. (Req. 5.4.9)
     \item The "Set"-button sends user input values of the fields specified in reguirement 5.4.4 to 5.4.7 to the REST API for further forwarding of the information to the MVD and light bulb. (Req. 5.4.10)
-    \item If an input value is left blank the value is set to 00. (Req. 5.4.11)
-    \item The value representing the color of the fields is of maximum two characters. \textcolor{red}{(Req. 5.4.12)}
-    \item A pop-up message saying "Color successfully changed" is displayed when the values of the light bulb were successfully set. (Reg 5.4.13)
-    \item The application checks the input values when the "Set"-button is pressed. If the values are out the specified range, a pop-up message is displayed saying: "Input values out of range" (\textcolor{red}{Syftningfel i SRS i Req. 5.4.12})
-    \item When the light bulb is of, the "Set"-button is unavailable. (Req. 5.4.13)
-    \item The color of the light bulb is given in hexadecimal number (Req. 5.4.14)
-    \item 
+    \item If an input value is left blank the value is interpreted as 00. (Req. 5.4.11)
+    \item The value representing the color of the fields is of maximum two characters. (Req. 5.4.12)
+    \item The fields only accepts two characters that represent hexadecimal numbers (e.g. 00 to FF and all combinations inbetween). (Req 5.4.12, Req 5.4.13)
+    \item A pop-up message saying "Color successfully changed" is displayed when the values of the light bulb were successfully set. (Req 5.4.14)
+    \item The application checks the input values when the "Set"-button is pressed. If the values are out the specified range, a pop-up message is displayed saying: "Input values out of range" (Req 5.4.13 and Req 5.4.15)
+    \item When the light bulb is of, the "Set"-button is unavailable. (Req. 5.4.16)
+    \item When the back button is pressed the system switches to My Devices View. (Req. 5.4.17)
 
 \end{testlist}	
 
