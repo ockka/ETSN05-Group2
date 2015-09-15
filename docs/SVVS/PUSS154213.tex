@@ -64,6 +64,17 @@ Jonathan Lundholm
 
 \end{titlepage}
 \pagenumbering{gobble}
+
+\begin{center}
+\textit{\large Version History}
+
+    \begin{tabular}{ | l | l | l | p{5cm} |}
+    \hline
+    \textbf{Version}	& \textbf{Date}		& \textbf{Responsible}		& \textbf{Description}					\\ \hline
+    %1.0					& 150915 			& OF						& Baseline								\\ \hline
+    \end{tabular}
+\end{center}
+
 \setcounter{tocdepth}{2}
 \tableofcontents
 \newpage
@@ -75,13 +86,13 @@ Jonathan Lundholm
 \begin{enumerate}
 \item PUSS154212 - System Requirements Specification for the current project \label{refdocs:srs}
 \item Programvaruutveckling för Stora System - Projekthandledning v2.2 (\textit{Institutionen för datavetenskap}, Lunds Univeritet 2015) \label{refdocs:projekthandledning}
+\item PUSS154253 - Test Matrices for SVVS. \label{refdocs:matrices}
 \end{enumerate}
 
 %--------------------Introduction ---------------------------------------
 \section{Introduction}
 The Software Verification and Validation Specification (SVVS) describes all tests and reviews conducted during the development of the project. The SVVS acts as a base for the SVVI (Software Verification and Validation Instructions).
 In the SVVS, there are instructions for reviews as well as information about what types of tests should be performed and by whom. In the appendices, test cases are specified.
-
 
 
 %--------------------Definitions-------------------------------------------
@@ -100,7 +111,9 @@ In the SVVS, there are instructions for reviews as well as information about wha
 \end{description}
 %--------------------Testing ---------------------------------------
 \section{Testing}
-In order to validate and verify that the system fulfills the customers requirements, various tests are conducted during the development phases. Types of test i.e. unit tests, function tests etc. can be divided into two categories: white-box tests and black-box tests, which are described below. Both of these should be performed.  
+In order to validate and verify that the system fulfills the customers requirements, various tests are conducted during the development phases. Types of test i.e. unit tests, function tests etc. can be divided into two categories: white-box tests and black-box tests, which are described below. Both of these should be performed.
+
+The tests specified in this document are mapped to the requirements (in ref. \ref{refdocs:srs}) via test matrices (see ref. \ref{refdocs:matrices}).
 
 \subsection{White-box Testing}
 In a white-box test the developer tests the internal structure of the system, by means of making sure that all lines/units of code are executed at least once. These are performed by the developer group during development.
