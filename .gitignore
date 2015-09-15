@@ -11,3 +11,11 @@
 /docs/*.synctex.gz
 /docs/*.dvi
 /docs/*.log
+
+/docs/SVVS/*.out
+/docs/SVVS/*.aux
+/docs/SVVS/*.pdf
+/docs/SVVS/*.toc
+/docs/SVVS/*.synctex.gz
+/docs/SVVS/*.dvi
+/docs/SVVS/*.log
