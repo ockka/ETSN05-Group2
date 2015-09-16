@@ -14,9 +14,27 @@
 \usepackage[titletoc]{appendix}
 
 \newlength{\testlabellength}
-\settowidth{\testlabellength}{Test 100.10.10}
+\settowidth{\testlabellength}{Instruction 100.10.10}
 \newenvironment{testlist}{\begin{enumerate}[label=\bfseries Instruction \thesubsection.\arabic* , labelindent=0pt, labelwidth=\testlabellength , leftmargin=2cm]}{\end{enumerate}}
 
+\newenvironment{precondition}{
+{\color{white}BLARG}\\ 
+\textbf{Precondition}
+\begin{itemize}[labelindent=0cm, labelwidth=2cm , leftmargin=1cm]
+}
+{\end{itemize}}
+
+\newenvironment{instruction}{
+\textbf{Instructions:}
+\begin{enumerate}[label=\bfseries  \arabic*., labelindent=0cm, labelwidth=2cm , leftmargin=1cm]
+}
+{\end{enumerate}}
+
+\newenvironment{postcondition}{
+\textbf{Postcondition:}
+\begin{itemize}[labelindent=0cm, labelwidth=2cm , leftmargin=1cm]
+}
+{\end{itemize}}
 
 \title{SVVI - Software Verification and Validation Instruction}
 \newcommand{\version}{v0.0}
@@ -105,20 +123,23 @@ Have an ice day!
 \section{Function Test Instructions} \label{appendix:section:functiontest}
 This is appendix A where we list all function test specifications.
 
-%\newcommand[1]{\precondition}{\textbf{Precondition:}#1}
 \subsection{MyDevices View Test Instructions}
 \begin{testlist}
 
-    \item \vspace{5mm} \textbf{Precondition:} Telephone is on, application installed but not running.
-    			\begin{enumerate}
+    \item \begin{precondition}
+    			\item Telephone is on
+    			\item Application installed but not running.
+    			\end{precondition}
+    			\begin{instruction}
     				\item Locate the application icon on the telephone.
     				\item With your right index finger press the application icon.
 	    			\item Wait.
     				\item Look at the screen and confirm the resemblance with figure \textbf{blurp} in \ref{refdocs:srs}.
-    			\end{enumerate}
-    			\textbf{Postcondition:} The application is running and the MyDevices screen is shown.
-    		
-    %The first screen that is shown on startup is the MyDevicesView (Req. 5.2.1).
+    			\end{instruction}
+    			\begin{postcondition}
+    				\item The application is running and the MyDevices screen is shown.
+    			\end{postcondition}
+    %Test description: The first screen that is shown on startup is the MyDevicesView (Req. 5.2.1).
     
 	\item The list of available devices is empty on application start up. (Req. 5.2.2)
    
