@@ -196,13 +196,58 @@ This is appendix A where we list all function test instructions.
 
 \subsection{Light Bulb View Test Instructions}
 \begin{testlist}
-	\item The Light Bulb View opens when a light bulb is chosen in the MyDevices View and the "Control device" button is pressed. (Req 5.4.1)
+
+    \item 	\begin{precondition}
+    			\item The application is in the MyDevices View
+    			\item At least one lightbulb is in the list of available devices.
+    		\end{precondition}
+    		\begin{instruction}
+    				\item Choose a light bulb in the list of available devices.
+    				\item Press the "Control Device" button
+    		\end{instruction}
+    		\begin{postcondition}
+    			\item The Light Bulb View is open
+    		\end{postcondition}
+
+	%\item The Light Bulb View opens when a light bulb is chosen in the MyDevices View and the "Control device" button is pressed. (Req 5.4.1)
 	
-	\item The name of the selected light bulb is shown at the top of the View (Req 5.4.2).
+	\item 	\begin{precondition}
+				\item The Light Bulb View is shown
+			\end{precondition}
+    		\begin{postcondition}
+    			\item The name and mac-address of the light bulb is shown at the top of the view.
+    		\end{postcondition}
+    	
+	%\item The name of the selected light bulb is shown at the top of the View (Req 5.4.2).
+	
+	\item 	\begin{precondition}
+				\item The Light Bulb View is open
+				\item The switch to control the on/off-status of the light bulb is set to on (off)
+				\item The state of the light bulb corresponds to the state of the switch
+			\end{precondition}
+    		\begin{instruction}
+    			\item Change the switch to off (on)
+    		\end{instruction}
+    		\begin{postcondition}
+    			\item The switch to control the light bulb is set tp off (on)
+    			\item The light bulb turns off (on).
+    		\end{postcondition}
+    		
   
-    \item The selected light bulb can be turned on/off with a switch (Req. 5.4.3). 
+    % \item The selected light bulb can be turned on/off with a switch (Req. 5.4.3). 
     
-    \item The field of R-, G-, B-, W-value is editable and preceded by "R:", "G:", "B:" and "W:" respectively (Req. 5.4.4, 5.4.5, 5.4.6, 5.4.7). 
+   	\item 	\begin{precondition}
+   				\item The Light Bulb View is open
+			\end{precondition}
+    		\begin{instruction}
+    			\item For each of the four fields, enter at least one character
+    		\end{instruction}
+    		\begin{postcondition}
+    			\item The four fields are preceded by "R:", "G:", "B:" and "W:" respectively
+    			\item Is is possible to enter a character into the fields
+    		\end{postcondition}
+
+    % \item The field of R-, G-, B-, W-value is editable and preceded by "R:", "G:", "B:" and "W:" respectively (Req. 5.4.4, 5.4.5, 5.4.6, 5.4.7). 
     
 	\item When the Light Bulb View is opened, the fields are empty (Req. 5.4.8).
 
