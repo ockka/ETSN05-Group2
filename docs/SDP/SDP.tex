@@ -6,6 +6,9 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{geometry}
+\usepackage{footnote}
+
+\makesavenoteenv{tabular}
 
 
 \title{SDP - Software Development Plan}
@@ -26,7 +29,7 @@ Linnéa Claesson
 ~
 \begin{minipage}{0.4\textwidth}
 \begin{flushright}
-PUSS154211 v0.2 
+PUSS154211 v1.0 
 \today
 \end{flushright}
 \end{minipage}\\[3cm]
@@ -59,10 +62,11 @@ Linnéa Claesson
     \begin{tabular}{ | l | l | l | p{5cm} |}
     \hline
     \textbf{Version} & \textbf{Date} & \textbf{Responsible} & \textbf{Description} \\ \hline
-    0.1 & 150906 & EA, LC & First draft\\ \hline
-    0.2 & 150911 & EA, LC &  Edited after informal review\\ \hline
+    1.0 & 150916 & EA, LC & Baseline\\ \hline
     \end{tabular}
 \end{center}
+
+
 
 \setcounter{tocdepth}{2}
 \tableofcontents
@@ -81,11 +85,11 @@ Linnéa Claesson
 
 %---------------------- Introduction ---------------------------------%
 \section{Introduction}
-A team of nineteen people will during the time span of almost two months develop an Android application for a customer. The application shall through a Minimum Viable Device, turn on and off a lamp, change its color and read data from a sensor device.
+A team of nineteen people will during the timespan of almost two months develop an Android application for a customer. The application shall through a Minimum Viable Device, turn on and off a lamp, change its color and read data from a sensor device.
 
 %----------------------- Goals ---------------------------------------%
 \section{Project Goals}
-The main goal of this project is to develop a user-friendly app to control a Minimum Viable Device according to  Ref1. The app should pass an acceptance test issued by the customer at the end of week 42. 
+The main goal of this project is to develop a user-friendly app to control sensors through a Minimum Viable Device according to  Ref1. The app should pass an acceptance test issued by the customer at the end of week 42. 
 
 %---------------------- Development Model ----------------------------%
 \section{Development Model}
@@ -214,7 +218,7 @@ The table below shows how many hours should be spent on the different activities
     PFR & 114 & 6 & Everyone\\ \hline
     SSD & 12 & 6 & Project managers\\ \hline
     IA \& TR & - & 14 & Everyone \\ \hline
-    Administration & 60 & 30 & Project managers \\ \hline
+    Administration\footnote{Administration refers to tasks such as sending emails, signing time reports and prepare meetings.} & 60 & 30 & Project managers \\ \hline
     Meetings & 21 & 21 & Everyone \\ \hline
     Reviews & 42 & 30 & Everyone \\ \hline
     Unexpected issues & 50 & - & Everyone \\ \hline
@@ -236,7 +240,7 @@ A formal review will be held at the end of phase 1, 2 and 4 for quality evaluati
 
 %----------------- Configuration Management --------------------------%
 \section{Configuration Management}
-Identification of configuration items and version naming will follow the standard in Ref2. With an addition of the Weekly Schedule and Gantt Schedule, which will be given activity numbers 51 and 52 respectively.
+Identification of configuration items and version naming will follow the standard in Ref2. With an addition of the Weekly Schedule, Gantt Schedule and Test Matrices, which will be given activity numbers 51, 52 and 53 respectively.
 
 All reports and code relating to the project will be available to all team members on a repository on GitHub. A Drive folder will also be used for project meeting protocols, time reports and other information relevant to the team members, such as contact information.
 
@@ -259,6 +263,16 @@ Documents subject to configuration management are:
 \section{Risk Analysis}
 
 Risk analysis is an important part of every new project. Below are some possible risks identified, analysed and actions to take to prevent and/or reduce damage of risk are presented.  
+
+\subsection{Pre-Developed Components}
+There are a lot of already developed components that are to be used for this project, each of which can cause problems. There are no alternative components available and the existing ones cannot be altered.
+\begin{itemize}
+\item Risk: High
+\item Damage Effect: High
+\item Prevention: Regular meetings with technical expert, to exclude problems with pre-developed components.
+\item Damage Control: Consult with technical expert.
+\end{itemize}
+
 
 \subsection{Loss of Personnel}
 There can be loss of personnel on several different levels within the team, with different probabilities and effects. The risk estimation is based on how many people are in the particular group and the level of commitment they have. A big group where each person does not have as much responsibility has been estimated to have a larger probability of losing personnel than a smaller group where each person has a lot of responsibilities towards the team and project. In the same way, the consequences of loss of personnel in a small group where each individual has a lot of responsibilities will be greater than for a large group with fewer responsibilities per individual.
@@ -321,6 +335,15 @@ To minimize the problems due to loss of personnel, knowledge and documents will 
 \item Damage Control: The responsibilities of the lost tester will be divided among the other testers by the test leader.
 \end{itemize}
 
+\subsection{New Team}
+The team has not previously worked together, which makes it difficult for project managers to estimate efficiency and skill sets of team members.
+\begin{itemize}
+\item Risk: High
+\item Damage Effect: Medium
+\item Prevention: Assigning tasks in collaboration with team mates, according to previous experiences. Continuous communication and guidance within team.
+\item Damage Control: As a last resort, changing of assignments within the group.
+\end{itemize}
+
 \subsection{Varying Knowledge Levels within Team}
 \begin{itemize}
 \item Risk: High
@@ -337,11 +360,12 @@ To minimize the problems due to loss of personnel, knowledge and documents will 
 \item Damage Control: If a person does not seem motivated, the group leader and/or project managers will sit down with this person and try to work it out.
 \end{itemize}
 
-\subsection{Not Enough Time Budgeted}
+\subsection{Unrealistic Time Schedule}
+Project leaders have no previous experience with coordinating a project of this magnitude. In addition to this, the team has not worked together before and therefore the knowledge levels and efficiency of the team members are not known. This makes time estimations difficult. 
 \begin{itemize}
-\item Risk: Medium 
+\item Risk: High 
 \item Damage Effect: Medium
-\item Prevention: Good planning from the beginning, clear instructions on what needs to be done and when. Continuous meetings every week throughout the project.
+\item Prevention: Good planning from the beginning and consultations with group leaders, clear instructions on what needs to be done and when. Continuous meetings every week throughout the project.
 \item Damage Control: Extra work on evenings and/or weekends.
 \end{itemize}
 
@@ -353,9 +377,17 @@ To minimize the problems due to loss of personnel, knowledge and documents will 
 \item Damage Control: Have the absent team member do the task when he/she gets back or delegate to other present team member if the task is time critical.
 \end{itemize}
 
+\subsection{Feedback Delay}
+\begin{itemize}
+\item Risk: Medium
+\item Damage Effect: Medium
+\item Prevention: Continuous group meetings, both with the entire team and within groups. Efficient communication channels, team members are expected to respond to queries within a day.
+\item Damage Control: Evaluate what is lacking in communications and manage the situation.
+\end{itemize}
+
 \subsection{Change of Demands on System During Development}
 \begin{itemize}
-\item Risk: High
+\item Risk: Low
 \item Damage Effect: Medium
 \item Prevention: Good planning and communications with customer early on and continuously throughout the project.
 \item Damage Control: Be clear with the customer with what can and cannot be done within the set budget and time frame of project.
@@ -367,6 +399,30 @@ To minimize the problems due to loss of personnel, knowledge and documents will 
 \item Damage Effect: High
 \item Prevention: Continuously uploading work done to GitHub server.
 \item Damage Control: Establish what work has been lost and how to get it back. Worst case scenario it has to be re-done.
+\end{itemize}
+
+\subsection{Gold Plating}
+\begin{itemize}
+\item Risk: Low
+\item Damage Effect: Low
+\item Prevention: Make sure the team understands the product description. If any uncertainties or new ideas occur, consult group leaders or technical expert.
+\item Damage Control: System architects will evaluate the situation to determine a solution.
+\end{itemize}
+
+\subsection{Error Missed in Test}
+\begin{itemize}
+\item Risk: Low
+\item Damage Effect: High
+\item Prevention: Test matrices mapping tests to requirements, to make sure all requirements are tested.
+\item Damage Control: Evaluate the error and make necessary adjustments.
+\end{itemize}
+
+\subsection{Wrong User Interface}
+\begin{itemize}
+\item Risk: Low
+\item Damage Effect: High
+\item Prevention: Make sure the team understands the project description. Continuous evaluations of the design and consultations with design expert if any uncertainties occur.
+\item Damage Control: Evaluate the situation and make necessary adjustments. 
 \end{itemize}
 
 \end{document}
