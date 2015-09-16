@@ -391,58 +391,57 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
     	\end{postcondition}
 %\item If there is no data to retrieve for any of the physical quantities: temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration when the corresponding "Get" button is pressed the corresponding, text fields display "No data available" (Req. 5.3.19, 5.3.20, 5.3.21, 5.3.22, 5.3.23, 5.3.24).
 
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
+		   
+	\item The on/off-switch is set according to the information from the REST API (Req. 5.3.25).
 
-	\item
-		\begin{precondition}
-			\item The Sensor View is open.
-		\end{precondition}
-		\begin{instruction}
-			\item Check that the on/off-switch is set to off.
-		\end{instruction}
-		\begin{postcondition}
-			\item The on/off-switch is set to off.
-		\end{postcondition}
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
+		   
+	\item When the back button is pressed in the Sensor View, the MyDevices View is opened (Req. 5.3.26).
 
-%\item The on/off-switch is set according to the information from the REST API (Req. 5.3.25).
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
+		   
+	\item When the sensor view is opened the temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration text fields are empty (Req. 5.3.27).
 
-	\item
-		\begin{precondition}
-			\item The Sensor View is open.
-		\end{precondition}
-		\begin{instruction}
-			\item Press the back button on the phone.
-		\end{instruction}
-		\begin{postcondition}
-			\item The MyDevices View is open.
-		\end{postcondition}
-
-%\item When the back button is pressed in the Sensor View, the MyDevices View is opened (Req. 5.3.26).
-
-	\item
-		\begin{precondition}
-			\item The Sensor View is open.
-		\end{precondition}
-		\begin{instruction}			
-			\item Check that 
-		\end{instruction}
-		\begin{postcondition}
-			\item
-		\end{postcondition}
-
-%\item When the sensor view is opened the temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration text fields are empty (Req. 5.3.27).
-
-	\item
-		\begin{precondition}
-			\item
-		\end{precondition}
-		\begin{instruction}			
-			\item
-		\end{instruction}
-		\begin{postcondition}
-			\item
-		\end{postcondition}
-
-%\item The layout of the Sensor View resemble figure 2 in appendix  Ref \ref{refdocs:srs} (Req. 5.3.28).
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
+		   
+	\item The layout of the Sensor View resemble figure 2 in appendix  Ref \ref{refdocs:srs} (Req. 5.3.28).
 
 \end{testlist}
 
@@ -505,77 +504,124 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 
     % \item The field of R-, G-, B-, W-value is editable and preceded by "R:", "G:", "B:" and "W:" respectively (Req. 5.4.4, 5.4.5, 5.4.6, 5.4.7). 
 	
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}	   
-	\item When the Light Bulb View is opened, the fields are empty (Req. 5.4.8).
+	\item
+		\begin{precondition}
+			\item The MyDevices View is open
+			\item There is a light bulb in the list of available devices
+		\end{precondition}
+		\begin{instruction}
+			\item Select a light bulb
+			\item Press the "Control Device" button
+		\end{instruction}
+		\begin{postcondition}
+			\item The Light Bulb View is opened
+			\item The fields specified in Req. 5.4.4-5.4.7 ref. \ref{refdocs:srs} are empty
+		\end{postcondition}	   
+%	\item When the Light Bulb View is opened, the fields are empty (Req. 5.4.8).
 
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}
-	\item The "Get"-button retrieves the R-, G-, B-, W-values and present them in their corresponding fields (Req. 5.4.9). 
+	\item
+		\begin{precondition}
+			\item The Light Bulb View is open
+			\item The light bulb is on
+		\end{precondition}
+		\begin{instruction}
+			\item Press the "Get"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item The R-, G-, B-, W-values are displayed in the fields specified in Req. 5.4.4-5.4.7 in ref \ref{refdocs:srs}
+		\end{postcondition}
+%	\item The "Get"-button retrieves the R-, G-, B-, W-values and present them in their corresponding fields (Req. 5.4.9). 
 
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}
-	\item The "Set button" sets the color of the light bulb (Req. 5.4.10).
+	\item This test should be run 5 times with the following configurations:
+		\begin{itemize}
+			\item A=FF, B=00, C=00, D=00 (color: Red)
+			\item A=00, B=FF, C=00, D=00 (color: Green)
+			\item A=00, B=00, C=FF, D=00 (color: Blue)
+			\item A=00, B=00, C=00, D=FF (color: White)
+			\item A=10, B=10, C=10, D=10 (color: White)
+		\end{itemize}
+		\begin{precondition}
+			\item The Light Bulb View is open
+			\item The light bulb is on
+		\end{precondition}
+		\begin{instruction}
+			\item Set the "R:"-field to A
+			\item Set the "G:"-field to B
+			\item Set the "B:"-field to C
+			\item Set the "W:"-field to D
+			\item Press the "Set"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item The light bulb has the specified color
+		\end{postcondition}
+		
+%	\item The "Set button" sets the color of the light bulb (Req. 5.4.10).
 
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}
-	\item If an input value is left blank the value is interpreted as 00 (Req. 5.4.11) .   
+	\item This test should be run 4 times with the following configurations:
+		\begin{itemize}
+			\item A blank, B=FF, C=00, D=00 (color: Green)
+			\item A=00, B blank, C=FF, D=00 (color: Blue)
+			\item A=00, B=00, C blank, D=FF (color: White)
+			\item A=FF, B=00, C=00, D blank (color: Red)
+		\end{itemize}
+		\begin{precondition}
+			\item The Light Bulb View is open
+			\item The light bulb is on
+			\item The R-, G-, B-, W-, fields show FF, FF, FF and FF respectively
+			\item The light bulb glows white
+		\end{precondition}
+		\begin{instruction}
+			\item Set the "R:"-field to A
+			\item Set the "G:"-field to B
+			\item Set the "B:"-field to C
+			\item Set the "W:"-field to D
+			\item Press the "Set"-button
+			\item Press the "Get"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item The light bulb has the specified color
+			\item The fields that were left blank show "00"
+		\end{postcondition}
+		
+%	\item If an input value is left blank the value is interpreted as 00 (Req. 5.4.11) .   
 
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}
-    \item The fields only accepts two characters that represent hexadecimal numbers (e.g. 00 to FF and all combinations inbetween) (Req 5.4.12, Req 5.4.13).
+	\item This test should be run twice with the following configurations:
+		\begin{itemize}
+			\item A = 'AAA'
+			\item A = 'EE'
+		\end{itemize}
+		\begin{precondition}
+			\item The Light Bulb View is open
+		\end{precondition}
+		\begin{instruction}
+			\item Enter A into the "R:"-field
+			\item Enter A into the "G:"-field
+			\item Enter A into the "B:"-field
+			\item Enter A into the "W:"-field
+		\end{instruction}
+		\begin{postcondition}
+			\item The value A is not entered
+		\end{postcondition}
+%    \item The fields only accepts two characters that represent hexadecimal numbers (e.g. 00 to FF and all combinations inbetween) (Req 5.4.12, Req 5.4.13).
 
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}
-    \item A pop-up message saying "Color successfully changed" is displayed when the values of the light bulb were successfully set. (Req 5.4.14)
+	\item
+		\begin{precondition}
+			\item The Light Bulb View is open
+			\item The light bulb is on
+			\item The light bulb glows white
+		\end{precondition}
+		\begin{instruction}
+			\item Set the "R:"-field to FF
+			\item Set the "G:"-field to 00
+			\item Set the "B:"-field to 00
+			\item Set the "W:"-field to 00
+			\item Press the "Set"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item A pop-up message saying "Color successfully changed" is displayed
+			\item The light bulb is red
+		\end{postcondition}
+%    \item A pop-up message saying "Color successfully changed" is displayed when the values of the light bulb were successfully set. (Req 5.4.14)
 
 %	\item
 %		\begin{precondition}
@@ -589,41 +635,37 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 %		\end{postcondition}
     \item A pop-up message saying "Error: Could not change color." is displayed when the values of the light bulb were unsuccessfully set. (Req 5.4.15)
 
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}
-    \item When the light bulb is off, the "Set"-button is unavailable (Req. 5.4.16).
+	\item
+		\begin{precondition}
+			\item The Light Bulb View is open
+			\item The switch to control the on/off-status of the light bulb is set to off
+			\item The light bulb is turned off.
+		\end{precondition}
+		\begin{postcondition}
+			\item The "Set"-button is unavailable
+		\end{postcondition}
+%    \item When the light bulb is off, the "Set"-button is unavailable (Req. 5.4.16).
 
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}
-    \item When the back button is pressed the system switches to MyDevices View (Req. 5.4.17).
+	\item
+		\begin{precondition}
+			\item The Light Bulb View is open
+		\end{precondition}
+		\begin{instruction}
+			\item Press the back button
+		\end{instruction}
+		\begin{postcondition}
+			\item The MyDevices View is open
+		\end{postcondition}
+%    \item When the back button is pressed the system switches to MyDevices View (Req. 5.4.17).
     
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}
-    \item The layout of the Light Bulb View resemble figure 3 in appendix  Ref \ref{refdocs:srs} (Req. 5.4.18).
+	\item
+		\begin{precondition}
+			\item The Light Bulb View is open
+		\end{precondition}
+		\begin{postcondition}
+			\item The layout of the screen resembles figure 3 in appendix A in Ref \ref{refdocs:srs}
+		\end{postcondition}
+%    \item The layout of the Light Bulb View resemble figure 3 in appendix  Ref \ref{refdocs:srs} (Req. 5.4.18).
 
 \end{testlist}	
 
