@@ -1,0 +1,93 @@
+class NetworkManager{
+ +{static} List<Device> detectDevices()
+ +{static} Temperature getTemperature()
+ +{static} Pressure getPressure()
+ +{static} Humidity getHumidity()
+ +{static} Magnetic getMagnetic()
+ +{static} Gyroscopic getGyroscopic()
+ +{static} Accelometer getAccelerometer()
+ +{static} SensorValues getAllSensorValues()
+ +{static} Color getColor()
+ +{static} void setColor(Color)
+}
+
+abstract class BaseActivity{
+}
+
+class DeviceListAdapter {
+ +void addDevices(List<Device> devices)
+}
+
+class MyDevicesActivity{
+ -void detectDevices()
+ -void controlDevice(Device device)
+}
+
+class SensorDeviceActivity{
+ -EditText temperature
+ -EditText pressure
+ -EditText humidity
+ -EditText magnetic
+ -EditText gyroscopic
+ -EditText accelerometer
+ -ToggleButton toggle
+ -Button getAll
+ -Button clearAll
+ -void getTemperature()
+ -void getPressure()
+ -void getHumidity()
+ -void getMagnetic()
+ -void getGyroscopic()
+ -void getAccelerometer()
+ -void getAll()
+ -void clearAll()
+}
+
+class LightBulbActivity{
+ -EditText red
+ -EditText green
+ -EditText blue
+ -EditText white
+ -void getValues()
+ -void setValues(int r, int g, int b, inte w)
+}
+
+abstract class DeviceActivity{
+ #String deviceName
+ #String macAddress
+ #{abstract} void toggle()
+}
+
+
+abstract class Device{
+ #String deviceName
+ #String macAddress
+ +{abstract} String getName()
+}
+
+class Sensor{
+ +String getName()
+}
+
+class LightBulb{
+ +String getName()
+}
+
+BaseActivity <|-- MyDevicesActivity
+BaseActivity <|-- DeviceActivity
+DeviceActivity <|-- SensorDeviceActivity
+DeviceActivity <|-- LightBulbActivity
+
+Device <|-- Sensor
+Device <|-- LightBulb
+
+MyDevicesActivity "1" *-- "1" DeviceListAdapter
+DeviceListAdapter "1" o-- "*" Device
+BaseActivity "1" o-- "1" NetworkManager
+
+SensorValues "1" o-- "1" Temperature 
+SensorValues "1" o-- "1" Pressure 
+SensorValues "1" o-- "1" Humidity 
+SensorValues "1" o-- "1" Magnetic 
+SensorValues "1" o-- "1" Gyroscopic 
+SensorValues "1" o-- "1" Accelometer 
