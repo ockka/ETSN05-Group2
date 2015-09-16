@@ -120,23 +120,69 @@ This is appendix A where we list all function test specifications.
     		
     %The first screen that is shown on startup is the MyDevicesView (Req. 5.2.1).
     
-	\item The list of available devices is empty on application start up. (Req. 5.2.2)
+	\item \vspace{5mm} \textbf{Precondition:} Telephone is on, application is not running.
+    			\begin{enumerate}
+                	\item Start the application
+                \end{enumerate}
+                \textbf{Postcondition:} The list of available devices is empty.
+    %The list of available devices is empty on application start up. (Req. 5.2.2)
+    
+    \item \vspace{5mm} \textbf{Precondition:} The application is running and the MyDevices View is shown, at least one device is displayed in the list (instruktion?).
+    			\begin{enumerate}
+                	\item Drag the list downward
+                \end{enumerate}
+                \textbf{Postcondition:} The list is not moving but a "THING" is showing that there is no more devices further up in the list (instruktion?).
+   %\item The list on the MyDevices view is scrollable. (Req. 5.2.3)
+    
+    \item \vspace{5mm} \textbf{Precondition:} The application is running and the MyDevices View is shown, at least one device is displayed in the list (instruktion?).
+    			\begin{enumerate}
+                	\item Touch one device
+                \end{enumerate}
+                \textbf{Postcondition:} Background color of the chosen device changes (and the "Control Device"-button is enabled.?)  
+    %\item The devices on the list are selectable. (Req 5.2.4)
    
-    \item The list on the MyDevices view is scrollable. (Req. 5.2.3)
+   \item \vspace{5mm} \textbf{Precondition:} The application is running and the MyDevices View is shown, at least two devices are displayed in the list (instruktion?). One device is selected (instruktion?).
+    			\begin{enumerate}
+                    \item Touch another device
+                \end{enumerate}
+                \textbf{Postcondition:} The background color of the last chosen device is different to all other devices in the list.
+                % Räcker det med att testa bakgrundfärg eller måste man även prova att trycka på "Control device"??
+    %\item Only one device can be selected at a time. (Req. 5.2.5)
    
-    \item The devices on the list are selectable. (Req 5.2.4)
+   \item \vspace{5mm} \textbf{Precondition:} The application is running and the MyDevices View is shown. No device is selected.
+    			\begin{enumerate}
+                    \item Touch the "Control Device"-button.
+                \end{enumerate}
+                \textbf{Postcondition:} A pop-up message "Please select a device" is dislayed.
+    %\item When no device is selected and the "Control Device" -button is pressed, a pop-up message "Please select a device" is displayed. (Req. 5.2.6)
    
-    \item Only one device can be selected at a time. (Req. 5.2.5)
+   \item \vspace{5mm} \textbf{Precondition:} 
+    			\begin{enumerate}
+                    \item 
+                \end{enumerate}
+                \textbf{Postcondition:} 
+    %\item Sensors are displayed in the list of available devices with "Sensor" as name, and it's MAC address as address and their indentifier as id. (Req. 5.2.7)
    
-    \item When no device is selected and the "Control Device" -button is pressed, a pop-up message "Please select a device" is displayed. (Req. 5.2.6)
+    \item \vspace{5mm} \textbf{Precondition:} 
+    			\begin{enumerate}
+                    \item 
+                \end{enumerate}
+                \textbf{Postcondition:} 
+    %\item Light bulbs are displayed in the list of available devices with "Light Bulb" as name and it's MAC address as address and their indentifier as id. (Req. 5.2.8)
    
-    \item Sensors are displayed in the list of available devices with "Sensor" as name, and it's MAC address as address and their indentifier as id. (Req. 5.2.7)
+    \item \vspace{5mm} \textbf{Precondition:} 
+    			\begin{enumerate}
+                    \item 
+                \end{enumerate}
+                \textbf{Postcondition:} 
+    %\item The "Get Devices" -button performs a scan for available devices when pressed. (Req. 5.2.9)
    
-    \item Light bulbs are displayed in the list of available devices with "Light Bulb" as name and it's MAC address as address and their indentifier as id. (Req. 5.2.8)
-   
-    \item The "Get Devices" -button performs a scan for available devices when pressed. (Req. 5.2.9)
-   
-    \item When the back button is pressed the application is closed (Req. 5.2.10)
+    \item \vspace{5mm} \textbf{Precondition:} 
+    			\begin{enumerate}
+                    \item 
+                \end{enumerate}
+                \textbf{Postcondition:} 
+   %\item When the back button is pressed the application is closed (Req. 5.2.10)
     
     % Nytt requirement!
     \item The layout of the MyDevices View resemble figure 1 in appendix  Ref \ref{refdocs:srs} (5.2.11).
@@ -145,21 +191,79 @@ This is appendix A where we list all function test specifications.
 %--------------------------Sensor view tests --------------------------------------
 \subsection{Sensor View Test Instructions}
 \begin{testlist}
-\item When the "Control Device"-button in the MyDevices View is pressed and a sensor is selected, the Sensor view is opened (Req. 5.3.1).
+ \item \vspace{5mm} \textbf{Precondition:} The MyDevices View is opened and a sensor device populates the list.
+    			\begin{enumerate}
+    				\item Select a sensor device
+    				\item Push the Control device button
+    				%\item Look at the screen and confirm that the Sensor view is opened.
+    			\end{enumerate}
+    			\textbf{Postcondition:} The Sensor View is opened. 
 
-\item The sensor name and mac-address is shown in the top of the view (Req. 5.3.2, 5.3.3).
+%When the "Control Device"-button in the MyDevices View is pressed and a sensor is selected, the Sensor view is opened (Req. 5.3.1).
+
+ \item \vspace{5mm} \textbf{Precondition:} The Sensor View is opened.
+    		
+    			
+    			
+    			\textbf{Postcondition:} The sensor name and mac-adress is shown in the top of the view.
+%\item The sensor name and mac-address is shown in the top of the view (Req. 5.3.2, 5.3.3).
  
-\item It is possible to change the on/off -status of the selected sensor with a switch (Req. 5.3.4).
+  \item \vspace{5mm} \textbf{Precondition:} The Sensor View is opened and the on/off-status is set to off.
+    			\begin{enumerate}
+    				\item Switch the on/off-status to on.  
+	    		    \item Control that the status lamp on the device is "shining".
+    			\end{enumerate}
+    			\textbf{Postcondition:} The on/off -status of the selected sensor have been changed to on.
+%\item It is possible to change the on/off -status of the selected sensor with a switch (Req. 5.3.4).
 
-\item There are text fields preceded by "T", "P", "H", "M", "G", "A" that are used to, respectively, display temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration (Req. 5.3.5, 5.3.6, 5.3.7, 5.3.8, 5.3.9, 5.3.10).
+ \item \vspace{5mm} \textbf{Precondition:} The Sensor View is opened. 
+    			\begin{enumerate}
+    				\item Check that there are text field preceded by "T", "P", "H", "M", "G" and "A" in this specified order. 
+    				\item Check that 
+	    			\item Wait.
+    			
+    			\end{enumerate}
+    			\textbf{Postcondition:} There are text fields preceded by "T", "P", "H", "M", "G", "A".
+%\item There are text fields preceded by "T", "P", "H", "M", "G", "A" that are used to, respectively, display temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration (Req. 5.3.5, 5.3.6, 5.3.7, 5.3.8, 5.3.9, 5.3.10).
 
-\item By pressing the corresponding "Get"-button, the values of the temperature, pressure, humidity, magnetic field strength, qyroscopic and acceleration sensors are retrieved if available and displayed (Req. 5.3.11, 5.3.12, 5.3.13, 5.3.14, 5.3.15, 5.3.16).
+ \item \vspace{5mm} \textbf{Precondition:} The Sensor View is opened and the on/off-status is set to on.
+    			\begin{enumerate}
+    				\item Perform the steps (b)-(c) for the text field preceded by "T", "P", "H", "M", "G" and "A" in this specified order.
+                    \item Press the corresponding "Get"-button to the text field
+    				\item Check that the value for the current sensor data are retrieved "if available" and displayed in the corresponding field.
+	    			
+    			
+    			\end{enumerate}
+    			\textbf{Postcondition:} The values of the temperature, pressure, humidity, magnetic field strength, qyroscopic and acceleration sensors are retrieved if available and displayed.
 
-\item The "Get All" -button gets the values for all six sensors and displays them (Req. 5.3.17).
+%\item By pressing the corresponding "Get"-button, the values of the temperature, pressure, humidity, magnetic field strength, qyroscopic and acceleration sensors are retrieved if available and displayed (Req. 5.3.11, 5.3.12, 5.3.13, 5.3.14, 5.3.15, 5.3.16).
 
-\item The "Clear All" button clears all sensor text fields from data (Req. 5.3.18).
+ \item \vspace{5mm} \textbf{Precondition:} The Sensor View is opened and the on/off-status is set to on. 
+    			\begin{enumerate}
+    				\item Push the "Get All"-button.
+    			
+    			
+    			\end{enumerate}
+    			\textbf{Postcondition:} The value for all six sensors data are displayed in their corresponding "text" fields.
+%\item The "Get All" -button gets the values for all six sensors and displays them (Req. 5.3.17).
 
-\item If there is no data to retrieve for any of the physical quantities: temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration when the corresponding "Get" button is pressed the corresponding, text fields display "No data available" (Req. 5.3.19, 5.3.20, 5.3.21, 5.3.22, 5.3.23, 5.3.24).
+ \item \vspace{5mm} \textbf{Precondition:} The Sensor View is opened and sensors data are displayed in the text fields.
+    			\begin{enumerate}
+    				\item Push the "Clear All"-button.
+    			
+    			\end{enumerate}
+    			\textbf{Postcondition:} All the sensor text fields are cleared from data/value.
+%\item The "Clear All" button clears all sensor text fields from data (Req. 5.3.18).
+
+ \item \vspace{5mm} \textbf{Precondition:} The Sensor View is opened and the on/off-status is set to on. 
+    			\begin{enumerate}
+    				\item Perform the steps (b)-(c) for the text field preceded by "T", "P", "H", "M", "G" and "A" in this specified order.
+    				\item Check that 
+	    			\item Wait.
+    			
+    			\end{enumerate}
+    			\textbf{Postcondition:} There are text fields preceded by "T", "P", "H", "M", "G", "A".
+%\item If there is no data to retrieve for any of the physical quantities: temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration when the corresponding "Get" button is pressed the corresponding, text fields display "No data available" (Req. 5.3.19, 5.3.20, 5.3.21, 5.3.22, 5.3.23, 5.3.24).
 
 \item The on/off-switch is set according to the information from the REST API (Req. 5.3.25).
 
