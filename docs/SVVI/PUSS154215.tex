@@ -14,9 +14,27 @@
 \usepackage[titletoc]{appendix}
 
 \newlength{\testlabellength}
-\settowidth{\testlabellength}{Test 100.10.10}
+\settowidth{\testlabellength}{Instruction 100.10.10}
 \newenvironment{testlist}{\begin{enumerate}[label=\bfseries Instruction \thesubsection.\arabic* , labelindent=0pt, labelwidth=\testlabellength , leftmargin=2cm]}{\end{enumerate}}
 
+\newenvironment{precondition}{
+{\color{white}BLARG}\\ 
+\textbf{Precondition}
+\begin{itemize}[labelindent=0cm, labelwidth=2cm , leftmargin=1cm]
+}
+{\end{itemize}}
+
+\newenvironment{instruction}{
+\textbf{Instructions:}
+\begin{enumerate}[label=\bfseries  \arabic*., labelindent=0cm, labelwidth=2cm , leftmargin=1cm]
+}
+{\end{enumerate}}
+
+\newenvironment{postcondition}{
+\textbf{Postcondition:}
+\begin{itemize}[labelindent=0cm, labelwidth=2cm , leftmargin=1cm]
+}
+{\end{itemize}}
 
 \title{SVVI - Software Verification and Validation Instruction}
 \newcommand{\version}{v0.0}
@@ -72,7 +90,7 @@ Jonathan Lundholm
 
     \begin{tabular}{ | l | l | l | p{5cm} |}
     \hline
-    \textbf{Version}	& \textbf{Date}	& \textbf{Responsible}		& \textbf{Description}					\\ \hline
+    \textbf{Version}		& \textbf{Date}		& \textbf{Responsible}					& \textbf{Description}					\\ \hline
     0.0						& 150916 			& UH									& Document created						\\ \hline
     \end{tabular}
 \end{center}
@@ -94,31 +112,32 @@ Jonathan Lundholm
 
 %--------------------Introduction ---------------------------------------
 \section{Introduction}
-For simplicity the test instructions are in appenidices, \ref{appendix:section:functiontest} and \ref{appendix:section:systemtest}.
-
-Have an ice day!
+This document contains the test instructions for the tests specified in PUSS154213 (ref. \ref{redocs:SVVS}). The test instructions are in appendices \ref{appendix:section:functiontest} and \ref{appendix:section:systemtest}. The numbering corresponds to that in the SVVS (ref. \ref{redocs:SVVS})
 
 %--------------------Appendix A: Function test Specification ----------------
 \newpage
 \begin{appendices}
 
 \section{Function Test Instructions} \label{appendix:section:functiontest}
-This is appendix A where we list all function test specifications.
+This is appendix \ref{appendix:section:functiontest} where we list all function test specifications.
 
-%\newcommand[1]{\precondition}{\textbf{Precondition:}#1}
 \subsection{MyDevices View Test Instructions}
 \begin{testlist}
 
-    \item \vspace{5mm} \textbf{Precondition:} Telephone is on, application installed but not running.
-    			\begin{enumerate}
+    \item \begin{precondition}
+    			\item Telephone is on
+    			\item Application installed but not running.
+    			\end{precondition}
+    			\begin{instruction}
     				\item Locate the application icon on the telephone.
     				\item With your right index finger press the application icon.
 	    			\item Wait.
     				\item Look at the screen and confirm the resemblance with figure \textbf{blurp} in \ref{refdocs:srs}.
-    			\end{enumerate}
-    			\textbf{Postcondition:} The application is running and the MyDevices screen is shown.
-    		
-    %The first screen that is shown on startup is the MyDevicesView (Req. 5.2.1).
+    			\end{instruction}
+    			\begin{postcondition}
+    				\item The application is running and the MyDevices screen is shown.
+    			\end{postcondition}
+    %Test description: The first screen that is shown on startup is the MyDevicesView (Req. 5.2.1).
     
 	\item \vspace{5mm} \textbf{Precondition:} Telephone is on, application is not running.
     			\begin{enumerate}
@@ -278,13 +297,58 @@ This is appendix A where we list all function test specifications.
 
 \subsection{Light Bulb View Test Instructions}
 \begin{testlist}
-	\item The Light Bulb View opens when a light bulb is chosen in the MyDevices View and the "Control device" button is pressed. (Req 5.4.1)
+
+    \item 	\begin{precondition}
+    			\item The application is in the MyDevices View
+    			\item At least one lightbulb is in the list of available devices.
+    		\end{precondition}
+    		\begin{instruction}
+    				\item Choose a light bulb in the list of available devices.
+    				\item Press the "Control Device" button
+    		\end{instruction}
+    		\begin{postcondition}
+    			\item The Light Bulb View is open
+    		\end{postcondition}
+
+	%\item The Light Bulb View opens when a light bulb is chosen in the MyDevices View and the "Control device" button is pressed. (Req 5.4.1)
 	
-	\item The name of the selected light bulb is shown at the top of the View (Req 5.4.2).
+	\item 	\begin{precondition}
+				\item The Light Bulb View is shown
+			\end{precondition}
+    		\begin{postcondition}
+    			\item The name and mac-address of the light bulb is shown at the top of the view.
+    		\end{postcondition}
+    	
+	%\item The name of the selected light bulb is shown at the top of the View (Req 5.4.2).
+	
+	\item 	\begin{precondition}
+				\item The Light Bulb View is open
+				\item The switch to control the on/off-status of the light bulb is set to on (off)
+				\item The state of the light bulb corresponds to the state of the switch
+			\end{precondition}
+    		\begin{instruction}
+    			\item Change the switch to off (on)
+    		\end{instruction}
+    		\begin{postcondition}
+    			\item The switch to control the light bulb is set tp off (on)
+    			\item The light bulb turns off (on).
+    		\end{postcondition}
+    		
   
-    \item The selected light bulb can be turned on/off with a switch (Req. 5.4.3). 
+    % \item The selected light bulb can be turned on/off with a switch (Req. 5.4.3). 
     
-    \item The field of R-, G-, B-, W-value is editable and preceded by "R:", "G:", "B:" and "W:" respectively (Req. 5.4.4, 5.4.5, 5.4.6, 5.4.7). 
+   	\item 	\begin{precondition}
+   				\item The Light Bulb View is open
+			\end{precondition}
+    		\begin{instruction}
+    			\item For each of the four fields, enter at least one character
+    		\end{instruction}
+    		\begin{postcondition}
+    			\item The four fields are preceded by "R:", "G:", "B:" and "W:" respectively
+    			\item Is is possible to enter a character into the fields
+    		\end{postcondition}
+
+    % \item The field of R-, G-, B-, W-value is editable and preceded by "R:", "G:", "B:" and "W:" respectively (Req. 5.4.4, 5.4.5, 5.4.6, 5.4.7). 
     
 	\item When the Light Bulb View is opened, the fields are empty (Req. 5.4.8).
 
@@ -313,7 +377,7 @@ This is appendix A where we list all function test specifications.
 \newpage
 
 \section{System Test Instruction} \label{appendix:section:systemtest}
-This is appendix B where we list all system test specifications.
+This is appendix \ref{appendix:section:systemtest} where we list all system test specifications.
 
 \subsection{Use Cases}
 \begin{testlist}
