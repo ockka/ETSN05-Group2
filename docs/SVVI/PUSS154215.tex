@@ -90,7 +90,7 @@ Jonathan Lundholm
 
     \begin{tabular}{ | l | l | l | p{5cm} |}
     \hline
-    \textbf{Version}	& \textbf{Date}	& \textbf{Responsible}		& \textbf{Description}					\\ \hline
+    \textbf{Version}		& \textbf{Date}		& \textbf{Responsible}					& \textbf{Description}					\\ \hline
     0.0						& 150916 			& UH									& Document created						\\ \hline
     \end{tabular}
 \end{center}
@@ -112,16 +112,15 @@ Jonathan Lundholm
 
 %--------------------Introduction ---------------------------------------
 \section{Introduction}
-For simplicity the test instructions are in appenidices, \ref{appendix:section:functiontest} and \ref{appendix:section:systemtest}.
+This document contains the test instructions for the tests specified in PUSS154213 (ref. \ref{redocs:SVVS}). The test instructions are in appendices \ref{appendix:section:functiontest} and \ref{appendix:section:systemtest}. The numbering corresponds to that in the SVVS (ref. \ref{redocs:SVVS})
 
-Have an ice day!
 
 %--------------------Appendix A: Function test Specification ----------------
 \newpage
 \begin{appendices}
 
 \section{Function Test Instructions} \label{appendix:section:functiontest}
-This is appendix A where we list all function test instructions.
+This is appendix \ref{appendix:section:functiontest} where we list all function test instructions.
 
 \subsection{MyDevices View Test Instructions}
 \begin{testlist}
@@ -142,150 +141,256 @@ This is appendix A where we list all function test instructions.
     	\end{postcondition}
     %Test description: The first screen that is shown on startup is the MyDevicesView (Req. 5.2.1).
     
-	\item \vspace{5mm} \textbf{Precondition:} Telephone is on, application is not running.
-    			\begin{enumerate}
-                	\item Start the application
-                \end{enumerate}
-                \textbf{Postcondition:} The list of available devices is empty.
+	\item
+		\begin{precondition}
+			\item Telephone is on
+			\item Application is not running.
+    	\end{precondition}
+    	\begin{instruction}
+    		\item Start the application
+    	\end{instruction}
+    	\begin{postcondition}
+    		\item The list of available devices is empty.
+    	\end{postcondition}
     %The list of available devices is empty on application start up. (Req. 5.2.2)
     
-    \item \vspace{5mm} \textbf{Precondition:} The application is running and the MyDevices View is shown, at least one device is displayed in the list (instruktion?).
-    			\begin{enumerate}
-                	\item Drag the list downward
-                \end{enumerate}
-                \textbf{Postcondition:} The list is not moving but a "THING" is showing that there is no more devices further up in the list (instruktion?).
+    \item	
+    	\begin{precondition}
+    		\item The application is running 
+    		\item My Devices View is shown
+    		\item At least one device is displayed in the list
+    	\end{precondition}
+    	\begin{instruction}
+			\item Drag the list downward
+		\end{instruction}
+		\begin{postcondition}
+			\item The list is not moving but a "THING" is showing that there is no more devices further up in the list (instruktion?).
+		\end{postcondition}
    %\item The list on the MyDevices view is scrollable. (Req. 5.2.3)
     
-    \item \vspace{5mm} \textbf{Precondition:} The application is running and the MyDevices View is shown, at least one device is displayed in the list (instruktion?).
-    			\begin{enumerate}
-                	\item Touch one device
-                \end{enumerate}
-                \textbf{Postcondition:} Background color of the chosen device changes (and the "Control Device"-button is enabled.?)  
+    \item
+    	\begin{precondition}
+    		\item The application is running
+    		\item The MyDevices View is shown
+    		\item At least one device is displayed in the list (instruktion?).
+    	\end{precondition}
+		\begin{instruction}
+			\item Touch one device
+		\end{instruction}
+		\begin{postcondition}
+			\item Background color of the chosen device changes (and the "Control Device"-button is enabled.?)
+		\end{postcondition}
     %\item The devices on the list are selectable. (Req 5.2.4)
-   
-   \item \vspace{5mm} \textbf{Precondition:} The application is running and the MyDevices View is shown, at least two devices are displayed in the list (instruktion?). One device is selected (instruktion?).
-    			\begin{enumerate}
-                    \item Touch another device
-                \end{enumerate}
-                \textbf{Postcondition:} The background color of the last chosen device is different to all other devices in the list.
-                % Räcker det med att testa bakgrundfärg eller måste man även prova att trycka på "Control device"??
+    
+    \item 
+   		\begin{precondition}
+   			\item The application is running
+   			\item The MyDevices View is shown
+   			\item At least two devices are displayed in the list (instruktion?)
+   			\item One device is selected (instruktion?).
+   		\end{precondition}
+   		\begin{instruction}
+   			\item Touch another device
+   		\end{instruction}
+   		\begin{postcondition}
+   			\item The background color of the last chosen device is different to all other devices in the list.
+   		\end{postcondition}
+                % Räcker det med att testa bakgrundfärg eller måste man även prova att trycka på "Control device"?? Hanna: Om färgen ska vara det som indikerar vilken device som är selected borde det räcka.
     %\item Only one device can be selected at a time. (Req. 5.2.5)
-   
-   \item \vspace{5mm} \textbf{Precondition:} The application is running and the MyDevices View is shown. No device is selected.
-    			\begin{enumerate}
-                    \item Touch the "Control Device"-button.
-                \end{enumerate}
-                \textbf{Postcondition:} A pop-up message "Please select a device" is dislayed.
+    
+    \item
+    	\begin{precondition}
+    		\item The application is running
+    		\item The MyDevices View is shown
+    		\item No device is selected
+    	\end{precondition}
+    	\begin{instruction}
+    		\item Touch the "Control Device"-button.
+    	\end{instruction}
+    	\begin{postcondition}
+    		\item A pop-up message "Please select a device" is displayed.
+    	\end{postcondition}
     %\item When no device is selected and the "Control Device" -button is pressed, a pop-up message "Please select a device" is displayed. (Req. 5.2.6)
    
-   \item \vspace{5mm} \textbf{Precondition:} 
-    			\begin{enumerate}
-                    \item 
-                \end{enumerate}
-                \textbf{Postcondition:} 
+	\item
+		\begin{precondition}
+			\item
+		\end{precondition}
+		\begin{instruction}
+			\item
+		\end{instruction}
+		\begin{postcondition}
+			\item
+		\end{postcondition}
+		   
     %\item Sensors are displayed in the list of available devices with "Sensor" as name, and it's MAC address as address and their indentifier as id. (Req. 5.2.7)
    
-    \item \vspace{5mm} \textbf{Precondition:} 
-    			\begin{enumerate}
-                    \item 
-                \end{enumerate}
-                \textbf{Postcondition:} 
+	\item
+		\begin{precondition}
+			\item
+		\end{precondition}
+		\begin{instruction}
+			\item
+		\end{instruction}
+		\begin{postcondition}
+			\item
+		\end{postcondition}
+		   
     %\item Light bulbs are displayed in the list of available devices with "Light Bulb" as name and it's MAC address as address and their indentifier as id. (Req. 5.2.8)
    
-    \item \vspace{5mm} \textbf{Precondition:} 
-    			\begin{enumerate}
-                    \item 
-                \end{enumerate}
-                \textbf{Postcondition:} 
+	\item
+		\begin{precondition}
+			\item
+		\end{precondition}
+		\begin{instruction}
+			\item
+		\end{instruction}
+		\begin{postcondition}
+			\item
+		\end{postcondition}
+		   
     %\item The "Get Devices" -button performs a scan for available devices when pressed. (Req. 5.2.9)
    
-    \item \vspace{5mm} \textbf{Precondition:} 
-    			\begin{enumerate}
-                    \item 
-                \end{enumerate}
-                \textbf{Postcondition:} 
+	\item
+		\begin{precondition}
+			\item
+		\end{precondition}
+		\begin{instruction}
+			\item
+		\end{instruction}
+		\begin{postcondition}
+			\item
+		\end{postcondition}
+		   
    %\item When the back button is pressed the application is closed (Req. 5.2.10)
     
     % Nytt requirement!
-    \item The layout of the MyDevices View resemble figure 1 in appendix  Ref \ref{refdocs:srs} (5.2.11).
+    \item
+		\begin{precondition}
+			\item
+		\end{precondition}
+		\begin{instruction}
+			\item
+		\end{instruction}
+		\begin{postcondition}
+			\item
+		\end{postcondition}
+		   
+    %\item The layout of the MyDevices View resemble figure 1 in appendix  Ref \ref{refdocs:srs} (5.2.11).
 \end{testlist}
 
 %--------------------------Sensor view tests --------------------------------------
 \subsection{Sensor View Test Instructions}
 \begin{testlist}
- \item \vspace{5mm} \textbf{Precondition:} The MyDevices View is opened and a sensor device populates the list.
-    			\begin{enumerate}
-    				\item Select a sensor device
-    				\item Push the Control device button
-    				%\item Look at the screen and confirm that the Sensor view is opened.
-    			\end{enumerate}
-    			\textbf{Postcondition:} The Sensor View is opened. 
+	\item
+ 		\begin{precondition}
+ 			\item The MyDevices View is opened
+ 			\item A sensor device populates the list
+ 		\end{precondition}
+ 		\begin{instruction}
+ 			\item Select a sensor device
+ 			\item Push the Control device button
+ 		\end{instruction}
+ 		\begin{postcondition}
+ 			\item The Sensor View is opened. 
+ 		\end{postcondition}
 
 %When the "Control Device"-button in the MyDevices View is pressed and a sensor is selected, the Sensor view is opened (Req. 5.3.1).
 
- \item \vspace{5mm} \textbf{Precondition:} The Sensor View is opened.
-    		
-    			
-    			
-    			\textbf{Postcondition:} The sensor name and mac-adress is shown in the top of the view.
+	\item
+		\begin{precondition}
+			\item The Sensor View is opened.
+		\end{precondition}
+		\begin{postcondition}
+			\item The sensor name and mac-adress is shown in the top of the view.
+		\end{postcondition}
 %\item The sensor name and mac-address is shown in the top of the view (Req. 5.3.2, 5.3.3).
- 
-  \item \vspace{5mm} \textbf{Precondition:} The Sensor View is opened and the on/off-status is set to off.
-    			\begin{enumerate}
-    				\item Switch the on/off-status to on.  
-	    		    \item Control that the status lamp on the device is "shining".
-    			\end{enumerate}
-    			\textbf{Postcondition:} The on/off -status of the selected sensor have been changed to on.
+
+	\item
+		\begin{precondition}
+			\item The Sensor View is opened and
+			\item The on/off-status is set to off.
+		\end{precondition}
+		\begin{instruction}
+			\item Switch the on/off-status to on.  
+	  	    \item Control that the status lamp on the device is "shining"
+	  	\end{instruction}
+	  	\begin{postcondition}
+	  		\item The on/off -status of the selected sensor have been changed to on.
+	  	\end{postcondition}
 %\item It is possible to change the on/off -status of the selected sensor with a switch (Req. 5.3.4).
 
- \item \vspace{5mm} \textbf{Precondition:} The Sensor View is opened. 
-    			\begin{enumerate}
-    				\item Check that there are text field preceded by "T", "P", "H", "M", "G" and "A" in this specified order. 
-    				\item Check that 
-	    			\item Wait.
-    			
-    			\end{enumerate}
-    			\textbf{Postcondition:} There are text fields preceded by "T", "P", "H", "M", "G", "A".
+	\item
+		\begin{precondition}
+			\item The Sensor View is opened. 
+		\end{precondition}
+		\begin{instruction}
+			\item Check that there are text field preceded by "T", "P", "H", "M", "G" and "A" in this specified order.
+			\item Check that
+			\item Wait
+		\end{instruction}
+		\begin{postcondition}
+			\item There are text fields preceded by "T", "P", "H", "M", "G", "A".
+		\end{postcondition}
 %\item There are text fields preceded by "T", "P", "H", "M", "G", "A" that are used to, respectively, display temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration (Req. 5.3.5, 5.3.6, 5.3.7, 5.3.8, 5.3.9, 5.3.10).
 
- \item \vspace{5mm} \textbf{Precondition:} The Sensor View is opened and the on/off-status is set to on.
-    			\begin{enumerate}
-    				\item Perform the steps (b)-(c) for the text field preceded by "T", "P", "H", "M", "G" and "A" in this specified order.
-                    \item Press the corresponding "Get"-button to the text field
-    				\item Check that the value for the current sensor data are retrieved "if available" and displayed in the corresponding field.
-	    			
-    			
-    			\end{enumerate}
-    			\textbf{Postcondition:} The values of the temperature, pressure, humidity, magnetic field strength, qyroscopic and acceleration sensors are retrieved if available and displayed.
+	\item
+		\begin{precondition}
+			\item The Sensor View is opened
+			\item The on/off-status is set to on.
+		\end{precondition}
+		\begin{instruction}
+			\item Perform the steps (b)-(c) for the text field preceded by "T", "P", "H", "M", "G" and "A" in this specified order.
+			\item Press the corresponding "Get"-button to the text field
+			\item Check that the value for the current sensor data are retrieved "if available" and displayed in the corresponding field.
+		\end{instruction}
+		\begin{postcondition}
+			\item The values of the temperature, pressure, humidity, magnetic field strength, qyroscopic and acceleration sensors are retrieved if available and displayed.
+		\end{postcondition}
 
 %\item By pressing the corresponding "Get"-button, the values of the temperature, pressure, humidity, magnetic field strength, qyroscopic and acceleration sensors are retrieved if available and displayed (Req. 5.3.11, 5.3.12, 5.3.13, 5.3.14, 5.3.15, 5.3.16).
 
- \item \vspace{5mm} \textbf{Precondition:} The Sensor View is opened and the on/off-status is set to on. 
-    			\begin{enumerate}
-    				\item Push the "Get All"-button.
-    			
-    			
-    			\end{enumerate}
-    			\textbf{Postcondition:} The value for all six sensors data are displayed in their corresponding "text" fields.
+	\item
+		\begin{precondition}
+			\item The Sensor View is opened
+			\item The on/off-status is set to on.
+		\end{precondition}
+		\begin{instruction}
+			\item Push the "Get All"-button.
+		\end{instruction}
+		\begin{postcondition}
+			\item The value for all six sensors data are displayed in their corresponding "text" fields.
+		\end{postcondition}
 %\item The "Get All" -button gets the values for all six sensors and displays them (Req. 5.3.17).
 
- \item \vspace{5mm} \textbf{Precondition:} The Sensor View is opened and sensors data are displayed in the text fields.
-    			\begin{enumerate}
-    				\item Push the "Clear All"-button.
-    			
-    			\end{enumerate}
-    			\textbf{Postcondition:} All the sensor text fields are cleared from data/value.
+	\item
+		\begin{precondition}
+			\item The Sensor View is opened
+			\item Sensors data are displayed in the text fields.
+		\end{precondition}
+		\begin{instruction}
+			\item Push the "Clear All"-button.
+		\end{instruction}
+		\begin{postcondition}
+			\item All the sensor text fields are cleared from data/value.
+		\end{postcondition}
 %\item The "Clear All" button clears all sensor text fields from data (Req. 5.3.18).
 
- \item \vspace{5mm} \textbf{Precondition:} The Sensor View is opened and the on/off-status is set to on. 
-    			\begin{enumerate}
-    				\item Perform the steps (b)-(c) for the text field preceded by "T", "P", "H", "M", "G" and "A" in this specified order.
-    				\item Check that 
-	    			\item Wait.
-    			
-    			\end{enumerate}
-    			\textbf{Postcondition:} There are text fields preceded by "T", "P", "H", "M", "G", "A".
+	\item
+		\begin{precondition}
+			\item The Sensor View is opened
+			\item The on/off-status is set to on
+		\end{precondition}
+		\begin{instruction}
+			\item Perform the steps (b)-(c) for the text field preceded by "T", "P", "H", "M", "G" and "A" in this specified order.
+    		\item Check that 
+	    	\item Wait.
+    	\end{instruction}
+    	\begin{postcondition}
+    		\item There are text fields preceded by "T", "P", "H", "M", "G", "A".
+    	\end{postcondition}
 %\item If there is no data to retrieve for any of the physical quantities: temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration when the corresponding "Get" button is pressed the corresponding, text fields display "No data available" (Req. 5.3.19, 5.3.20, 5.3.21, 5.3.22, 5.3.23, 5.3.24).
+
 
 	\item
 		\begin{precondition}
@@ -344,77 +449,180 @@ This is appendix A where we list all function test instructions.
 \subsection{Light Bulb View Test Instructions}
 \begin{testlist}
 
-    \item 	\begin{precondition}
-    			\item The application is in the MyDevices View
-    			\item At least one lightbulb is in the list of available devices.
-    		\end{precondition}
-    		\begin{instruction}
-    				\item Choose a light bulb in the list of available devices.
-    				\item Press the "Control Device" button
-    		\end{instruction}
-    		\begin{postcondition}
-    			\item The Light Bulb View is open
-    		\end{postcondition}
+    \item
+    	\begin{precondition}
+    		\item The application is in the MyDevices View
+    		\item At least one lightbulb is in the list of available devices.
+    	\end{precondition}
+    	\begin{instruction}
+    			\item Choose a light bulb in the list of available devices.
+    			\item Press the "Control Device" button
+    	\end{instruction}
+    	\begin{postcondition}
+    		\item The Light Bulb View is open
+    	\end{postcondition}
 
 	%\item The Light Bulb View opens when a light bulb is chosen in the MyDevices View and the "Control device" button is pressed. (Req 5.4.1)
 	
-	\item 	\begin{precondition}
-				\item The Light Bulb View is shown
-			\end{precondition}
-    		\begin{postcondition}
-    			\item The name and mac-address of the light bulb is shown at the top of the view.
-    		\end{postcondition}
+	\item
+		\begin{precondition}
+			\item The Light Bulb View is shown
+		\end{precondition}
+    	\begin{postcondition}
+    		\item The name and mac-address of the light bulb is shown at the top of the view.
+    	\end{postcondition}
     	
 	%\item The name of the selected light bulb is shown at the top of the View (Req 5.4.2).
 	
-	\item 	\begin{precondition}
-				\item The Light Bulb View is open
-				\item The switch to control the on/off-status of the light bulb is set to on (off)
-				\item The state of the light bulb corresponds to the state of the switch
-			\end{precondition}
-    		\begin{instruction}
-    			\item Change the switch to off (on)
-    		\end{instruction}
-    		\begin{postcondition}
-    			\item The switch to control the light bulb is set tp off (on)
-    			\item The light bulb turns off (on).
-    		\end{postcondition}
+	\item
+		\begin{precondition}
+			\item The Light Bulb View is open
+			\item The switch to control the on/off-status of the light bulb is set to on (off)
+			\item The state of the light bulb corresponds to the state of the switch
+		\end{precondition}
+    	\begin{instruction}
+    		\item Change the switch to off (on)
+    	\end{instruction}
+    	\begin{postcondition}
+    		\item The switch to control the light bulb is set tp off (on)
+    		\item The light bulb turns off (on).
+    	\end{postcondition}
     		
   
     % \item The selected light bulb can be turned on/off with a switch (Req. 5.4.3). 
     
-   	\item 	\begin{precondition}
-   				\item The Light Bulb View is open
-			\end{precondition}
-    		\begin{instruction}
-    			\item For each of the four fields, enter at least one character
-    		\end{instruction}
-    		\begin{postcondition}
-    			\item The four fields are preceded by "R:", "G:", "B:" and "W:" respectively
-    			\item Is is possible to enter a character into the fields
-    		\end{postcondition}
+   	\item
+   		\begin{precondition}
+   			\item The Light Bulb View is open
+		\end{precondition}
+    	\begin{instruction}
+    		\item For each of the four fields, enter at least one character
+    	\end{instruction}
+    	\begin{postcondition}
+    		\item The four fields are preceded by "R:", "G:", "B:" and "W:" respectively
+    		\item Is is possible to enter a character into the fields
+    	\end{postcondition}
 
     % \item The field of R-, G-, B-, W-value is editable and preceded by "R:", "G:", "B:" and "W:" respectively (Req. 5.4.4, 5.4.5, 5.4.6, 5.4.7). 
-    
+	
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}	   
 	\item When the Light Bulb View is opened, the fields are empty (Req. 5.4.8).
 
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
 	\item The "Get"-button retrieves the R-, G-, B-, W-values and present them in their corresponding fields (Req. 5.4.9). 
 
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
 	\item The "Set button" sets the color of the light bulb (Req. 5.4.10).
 
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
 	\item If an input value is left blank the value is interpreted as 00 (Req. 5.4.11) .   
-    
+
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
     \item The fields only accepts two characters that represent hexadecimal numbers (e.g. 00 to FF and all combinations inbetween) (Req 5.4.12, Req 5.4.13).
-    
+
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
     \item A pop-up message saying "Color successfully changed" is displayed when the values of the light bulb were successfully set. (Req 5.4.14)
-    
+
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
     \item A pop-up message saying "Error: Could not change color." is displayed when the values of the light bulb were unsuccessfully set. (Req 5.4.15)
-       
+
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
     \item When the light bulb is off, the "Set"-button is unavailable (Req. 5.4.16).
-    
+
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
     \item When the back button is pressed the system switches to MyDevices View (Req. 5.4.17).
     
-    % Nytt requirement!
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
     \item The layout of the Light Bulb View resemble figure 3 in appendix  Ref \ref{refdocs:srs} (Req. 5.4.18).
 
 \end{testlist}	
@@ -423,7 +631,7 @@ This is appendix A where we list all function test instructions.
 \newpage
 
 \section{System Test Instruction} \label{appendix:section:systemtest}
-This is appendix B where we list all system test specifications.
+This is appendix \ref{appendix:section:systemtest} where we list all system test specifications.
 
 \subsection{Use Cases}
 \begin{testlist}
@@ -445,59 +653,250 @@ This is appendix B where we list all system test specifications.
 	%SVVS: Scenario 5.1.1 in Ref \ref{refdocs:srs} is supported (Req. 5.1.1).
 
 	\item 
-	\begin{precondition}
-		\item The application is running and MyDevices view is displayed.
-		\item No devices are within range of the MVD.
-	\end{precondition}
-	\begin{instruction}
+		\begin{precondition}
+			\item The application is running and MyDevices view is displayed.
+			\item No devices are within range of the MVD.
+		\end{precondition}
+		\begin{instruction}
 			\item With your right index finger press the \emph{Get Devices} button.
 			\item Verify that a pop-up message with the text \emph{No devices found} is shown.
-	\end{instruction}
-	\begin{postcondition}
-		\item No devices are connected.
-	\end{postcondition}
+		\end{instruction}
+		\begin{postcondition}
+			\item No devices are connected.
+		\end{postcondition}
 	%SVVS: Exception 1 described in scenario 5.1.1 can be generated by removing the devices from range while attempting scenario 5.1.1 (Req 5.1.1).
 	
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
 	\item Scenario 5.1.2 in Ref \ref{refdocs:srs} is supported (Req. 5.1.2).
-	
+
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}	
 	\item Exception 1 in scenario 5.1.2 can be generated by not selecting a device in step 1 (Req. 5.1.2).
-	
+
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
 	\item Scenario 5.1.3 in Ref \ref{refdocs:srs} is supported (Req. 5.1.3).
-	
+
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
 	\item Exception 1 described in scenario 5.1.3 can be generated by not selecting a device in step 1 (Req. 5.1.3). 
-	
+
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
 	\item Scenario 5.1.4 in Ref \ref{refdocs:srs} is supported (Req. 5.1.4).
-	
+
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
 	\item Scenario 5.1.5 in Ref \ref{refdocs:srs} is supported (Req. 5.1.5).
-	
+
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
 	\item Scenario 5.1.6 in Ref \ref{refdocs:srs} is supported (Req. 5.1.6).
-	
+
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
 	\item Scenario 5.1.7 in Ref \ref{refdocs:srs} is supported (Req. 5.1.7).
-	
+
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
 	\item Scenario 5.1.8 in ref \ref{refdocs:srs} is supported (Req. 5.1.8).
 
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
 	\item Scenario 5.1.9 in Ref \ref{refdocs:srs} is supported (Req. 5.1.9).
-	
+
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
 	\item If some data is unavailable when attempting scenario 5.1.9, the text in the corresponding field is set to "No data available." (Req. 5.1.9).
-	
+
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
 	\item Scenario 5.1.10 in Ref \ref{refdocs:srs} is supported (Req. 5.1.10).
-	
+
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
 	\item If some data is unavailable when attempting scenario 5.1.10, the text in the corresponding field is set to "No data available." (Req. 5.1.10).
-	
+
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
 	\item Scenario 5.1.11 in Ref \ref{refdocs:srs} is supported (Req. 5.1.11).
-	
+
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
 	\item If some data is unavailable when attempting scenario 5.1.11, the text in the corresponding field is set to "No data available." (Req. 5.1.11).
-	
+
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
 	\item Scenario 5.1.12 in Ref \ref{refdocs:srs} is supported (Req. 5.1.12).
 \end{testlist}
 
 \subsection{Quality Test Instructions}
 
 \begin{testlist}
+
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
 	\item Test of usability using persons without prior knowledge of the project or the app (Req. 6.1).
-	
+
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
 	\item The response time for any interaction with the system is below two seconds (Req. 6.2).
-	
+
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
 	\item The time-out time for the system is 15 seconds (Req. 6.3). 
 	
 \end{testlist}
