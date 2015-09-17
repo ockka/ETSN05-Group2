@@ -308,8 +308,8 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 
 	\item
 		\begin{precondition}
-			\item The Sensor View is opened and
-			\item The on/off-status is set to off.
+			\item The Sensor View is open
+			\item The on/off-status is set to off
 		\end{precondition}
 		\begin{instruction}
 			\item Switch the on/off-status to on.  
@@ -391,57 +391,58 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
     	\end{postcondition}
 %\item If there is no data to retrieve for any of the physical quantities: temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration when the corresponding "Get" button is pressed the corresponding, text fields display "No data available" (Req. 5.3.19, 5.3.20, 5.3.21, 5.3.22, 5.3.23, 5.3.24).
 
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}
-		   
-	\item The on/off-switch is set according to the information from the REST API (Req. 5.3.25).
 
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}
-		   
-	\item When the back button is pressed in the Sensor View, the MyDevices View is opened (Req. 5.3.26).
+	\item
+		\begin{precondition}
+			\item The Sensor View is open.
+		\end{precondition}
+		\begin{instruction}
+			\item Check that the on/off-switch is set to off.
+		\end{instruction}
+		\begin{postcondition}
+			\item The on/off-switch is set to off.
+		\end{postcondition}
 
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}
-		   
-	\item When the sensor view is opened the temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration text fields are empty (Req. 5.3.27).
+%\item The on/off-switch is set according to the information from the REST API (Req. 5.3.25).
 
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}
-		   
-	\item The layout of the Sensor View resemble figure 2 in appendix  Ref \ref{refdocs:srs} (Req. 5.3.28).
+	\item
+		\begin{precondition}
+			\item The Sensor View is open.
+		\end{precondition}
+		\begin{instruction}
+			\item Press the back button on the phone.
+		\end{instruction}
+		\begin{postcondition}
+			\item The MyDevices View is open.
+		\end{postcondition}
+
+%\item When the back button is pressed in the Sensor View, the MyDevices View is opened (Req. 5.3.26).
+
+	\item
+		\begin{precondition}
+			\item The MyDevices View is open.
+		\end{precondition}
+		\begin{instruction}			
+			\item Select a sensor device.
+			\item Push the "Control Device" -button.
+			\item Check that the temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration text fields are all empty.
+		\end{instruction}
+		\begin{postcondition}
+			\item The temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration text fields are all empty.
+		\end{postcondition}
+
+%\item When the sensor view is opened the temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration text fields are empty (Req. 5.3.27).
+
+	\item
+		\begin{precondition}
+			\item The Sensor View is open.
+		\end{precondition}
+		\begin{postcondition}
+			\item The layout of the screen resembles figure 2 in appendix A in Ref \ref{refdocs:srs}
+		\end{postcondition}
+
+
+
 
 \end{testlist}
 
