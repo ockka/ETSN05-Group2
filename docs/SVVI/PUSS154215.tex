@@ -302,8 +302,8 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 
 	\item
 		\begin{precondition}
-			\item The Sensor View is open
-			\item The on/off-status is set to off
+			\item The Sensor View is opened and
+			\item The on/off-status is set to off.
 		\end{precondition}
 		\begin{instruction}
 			\item Switch the on/off-status to on.  
@@ -385,58 +385,57 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
     	\end{postcondition}
 %\item If there is no data to retrieve for any of the physical quantities: temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration when the corresponding "Get" button is pressed the corresponding, text fields display "No data available" (Req. 5.3.19, 5.3.20, 5.3.21, 5.3.22, 5.3.23, 5.3.24).
 
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
+		   
+	\item The on/off-switch is set according to the information from the REST API (Req. 5.3.25).
 
-	\item
-		\begin{precondition}
-			\item The Sensor View is open.
-		\end{precondition}
-		\begin{instruction}
-			\item Check that the on/off-switch is set to off.
-		\end{instruction}
-		\begin{postcondition}
-			\item The on/off-switch is set to off.
-		\end{postcondition}
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
+		   
+	\item When the back button is pressed in the Sensor View, the MyDevices View is opened (Req. 5.3.26).
 
-%\item The on/off-switch is set according to the information from the REST API (Req. 5.3.25).
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
+		   
+	\item When the sensor view is opened the temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration text fields are empty (Req. 5.3.27).
 
-	\item
-		\begin{precondition}
-			\item The Sensor View is open.
-		\end{precondition}
-		\begin{instruction}
-			\item Press the back button on the phone.
-		\end{instruction}
-		\begin{postcondition}
-			\item The MyDevices View is open.
-		\end{postcondition}
-
-%\item When the back button is pressed in the Sensor View, the MyDevices View is opened (Req. 5.3.26).
-
-	\item
-		\begin{precondition}
-			\item The MyDevices View is open.
-		\end{precondition}
-		\begin{instruction}			
-			\item Select a sensor device.
-			\item Push the "Control Device" -button.
-			\item Check that the temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration text fields are all empty.
-		\end{instruction}
-		\begin{postcondition}
-			\item The temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration text fields are all empty.
-		\end{postcondition}
-
-%\item When the sensor view is opened the temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration text fields are empty (Req. 5.3.27).
-
-	\item
-		\begin{precondition}
-			\item The Sensor View is open.
-		\end{precondition}
-		\begin{postcondition}
-			\item The layout of the screen resembles figure 2 in appendix A in Ref \ref{refdocs:srs}
-		\end{postcondition}
-
-
-
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
+		   
+	\item The layout of the Sensor View resemble figure 2 in appendix  Ref \ref{refdocs:srs} (Req. 5.3.28).
 
 \end{testlist}
 
@@ -904,45 +903,40 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 %		\end{postcondition}
 	\item If some data is unavailable when attempting scenario 5.1.10, the text in the corresponding field is set to "No data available." (Req. 5.1.10).
 
-	\item
-		\begin{precondition}
-			\item The user is in the Sensor Device View
-			\item The sensor device is on
-			
-		\end{precondition}
-		\begin{instruction}
-			\item Press the "Get All"-button
-		\end{instruction}
-		\begin{postcondition}
-			\item All the sensor data is displayed in their respective text fields.
-		\end{postcondition}
-%	\item Scenario 5.1.11 in Ref \ref{refdocs:srs} is supported (Req. 5.1.11).
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
+	\item Scenario 5.1.11 in Ref \ref{refdocs:srs} is supported (Req. 5.1.11).
 
-	\item
-		\begin{precondition}
-			\item The user is in the Sensor Device View
-			\item The sensor device is on
-			\item The data is unavailable 
-		\end{precondition}
-		\begin{instruction}
-			\item Press the "Get All"-button
-		\end{instruction}
-		\begin{postcondition}
-			\item The text fields are updated to: ”No data available.”
-		\end{postcondition}
-	%\item If some data is unavailable when attempting scenario 5.1.11, the text in the corresponding field is set to "No data available." (Req. 5.1.11).
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
+	\item If some data is unavailable when attempting scenario 5.1.11, the text in the corresponding field is set to "No data available." (Req. 5.1.11).
 
-	\item
-		\begin{precondition}
-			\item The Sensor Device View is open
-			\item There is data in the text fields
-		\end{precondition}
-		\begin{instruction}
-			\item Press the "Clear All"-button.
-		\end{instruction}
-		\begin{postcondition}
-			\item The is no data in the text fields
-		\end{postcondition}
+%	\item
+%		\begin{precondition}
+%			\item
+%		\end{precondition}
+%		\begin{instruction}
+%			\item
+%		\end{instruction}
+%		\begin{postcondition}
+%			\item
+%		\end{postcondition}
 	\item Scenario 5.1.12 in Ref \ref{refdocs:srs} is supported (Req. 5.1.12).
 \end{testlist}
 
