@@ -865,40 +865,45 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 %		\end{postcondition}
 	\item If some data is unavailable when attempting scenario 5.1.10, the text in the corresponding field is set to "No data available." (Req. 5.1.10).
 
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}
-	\item Scenario 5.1.11 in Ref \ref{refdocs:srs} is supported (Req. 5.1.11).
+	\item
+		\begin{precondition}
+			\item The user is in the Sensor Device View
+			\item The sensor device is on
+			
+		\end{precondition}
+		\begin{instruction}
+			\item Press the "Get All"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item All the sensor data is displayed in their respective text fields.
+		\end{postcondition}
+%	\item Scenario 5.1.11 in Ref \ref{refdocs:srs} is supported (Req. 5.1.11).
 
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}
-	\item If some data is unavailable when attempting scenario 5.1.11, the text in the corresponding field is set to "No data available." (Req. 5.1.11).
+	\item
+		\begin{precondition}
+			\item The user is in the Sensor Device View
+			\item The sensor device is on
+			\item The data is unavailable 
+		\end{precondition}
+		\begin{instruction}
+			\item Press the "Get All"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item The text fields are updated to: ”No data available.”
+		\end{postcondition}
+	%\item If some data is unavailable when attempting scenario 5.1.11, the text in the corresponding field is set to "No data available." (Req. 5.1.11).
 
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}
+	\item
+		\begin{precondition}
+			\item The Sensor Device View is open
+			\item There is data in the text fields
+		\end{precondition}
+		\begin{instruction}
+			\item Press the "Clear All"-button.
+		\end{instruction}
+		\begin{postcondition}
+			\item The is no data in the text fields
+		\end{postcondition}
 	\item Scenario 5.1.12 in Ref \ref{refdocs:srs} is supported (Req. 5.1.12).
 \end{testlist}
 
