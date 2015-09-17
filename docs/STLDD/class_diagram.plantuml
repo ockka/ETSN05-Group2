@@ -1,4 +1,34 @@
-class NetworkManager{
+package "activity" #DDDDDD {
+  class BaseActivity
+  class MyDevicesActivity
+  class SensorDeviceActivity
+  class LightBulbActivity
+  class DeviceActivity
+
+}
+package "network" #DDDDDD {
+  class NetworkManager
+}
+package "adapter" #DDDDDD {
+  class DeviceListAdapter
+}
+package "model" #DDDDDD {
+  class Device
+  class LightBulb
+  class SensorDevice
+}
+
+package "sensor" #DDDDDD {
+	class SensorValues
+	class Temperature 
+	class Pressure 
+	class Humidity 
+	class Magnetic 
+	class Gyroscopic 
+	class Accelometer 
+}
+
+ class NetworkManager{
  +{static} List<Device> detectDevices()
  +{static} Temperature getTemperature()
  +{static} Pressure getPressure()
@@ -65,7 +95,7 @@ abstract class Device{
  +{abstract} String getName()
 }
 
-class Sensor{
+class SensorDevice{
  +String getName()
 }
 
@@ -78,7 +108,7 @@ BaseActivity <|-- DeviceActivity
 DeviceActivity <|-- SensorDeviceActivity
 DeviceActivity <|-- LightBulbActivity
 
-Device <|-- Sensor
+Device <|-- SensorDevice
 Device <|-- LightBulb
 
 MyDevicesActivity "1" *-- "1" DeviceListAdapter
