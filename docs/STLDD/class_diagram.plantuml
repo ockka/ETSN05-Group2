@@ -54,12 +54,12 @@ class MyDevicesActivity{
 }
 
 class SensorDeviceActivity{
- -EditText temperature
- -EditText pressure
- -EditText humidity
- -EditText magnetic
- -EditText gyroscopic
- -EditText accelerometer
+ -TextView temperature
+ -TextView pressure
+ -TextView humidity
+ -TextView magnetic
+ -TextView gyroscopic
+ -TextView accelerometer
  -ToggleButton toggle
  -Button getAll
  -Button clearAll
