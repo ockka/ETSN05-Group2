@@ -78,26 +78,49 @@ Lorem ipsum
 \section{Overview}
 lorem ipsum
 
-\subsection{Någon typ av UML}
-UML
-Beskrivning av klasser
+\subsection{Controller Application}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{class_diagram.png}
+    \caption{The layout of the Light Bulb View}
+    \label{fig:mylightbulbview}
+\end{figure}
+\begin{itemize}
+\item{\textbf{BaseActivity:}} 
+The BaseActivity for the application that will connect the Activities with the NetworkManager.
+\item{\textbf{MyDeviceActivity:}} 
+Is the start screen of the application. Will contain a ListView and has methods for detecting devices and control a device that was selected from the ListView.
+\item{\textbf{DeviceListAdapter:}} 
+Adapter that handles the list in MyDevicesActivity, the ListView can display any data provided that it is wrapped in a ListAdapter. 
+\item{\textbf{Device:}} 
+Is an Abstract class that controlls the two devices we are handling. 
+\item{\textbf{SensorDevice:}} 
+Class containing the SensorDevice information.
+\item{\textbf{LightBulb:}}
+Class containing the LightBulb information.
+\item{\textbf{DeviceActivity:}} 
+Is an abstract class that holds the shared parameters deviceName and macAddress. It also contains an abstract method toggle that controls the on/off switch on the devices.
+\item{\textbf{SensorDeviceActivity:}} 
+Is the controller in the interaction with the user in the SensorDevice View. Controls the TextView fields and the buttons that will retrieve information regarding the sensors from NetworkManager.
+\item{\textbf{LightBulbActivity:}} 
+Is the controller in the interaction with the user in the LightBulb View. Controls the EditText fields and the buttons that will retrieve and send information from/to the NetworkManager.
+ 
+\item{\textbf{NetworkManager:}} 
+Handles all the communication with the API. The different methods for controlling both receiving and setting data.
+\item{\textbf{SensorValues:}} 
+A superclass for the information of the different sensors.
+
+\end{itemize}
 
 \subsection{Rubrik för sekvensdiagram}
-
-\subsection{Notes to self}
-Förslag på uppdelning:
+In progress..
+\subsection{Packages}
 \begin{itemize}
-\item Nätverk
-\item MyDevicesActivity
-\item SensorDeviceActivity + kollektivt ansvar för ihopknytning av klasser
-\item LightBulbActivity + kollektivt ansvar för ihopknytning av klasser
-\end{itemize}
-Packages
-\begin{itemize}
+\item Network
 \item Activity
-\item network
-\item adapter
-\item model för device, sensor o lightbulb
+\item Adapter
+\item Model
+\item Sensor
 \end{itemize}
 
 \end{document}
