@@ -813,6 +813,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 		\begin{precondition}
 			\item The Light Bulb View is open
 			\item The light bulb is on
+
 			\begin{itemize}
 				\item The "R:"-field of the light bulb is set to FF
 				\item The "G:"-field of the light bulb is set to FF
@@ -891,94 +892,119 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 		\end{postcondition}
 
 
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}
-	\item If some data is unavailable when attempting scenario 5.1.10, the text in the corresponding field is set to "No data available." (Req. 5.1.10).
+	\item
+		\begin{precondition}
+		\item The Sensor Device View is open
+       \item The Sensor device is on
+		\item "Some" data for the sensor device is unavailable
+		\end{precondition}
+		\begin{instruction}
+			\item Press the "Get"-button next to the "T:"-field
+		\end{instruction}
+		\begin{postcondition}
+			\item The text in the "T:"-field is set to "No Data Available"
+		\end{postcondition}
+        
+%	\item If some data is unavailable when attempting scenario 5.1.10, the text in the corresponding field is set to "No data available." (Req. 5.1.10).
 
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}
-	\item Scenario 5.1.11 in Ref \ref{refdocs:srs} is supported (Req. 5.1.11).
+	\item
+		\begin{precondition} 
+			\item The Sensor Device View is open
+			\item The sensor device is on
+		\end{precondition}
+		\begin{instruction}
+		\item Press the "Get All"-button at the bottom of the view
+		\end{instruction}
+		\begin{postcondition}
+		\item All the sensor values is displayed in their respective field
+		\end{postcondition}
+%	\item Scenario 5.1.11 in Ref \ref{refdocs:srs} is supported (Req. 5.1.11).
 
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}
-	\item If some data is unavailable when attempting scenario 5.1.11, the text in the corresponding field is set to "No data available." (Req. 5.1.11).
+		\item
+		\begin{precondition}
+		\item The Sensor Device View is open
+		\item The sensor device is on
+        \item "Some" data for the sensor device is unavailable
+		\end{precondition}
+		\begin{instruction}
+		\item Press the "Get All"-button at the bottom of the view
+		\end{instruction}
+		\begin{postcondition} 
+		\item The corresponding field for the data that were unavailable is set to "No data 				available"
+		\end{postcondition}
+%  		\item If some data is unavailable when attempting scenario 5.1.11, the text in the corresponding field is set to "No data available." (Req. 5.1.11).
 
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}
-	\item Scenario 5.1.12 in Ref \ref{refdocs:srs} is supported (Req. 5.1.12).
+	\item
+	\begin{precondition} 
+		\item The Sensor Device View is open
+		\item At least one of the field for sensor values is filled out
+		\end{precondition}
+		\begin{instruction} 
+		\item Push the "Clear All"-button
+		\end{instruction}
+	  	\begin{postcondition}
+		\item All the sensor values is cleared in their respective field
+		\end{postcondition}
+%	\item Scenario 5.1.12 in Ref \ref{refdocs:srs} is supported (Req. 5.1.12).
 \end{testlist}
 
 \subsection{Quality Test Instructions}
 
 \begin{testlist}
 
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}
-	\item Test of usability using persons without prior knowledge of the project or the app (Req. 6.1).
+	\item
+		\begin{precondition}
+			\item 5 persons is chosen without prior knowledge of the project or the app
+		\end{precondition}
+		\begin{instruction}
+			\item Give the test persons a minor introduction of what the application is able to do
+            \item Tell the test persons to turn the lamp green
+            \item Tell the test persons to collect all data from the sensor
+            \item Measure the time it takes for the test persons to complete the tasks
+		\end{instruction}
+		\begin{postcondition}
+			\item All test persons completed the tasks without any major problems
+		\end{postcondition}
+%	\item Test of usability using persons without prior knowledge of the project or the app (Req. 6.1).
 
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}
-	\item The response time for any interaction with the system is below two seconds (Req. 6.2).
+	\item
+		\begin{precondition}
+			\item The application is not running
+		\end{precondition}
+		\begin{instruction}
+        	\item For every step below, measure the time for the interaction
+			\item Start the application
+            \item Press "Get Device"-button
+            \item Select a sensor
+            \item Press "Control Device"-button
+            \item Turn the sensor on by flicking the switch
+            \item Press "Get"-button. Do this for all data
+            \item Press "Get All"-button
+            \item Press "Clear All"-button
+            \item Press "Back"-button
+            \item Select a light bulb
+            \item Turn the ligt bulb on by flicking the switch
+            \item Press "Get"-button
+            \item Enter any value in the color fields
+            \item Press "Set"-button
+            \item Press "Back"-button until the application is closed
+		\end{instruction}
+		\begin{postcondition}
+			\item All of the interactions had a response time below two seconds
+		\end{postcondition}
+%	\item The response time for any interaction with the system is below two seconds (Req. 6.2).
 
-%	\item
-%		\begin{precondition}
-%			\item
-%		\end{precondition}
-%		\begin{instruction}
-%			\item
-%		\end{instruction}
-%		\begin{postcondition}
-%			\item
-%		\end{postcondition}
-	\item The time-out time for the system is 15 seconds (Req. 6.3). 
+	\item
+		\begin{precondition} 
+			\item 
+		\end{precondition}
+		\begin{instruction}
+			\item
+		\end{instruction}
+		\begin{postcondition}
+			\item
+		\end{postcondition}
+\item The time-out time for the system is 15 seconds (Req. 6.3). 
 	
 \end{testlist}
 
