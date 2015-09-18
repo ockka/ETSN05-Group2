@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
 
+import com.etsn05group2.lampcontroller.example.ExampleActivity;
+
 
 public class ActivityOne extends Activity {
 
@@ -36,7 +38,7 @@ public class ActivityOne extends Activity {
     }
 
     public void startActivityTwo(View v) {
-        Intent intent = new Intent(this, ActivityTwo.class);
+        Intent intent = new Intent(this, ExampleActivity.class);
         startActivity(intent);
     }
 

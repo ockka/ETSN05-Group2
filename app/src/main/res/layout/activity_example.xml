@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#529a16"
+              android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="sans-serif-light"
+        android:padding="15dp"
+        android:text="How windy is it today in Lund?"
+        android:textColor="#CCCCCC"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:id="@+id/text_wind_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="sans-serif-light"
+        android:padding="15dp"
+        android:textColor="#CCCCCC"
+        android:textSize="32sp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#0a6b26"
+        android:onClick="onClick"
+        android:padding="15dp"
+        android:text="Press here to find out!"
+        android:textColor="#FFFFFF"/>
+
+</LinearLayout>
