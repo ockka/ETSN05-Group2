@@ -17,6 +17,12 @@
 \settowidth{\testlabellength}{Instruction 100.10.10}
 \newenvironment{testlist}{\begin{enumerate}[label=\bfseries Instruction \thesubsection.\arabic* , labelindent=0pt, labelwidth=\testlabellength , leftmargin=2cm]}{\end{enumerate}}
 
+\newenvironment{config}[1][2]{
+This test should be run #1 times with the following configurations:
+\begin{enumerate}[label=\bfseries  \arabic*., labelindent=0cm, labelwidth=2cm , leftmargin=1cm]
+}
+{\end{enumerate}}
+
 \newenvironment{precondition}{
 {\color{white}BLARG}\\ 
 \textbf{Precondition}
@@ -37,7 +43,7 @@
 {\end{itemize}}
 
 \title{SVVI - Software Verification and Validation Instruction}
-\newcommand{\version}{v0.1}
+\newcommand{\version}{v0.2}
 \newcommand{\SVVI}{PUSS154215}
 \author{Testgroup, Team 2}
 
@@ -93,6 +99,7 @@ Jonathan Lundholm
     \textbf{Version}		& \textbf{Date}		& \textbf{Responsible}					& \textbf{Description}					\\ \hline
     0.0						& 150916 			& UH									& Document created						\\ \hline
     0.1						& 150918			& HA									& All instructions written				\\ \hline
+    0.2						& 150921			& UH									& Document ready for informal review \\ \hline
     \end{tabular}
 \end{center}
 
@@ -105,17 +112,22 @@ Jonathan Lundholm
 %--------------------Reference Documents ---------------------------------------
 \section{Reference Documents}
 \begin{enumerate}
-\item PUSS154212 - System Requirements Specification for the current project \label{refdocs:srs}
+\item PUSS154212 - System Requirements Specification v1.1 \label{refdocs:srs} 
 \item Programvaruutveckling för Stora System - Projekthandledning v2.2 (\textit{Institutionen för datavetenskap}, Lunds Univeritet 2015) \label{refdocs:projekthandledning}
-\item PUSS154213 - Software Verification and Validation Specification \label{redocs:SVVS}
-\item PUSS154253 - Test Matrices for SVVS. \label{refdocs:matrices}
+\item PUSS154213 - Software Verification and Validation Specification v1.0 \label{redocs:SVVS}
+\item PUSS154253 - Test Matrices for SVVS v1.0 \label{refdocs:matrices}
 \end{enumerate}
 
 %--------------------Introduction ---------------------------------------
 \section{Introduction}
-This document contains the test instructions for the tests specified in PUSS154213 (ref. \ref{redocs:SVVS}). The test instructions are in appendices \ref{appendix:section:functiontest} and \ref{appendix:section:systemtest}. The numbering corresponds to that in the SVVS (ref. \ref{redocs:SVVS})
-% should the references have "Ref." instead?
+This document contains the test instructions for the tests specified in PUSS154213 (ref. \ref{redocs:SVVS}). The test instructions are in appendices \ref{appendix:section:functiontest} and \ref{appendix:section:systemtest}. The numbering corresponds to that in the SVVS (ref. \ref{redocs:SVVS}).
+% should the references have "Ref." instead? We have used both in the SVVS...
 
+\subsection{Terminology}
+\begin{description}
+\item[Device available] is used when a device is connected to the MVD.
+\item[Swiping] or \textbf{to drag} is a meant to be a relatively smooth motion with a finger (or similar device) on the screen of the telephone.
+\end{description}
 %--------------------Appendix A: Function test Specification ----------------
 \newpage
 \begin{appendices}
@@ -157,6 +169,8 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
     	\begin{precondition}
     		\item MyDevices View is open
     		\item At least one device is available
+            %tankar: Kan listan reagera olika på om det finns en eller flera enheter i den?
+            % Funkar det att dra i en lista med bara ett listobjekt?
     	\end{precondition}
     	\begin{instruction}
 			\item Drag the list downward
@@ -164,11 +178,12 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\end{instruction}
 		\begin{postcondition}
 			\item The list responds to the input
+            %hur mäter vi att den svarar på input? Om den är instabil och rör sig mer än vad vi petat på den, då är testet godkänt, men appen är ju kass. Likaså om man drar över hela skärmen och den rör sig bara ett par millimeter, så är ju testet passerat, men appen är ju helt omöjlig att använda?
 		\end{postcondition}
    %\item The list on the MyDevices view is scrollable. (Req. 5.2.3)
    
     \item
-    	\begin{precondition}
+     	\begin{precondition}
     		\item The MyDevices View is open
     		\item At least one device is available
     	\end{precondition}
@@ -176,7 +191,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 			\item Select one device
 		\end{instruction}
 		\begin{postcondition}
-			\item Background color of the chosen device changes and the "Control Device"-button is enabled
+			\item The device is highlighted and "Control Device"-button is enabled
 		\end{postcondition}
     %\item The devices on the list are selectable. (Req 5.2.4)
    
@@ -266,7 +281,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 			\item The MyDevices View is open
 		\end{precondition}
 		\begin{postcondition}
-			\item The layout of the screen resembles Fig. 1 in the appendix of Ref. \ref{refdocs:srs}
+ 			\item The layout of the screen resembles Fig. 1 in the appendix of Ref. \ref{refdocs:srs}
 		\end{postcondition}
 		   
     %\item The layout of the MyDevices View resemble figure 1 in appendix  Ref \ref{refdocs:srs} (5.2.11).
@@ -278,7 +293,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 	\item
  		\begin{precondition}
  			\item The MyDevices View is open
- 			\item A sensor device populates the list
+ 			\item A sensor device is available in the list
  		\end{precondition}
  		\begin{instruction}
  			\item Select a sensor device
@@ -435,7 +450,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
     	\end{precondition}
     	\begin{instruction}
     			\item Choose a light bulb in the list of available devices
-    			\item Press the "Control Device" button
+    			\item Press the "Control Device"-button
     	\end{instruction}
     	\begin{postcondition}
     		\item The Light Bulb View is open
@@ -477,7 +492,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
     	\end{instruction}
     	\begin{postcondition}
     		\item The four fields are preceded by "R:", "G:", "B:" and "W:" respectively
-    		\item Is is possible to enter a character into the fields
+    		\item It is possible to enter a character into the fields
     	\end{postcondition}
 
     % \item The field of R-, G-, B-, W-value is editable and preceded by "R:", "G:", "B:" and "W:" respectively (Req. 5.4.4, 5.4.5, 5.4.6, 5.4.7).
@@ -493,7 +508,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\end{instruction}
 		\begin{postcondition}
 			\item The Light Bulb View is open
-			\item The fields specified in Req. 5.4.4-5.4.7 ref. \ref{refdocs:srs} are empty
+			\item The fields specified in Req. 5.4.4-5.4.7 (ref. \ref{refdocs:srs}) are empty
 		\end{postcondition}	   
 %	\item When the Light Bulb View is opened, the fields are empty (Req. 5.4.8).
 
@@ -510,14 +525,14 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\end{postcondition}
 %	\item The "Get"-button retrieves the R-, G-, B-, W-values and present them in their corresponding fields (Req. 5.4.9). 
 
-	\item This test should be run 5 times with the following configurations:
-		\begin{itemize}
+	\item 
+		\begin{config}[five]
 			\item A=FF, B=00, C=00, D=00 (color: Red)
 			\item A=00, B=FF, C=00, D=00 (color: Green)
 			\item A=00, B=00, C=FF, D=00 (color: Blue)
 			\item A=00, B=00, C=00, D=FF (color: White)
 			\item A=10, B=10, C=10, D=10 (color: White)
-		\end{itemize}
+		\end{config}
 		\begin{precondition}
 			\item The Light Bulb View is open
 			\item The light bulb is on
@@ -535,13 +550,13 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		
 %	\item The "Set button" sets the color of the light bulb (Req. 5.4.10).
 
-	\item This test should be run 4 times with the following configurations:
-		\begin{itemize}
+	\item 
+    	\begin{config}[four]
 			\item A blank, B=FF, C=00, D=00 (color: Green)
 			\item A=00, B blank, C=FF, D=00 (color: Blue)
 			\item A=00, B=00, C blank, D=FF (color: White)
 			\item A=FF, B=00, C=00, D blank (color: Red)
-		\end{itemize}
+		\end{config}
 		\begin{precondition}
 			\item The Light Bulb View is open
 			\item The light bulb is on
@@ -563,12 +578,12 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		
 %	\item If an input value is left blank the value is interpreted as 00 (Req. 5.4.11) .   
 
-	\item This test should be run 3 times with the following configurations:
-		\begin{itemize}
+	\item 
+		\begin{config}[three]
 			\item A = '111'
-			\item A = 'EE'
+			\item A = 'GG' 
 			\item A = -1
-		\end{itemize}
+		\end{config}
 		\begin{precondition}
 			\item The Light Bulb View is open
 			\item The light bulb is on
@@ -580,7 +595,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 			\item Enter A into the "W:"-field
 		\end{instruction}
 		\begin{postcondition}
-			\item The value A is not entered
+			\item The value A is not accepted
 		\end{postcondition}
 %    \item The fields only accepts two characters that represent hexadecimal numbers (e.g. 00 to FF and all combinations inbetween) (Req 5.4.12, Req 5.4.13).
 
@@ -926,7 +941,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 
 	\item Measure the time it takes to perform this test
 		\begin{precondition}
-			\item 5 persons is chosen without prior knowledge of the project or the app
+			\item 5 persons is chosen without prior knowledge of the project or the application
 		\end{precondition}
 		\begin{instruction}
 			\item Give the test persons a minor introduction of what the application is able to do
