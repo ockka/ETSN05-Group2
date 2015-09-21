@@ -18,8 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityTwo"/>
-        <activity android:name=".example.ExampleActivity"/>
+        <activity android:name=".ActivityTwo" />
+        <activity android:name=".example.ExampleActivity" />
+        <activity
+            android:name=".activity.SensorDeviceActivity"
+            android:label="@string/title_activity_sensor_device" >
+        </activity>
     </application>
 
 </manifest>
