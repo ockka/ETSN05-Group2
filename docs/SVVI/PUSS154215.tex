@@ -17,6 +17,12 @@
 \settowidth{\testlabellength}{Instruction 100.10.10}
 \newenvironment{testlist}{\begin{enumerate}[label=\bfseries Instruction \thesubsection.\arabic* , labelindent=0pt, labelwidth=\testlabellength , leftmargin=2cm]}{\end{enumerate}}
 
+\newenvironment{config}[1][2]{
+This test should be run #1 times with the following configurations:
+\begin{enumerate}[label=\bfseries  \arabic*., labelindent=0cm, labelwidth=2cm , leftmargin=1cm]
+}
+{\end{enumerate}}
+
 \newenvironment{precondition}{
 {\color{white}BLARG}\\ 
 \textbf{Precondition}
@@ -37,7 +43,7 @@
 {\end{itemize}}
 
 \title{SVVI - Software Verification and Validation Instruction}
-\newcommand{\version}{v0.0}
+\newcommand{\version}{v0.2}
 \newcommand{\SVVI}{PUSS154215}
 \author{Testgroup, Team 2}
 
@@ -92,6 +98,8 @@ Jonathan Lundholm
     \hline
     \textbf{Version}		& \textbf{Date}		& \textbf{Responsible}					& \textbf{Description}					\\ \hline
     0.0						& 150916 			& UH									& Document created						\\ \hline
+    0.1						& 150918			& HA									& All instructions written				\\ \hline
+    0.2						& 150921			& UH									& Document ready for informal review \\ \hline
     \end{tabular}
 \end{center}
 
@@ -104,168 +112,560 @@ Jonathan Lundholm
 %--------------------Reference Documents ---------------------------------------
 \section{Reference Documents}
 \begin{enumerate}
-\item PUSS154212 - System Requirements Specification for the current project \label{refdocs:srs}
+\item PUSS154212 - System Requirements Specification v1.1 \label{refdocs:srs} 
 \item Programvaruutveckling för Stora System - Projekthandledning v2.2 (\textit{Institutionen för datavetenskap}, Lunds Univeritet 2015) \label{refdocs:projekthandledning}
-\item PUSS154213 - Software Verification and Validation Specification \label{redocs:SVVS}
-\item PUSS154253 - Test Matrices for SVVS. \label{refdocs:matrices}
+\item PUSS154213 - Software Verification and Validation Specification v1.0 \label{redocs:SVVS}
+\item PUSS154253 - Test Matrices for SVVS v1.0 \label{refdocs:matrices}
 \end{enumerate}
 
 %--------------------Introduction ---------------------------------------
 \section{Introduction}
-This document contains the test instructions for the tests specified in PUSS154213 (ref. \ref{redocs:SVVS}). The test instructions are in appendices \ref{appendix:section:functiontest} and \ref{appendix:section:systemtest}. The numbering corresponds to that in the SVVS (ref. \ref{redocs:SVVS})
+This document contains the test instructions for the tests specified in PUSS154213 (ref. \ref{redocs:SVVS}). The test instructions are in appendices \ref{appendix:section:functiontest} and \ref{appendix:section:systemtest}. The numbering corresponds to that in the SVVS (ref. \ref{redocs:SVVS}).
+% should the references have "Ref." instead? We have used both in the SVVS...
 
+\subsection{Terminology}
+\begin{description}
+\item[Device available] is used when a device is connected to the MVD.
+\item[Swiping] or \textbf{to drag} is a meant to be a relatively smooth motion with a finger (or similar device) on the screen of the telephone.
+\end{description}
 %--------------------Appendix A: Function test Specification ----------------
 \newpage
 \begin{appendices}
 
 \section{Function Test Instructions} \label{appendix:section:functiontest}
-This is appendix \ref{appendix:section:functiontest} where we list all function test specifications.
+This is appendix \ref{appendix:section:functiontest} where we list all function test instructions.
+
+%How much should we imply? Is it "touch" a thing or is it "press" a button; should we specify how to select a device from a list by saying "touch the name of the device in the list" or should we just say "select"
 
 \subsection{MyDevices View Test Instructions}
 \begin{testlist}
 
-    \item \begin{precondition}
-    			\item Telephone is on
-    			\item Application installed but not running.
-    			\end{precondition}
-    			\begin{instruction}
-    				\item Locate the application icon on the telephone.
-    				\item With your right index finger press the application icon.
-	    			\item Wait.
-    				\item Look at the screen and confirm the resemblance with figure \textbf{blurp} in \ref{refdocs:srs}.
-    			\end{instruction}
-    			\begin{postcondition}
-    				\item The application is running and the MyDevices screen is shown.
-    			\end{postcondition}
+    \item 
+    	\begin{precondition}
+    		\item The application is installed
+    	\end{precondition}
+    	\begin{instruction}
+			\item Start the application
+    	\end{instruction}
+    	\begin{postcondition}
+    		\item The application is running
+    		\item The MyDevices View is open
+    	\end{postcondition}
     %Test description: The first screen that is shown on startup is the MyDevicesView (Req. 5.2.1).
     
-	\item The list of available devices is empty on application start up. (Req. 5.2.2)
+	\item
+		\begin{precondition}
+			\item Application is not running
+    	\end{precondition}
+    	\begin{instruction}
+    		\item Start the application
+    	\end{instruction}
+    	\begin{postcondition}
+    		\item The list of available devices is empty
+    	\end{postcondition}
+    %The list of available devices is empty on application start up. (Req. 5.2.2)
+
+    \item	
+    	\begin{precondition}
+    		\item MyDevices View is open
+    		\item At least one device is available
+            %tankar: Kan listan reagera olika på om det finns en eller flera enheter i den?
+            % Funkar det att dra i en lista med bara ett listobjekt?
+    	\end{precondition}
+    	\begin{instruction}
+			\item Drag the list downward
+			\item Drag the list upward
+		\end{instruction}
+		\begin{postcondition}
+			\item The list responds to the input
+            %hur mäter vi att den svarar på input? Om den är instabil och rör sig mer än vad vi petat på den, då är testet godkänt, men appen är ju kass. Likaså om man drar över hela skärmen och den rör sig bara ett par millimeter, så är ju testet passerat, men appen är ju helt omöjlig att använda?
+		\end{postcondition}
+   %\item The list on the MyDevices view is scrollable. (Req. 5.2.3)
    
-    \item The list on the MyDevices view is scrollable. (Req. 5.2.3)
+    \item
+     	\begin{precondition}
+    		\item The MyDevices View is open
+    		\item At least one device is available
+    	\end{precondition}
+		\begin{instruction}
+			\item Select one device
+		\end{instruction}
+		\begin{postcondition}
+			\item The device is highlighted and "Control Device"-button is enabled
+		\end{postcondition}
+    %\item The devices on the list are selectable. (Req 5.2.4)
    
-    \item The devices on the list are selectable. (Req 5.2.4)
+    \item 
+   		\begin{precondition}
+   			\item The MyDevices View is open
+   			\item At least two devices are available
+   			\item One device is selected
+   		\end{precondition}
+   		\begin{instruction}
+   			\item Select another device
+   		\end{instruction}
+   		\begin{postcondition}
+   			\item Only the last selected device is still selected
+   		\end{postcondition}
+    %\item Only one device can be selected at a time. (Req. 5.2.5)
+    
+    \item
+    	\begin{precondition}
+    		\item The MyDevices View is open
+    		\item No device is selected
+    	\end{precondition}
+    	\begin{instruction}
+    		\item Press the "Control Device"-button
+    	\end{instruction}
+    	\begin{postcondition}
+    		\item A pop-up message "Please select a device" is displayed
+    	\end{postcondition}
+    %\item When no device is selected and the "Control Device" -button is pressed, a pop-up message "Please select a device" is displayed. (Req. 5.2.6)
    
-    \item Only one device can be selected at a time. (Req. 5.2.5)
+	\item
+		\begin{precondition}
+			\item The MyDevices View is open
+			\item There is at least one sensor in the list of available devices
+		\end{precondition}
+		\begin{postcondition}
+			\item The name of each sensor device is "Sensor"
+			\item The address of each sensor is their MAC address
+			\item The id of each sensor is their identifier
+		\end{postcondition}
+		   
+    %\item Sensors are displayed in the list of available devices with "Sensor" as name, and it's MAC address as address and their indentifier as id. (Req. 5.2.7)
    
-    \item When no device is selected and the "Control Device" -button is pressed, a pop-up message "Please select a device" is displayed. (Req. 5.2.6)
+	\item
+		\begin{precondition}
+			\item The MyDevices View is open
+			\item There is at least one light bulb in the list of available devices
+		\end{precondition}
+		\begin{postcondition}
+			\item The name of each light bulb is "Light Bulb"
+			\item The address of each light bulb is their MAC address
+			\item The id of each light bulb is their identifier
+		\end{postcondition}
+		   
+    %\item Light bulbs are displayed in the list of available devices with "Light Bulb" as name and it's MAC address as address and their indentifier as id. (Req. 5.2.8)
    
-    \item Sensors are displayed in the list of available devices with "Sensor" as name, and it's MAC address as address and their indentifier as id. (Req. 5.2.7)
+	\item
+		\begin{precondition}
+			\item The MyDevices View is open
+		\end{precondition}
+		\begin{instruction}
+			\item Press the "Get Devices"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item A scan for available devices has been performed
+			\item The list of available devices is updated
+		\end{postcondition}
+		   
+    %\item The "Get Devices" -button performs a scan for available devices when pressed. (Req. 5.2.9)
    
-    \item Light bulbs are displayed in the list of available devices with "Light Bulb" as name and it's MAC address as address and their indentifier as id. (Req. 5.2.8)
-   
-    \item The "Get Devices" -button performs a scan for available devices when pressed. (Req. 5.2.9)
-   
-    \item When the back button is pressed the application is closed (Req. 5.2.10)
+	\item
+		\begin{precondition}
+			\item The MyDevices View is open
+		\end{precondition}
+		\begin{instruction}
+			\item Press the back button
+		\end{instruction}
+		\begin{postcondition}
+			\item The application is closed
+		\end{postcondition}
+		   
+   %\item When the back button is pressed the application is closed (Req. 5.2.10)
     
     % Nytt requirement!
-    \item The layout of the MyDevices View resemble figure 1 in appendix  Ref \ref{refdocs:srs} (5.2.11).
+    \item
+		\begin{precondition}
+			\item The MyDevices View is open
+		\end{precondition}
+		\begin{postcondition}
+ 			\item The layout of the screen resembles Fig. 1 in the appendix of Ref. \ref{refdocs:srs}
+		\end{postcondition}
+		   
+    %\item The layout of the MyDevices View resemble figure 1 in appendix  Ref \ref{refdocs:srs} (5.2.11).
 \end{testlist}
 
 %--------------------------Sensor view tests --------------------------------------
 \subsection{Sensor View Test Instructions}
 \begin{testlist}
-\item When the "Control Device"-button in the MyDevices View is pressed and a sensor is selected, the Sensor view is opened (Req. 5.3.1).
+	\item
+ 		\begin{precondition}
+ 			\item The MyDevices View is open
+ 			\item A sensor device is available in the list
+ 		\end{precondition}
+ 		\begin{instruction}
+ 			\item Select a sensor device
+ 			\item Press the "Control Device"-button
+ 		\end{instruction}
+ 		\begin{postcondition}
+ 			\item The Sensor View is open
+ 		\end{postcondition}
 
-\item The sensor name and mac-address is shown in the top of the view (Req. 5.3.2, 5.3.3).
- 
-\item It is possible to change the on/off -status of the selected sensor with a switch (Req. 5.3.4).
+%When the "Control Device"-button in the MyDevices View is pressed and a sensor is selected, the Sensor view is opened (Req. 5.3.1).
 
-\item There are text fields preceded by "T", "P", "H", "M", "G", "A" that are used to, respectively, display temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration (Req. 5.3.5, 5.3.6, 5.3.7, 5.3.8, 5.3.9, 5.3.10).
+	\item
+		\begin{precondition}
+			\item The Sensor View is open
+		\end{precondition}
+		\begin{postcondition}
+			\item The sensor name and MAC address is shown in the top of the view
+		\end{postcondition}
+%\item The sensor name and mac-address is shown in the top of the view (Req. 5.3.2, 5.3.3).
 
-\item By pressing the corresponding "Get"-button, the values of the temperature, pressure, humidity, magnetic field strength, qyroscopic and acceleration sensors are retrieved if available and displayed (Req. 5.3.11, 5.3.12, 5.3.13, 5.3.14, 5.3.15, 5.3.16).
+	\item
+		\begin{precondition}
+			\item The Sensor View is open
+			\item The on/off-status switch is set to off
+		\end{precondition}
+		\begin{instruction}
+			\item Set the on/off-status switch to on
+	  	\end{instruction}
+	  	\begin{postcondition}
+	  		\item The on/off-status switch of the selected sensor is on
+	  		\item The status lamp on the sensor device is lit
+	  	\end{postcondition}
+%\item It is possible to change the on/off -status of the selected sensor with a switch (Req. 5.3.4).
 
-\item The "Get All" -button gets the values for all six sensors and displays them (Req. 5.3.17).
+	\item
+		\begin{precondition}
+			\item The Sensor View is open
+		\end{precondition}
+		\begin{postcondition}
+			\item There are text fields preceded by "T", "P", "H", "M", "G", "A"
+		\end{postcondition}
+%\item There are text fields preceded by "T", "P", "H", "M", "G", "A" that are used to, respectively, display temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration (Req. 5.3.5, 5.3.6, 5.3.7, 5.3.8, 5.3.9, 5.3.10).
 
-\item The "Clear All" button clears all sensor text fields from data (Req. 5.3.18).
+	\item This test should be run 1 time for each of the text fields
+		\begin{precondition}
+			\item The Sensor View is open
+			\item The on/off-status switch is set to on
+		\end{precondition}
+		\begin{instruction}
+			\item Press the corresponding "Get"-button to the text field
+		\end{instruction}
+		\begin{postcondition}
+			\item The values of the corresponding sensors are retrieved if available and displayed
+		\end{postcondition}
 
-\item If there is no data to retrieve for any of the physical quantities: temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration when the corresponding "Get" button is pressed the corresponding, text fields display "No data available" (Req. 5.3.19, 5.3.20, 5.3.21, 5.3.22, 5.3.23, 5.3.24).
+%\item By pressing the corresponding "Get"-button, the values of the temperature, pressure, humidity, magnetic field strength, qyroscopic and acceleration sensors are retrieved if available and displayed (Req. 5.3.11, 5.3.12, 5.3.13, 5.3.14, 5.3.15, 5.3.16).
 
-\item The on/off-switch is set according to the information from the REST API (Req. 5.3.25).
+	\item
+		\begin{precondition}
+			\item The Sensor View is open
+			\item The on/off-status switch is set to on
+		\end{precondition}
+		\begin{instruction}
+			\item Press the "Get All"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item The value for all six sensor's data are displayed in their corresponding text fields
+		\end{postcondition}
+%\item The "Get All" -button gets the values for all six sensors and displays them (Req. 5.3.17).
 
-\item When the back button is pressed in the Sensor View, the MyDevices View is opened (Req. 5.3.26).
+	\item
+		\begin{precondition}
+			\item The Sensor View is open
+			\item Sensors data are displayed in the text fields
+		\end{precondition}
+		\begin{instruction}
+			\item Press the "Clear All"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item All the sensor text fields are empty
+		\end{postcondition}
+%\item The "Clear All" button clears all sensor text fields from data (Req. 5.3.18).
 
-\item When the sensor view is opened the temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration text fields are empty (Req. 5.3.27).
+	\item This test should be run 1 time for each of the text fields
+		\begin{precondition}
+			\item The Sensor View is open
+			\item The on/off-status switch is set to on
+			\item Some sensor data is unavailable
+		\end{precondition}
+		\begin{instruction}
+			\item Press the corresponding "Get"-button to the text field
+    	\end{instruction}
+    	\begin{postcondition}
+    		\item The text field displays "No data available" if no sensor data is available
+    	\end{postcondition}
+%\item If there is no data to retrieve for any of the physical quantities: temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration when the corresponding "Get" button is pressed the corresponding, text fields display "No data available" (Req. 5.3.19, 5.3.20, 5.3.21, 5.3.22, 5.3.23, 5.3.24).
 
-% Nytt requirement!
-\item The layout of the Sensor View resemble figure 2 in appendix  Ref \ref{refdocs:srs} (Req. 5.3.28).
+	\item
+		\begin{precondition}
+			\item The Sensor View is open
+		\end{precondition}
+		\begin{instruction}
+			\item Change the status of the on/off-status switch
+		\end{instruction}
+		\begin{postcondition}
+			\item The on/off-status switch corresponds to the status light on the sensor device
+		\end{postcondition}
 
+%\item The on/off-switch is set according to the information from the REST API (Req. 5.3.25).
+
+	\item
+		\begin{precondition}
+			\item The Sensor View is open
+		\end{precondition}
+		\begin{instruction}
+			\item Press the back button
+		\end{instruction}
+		\begin{postcondition}
+			\item The MyDevices View is open
+		\end{postcondition}
+
+%\item When the back button is pressed in the Sensor View, the MyDevices View is opened (Req. 5.3.26).
+
+	\item
+		\begin{precondition}
+			\item The MyDevices View is open
+		\end{precondition}
+		\begin{instruction}			
+			\item Select a sensor device
+			\item Press the "Control Device" -button
+		\end{instruction}
+		\begin{postcondition}
+			\item The temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration text fields are all empty
+		\end{postcondition}
+
+%\item When the sensor view is opened the temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration text fields are empty (Req. 5.3.27).
+
+	\item
+		\begin{precondition}
+			\item The Sensor View is open
+		\end{precondition}
+		\begin{postcondition}
+			\item The layout of the screen resembles Fig. 2 in appendix A in Ref. \ref{refdocs:srs}
+		\end{postcondition}
 \end{testlist}
 
 \subsection{Light Bulb View Test Instructions}
 \begin{testlist}
 
-    \item 	\begin{precondition}
-    			\item The application is in the MyDevices View
-    			\item At least one lightbulb is in the list of available devices.
-    		\end{precondition}
-    		\begin{instruction}
-    				\item Choose a light bulb in the list of available devices.
-    				\item Press the "Control Device" button
-    		\end{instruction}
-    		\begin{postcondition}
-    			\item The Light Bulb View is open
-    		\end{postcondition}
+    \item
+    	\begin{precondition}
+    		\item The MyDevices View is open
+    		\item At least one light bulb is in the list of available devices
+    	\end{precondition}
+    	\begin{instruction}
+    			\item Choose a light bulb in the list of available devices
+    			\item Press the "Control Device"-button
+    	\end{instruction}
+    	\begin{postcondition}
+    		\item The Light Bulb View is open
+    	\end{postcondition}
 
 	%\item The Light Bulb View opens when a light bulb is chosen in the MyDevices View and the "Control device" button is pressed. (Req 5.4.1)
 	
-	\item 	\begin{precondition}
-				\item The Light Bulb View is shown
-			\end{precondition}
-    		\begin{postcondition}
-    			\item The name and mac-address of the light bulb is shown at the top of the view.
-    		\end{postcondition}
+	\item
+		\begin{precondition}
+			\item The Light Bulb View is open
+		\end{precondition}
+    	\begin{postcondition}
+    		\item The name and MAC address of the light bulb is shown at the top of the view
+    	\end{postcondition}
     	
 	%\item The name of the selected light bulb is shown at the top of the View (Req 5.4.2).
 	
-	\item 	\begin{precondition}
-				\item The Light Bulb View is open
-				\item The switch to control the on/off-status of the light bulb is set to on (off)
-				\item The state of the light bulb corresponds to the state of the switch
-			\end{precondition}
-    		\begin{instruction}
-    			\item Change the switch to off (on)
-    		\end{instruction}
-    		\begin{postcondition}
-    			\item The switch to control the light bulb is set tp off (on)
-    			\item The light bulb turns off (on).
-    		\end{postcondition}
-    		
+	\item
+		\begin{precondition}
+			\item The Light Bulb View is open
+			\item The on/off-status switch is set to on
+			\item The state of the light bulb corresponds to the state of the switch
+		\end{precondition}
+    	\begin{instruction}
+    		\item Change the on/off-status switch to off
+    	\end{instruction}
+    	\begin{postcondition}
+    		\item The light bulb is off
+    	\end{postcondition}  		
   
     % \item The selected light bulb can be turned on/off with a switch (Req. 5.4.3). 
-    
-   	\item 	\begin{precondition}
-   				\item The Light Bulb View is open
-			\end{precondition}
-    		\begin{instruction}
-    			\item For each of the four fields, enter at least one character
-    		\end{instruction}
-    		\begin{postcondition}
-    			\item The four fields are preceded by "R:", "G:", "B:" and "W:" respectively
-    			\item Is is possible to enter a character into the fields
-    		\end{postcondition}
+   
+   	\item
+   		\begin{precondition}
+   			\item The Light Bulb View is open
+		\end{precondition}
+    	\begin{instruction}
+    		\item For each of the four fields, enter "A"
+    	\end{instruction}
+    	\begin{postcondition}
+    		\item The four fields are preceded by "R:", "G:", "B:" and "W:" respectively
+    		\item It is possible to enter a character into the fields
+    	\end{postcondition}
 
-    % \item The field of R-, G-, B-, W-value is editable and preceded by "R:", "G:", "B:" and "W:" respectively (Req. 5.4.4, 5.4.5, 5.4.6, 5.4.7). 
-    
-	\item When the Light Bulb View is opened, the fields are empty (Req. 5.4.8).
+    % \item The field of R-, G-, B-, W-value is editable and preceded by "R:", "G:", "B:" and "W:" respectively (Req. 5.4.4, 5.4.5, 5.4.6, 5.4.7).
 
-	\item The "Get"-button retrieves the R-, G-, B-, W-values and present them in their corresponding fields (Req. 5.4.9). 
+	\item
+		\begin{precondition}
+			\item The MyDevices View is open
+			\item There is a light bulb available
+		\end{precondition}
+		\begin{instruction}
+			\item Select a light bulb
+			\item Press the "Control Device"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item The Light Bulb View is open
+			\item The fields specified in Req. 5.4.4-5.4.7 (ref. \ref{refdocs:srs}) are empty
+		\end{postcondition}	   
+%	\item When the Light Bulb View is opened, the fields are empty (Req. 5.4.8).
 
-	\item The "Set button" sets the color of the light bulb (Req. 5.4.10).
+	\item
+		\begin{precondition}
+			\item The Light Bulb View is open
+			\item The light bulb is on
+		\end{precondition}
+		\begin{instruction}
+			\item Press the "Get"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item The R-, G-, B-, W-values are displayed in the fields specified in Req. 5.4.4-5.4.7 in ref \ref{refdocs:srs}
+		\end{postcondition}
+%	\item The "Get"-button retrieves the R-, G-, B-, W-values and present them in their corresponding fields (Req. 5.4.9). 
 
-	\item If an input value is left blank the value is interpreted as 00 (Req. 5.4.11) .   
+	\item 
+		\begin{config}[five]
+			\item A=FF, B=00, C=00, D=00 (color: Red)
+			\item A=00, B=FF, C=00, D=00 (color: Green)
+			\item A=00, B=00, C=FF, D=00 (color: Blue)
+			\item A=00, B=00, C=00, D=FF (color: White)
+			\item A=10, B=10, C=10, D=10 (color: White)
+		\end{config}
+		\begin{precondition}
+			\item The Light Bulb View is open
+			\item The light bulb is on
+		\end{precondition}
+		\begin{instruction}
+			\item Set the "R:"-field to A
+			\item Set the "G:"-field to B
+			\item Set the "B:"-field to C
+			\item Set the "W:"-field to D
+			\item Press the "Set"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item The light bulb has the specified color
+		\end{postcondition}
+		
+%	\item The "Set button" sets the color of the light bulb (Req. 5.4.10).
+
+	\item 
+    	\begin{config}[four]
+			\item A blank, B=FF, C=00, D=00 (color: Green)
+			\item A=00, B blank, C=FF, D=00 (color: Blue)
+			\item A=00, B=00, C blank, D=FF (color: White)
+			\item A=FF, B=00, C=00, D blank (color: Red)
+		\end{config}
+		\begin{precondition}
+			\item The Light Bulb View is open
+			\item The light bulb is on
+			\item The R-, G-, B-, W-, fields show FF, FF, FF and FF respectively
+			\item The light bulb glows white
+		\end{precondition}
+		\begin{instruction}
+			\item Set the "R:"-field to A
+			\item Set the "G:"-field to B
+			\item Set the "B:"-field to C
+			\item Set the "W:"-field to D
+			\item Press the "Set"-button
+			\item Press the "Get"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item The light bulb has the specified color
+			\item The fields that were left blank show "00"
+		\end{postcondition}
+		
+%	\item If an input value is left blank the value is interpreted as 00 (Req. 5.4.11) .   
+
+	\item 
+		\begin{config}[three]
+			\item A = '111'
+			\item A = 'GG' 
+			\item A = -1
+		\end{config}
+		\begin{precondition}
+			\item The Light Bulb View is open
+			\item The light bulb is on
+		\end{precondition}
+		\begin{instruction}
+			\item Enter A into the "R:"-field
+			\item Enter A into the "G:"-field
+			\item Enter A into the "B:"-field
+			\item Enter A into the "W:"-field
+		\end{instruction}
+		\begin{postcondition}
+			\item The value A is not accepted
+		\end{postcondition}
+%    \item The fields only accepts two characters that represent hexadecimal numbers (e.g. 00 to FF and all combinations inbetween) (Req 5.4.12, Req 5.4.13).
+
+	\item
+		\begin{precondition}
+			\item The Light Bulb View is open
+			\item The light bulb is on
+			\item The light bulb glows white
+		\end{precondition}
+		\begin{instruction}
+			\item Set the "R:"-field to FF
+			\item Set the "G:"-field to 00
+			\item Set the "B:"-field to 00
+			\item Set the "W:"-field to 00
+			\item Press the "Set"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item A pop-up message saying "Color successfully changed" is displayed
+			\item The light bulb is red
+		\end{postcondition}
+%    \item A pop-up message saying "Color successfully changed" is displayed when the values of the light bulb were successfully set. (Req 5.4.14)
+
+	\item
+		\begin{precondition}
+			\item The Light Bulb View is open
+			\item The light bulb is on
+			\item The color of the light bulb can not be changed
+		\end{precondition}
+		\begin{instruction}
+			\item Set the "R:"-field to 00
+			\item Set the "G:"-field to 00
+			\item Set the "B:"-field to FF
+			\item Set the "W:"-field to 00
+			\item Press the "Set"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item A pop-up message saying "Error: Could not change color." is displayed
+		\end{postcondition}
+%    \item A pop-up message saying "Error: Could not change color." is displayed when the values of the light bulb were unsuccessfully set. (Req 5.4.15)
+
+	\item
+		\begin{precondition}
+			\item The Light Bulb View is open
+			\item The light bulb is off
+		\end{precondition}
+		\begin{postcondition}
+			\item The "Set"-button is unavailable
+		\end{postcondition}
+%    \item When the light bulb is off, the "Set"-button is unavailable (Req. 5.4.16).
+
+	\item
+		\begin{precondition}
+			\item The Light Bulb View is open
+		\end{precondition}
+		\begin{instruction}
+			\item Press the back button
+		\end{instruction}
+		\begin{postcondition}
+			\item The MyDevices View is open
+		\end{postcondition}
+%    \item When the back button is pressed the system switches to MyDevices View (Req. 5.4.17).
     
-    \item The fields only accepts two characters that represent hexadecimal numbers (e.g. 00 to FF and all combinations inbetween) (Req 5.4.12, Req 5.4.13).
-    
-    \item A pop-up message saying "Color successfully changed" is displayed when the values of the light bulb were successfully set. (Req 5.4.14)
-    
-    \item A pop-up message saying "Error: Could not change color." is displayed when the values of the light bulb were unsuccessfully set. (Req 5.4.15)
-       
-    \item When the light bulb is off, the "Set"-button is unavailable (Req. 5.4.16).
-    
-    \item When the back button is pressed the system switches to MyDevices View (Req. 5.4.17).
-    
-    % Nytt requirement!
-    \item The layout of the Light Bulb View resemble figure 3 in appendix  Ref \ref{refdocs:srs} (Req. 5.4.18).
+	\item
+		\begin{precondition}
+			\item The Light Bulb View is open
+		\end{precondition}
+		\begin{postcondition}
+			\item The layout of the screen resembles Fig. 3 in the appendix of Ref. \ref{refdocs:srs}
+		\end{postcondition}
+%    \item The layout of the Light Bulb View resemble figure 3 in appendix  Ref \ref{refdocs:srs} (Req. 5.4.18).
 
 \end{testlist}	
 
@@ -277,51 +677,336 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 
 \subsection{Use Cases}
 \begin{testlist}
-	\item Scenario 5.1.1 in Ref \ref{refdocs:srs} is supported (Req. 5.1.1).
+	\item 
+		\begin{precondition}
+			\item The MyDevices View is open
+			\item There is a light bulb and a sensor device within scan range of the MVD
+			\item No other devices are within range of the MVD
+		\end{precondition}
+		\begin{instruction}
+			\item Press the "Get Devices"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item The light bulb is displayed in the MyDevices View
+		 	\item The sensor device is displayed in the MyDevices View
+		\end{postcondition}
+	%SVVS: Scenario 5.1.1 in Ref \ref{refdocs:srs} is supported (Req. 5.1.1).
 
-	\item Exception 1 described in scenario 5.1.1 can be generated by removing the devices from range while attempting scenario 5.1.1 (Req 5.1.1).
+	\item 
+		\begin{precondition}
+			\item The MyDevices View is open
+			\item No devices are within range of the MVD
+		\end{precondition}
+		\begin{instruction}
+			\item Press the "Get Devices"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item A pop-up message with the text "No devices found" is found
+			\item The list of avilable devices is empty
+		\end{postcondition}
+	%SVVS: Exception 1 described in scenario 5.1.1 can be generated by removing the devices from range while attempting scenario 5.1.1 (Req 5.1.1).
 	
-	\item Scenario 5.1.2 in Ref \ref{refdocs:srs} is supported (Req. 5.1.2).
-	
-	\item Exception 1 in scenario 5.1.2 can be generated by not selecting a device in step 1 (Req. 5.1.2).
-	
-	\item Scenario 5.1.3 in Ref \ref{refdocs:srs} is supported (Req. 5.1.3).
-	
-	\item Exception 1 described in scenario 5.1.3 can be generated by not selecting a device in step 1 (Req. 5.1.3). 
-	
-	\item Scenario 5.1.4 in Ref \ref{refdocs:srs} is supported (Req. 5.1.4).
-	
-	\item Scenario 5.1.5 in Ref \ref{refdocs:srs} is supported (Req. 5.1.5).
-	
-	\item Scenario 5.1.6 in Ref \ref{refdocs:srs} is supported (Req. 5.1.6).
-	
-	\item Scenario 5.1.7 in Ref \ref{refdocs:srs} is supported (Req. 5.1.7).
-	
-	\item Scenario 5.1.8 in ref \ref{refdocs:srs} is supported (Req. 5.1.8).
+	\item
+		\begin{precondition}
+			\item The MyDevices View is open
+			\item A light bulb is available
+		\end{precondition}
+		\begin{instruction}
+			\item Select the light bulb
+			\item Press the "Control Device"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item The Light Bulb View is open
+		\end{postcondition}
+%	\item Scenario 5.1.2 in Ref \ref{refdocs:srs} is supported (Req. 5.1.2).
 
-	\item Scenario 5.1.9 in Ref \ref{refdocs:srs} is supported (Req. 5.1.9).
-	
-	\item If some data is unavailable when attempting scenario 5.1.9, the text in the corresponding field is set to "No data available." (Req. 5.1.9).
-	
-	\item Scenario 5.1.10 in Ref \ref{refdocs:srs} is supported (Req. 5.1.10).
-	
-	\item If some data is unavailable when attempting scenario 5.1.10, the text in the corresponding field is set to "No data available." (Req. 5.1.10).
-	
-	\item Scenario 5.1.11 in Ref \ref{refdocs:srs} is supported (Req. 5.1.11).
-	
-	\item If some data is unavailable when attempting scenario 5.1.11, the text in the corresponding field is set to "No data available." (Req. 5.1.11).
-	
-	\item Scenario 5.1.12 in Ref \ref{refdocs:srs} is supported (Req. 5.1.12).
+	\item
+		\begin{precondition}
+			\item The MyDevices View is open
+			\item A light bulb is available
+		\end{precondition}
+		\begin{instruction}
+			\item Press the "Control Device"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item A pop-up message with the text "Please select a device" is shown
+		\end{postcondition}	
+%	\item Exception 1 in scenario 5.1.2 can be generated by not selecting a device in step 1 (Req. 5.1.2).
+
+	\item
+		\begin{precondition}
+			\item The Sensor View is open
+			\item A sensor device is available
+		\end{precondition}
+		\begin{instruction}
+			\item Select the sensor
+			\item Press the "Control Device"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item The Sensor View is open
+		\end{postcondition}
+%	\item Scenario 5.1.3 in Ref \ref{refdocs:srs} is supported (Req. 5.1.3).
+
+	\item
+		\begin{precondition}
+			\item The Sensor View is open
+			\item A sensor device is available
+		\end{precondition}
+		\begin{instruction}
+			\item Press the "Control Device"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item A pop-up message with the text "Please select a device" is shown
+		\end{postcondition}
+%	\item Exception 1 described in scenario 5.1.3 can be generated by not selecting a device in step 1 (Req. 5.1.3). 
+
+	\item
+		\begin{precondition}
+			\item The Light Bulb View is open
+			\item The light bulb is on
+		\end{precondition}
+		\begin{instruction}
+			\item Set the on/off-status switch to off
+		\end{instruction}
+		\begin{postcondition}
+			\item The light bulb is off
+		\end{postcondition}
+%	\item Scenario 5.1.4 in Ref \ref{refdocs:srs} is supported (Req. 5.1.4).
+
+	\item
+		\begin{precondition}
+			\item The Light Bulb View is open
+			\item The light bulb is off
+		\end{precondition}
+		\begin{instruction}
+			\item Set the on/off-status switch to on
+		\end{instruction}
+		\begin{postcondition}
+			\item The light bulb is on
+		\end{postcondition}
+%	\item Scenario 5.1.5 in Ref \ref{refdocs:srs} is supported (Req. 5.1.5).
+
+	\item
+		\begin{precondition}
+			\item The Sensor View is open
+			\item The sensor device is on
+		\end{precondition}
+		\begin{instruction}
+			\item Set the on/off-status switch to off
+		\end{instruction}
+		\begin{postcondition}
+			\item The sensor device is off
+		\end{postcondition}
+%	\item Scenario 5.1.6 in Ref \ref{refdocs:srs} is supported (Req. 5.1.6).
+
+	\item
+		\begin{precondition}
+			\item The Sensor View is open
+			\item The sensor device is off
+		\end{precondition}
+		\begin{instruction}
+			\item Set the on/off-status switch to on
+		\end{instruction}
+		\begin{postcondition}
+			\item The sensor device is on
+		\end{postcondition}
+%	\item Scenario 5.1.7 in Ref \ref{refdocs:srs} is supported (Req. 5.1.7).
+
+	\item
+		\begin{precondition}
+			\item The Light Bulb View is open
+			\item The light bulb is on
+			\item The "R:"-field of the light bulb is set to FF
+			\item The "G:"-field of the light bulb is set to FF
+			\item The "B:"-field of the light bulb is set to 00
+			\item The "W:"-field of the light bulb is set to 00
+		\end{precondition}
+		\begin{instruction}
+			\item Set the "R:"-field to FF
+			\item Set the "G:"-field to 00
+			\item Set the "B:"-field to 00
+			\item Set the "W:"-field to 00
+			\item Press the "Set"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item The light bulb glows red
+		\end{postcondition}
+%	\item Scenario 5.1.8 in ref \ref{refdocs:srs} is supported (Req. 5.1.8).
+
+	\item
+		\begin{precondition}
+			\item The Light Bulb View is open
+			\item The light bulb is on
+			\item The light bulb glows yellow
+		\end{precondition}
+		\begin{instruction}
+			\item Press the "Get"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item The "R:"-field displays a value greater than F0
+			\item The "G:"-field displays a value greater than F0
+			\item The "B:"-field displays a value less than 10
+			\item The "W:"-field displays a value less than 10
+		\end{postcondition}
+%	\item Scenario 5.1.9 in Ref \ref{refdocs:srs} is supported (Req. 5.1.9).
+
+	\item
+		\begin{precondition}
+			\item The Light Bulb View is open
+			\item The light bulb is on
+			\item The light bulb glows yellow
+			\item One or more fields are unavailable
+		\end{precondition}
+		\begin{instruction}
+			\item Press the "Get"-button
+		\end{instruction}
+		\begin{postcondition}
+			\item One or more fields are updated to "No data available"
+		\end{postcondition}
+%	\item If some data is unavailable when attempting scenario 5.1.9, the text in the corresponding field is set to "No data available." (Req. 5.1.9).
+
+	\item
+		\begin{precondition}
+			\item The Sensor Device View is open
+			\item The sensor device is on
+		\end{precondition}
+		\begin{instruction}
+			\item Press the "Get"-button next to the "T:"-field
+		\end{instruction}
+		\begin{postcondition}
+			\item The temperature is displayed in the "T:"-field
+		\end{postcondition}
+%	\item Scenario 5.1.10 in Ref \ref{refdocs:srs} is supported (Req. 5.1.10).
+
+	\item
+		\begin{precondition}
+			\item The Sensor Device View is open
+			\item The sensor device is on
+			\item The temperature data for the sensor device is unavailable
+		\end{precondition}
+		\begin{instruction}
+			\item Press the "Get"-button next to the "T:"-field
+		\end{instruction}
+		\begin{postcondition}
+			\item The text in the "T:"-field is set to "No data available"
+		\end{postcondition}
+        
+%	\item If some data is unavailable when attempting scenario 5.1.10, the text in the corresponding field is set to "No data available." (Req. 5.1.10).
+
+	\item
+		\begin{precondition} 
+			\item The Sensor Device View is open
+			\item The sensor device is on
+		\end{precondition}
+		\begin{instruction}
+			\item Press the "Get All"-button at the bottom of the view
+		\end{instruction}
+		\begin{postcondition}
+			\item All the sensor values are displayed in their respective field
+		\end{postcondition}
+%	\item Scenario 5.1.11 in Ref \ref{refdocs:srs} is supported (Req. 5.1.11).
+
+	\item
+		\begin{precondition}
+			\item The Sensor Device View is open
+			\item The sensor device is on
+    	    \item Some sensor data for the sensor device is unavailable
+		\end{precondition}
+		\begin{instruction}
+			\item Press the "Get All"-button
+		\end{instruction}
+		\begin{postcondition} 
+			\item The field corresponding to the data that were unavailable is set to "No data available"
+		\end{postcondition}
+%  		\item If some data is unavailable when attempting scenario 5.1.11, the text in the corresponding field is set to "No data available." (Req. 5.1.11).
+
+	\item
+		\begin{precondition} 
+			\item The Sensor Device View is open
+			\item At least one of the sensor data fields has data
+		\end{precondition}
+		\begin{instruction} 
+			\item Press the "Clear All"-button
+		\end{instruction}
+	  	\begin{postcondition}
+			\item All the sensor data fields are empty
+		\end{postcondition}
+%	\item Scenario 5.1.12 in Ref \ref{refdocs:srs} is supported (Req. 5.1.12).
+
 \end{testlist}
 
 \subsection{Quality Test Instructions}
 
 \begin{testlist}
-	\item Test of usability using persons without prior knowledge of the project or the app (Req. 6.1).
-	
-	\item The response time for any interaction with the system is below two seconds (Req. 6.2).
-	
-	\item The time-out time for the system is 15 seconds (Req. 6.3). 
+
+	\item Measure the time it takes to perform this test
+		\begin{precondition}
+			\item 5 persons is chosen without prior knowledge of the project or the application
+		\end{precondition}
+		\begin{instruction}
+			\item Give the test persons a minor introduction of what the application is able to do
+            \item Tell the test persons to turn the lamp green
+            \item Tell the test persons to collect all data from the sensor
+		\end{instruction}
+		\begin{postcondition}
+			\item All test persons completed the tasks without any major problems
+			\item The full test requires less than 10 minutes to perform
+		\end{postcondition}
+%	\item Test of usability using persons without prior knowledge of the project or the app (Req. 6.1).
+
+	\item For each step in the instruction below, measure the interaction time
+		\begin{precondition}
+			\item The application is not running
+		\end{precondition}
+		\begin{instruction}
+			\item Start the application
+            \item Press "Get Device"-button
+            \item Select a sensor
+            \item Press "Control Device"-button
+            \item Turn the sensor on by flicking the switch
+            \item Press "Get"-button. Do this for all data
+            \item Press "Get All"-button
+            \item Press "Clear All"-button
+            \item Turn the sensor off by flicking the switch
+            \item Press "Back"-button
+            \item Select a light bulb
+            \item Turn the ligt bulb on by flicking the switch
+            \item Press "Get"-button
+            \item Enter any value in the color fields
+            \item Press "Set"-button
+            \item Turn the light bulb off by flicking the switch
+            \item Press "Back"-button until the application is closed
+		\end{instruction}
+		\begin{postcondition}
+			\item All of the interactions had a response time below two seconds
+		\end{postcondition}
+%	\item The response time for any interaction with the system is below two seconds (Req. 6.2).
+
+	\item For each step in the instruction below, measure the time until an error message is displayed
+		\begin{precondition} 
+			\item In each step, the corresponding device should be out of range of the MVD
+			\item In each step, first navigate to the appropriate view (some devices may need to be connected for this. In that case, remove them from range before the test instruction is performed)
+		\end{precondition}
+		\begin{instruction}
+			\item Press the "Get Devices"-button
+			\item Change the on/off-status switch of the sensor device to on
+			\item Press the "Get All"-button in the Sensor Device View
+			\item Change the on/off-status switch of the sensor device to off
+			\item Change the on/off-status switch of the light bulb to on
+			\item Change the color of the light bulb:
+			\begin{itemize}
+				\item Set the "R:"-field to 00
+				\item Set the "G:"-field to 00
+				\item Set the "B:"-field to FF
+				\item Set the "W:"-field to 00
+				\item Press the "Set"-button
+			\end{itemize}
+			\item Change the on/off-status switch of the light bulb to off
+		\end{instruction}
+		\begin{postcondition}
+			\item The error message is displayed after 15 seconds %Jag gissar att det här är vad det är.
+		\end{postcondition}
+%\item The time-out time for the system is 15 seconds (Req. 6.3). 
 	
 \end{testlist}
 
