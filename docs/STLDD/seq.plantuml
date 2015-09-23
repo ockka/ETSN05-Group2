@@ -1,0 +1,22 @@
+title Opening application and detecting devices 
+
+actor User
+participant MyDevicesView 
+participant NetworkManager
+
+box "Application" #LightBlue
+	participant MyDevicesView
+	participant NetworkManager
+end box
+
+database Backend
+
+
+User -> MyDevicesView: Open application
+MyDevicesView -> NetworkManager: detectDevices()
+NetworkManager -[#0000FF]> Backend : detectDevices()
+NetworkManager <[#0000FF]- Backend : List<Device> devices
+MyDevicesView <- NetworkManager : List<Device> devices
+MyDevicesView -> MyDevicesView: Update MyDevices view with \nthe new devices.
+
+
