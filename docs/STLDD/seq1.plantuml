@@ -18,8 +18,8 @@ NetworkManager -[#0000FF]> Backend : toggle()
 
 NetworkManager <[#0000FF]- Backend : HTTP Response: 200, OK
 
-"LightBulb view"<- NetworkManager : OK
+"LightBulb view" <- NetworkManager : OK
 
-"LightBulb view"-> "LightBulb view": Update "LightBulb view\nwith the switch showing\nthat it is on.
+"LightBulb view" -> "LightBulb view": Update LightBulb view\nwith the switch showing\nthat it is on.
 
 

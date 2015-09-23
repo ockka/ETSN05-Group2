@@ -1,0 +1,25 @@
+title Getting all sensor data
+
+participant "SensorDevice view"
+participant NetworkManager
+
+box "Application" #LightBlue
+	participant "SensorDevice view"
+	participant NetworkManager
+end box
+
+database Backend
+
+
+
+"SensorDevice view" -> NetworkManager: getAll()
+
+NetworkManager -[#0000FF]> Backend : getAll()
+
+NetworkManager <[#0000FF]- Backend : SensorValues
+
+"SensorDevice view"<- NetworkManager : SensorValues
+
+"SensorDevice view"-> "SensorDevice view": Update "SensorDevice view"\nwith the new sensor data.
+
+
