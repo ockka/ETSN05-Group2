@@ -1,0 +1,25 @@
+title Turning on a light bulb
+
+participant "LightBulb view"
+participant NetworkManager
+
+box "Application" #LightBlue
+	participant "LightBulb view"
+	participant NetworkManager
+end box
+
+database Backend
+
+
+
+"LightBulb view" -> NetworkManager: toggle()
+
+NetworkManager -[#0000FF]> Backend : toggle()
+
+NetworkManager <[#0000FF]- Backend : HTTP Response: 200, OK
+
+"LightBulb view"<- NetworkManager : OK
+
+"LightBulb view"-> "LightBulb view": Update "LightBulb view\nwith the switch showing\nthat it is on.
+
+
