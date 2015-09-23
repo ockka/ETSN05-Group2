@@ -3,6 +3,7 @@
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
+\usepackage{verbatim}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage[colorinlistoftodos]{todonotes}
@@ -59,7 +60,7 @@
 		\begin{tabular}{ | l | l | l | p{5cm} |}
 			\hline
 			\textbf{Version} 	& \textbf{Date} 	& \textbf{Responsible} 	& \textbf{Description} 		\\ \hline
-			N/A				 	& 160915 			& DO, JM, OA			&  Baseline. 				\\ \hline
+			1.0				 	& 230915 			& DO, JM, OA			&  Baseline. 				\\ \hline
 		\end{tabular}
 	\end{center}
 	
@@ -69,21 +70,16 @@
 	\pagenumbering{arabic}
 	
 	\section{Introduction}
-	This document describes the design of the Lamp Controller Application, which is an application used to control light bulbs and sensors. The application is developed as a project within the course "Software development for large systems - ETSN05" at LTH HT 2015.
+	This document describes the top level design of the Lamp Controller Application, which is an application used to control a light bulb and a sensor device. The application is developed as a project within the course "Software Development for Large Systems - ETSN05" at LTH.
 	
 	\section{Reference Documents}
-	Lorem ipsum
+	SRS - Software Requirements Specification, PUSS154212 v1.1
 	
 	
 	\section{Overview}
-	The main purpose of the Lamp Controller Application is to provide an interface used to control a light bulb and a sensor device from a MVD. 
+	The main purpose of the Lamp Controller Application is to provide an interface used to control a light bulb and a sensor device from an MVD via a REST API provided by the backend. The application will provide three different views to detect and control the different devices.
 	
 	\subsection{Controller Application}
-	\begin{figure}[H]
-		\centering
-		\caption{The layout of the Light Bulb View}
-		\label{fig:mylightbulbview}
-	\end{figure}
 	\begin{itemize}
 		\item{\textbf{BaseActivity:}} 
 		The BaseActivity for the application that will connect the Activities with the NetworkManager.
@@ -107,12 +103,10 @@
 		\item{\textbf{NetworkManager:}} 
 		Handles all the communication with the API. The different methods for controlling both receiving and setting data.
 		\item{\textbf{SensorValues:}} 
-		A superclass for the information of the different sensors.
+		A class for the information of the different sensors.
 		
 	\end{itemize}
-	
-	\subsection{Rubrik för sekvensdiagram}
-	In progress..
+
 	\subsection{Packages}
 	\begin{itemize}
 		\item Network
@@ -121,5 +115,44 @@
 		\item Model
 		\item Sensor
 	\end{itemize}
+
+\subsection{UML diagram}
+	\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{class_diagram.png}
+    \caption{The design of the system.}
+    \label{fig:seq}
+\end{figure}
+
+	
+	\subsection{Sequence diagrams}
+	
+	\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{seq.png}
+    \caption{Detecting devices with the user located in MyDeviceView.}
+    \label{fig:seq}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{seq1.png}
+    \caption{Switch on the Light bulb with the user located in the LightbulbView.}
+    \label{fig:seq1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{seq2.png}
+    \caption{Get all sensordata with the user located in the SensorDeviceView.}
+    \label{fig:seq2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{seq3.png}
+    \caption{Switch on Light bulb with the user located in the LightbulbView and the backend is unresponsive.}
+    \label{fig:seq3}
+\end{figure}
 	
 \end{document}
