@@ -1,0 +1,25 @@
+title Disconnect during interaction with light bulb
+
+participant "LightBulb view"
+participant NetworkManager
+
+box "Application" #LightBlue
+	participant "LightBulb view"
+	participant NetworkManager
+end box
+
+database Backend
+
+
+
+"LightBulb view" -> NetworkManager: setValues(r, g, b, w)
+
+NetworkManager -[#0000FF]> Backend : setValues(r, g, b, w)
+
+NetworkManager x<[#0000FF]- Backend : SensorValues
+
+"LightBulb view"<- NetworkManager : Connection lost.
+
+"LightBulb view"-> "LightBulb view": Display error message.
+
+
