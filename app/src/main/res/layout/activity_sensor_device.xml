@@ -7,13 +7,144 @@
     android:orientation="vertical"
     tools:context="com.etsn05group2.lampcontroller.activity.SensorDeviceActivity">
 
-
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
+    <TextView android:text="Title" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/temperature" />
+        android:id="@+id/titleTextView"
+        android:textSize="40sp"
+        android:layout_gravity="center"/>
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
+    <TextView android:text="Mac-address" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/pressure" />
+        android:id="@+id/macAddressTextView"
+        android:textSize="28sp"
+        android:layout_gravity="center" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView android:text="T:"
+                android:id="@+id/temperatureTextView"
+                android:textSize="28sp" />
+
+            <TextView android:text="!"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:id="@+id/temperatureValueTextView"
+                android:textSize="28sp" />
+
+            <Button android:text="@string/get"
+                android:id="@+id/temperatureButton"
+                android:layout_gravity="right" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView android:text="P:"
+                android:id="@+id/pressureTextView"
+                android:textSize="28sp" />
+
+            <TextView android:text="!"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:id="@+id/pressureValueTextView"
+                android:textSize="28sp" />
+
+            <Button android:text="@string/get"
+                android:id="@+id/pressureButton"
+                android:layout_gravity="right" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView android:text="H:"
+                android:id="@+id/humidityTextView"
+                android:textSize="28sp" />
+
+            <TextView android:text="!"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:id="@+id/humidityValueTextView"
+                android:textSize="28sp" />
+
+            <Button android:text="@string/get"
+                android:id="@+id/humidityButton"
+                android:layout_gravity="right" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView android:text="M:"
+                android:id="@+id/magneticTextView"
+                android:textSize="28sp" />
+
+            <TextView android:text="!"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:id="@+id/magneticValueTextView"
+                android:textSize="28sp" />
+
+            <Button android:text="@string/get"
+                android:id="@+id/magneticButton"
+                android:layout_gravity="right" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView android:text="G:"
+                android:id="@+id/gyroscopicTextView"
+                android:textSize="28sp" />
+
+            <TextView android:text="!"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:id="@+id/gyroscopicValueTextView"
+                android:textSize="28sp" />
+
+            <Button android:text="@string/get"
+                android:id="@+id/gyroscopicButton"
+                android:layout_gravity="right" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView android:text="A:"
+                android:id="@+id/accelerometerTextView"
+                android:textSize="28sp" />
+
+            <TextView android:text="!"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:id="@+id/accelerometerValueTextView"
+                android:textSize="28sp" />
+
+            <Button android:text="@string/get"
+                android:id="@+id/accelerometerButton"
+                android:layout_gravity="right" />
+        </TableRow>
+
+
+    </TableLayout>
+
 
 </LinearLayout>
