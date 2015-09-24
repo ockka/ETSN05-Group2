@@ -17,16 +17,13 @@ package "model" #DDDDDD {
   class Device
   class LightBulb
   class SensorDevice
-}
-
-package "sensor" #DDDDDD {
   class SensorValues
-  class Temperature 
-  class Pressure 
-  class Humidity 
-  class Magnetic 
-  class Gyroscopic 
-  class Accelerometer 
+  class Temperature
+  class Pressure
+  class Humidity
+  class Magnetic
+  class Gyroscopic
+  class Accelerometer
 }
 
  class NetworkManager{
@@ -109,6 +106,21 @@ class LightBulb{
  +String getName()
 }
 
+class SensorValues {
+ -Temperature temperature
+ -Pressure pressure
+ -Humidity humidity
+ -Magnetic magnetic
+ -Gyroscopic gyroscopic
+ -Accelerometer accelerometer
+ +Temperature getTemperature()
+ +Pressure getPressure()
+ +Humidity getHumidity()
+ +Magnetic getMagnetic()
+ +Gyroscopic getGyroscopic()
+ +Accelerometer getAccelerometer()
+}
+
 BaseActivity <|-- MyDevicesActivity
 BaseActivity <|-- DeviceActivity
 DeviceActivity <|-- SensorDeviceActivity
@@ -120,10 +132,3 @@ Device <|-- LightBulb
 MyDevicesActivity "1" *-- "1" DeviceListAdapter
 DeviceListAdapter "1" o-- "*" Device
 BaseActivity "1" o-- "1" NetworkManager
-
-SensorValues "1" o-- "1" Temperature 
-SensorValues "1" o-- "1" Pressure 
-SensorValues "1" o-- "1" Humidity 
-SensorValues "1" o-- "1" Magnetic 
-SensorValues "1" o-- "1" Gyroscopic 
-SensorValues "1" o-- "1" Accelerometer 
