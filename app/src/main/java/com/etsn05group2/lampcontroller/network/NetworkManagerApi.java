@@ -5,16 +5,15 @@ import android.telecom.Call;
 
 import com.etsn05group2.lampcontroller.network.data.DataAboutDevice;
 import com.etsn05group2.lampcontroller.network.data.DeviceData;
-import com.etsn05group2.lampcontroller.network.data.changeStatus;
+import com.etsn05group2.lampcontroller.network.data.DeviceStatus;
+
 
 import java.util.List;
 
 import retrofit.Callback;
+import retrofit.http.Body;
 import retrofit.http.GET;
-import retrofit.http.Multipart;
-import retrofit.http.POST;
 import retrofit.http.PUT;
-import retrofit.http.Part;
 import retrofit.http.Path;
 
 /**
@@ -31,13 +30,10 @@ public interface NetworkManagerApi {
     @GET("/data/device/{id}/{sensorType}")
     void getDeviceData(@Path("id") int deviceId, @Path("sensorType") String sensorType, Callback<List<DeviceData>> callback);
 
-    @Multipart
-    @PUT("/device/status")
-    void putDeviceStatus(@Part("deviceAddress") String deviceAddress, @Part("value") String value, Callback<String> callback);
+
 
     //@Multipart
-    @POST("/device/status")
-    void putDeviceStatus(changeStatus status, Callback<String> callback);
-
+    @PUT("/device/status")
+    void putDeviceStatus(@Body DeviceStatus status, Callback<DeviceStatus> respons);
 
 }

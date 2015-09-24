@@ -4,6 +4,7 @@ import android.provider.ContactsContract;
 import android.util.Log;
 
 import com.etsn05group2.lampcontroller.network.data.DataAboutDevice;
+import com.etsn05group2.lampcontroller.network.data.DeviceStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +21,12 @@ import retrofit.client.Response;
 public class NetworkManager {
 
     private static final String PATH = "http://vm39.cs.lth.se:9000/";
-    private NetworkManagerApi api;
+    static private NetworkManagerApi api;
+    static DeviceStatus deviceStatus;
+
 
     // Holds data about all the detected devices.
-    List<DataAboutDevice> detectedDevices = new ArrayList<DataAboutDevice>();
+    static private List<DataAboutDevice> detectedDevices;
 
     public NetworkManager() {
         RestAdapter retrofit = new RestAdapter.Builder().setEndpoint(PATH).build();
@@ -31,22 +34,51 @@ public class NetworkManager {
 
     }
 
-    public List<DataAboutDevice> detectDevices() {
-        api.getDataAboutAllDevices(new Callback<List<DataAboutDevice>>() {
+    public static List<DataAboutDevice> detectDevices() {
+        api.getDataAboutAllDevices(allDevicesCall());
+        return detectedDevices;
+    }
 
+    public static void toggle(String mac, String value){
+        deviceStatus = new DeviceStatus(mac, value);
+        api.putDeviceStatus(deviceStatus, toggleCallback());
+    }
+
+
+    /**
+     * Placera in all Fulkod här under
+     *
+     *
+     *
+     *
+     */
+
+
+    static private Callback<List<DataAboutDevice>> allDevicesCall(){
+        Callback<List<DataAboutDevice>> call = new Callback<List<DataAboutDevice>>(){
 
             @Override
             public void success(List<DataAboutDevice> dataAboutDevices, Response response) {
-                detectedDevices = new ArrayList<DataAboutDevice>(dataAboutDevices);
+                Log.d("DEN HÄMTAR SKIT", "");
+                detectedDevices = dataAboutDevices;
             }
 
             @Override
-            public void failure(RetrofitError error) {
-                Log.d("failure", error.toString());
-            }
-        });
-
-
-        return detectedDevices;
+            public void failure(RetrofitError error) { Log.d("failure", error.toString()); }
+        };
+        return call;
     }
+
+
+    static private Callback<DeviceStatus> toggleCallback(){
+        Callback<DeviceStatus> toggleCall = new Callback<DeviceStatus>() {
+            @Override
+            public void success(DeviceStatus deviceStatus, Response response) {}
+
+            @Override
+            public void failure(RetrofitError error) { Log.d("failure", error.toString()); }
+        };
+        return toggleCall;
+    }
+
 }

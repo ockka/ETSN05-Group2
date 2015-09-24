@@ -1,0 +1,146 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.etsn05group2.lampcontroller.activity.LightBulbActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Nexturn ID\nMacAdress"
+            android:textSize="40sp"
+            android:layout_gravity="center_horizontal"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <Switch
+            android:id="@+id/lightBulbSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="R:"
+            android:textSize="40sp" />
+        <EditText
+            android:id="@+id/Red"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:digits="0123456789abcdef"
+            android:hint="00"
+            android:inputType="text|textEmailAddress"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:maxLength="2" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="G:"
+            android:textSize="40sp" />
+        <EditText
+            android:id="@+id/Green"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:digits="0123456789abcdef"
+            android:hint="00"
+            android:inputType="text|textEmailAddress"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:maxLength="2" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="B:"
+            android:textSize="40sp" />
+        <EditText
+            android:id="@+id/Blue"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:digits="0123456789abcdef"
+            android:hint="00"
+            android:inputType="text|textEmailAddress"
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:maxLength="2" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="W:"
+            android:textSize="40sp" />
+        <EditText
+            android:id="@+id/White"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:digits="0123456789abcdef"
+            android:hint="00"
+            android:inputType="text|textEmailAddress"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
+            android:maxLength="2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/getColor"
+            android:onClick="getColor"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/get"
+            android:textAppearance="?android:attr/textAppearanceMedium"  />
+
+        <Button
+            android:id="@+id/set_Color"
+            android:onClick="setColor"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/set"
+            android:textAppearance="?android:attr/textAppearanceMedium"  />
+
+    </LinearLayout>
+</LinearLayout>
