@@ -2,6 +2,7 @@
 
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage{amsmath}
 \usepackage{verbatim}
 \usepackage{graphicx}
@@ -91,7 +92,7 @@
 		\item{\textbf{Device:}} 
 		Is an Abstract class that contains information about the two devices we are handling. \\
         - String getMacAddress() Returns the String MacAddress value of a Device.\\
-        -String getId() Returns the String id number of a Device.\\
+        - String getId() Returns the String id number of a Device.\\
         - String getName() Is a abstract method that is declared without an implementation in this class.
 		\item{\textbf{SensorDevice:}} 
 		Class containing the SensorDevice information.\\
@@ -100,29 +101,58 @@
 		Class containing the LightBulb information.\\
         - String getName() Returns the String Name of a Device.
 		\item{\textbf{DeviceActivity:}} 
-		Is an abstract class that holds the shared parameters deviceName and macAddress. It also contains an abstract method toggle that controls the on/off switch on the devices.
+		Is an abstract class that holds the protected parameters deviceName, id and macAddress. It also contains a method toggle that toggles between the SensorDevice and LightBulbActivity.
 		\item{\textbf{SensorDeviceActivity:}} 
-		Is the controller in the interaction with the user in the SensorDevice View. Controls the TextView fields and the buttons that will retrieve information regarding the sensors from NetworkManager.
+		Is the controller in the interaction with the user in the SensorDevice acitvity. Handles the TextView fields and the buttons that will retrieve and present the information regarding the sensors from NetworkManager.
 		\item{\textbf{LightBulbActivity:}} 
-		Is the controller in the interaction with the user in the LightBulb View. Controls the EditText fields and the buttons that will retrieve and send information from/to the NetworkManager.
+		Is the controller in the interaction with the user in the LightBulb View. Handles the EditText fields and the buttons that will retrieve and send information from/to the NetworkManager.
 		
 		\item{\textbf{NetworkManager:}} 
-		Handles all the communication with the API. The different methods for controlling both receiving and setting data.
+		Handles all the communication with the API to access the backend. There are different methods for both receiving and setting data values.\\
+        - void toggle(Device, Callback<Response>)\\
+        - List<Device> detectDevices(List<Device>, Callback<DeviceResponse>) Will return a List of Devices that will be displayed in the MyDeviceActivity using the adapter.\\
+        - Temperature getTemperature(Device, Callback<TemperatureResponse>)\\ Returns the Temperature received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - Pressure getPressure(Device, Callback<PressureResponse>)\\ Returns the Pressure received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - Humidity getHumidity(Device, Callback<HumidityResponse>)\\ 
+        Returns the Humidity received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - Magnetic getMagnetic(Device, Callback<MagneticResponse>)\\ Returns the Magnetic received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - Gyroscopic getGyroscopic(Device, Callback<GyroscopicResponse>)\\ Returns the Gyroscopic received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - Accelerometer getAccelerometer(Device, Callback<AccelerometerResponse>)\\ Returns the Accelerometer received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - SensorValues getAllSensorValues(Device, Callback<AllSensorValuesResponse>)\\ Returns all the sensor values that could be retrieved from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - Color getColor(Device, Callback<GetColorResponse>)\\ Returns the Color received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - void setColor(Device, Color color,  Callback<ColorResponse>) Sets the color of the Lightbulb. Device to receive the correct host, Color to set the color and a Callback that will return from the API network.
 		\item{\textbf{SensorValues:}} 
-		A class for the information of the different sensors.
-		
+		A class the handles the information of the different sensors.\\
+        - Temperature getTemperature() Returns the class Temperature that have information regarding the temperature.\\
+        - Pressure getPressure() Returns the class Pressure that have information regarding the pressure data.\\
+        - Humidity getHumidity() Returns the class Humidity that have information regarding the humidity data.\\
+        - Magnetic getMagnetic() Returns the class Magnetic that have information regarding the magnetic data.\\
+        - Gyroscopic getGyroscopic() Returns the class Gyroscopic that have information regarding the gyroscopic data.\\
+         - Accelerometer getAccelerometer() Returns the class Accelerometer that have information regarding the accelerometer data.
+	\item{\textbf{Temperature:}} 
+    Handles the information regarding the temperature data.
+    \item{\textbf{Pressure:}} 
+    Handles the information regarding the pressure data.
+    \item{\textbf{Humidity:}} 
+    Handles the information regarding the humidity data.
+    \item{\textbf{Magnetic:}} 
+    Handles the information regarding the magnetic data.
+    \item{\textbf{Gyroscopic:}} 
+    Handles the information regarding the gyroscopic data.
+    \item{\textbf{Accelerometer:}} 
+    Handles the information regarding the accelerometer data.
 	\end{itemize}
 
 	\subsection{Packages}
 	\begin{itemize}
-		\item Network \\
+		\item {\textbf{Network}} \\
         Handles the network communication and contains the class NetworkManager.
-		\item Activity
-        Handles the activities for the different views. Contains the classes BaseActivity, DeviceActivity, MyDeviceActivity, SensorDeviceActivity and LighBulbActivity.
-		\item Adapter
+		\item {\textbf{Activity}}\\
+        Handles the Activities for the different views. Contains the classes BaseActivity, DeviceActivity, MyDeviceActivity, SensorDeviceActivity and LighBulbActivity.
+		\item {\textbf{Adapter}}\\
         The Adapter to the ListView used in MyDeviceActivity contains the class DeviceListAdapter.
-		\item Model
-        Handles the information about the different devices contains the classes Device, SensorDevice and LightBulb. Handles and controls the Sensor values contains the classes SensorValues, Temperature, Pressure, Humidity, Magnetic, Gyroscopic and Accelerometer.
+		\item {\textbf{Model}}\\
+        Handels the information about the different devices contains the classes Device, SensorDevice and LightBulb, SensorValues, Temperature, Pressure, Humidity, Magnetic, Gyroscopic and Accelerometer.
 	\end{itemize}
 \subsection{UML diagram}
 	\begin{figure}[H]
