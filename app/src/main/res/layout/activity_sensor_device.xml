@@ -72,7 +72,8 @@
 
             <Button android:text="@string/get"
                 android:id="@+id/pressureButton"
-                android:layout_gravity="right" />
+                android:layout_gravity="right"
+                android:onClick="getPressure" />
         </TableRow>
 
         <TableRow
@@ -92,7 +93,8 @@
 
             <Button android:text="@string/get"
                 android:id="@+id/humidityButton"
-                android:layout_gravity="right" />
+                android:layout_gravity="right"
+                android:onClick="getHumidity" />
         </TableRow>
 
         <TableRow
@@ -112,7 +114,8 @@
 
             <Button android:text="@string/get"
                 android:id="@+id/magneticButton"
-                android:layout_gravity="right" />
+                android:layout_gravity="right"
+                android:onClick="getMagnetic" />
         </TableRow>
 
         <TableRow
@@ -132,7 +135,8 @@
 
             <Button android:text="@string/get"
                 android:id="@+id/gyroscopicButton"
-                android:layout_gravity="right" />
+                android:layout_gravity="right"
+                android:onClick="getGyroscopic" />
         </TableRow>
 
         <TableRow
@@ -152,7 +156,8 @@
 
             <Button android:text="@string/get"
                 android:id="@+id/accelerometerButton"
-                android:layout_gravity="right" />
+                android:layout_gravity="right"
+                android:onClick="getAccelerometer" />
         </TableRow>
 
     </TableLayout>
@@ -173,7 +178,8 @@
             android:text="@string/clear_all"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:onClick="clearAll" />
     </LinearLayout>
 
 </LinearLayout>
