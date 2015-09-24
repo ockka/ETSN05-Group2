@@ -26,7 +26,7 @@ public class NetworkManager {
 
 
     // Holds data about all the detected devices.
-    List<DataAboutDevice> detectedDevices = new ArrayList<DataAboutDevice>();
+    static private List<DataAboutDevice> detectedDevices;
 
     public NetworkManager() {
         RestAdapter retrofit = new RestAdapter.Builder().setEndpoint(PATH).build();
@@ -34,46 +34,51 @@ public class NetworkManager {
 
     }
 
-    public List<DataAboutDevice> detectDevices() {
-        api.getDataAboutAllDevices(new Callback<List<DataAboutDevice>>() {
-
-
-            @Override
-            public void success(List<DataAboutDevice> dataAboutDevices, Response response) {
-                detectedDevices = new ArrayList<DataAboutDevice>(dataAboutDevices);
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                Log.d("failure", error.toString());
-            }
-        });
-
-
+    public static List<DataAboutDevice> detectDevices() {
+        api.getDataAboutAllDevices(allDevicesCall());
         return detectedDevices;
     }
 
     public static void toggle(String mac, String value){
         deviceStatus = new DeviceStatus(mac, value);
-        api.putDeviceStatus(deviceStatus, toggleCallback() );
+        api.putDeviceStatus(deviceStatus, toggleCallback());
     }
 
 
+    /**
+     * Placera in all Fulkod här under
+     *
+     *
+     *
+     *
+     */
+
+
+    static private Callback<List<DataAboutDevice>> allDevicesCall(){
+        Callback<List<DataAboutDevice>> call = new Callback<List<DataAboutDevice>>(){
+
+            @Override
+            public void success(List<DataAboutDevice> dataAboutDevices, Response response) {
+                Log.d("DEN HÄMTAR SKIT", "");
+                detectedDevices = dataAboutDevices;
+            }
+
+            @Override
+            public void failure(RetrofitError error) { Log.d("failure", error.toString()); }
+        };
+        return call;
+    }
 
 
     static private Callback<DeviceStatus> toggleCallback(){
         Callback<DeviceStatus> toggleCall = new Callback<DeviceStatus>() {
             @Override
-            public void success(DeviceStatus deviceStatus, Response response) {
-
-            }
+            public void success(DeviceStatus deviceStatus, Response response) {}
 
             @Override
-            public void failure(RetrofitError error) {
-
-            }
+            public void failure(RetrofitError error) { Log.d("failure", error.toString()); }
         };
-                return toggleCall;
+        return toggleCall;
     }
 
 }
