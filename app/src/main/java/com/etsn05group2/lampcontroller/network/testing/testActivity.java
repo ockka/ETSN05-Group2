@@ -8,6 +8,7 @@ import android.util.Log;
 import com.etsn05group2.lampcontroller.network.NetworkManager;
 import com.etsn05group2.lampcontroller.network.NetworkManagerApi;
 import com.etsn05group2.lampcontroller.network.data.DataAboutDevice;
+import com.etsn05group2.lampcontroller.network.data.changeStatus;
 
 import java.util.List;
 import java.util.concurrent.Semaphore;
@@ -43,12 +44,36 @@ public class testActivity extends Activity{
             }
         };
 
+        final Callback<String> callme = new Callback<String>() {
+            @Override
+            public void success(String string, Response response) {
+                Log.d("callme = ", "" + string);
+                Log.d("SHIT HAPPEND", "");
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Log.d("Failure", error.toString());
+
+            }
+        };
+
+
+
         RestAdapter retrofit= new RestAdapter.Builder().setEndpoint(PATH).build();
         NetworkManagerApi api = retrofit.create(NetworkManagerApi.class);
-        api.getDataAboutAllDevices(callback);
-        Log.d("BANAN ", "" + datas);
+        //api.getDataAboutAllDevices(callback);
+        //changeStatus status = new changeStatus("90:59:AF:2A:BD:19","1");
+        api.putDeviceStatus("90:59:AF:2A:BD:19", "1",callme);
+        //api.putDeviceStatus(status,callme);
+        Log.d("----------------", "");
+
     }
+
     void printList(List<DataAboutDevice> datas){
-        Log.d("Kanin ", "" + datas);
+
+        for(DataAboutDevice data : datas){
+            Log.d( "id ="," " +data.id);
+        }
     }
 }
