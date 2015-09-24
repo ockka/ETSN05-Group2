@@ -4,6 +4,7 @@ import android.provider.ContactsContract;
 import android.util.Log;
 
 import com.etsn05group2.lampcontroller.network.data.DataAboutDevice;
+import com.etsn05group2.lampcontroller.network.data.DeviceStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,9 @@ import retrofit.client.Response;
 public class NetworkManager {
 
     private static final String PATH = "http://vm39.cs.lth.se:9000/";
-    private NetworkManagerApi api;
+    static private NetworkManagerApi api;
+    static DeviceStatus deviceStatus;
+
 
     // Holds data about all the detected devices.
     List<DataAboutDevice> detectedDevices = new ArrayList<DataAboutDevice>();
@@ -49,4 +52,28 @@ public class NetworkManager {
 
         return detectedDevices;
     }
+
+    public static void toggle(String mac, String value){
+        deviceStatus = new DeviceStatus(mac, value);
+        api.putDeviceStatus(deviceStatus, toggleCallback() );
+    }
+
+
+
+
+    static private Callback<DeviceStatus> toggleCallback(){
+        Callback<DeviceStatus> toggleCall = new Callback<DeviceStatus>() {
+            @Override
+            public void success(DeviceStatus deviceStatus, Response response) {
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        };
+                return toggleCall;
+    }
+
 }

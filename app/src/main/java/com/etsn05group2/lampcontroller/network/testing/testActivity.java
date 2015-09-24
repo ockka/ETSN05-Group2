@@ -8,7 +8,8 @@ import android.util.Log;
 import com.etsn05group2.lampcontroller.network.NetworkManager;
 import com.etsn05group2.lampcontroller.network.NetworkManagerApi;
 import com.etsn05group2.lampcontroller.network.data.DataAboutDevice;
-import com.etsn05group2.lampcontroller.network.data.changeStatus;
+import com.etsn05group2.lampcontroller.network.data.DeviceStatus;
+
 
 import java.util.List;
 import java.util.concurrent.Semaphore;
@@ -44,29 +45,15 @@ public class testActivity extends Activity{
             }
         };
 
-        final Callback<String> callme = new Callback<String>() {
-            @Override
-            public void success(String string, Response response) {
-                Log.d("callme = ", "" + string);
-                Log.d("SHIT HAPPEND", "");
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                Log.d("Failure", error.toString());
-
-            }
-        };
-
-
 
         RestAdapter retrofit= new RestAdapter.Builder().setEndpoint(PATH).build();
         NetworkManagerApi api = retrofit.create(NetworkManagerApi.class);
         //api.getDataAboutAllDevices(callback);
-        //changeStatus status = new changeStatus("90:59:AF:2A:BD:19","1");
-        api.putDeviceStatus("90:59:AF:2A:BD:19", "1",callme);
-        //api.putDeviceStatus(status,callme);
-        Log.d("----------------", "");
+        //DeviceStatus status = new DeviceStatus("90:59:AF:2A:BD:19","0");
+        //api.putDeviceStatus(status,respons);
+        String mac = "90:59:AF:2A:BD:19";
+        String value = "0";
+        man.toggle(mac, value);
 
     }
 
