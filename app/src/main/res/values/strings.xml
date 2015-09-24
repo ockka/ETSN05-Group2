@@ -8,5 +8,7 @@
     <string name="get">Get</string>
     <string name="get_all">Get All</string>
     <string name="clear_all">Clear All</string>
+    <string name="title_activity_light_bulb">LightBulbActivity</string>
+    <string name="set">Set</string>
 
 </resources>
