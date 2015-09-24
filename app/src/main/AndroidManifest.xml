@@ -24,9 +24,13 @@
             android:name=".activity.SensorDeviceActivity"
             android:label="@string/title_activity_sensor_device" >
         </activity>
-        <activity android:name=".network.testing.testActivity"
-            android:label="Testing"/>
-
+        <activity
+            android:name=".network.testing.testActivity"
+            android:label="Testing" />
+        <activity
+            android:name=".activity.LightBulbActivity"
+            android:label="@string/title_activity_light_bulb" >
+        </activity>
     </application>
 
 </manifest>
