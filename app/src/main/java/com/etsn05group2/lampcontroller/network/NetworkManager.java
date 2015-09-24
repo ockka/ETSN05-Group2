@@ -7,6 +7,7 @@ import com.etsn05group2.lampcontroller.network.data.DataAboutDevice;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Semaphore;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -19,7 +20,6 @@ import retrofit.client.Response;
 public class NetworkManager {
 
     private static final String PATH = "http://vm39.cs.lth.se:9000/";
-
     private NetworkManagerApi api;
 
     // Holds data about all the detected devices.
@@ -28,10 +28,13 @@ public class NetworkManager {
     public NetworkManager() {
         RestAdapter retrofit = new RestAdapter.Builder().setEndpoint(PATH).build();
         api = retrofit.create(NetworkManagerApi.class);
+
     }
 
     public List<DataAboutDevice> detectDevices() {
         api.getDataAboutAllDevices(new Callback<List<DataAboutDevice>>() {
+
+
             @Override
             public void success(List<DataAboutDevice> dataAboutDevices, Response response) {
                 detectedDevices = new ArrayList<DataAboutDevice>(dataAboutDevices);
@@ -42,6 +45,7 @@ public class NetworkManager {
                 Log.d("failure", error.toString());
             }
         });
+
 
         return detectedDevices;
     }
