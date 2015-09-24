@@ -31,7 +31,7 @@ package "sensor" #DDDDDD {
 
  class NetworkManager{
  +{static} void toggle(Device, Callback<Response>)
- +{static} List<Device> detectDevices(Device, Callback<DevicesResponse>)
+ +{static} List<Device> detectDevices(List<Device>, Callback<DevicesResponse>)
  +{static} Temperature getTemperature(Device, Callback<TemperatureResponse>)
  +{static} Pressure getPressure(Device, Callback<PressureResponse>)
  +{static} Humidity getHumidity(Device, Callback<HumidityResponse>)
