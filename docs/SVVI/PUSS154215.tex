@@ -153,7 +153,6 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 
 \subsection{MyDevices View Test Instructions}
 \begin{testlist}
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CHANGED FROM HERE ================SLÅ IHOP TEST
     \item Test of startup screen of application. \label{MyDevicesTest1}
     	\begin{precondition}
     		\item The application is not running
@@ -169,8 +168,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
     %Test description: The first screen that is shown on startup is the MyDevicesView (Req. 5.2.1).
     
 	\item Test of device list on startup. \\
-		Instructions for this test have been incorporated into \ref{MyDevicesTest1}
-    
+		Instructions for this test have been incorporated into \ref{MyDevicesTest1}  
 
     \item Test of scrollability of device list.
     	\begin{precondition}
@@ -228,8 +226,8 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
     		\item A pop-up message "Please select a device" is displayed
     	\end{postcondition}
     %\item When no device is selected and the "Control Device" -button is pressed, a pop-up message "Please select a device" is displayed. (Req. 5.2.6)
-    \newpage
-	\item Test of sensor naming. \label{MyDevicesTest2}
+    
+	\item \label{MyDevicesTest2}
 		\begin{precondition}
 			\item The MyDevices View is open
 			\item There is at least one sensor in the list of available devices
@@ -251,12 +249,10 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\end{instruction}
 		   
     %\item Sensors are displayed in the list of available devices with "Sensor" as name, and it's MAC address as address and their indentifier as id. (Req. 5.2.7)
-
    
 	\item Test of naming of light bulbs. \\
 		Instructions for this test have been incorporated into \ref{MyDevicesTest2}
 
-    %\item Light bulbs are displayed in the list of available devices with "Light Bulb" as name and it's MAC address as address and their indentifier as id. (Req. 5.2.8)
    
 	\item Test of scanning function.
 		\begin{precondition}
@@ -270,7 +266,6 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 			\item The list of available devices is updated
 		\end{postcondition}
 		   
-    %\item The "Get Devices" -button performs a scan for available devices when pressed. (Req. 5.2.9)
    
 	\item Test of termination of application.
 		\begin{precondition}
@@ -283,8 +278,6 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 			\item The application is closed
 		\end{postcondition}
 		   
-   %\item When the back button is pressed the application is closed (Req. 5.2.10)
-    % Nytt requirement!
     \item Test if layout is consistent with specifications.
 		\begin{precondition}
 			\item The MyDevices View is open
@@ -317,8 +310,6 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
  			\item The temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration text fields are all empty
  		\end{postcondition}
 
-%When the "Control Device"-button in the MyDevices View is pressed and a sensor is selected, the Sensor view is opened (Req. 5.3.1).
-
 	\item Test of naming of sensor.
 		Instructions for this test have been incorporated into \ref{SensorTest1}
 		
@@ -334,7 +325,6 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 	  		\item The on/off-status switch of the selected sensor is on
 	  		\item The status lamp on the sensor device is lit
 	  	\end{postcondition}
-%\item It is possible to change the on/off -status of the selected sensor with a switch (Req. 5.3.4).
 
 	\item Test of text field naming in Sensor View. \\
 		Instructions for this test have been incorporated into \ref{SensorTest2}
@@ -549,7 +539,6 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 			\item The R-, G-, B-, W-values are displayed in the fields specified in Req. 5.4.4-5.4.7 in ref \ref{refdocs:srs}
 		\end{postcondition}
 
-
 	\item Test of changeability of color of light bulb.
 		\begin{precondition}
 			\item The Light Bulb View is open
@@ -600,6 +589,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 			\item Set the "G:"-field to FF
 			\item Set the "B:"-field to 00
 			\item Set the "W:"-field to 00
+
 			\item Press the "Set"-button
 			\item Press the "Get"-button
 			\item The light bulb is green
@@ -646,8 +636,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 			\item Enter -1 into the "R:"-field
 			\item Check that the value is not accepted
 		\end{instruction}
-		
-		
+				
 	\item Test of user feedback when color is changed.
 		\begin{precondition}
 			\item The Light Bulb View is open
