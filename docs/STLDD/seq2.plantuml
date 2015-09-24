@@ -1,25 +1,24 @@
 title Getting all sensor data
 
-participant "SensorDevice view"
+participant SensorDeviceActivity
 participant NetworkManager
 
 box "Application" #LightBlue
-	participant "SensorDevice view"
+	participant SensorDeviceActivity
 	participant NetworkManager
 end box
 
 database Backend
 
 
+SensorDeviceActivity -> NetworkManager: getAllSensorValues(Device, Callback)
 
-"SensorDevice view" -> NetworkManager: getAll()
-
-NetworkManager -[#0000FF]> Backend : getAll()
+NetworkManager -[#0000FF]> Backend : API call
 
 NetworkManager <[#0000FF]- Backend : SensorValues
 
-"SensorDevice view"<- NetworkManager : SensorValues
+SensorDeviceActivity<- NetworkManager : SensorValues
 
-"SensorDevice view"-> "SensorDevice view": Update "SensorDevice view"\nwith the new sensor data.
+SensorDeviceActivity-> SensorDeviceActivity: Update SensorDeviceActivity\nwith the new sensor data.
 
 

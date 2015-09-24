@@ -1,3 +1,4 @@
+skinparam classAttributeIconSize 0
 package "activity" #DDDDDD {
   class BaseActivity
   class MyDevicesActivity
@@ -19,38 +20,39 @@ package "model" #DDDDDD {
 }
 
 package "sensor" #DDDDDD {
-	class SensorValues
-	class Temperature 
-	class Pressure 
-	class Humidity 
-	class Magnetic 
-	class Gyroscopic 
-	class Accelometer 
+  class SensorValues
+  class Temperature 
+  class Pressure 
+  class Humidity 
+  class Magnetic 
+  class Gyroscopic 
+  class Accelerometer 
 }
 
  class NetworkManager{
- +{static} List<Device> detectDevices()
- +{static} Temperature getTemperature()
- +{static} Pressure getPressure()
- +{static} Humidity getHumidity()
- +{static} Magnetic getMagnetic()
- +{static} Gyroscopic getGyroscopic()
- +{static} Accelometer getAccelerometer()
- +{static} SensorValues getAllSensorValues()
- +{static} Color getColor()
- +{static} void setColor(Color)
+ +{static} void toggle(Device, Callback<Response>)
+ +{static} List<Device> detectDevices(List<Device>, Callback<DevicesResponse>)
+ +{static} Temperature getTemperature(Device, Callback<TemperatureResponse>)
+ +{static} Pressure getPressure(Device, Callback<PressureResponse>)
+ +{static} Humidity getHumidity(Device, Callback<HumidityResponse>)
+ +{static} Magnetic getMagnetic(Device, Callback<MagneticResponse>)
+ +{static} Gyroscopic getGyroscopic(Device, Callback<GyroscopicResponse>)
+ +{static} Accelerometer getAccelerometer(Device, Callback<AccelerometerResponse>)
+ +{static} SensorValues getAllSensorValues(Device, Callback<AllSensorValuesResponse>)
+ +{static} Color getColor(Device, Callback<GetColorResponse>)
+ +{static} void setColor(Device, Color color, Callback<Response>)
 }
 
 abstract class BaseActivity{
 }
 
 class DeviceListAdapter {
- +void addDevices(List<Device> devices)
+ +void addDevices(List<Device>)
 }
 
 class MyDevicesActivity{
  -void detectDevices()
- -void controlDevice(Device device)
+ -void controlDevice(Device)
 }
 
 class SensorDeviceActivity{
@@ -84,14 +86,18 @@ class LightBulbActivity{
 
 abstract class DeviceActivity{
  #String deviceName
+ #String id
  #String macAddress
  #{abstract} void toggle()
 }
 
 
 abstract class Device{
+ #String id;
  #String deviceName
  #String macAddress
+ +String getMacAddress()
+ +String getId()
  +{abstract} String getName()
 }
 
@@ -120,4 +126,4 @@ SensorValues "1" o-- "1" Pressure
 SensorValues "1" o-- "1" Humidity 
 SensorValues "1" o-- "1" Magnetic 
 SensorValues "1" o-- "1" Gyroscopic 
-SensorValues "1" o-- "1" Accelometer 
+SensorValues "1" o-- "1" Accelerometer 

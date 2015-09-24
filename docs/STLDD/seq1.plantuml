@@ -1,25 +1,23 @@
 title Turning on a light bulb
 
-participant "LightBulb view"
+participant "LightBulbActivity"
 participant NetworkManager
 
 box "Application" #LightBlue
-	participant "LightBulb view"
+	participant "LightBulbActivity"
 	participant NetworkManager
 end box
 
 database Backend
 
+LightBulbActivity -> NetworkManager: toggle(Device, Callback)
 
-
-"LightBulb view" -> NetworkManager: toggle()
-
-NetworkManager -[#0000FF]> Backend : toggle()
+NetworkManager -[#0000FF]> Backend : API call
 
 NetworkManager <[#0000FF]- Backend : HTTP Response: 200, OK
 
-"LightBulb view" <- NetworkManager : OK
+LightBulbActivity <- NetworkManager : OK
 
-"LightBulb view" -> "LightBulb view": Update LightBulb view\nwith the switch showing\nthat it is on.
+LightBulbActivity -> LightBulbActivity: Update LightBulbActivity\nwith the switch showing\nthat it is on.
 
 

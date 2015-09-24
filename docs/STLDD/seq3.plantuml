@@ -1,25 +1,24 @@
 title Disconnect during interaction with light bulb
 
-participant "LightBulb view"
+participant LightBulbActivity
 participant NetworkManager
 
 box "Application" #LightBlue
-	participant "LightBulb view"
+	participant LightBulbActivity
 	participant NetworkManager
 end box
 
 database Backend
 
 
+LightBulbActivity -> NetworkManager: setColor(Device, Color, Callback)
 
-"LightBulb view" -> NetworkManager: setValues(r, g, b, w)
-
-NetworkManager -[#0000FF]> Backend : setValues(r, g, b, w)
+NetworkManager -[#0000FF]> Backend : API call
 
 NetworkManager x<[#0000FF]- Backend : SensorValues
 
-"LightBulb view"<- NetworkManager : Connection lost.
+LightBulbActivity<- NetworkManager : Connection lost.
 
-"LightBulb view"-> "LightBulb view": Display error message.
+LightBulbActivity-> LightBulbActivity: Display error message.
 
 

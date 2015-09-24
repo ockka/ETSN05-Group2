@@ -60,7 +60,7 @@
 		\begin{tabular}{ | l | l | l | p{5cm} |}
 			\hline
 			\textbf{Version} 	& \textbf{Date} 	& \textbf{Responsible} 	& \textbf{Description} 		\\ \hline
-			0.9				 	& 230915 			& DO, JM, OA			&  Working on. 				\\ \hline
+			1.0				 	& 240915 			& DO, JM, OA			&  Baseline. 				\\ \hline
 		\end{tabular}
 	\end{center}
 	
@@ -70,14 +70,14 @@
 	\pagenumbering{arabic}
 	
 	\section{Introduction}
-	This document describes the top level design of the Lamp Controller Application, which is an application used to control a light bulb and a sensor device. The application is developed as a project within the course "Software Development for Large Systems - ETSN05" at LTH.
+	This document describes the top level design of the Lamp Controller Application. The application can connect to a light bulb and a sensor device, these devices can also be controlled and data can be received using a MVD. The application is developed as a project within the course "Software Development for Large Systems - ETSN05" at LTH.
 	
 	\section{Reference Documents}
 	SRS - Software Requirements Specification, PUSS154212 v1.1
 	
 	
 	\section{Overview}
-	The main purpose of the Lamp Controller Application is to provide an interface used to control a light bulb and a sensor device from an MVD via a REST API provided by the backend. The application will provide three different views to detect and control the different devices.
+	The main purpose of the Lamp Controller Application is to provide an graphical interface used to control a light bulb and a sensor device from an MVD via a REST API provided by the backend. The application will provide three different views to detect and control the different devices. A UML diagram have been created to visualize the design of a system figure \ref{fig:uml}. Several sequence diagram have been created to visualize the interaction and can be viewed in figures 2-5.
 	
 	\subsection{Controller Application}
 	\begin{itemize}
@@ -109,22 +109,28 @@
 
 	\subsection{Packages}
 	\begin{itemize}
-		\item Network
+		\item Network \\
+        Handles the network communication and contains the class NetworkManager.
 		\item Activity
+        Handles the Activities for the different views. Contains the classes BaseActivity, DeviceActivity, MyDeviceActivity, SensorDeviceActivity and LighBulbActivity.
 		\item Adapter
+        The Adapter to the ListView used in MyDeviceActivity contains the class DeviceListAdapter.
 		\item Model
+        Handels the information about the different devices contains the classes Device, SensorDevice and LightBulb.
 		\item Sensor
+        Handels and controls the Sensor values contains the classes SensorValues, Temperature, Pressure, Humidity, Magnetic, Gyroscopic and Accelerometer.
 	\end{itemize}
 \subsection{UML diagram}
 	\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{class_diagram.png}
     \caption{The design of the system.}
-    \label{fig:seq}
+    \label{fig:uml}
 \end{figure}
 
 	
 	\subsection{Sequence diagrams}
+	The red arrows show internal calls within the application. The blue arrows shows communication outside the app which is with the MVD.
 	
 	\begin{figure}[H]
     \centering
