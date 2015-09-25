@@ -31,6 +31,18 @@
             android:name=".activity.LightBulbActivity"
             android:label="@string/title_activity_light_bulb" >
         </activity>
+        <activity
+            android:name=".activity.BaseActivity"
+            android:label="@string/title_activity_base" >
+        </activity>
+        <activity
+            android:name=".activity.DeviceActivity"
+            android:label="@string/title_activity_device" >
+        </activity>
+        <activity
+            android:name=".activity.MyDevicesActivity"
+            android:label="@string/title_activity_my_devices" >
+        </activity>
     </application>
 
 </manifest>
