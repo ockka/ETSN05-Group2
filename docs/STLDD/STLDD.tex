@@ -30,7 +30,7 @@
 		~
 		\begin{minipage}{0.4\textwidth}
 			\begin{flushright}
-				PUSS154214
+				PUSS154214 v1.0
 				\today
 			\end{flushright}
 		\end{minipage}\\[3cm]
@@ -101,7 +101,8 @@
 		Class containing the LightBulb information.\\
         - String getName() returns the String Name of a Device.
 		\item{\textbf{DeviceActivity:}} 
-		Is an abstract class that holds the protected parameters deviceName, id and macAddress. It also contains a method toggle that toggles between the SensorDevice and LightBulbActivity.
+		Is an abstract class that holds the protected parameters deviceName, id and macAddress.\\
+		- void toggle(boolean) is a method that controls the on/off switch of the Devices set by the boolean value.
 		\item{\textbf{SensorDeviceActivity:}} 
 		Is the controller in the interaction with the user in the SensorDeviceAcitvity. Handles the TextView fields and the buttons that will retrieve and present the information regarding the sensors from NetworkManager.
 		\item{\textbf{LightBulbActivity:}} 
@@ -109,18 +110,19 @@
 		
 		\item{\textbf{NetworkManager:}} 
 		Handles all the communication with the API to access the backend. There are different methods for both receiving and setting data values.\\
-        - void toggle(Device, Callback<Response>)\\
-        - List<Device> detectDevices(List<Device>, Callback<DeviceResponse>) will return a List of Devices that will be displayed in the MyDeviceActivity using the adapter.\\
-        - Temperature getTemperature(Device, Callback<TemperatureResponse>)\\ returns the Temperature received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
-        - Pressure getPressure(Device, Callback<PressureResponse>)\\ returns the Pressure received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
-        - Humidity getHumidity(Device, Callback<HumidityResponse>)\\ 
+        - void toggle(Device, boolean, Callback<Response>) sets the on/off switch of the Device to the boolean value. Returns the response using a Callback.\\
+        - void getToggleState(Device, Callback<Response>) returns the state of the toggle received from the API using a Callback. Device attribute to know to which host the connection should be made and which device the toggle conserns.\\
+        - void detectDevices(List<Device>, Callback<DeviceResponse>) will return a List of Devices that will be displayed in the MyDeviceActivity using the adapter.\\
+        - void getTemperature(Device, Callback<TemperatureResponse>) returns the Temperature received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - void getPressure(Device, Callback<PressureResponse>) returns the Pressure received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - void getHumidity(Device, Callback<HumidityResponse>) 
         returns the Humidity received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
-        - Magnetic getMagnetic(Device, Callback<MagneticResponse>)\\ returns the Magnetic received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
-        - Gyroscopic getGyroscopic(Device, Callback<GyroscopicResponse>)\\ returns the Gyroscopic received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
-        - Accelerometer getAccelerometer(Device, Callback<AccelerometerResponse>)\\ returns the Accelerometer received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
-        - SensorValues getAllSensorValues(Device, Callback<AllSensorValuesResponse>)\\ returns all the sensor values that could be retrieved from the API using a Callback. Device attribute to know to which host the connection should be made.\\
-        - Color getColor(Device, Callback<GetColorResponse>)\\ returns the Color received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
-        - void setColor(Device, Color color,  Callback<ColorResponse>) Sets the color of the light bulb. Device to receive the correct host, Color to set the color and a Callback that will return from the API network.
+        - void getMagnetic(Device, Callback<MagneticResponse>) returns the Magnetic received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - void getGyroscopic(Device, Callback<GyroscopicResponse>) returns the Gyroscopic received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - void getAccelerometer(Device, Callback<AccelerometerResponse>) returns the Accelerometer received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - void getAllSensorValues(Device, Callback<AllSensorValuesResponse>) returns all the sensor values that could be retrieved from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - void getColor(Device, Callback<GetColorResponse>) returns the Color received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - void setColor(Device, Color color,  Callback<ColorResponse>) sets the color of the light bulb. Device to receive the correct host, Color to set the color and a Callback that will return from the API network.
 		\item{\textbf{SensorValues:}} 
 		A class the handles the information of the different sensors.\\
         - Temperature getTemperature() returns the class Temperature that has information regarding the temperature.\\
