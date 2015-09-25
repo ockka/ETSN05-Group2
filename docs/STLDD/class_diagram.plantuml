@@ -27,17 +27,18 @@ package "model" #DDDDDD {
 }
 
  class NetworkManager{
- +{static} void toggle(Device, Callback<Response>)
- +{static} List<Device> detectDevices(List<Device>, Callback<DevicesResponse>)
- +{static} Temperature getTemperature(Device, Callback<TemperatureResponse>)
- +{static} Pressure getPressure(Device, Callback<PressureResponse>)
- +{static} Humidity getHumidity(Device, Callback<HumidityResponse>)
- +{static} Magnetic getMagnetic(Device, Callback<MagneticResponse>)
- +{static} Gyroscopic getGyroscopic(Device, Callback<GyroscopicResponse>)
- +{static} Accelerometer getAccelerometer(Device, Callback<AccelerometerResponse>)
- +{static} SensorValues getAllSensorValues(Device, Callback<AllSensorValuesResponse>)
- +{static} Color getColor(Device, Callback<GetColorResponse>)
- +{static} void setColor(Device, Color color, Callback<Response>)
+ +{static} void toggle(Device, boolean, Callback<Response>)
+ +{static} void getToggledState(Device, Callback<ToggledStateResponse>)
+ +{static} void detectDevices(List<Device>, Callback<DevicesResponse>)
+ +{static} void getTemperature(Device, Callback<TemperatureResponse>)
+ +{static} void getPressure(Device, Callback<PressureResponse>)
+ +{static} void getHumidity(Device, Callback<HumidityResponse>)
+ +{static} void getMagnetic(Device, Callback<MagneticResponse>)
+ +{static} void getGyroscopic(Device, Callback<GyroscopicResponse>)
+ +{static} void getAccelerometer(Device, Callback<AccelerometerResponse>)
+ +{static} void getAllSensorValues(Device, Callback<AllSensorValuesResponse>)
+ +{static} void getColor(Device, Callback<GetColorResponse>)
+ +{static} void setColor(Device, Color, Callback<Response>)
 }
 
 abstract class BaseActivity{
@@ -85,7 +86,7 @@ abstract class DeviceActivity{
  #String deviceName
  #String id
  #String macAddress
- #{abstract} void toggle()
+ #void toggle(boolean)
 }
 
 
