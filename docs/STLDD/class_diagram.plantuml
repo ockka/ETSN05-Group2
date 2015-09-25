@@ -60,7 +60,7 @@ class SensorDeviceActivity{
  -TextView magnetic
  -TextView gyroscopic
  -TextView accelerometer
- -ToggleButton toggle
+ -Switch switch
  -Button getAll
  -Button clearAll
  -void getTemperature()
@@ -83,19 +83,17 @@ class LightBulbActivity{
 }
 
 abstract class DeviceActivity{
- #String deviceName
- #String id
+ #Device device
  #String macAddress
  #void toggle(boolean)
 }
 
 
 abstract class Device{
- #String id;
- #String deviceName
+ #long id;
  #String macAddress
  +String getMacAddress()
- +String getId()
+ +long getId()
  +{abstract} String getName()
 }
 
