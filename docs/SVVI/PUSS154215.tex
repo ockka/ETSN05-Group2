@@ -113,10 +113,10 @@ Jonathan Lundholm
 %--------------------Reference Documents ---------------------------------------
 \section{Reference Documents}
 \begin{enumerate}
-\item PUSS154212 - System Requirements Specification v1.1 \label{refdocs:srs} 
+\item PUSS154212 - System Requirements Specification v1.2 \label{refdocs:srs} 
 \item Programvaruutveckling för Stora System - Projekthandledning v2.2 \newline (\textit{Institutionen för datavetenskap}, Lunds Univeritet 2015) \label{refdocs:projekthandledning}
-\item PUSS154213 - Software Verification and Validation Specification v1.0 \label{redocs:SVVS}
-\item PUSS154253 - Test Matrices for SVVS v1.0 \label{refdocs:matrices}
+\item PUSS154213 - Software Verification and Validation Specification v1.1 \label{redocs:SVVS}
+\item PUSS154253 - Test Matrices for SVVS v1.1 \label{refdocs:matrices}
 \end{enumerate}
 
 %--------------------Introduction ---------------------------------------
@@ -126,11 +126,11 @@ This document contains the test instructions for the tests specified in PUSS1542
 
 \subsection{Terminology}
 \begin{description}
-\item[Device] refers to a Light Bulb or a Sensor Device that can be interacted with using the application.
+\item[Device] refers to a Light Bulb or a Sensor Device that the application can interact with.
 \item[Device available] is used when a device is connected to the MVD.
-\item[Swiping] or \textbf{to drag} is a meant to be a relatively smooth motion with a finger (or similar device) on the screen of the telephone.
-\item[Off] or \textbf{On} refers to the device's state of transmitting data, not whether the device is receiving electrical power or not.
-\item[Light bulb] refers to the physical object that shines that we can interact with. While the \textbf{Light} refers to photons emitted from the  \textit{light bulb}.
+\item[Swiping] or \textbf{to drag} is meant to be a relatively smooth motion with a finger (or similar device) on the screen of the telephone.
+\item[Off] or \textbf{On} refers to the device's state of transmitting data (in case of the sensor) or light (in case of the light bulb), not whether the device is receiving electrical power or not.
+\item[Light bulb] refers to the physical object that shines that we can interact with, while the \textbf{Light} refers to photons emitted from the  \textit{light bulb}.
 \item[Controlled environment] refers to a environment where we can control at least one of the following physical observables:
 	\begin{itemize}
 	\item Temperature
@@ -141,7 +141,7 @@ This document contains the test instructions for the tests specified in PUSS1542
 	\item Acceleration
 	\end{itemize}
 \item[Environmental variable] refers to one of the physical observables listed above.
-\item[Scenario], this means the corresponding scenario in \ref{refdocs:srs}.
+\item[Scenario] refers to the corresponding scenario in \ref{refdocs:srs}.
 \end{description}
 %--------------------Appendix A: Function test Specification ----------------
 \newpage
@@ -165,6 +165,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
     	\begin{postcondition}
     		\item The application is running
     		\item The MyDevices View is open
+    		\item The list of available devices is empty
     	\end{postcondition}
     %Test description: The first screen that is shown on startup is the MyDevicesView (Req. 5.2.1).
     
@@ -200,7 +201,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 			\item Select one device
 		\end{instruction}
 		\begin{postcondition}
-			\item The device is highlighted and "Control Device"-button is enabled
+			\item The device is highlighted and the "Control Device"-button is enabled
 		\end{postcondition}
     %\item The devices on the list are selectable. (Req 5.2.4)
    
@@ -231,20 +232,22 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
     	\end{postcondition}
     %\item When no device is selected and the "Control Device" -button is pressed, a pop-up message "Please select a device" is displayed. (Req. 5.2.6)
    
-	\item Test of sensor naming. \label{MyDevicesTest2}
+	\item Test of device naming. \label{MyDevicesTest2}
 		\begin{precondition}
 			\item The MyDevices View is open
 			\item There is at least one sensor in the list of available devices
+			\item There is at least one light bulb in the list of available devices
 		\end{precondition}
 		\begin{instruction}
-			\item Check the name of each sensor
-			\item Check the address of each sensor
-			\item Check the id of each sensor
+			\item Check the name of each device
+			\item Check the address of each device
+			\item Check the id of each device
 		\end{instruction}
 		\begin{postcondition}
 			\item The name of each sensor device is "Sensor"
-			\item The address of each sensor is their MAC address
-			\item The id of each sensor is their identifier
+			\item The name of each light bulb is "Light Bulb"
+			\item The address of each device is their MAC address
+			\item The id of each device is their identifier
 		\end{postcondition}
 		   
     %\item Sensors are displayed in the list of available devices with "Sensor" as name, and it's MAC address as address and their indentifier as id. (Req. 5.2.7)
@@ -258,6 +261,8 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 	\item Test of scanning function.
 		\begin{precondition}
 			\item The MyDevices View is open
+			\item There is at least one available device within range of the MVD
+			\item The list of available devices is empty
 		\end{precondition}
 		\begin{instruction}
 			\item Press the "Get Devices"-button
@@ -300,7 +305,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
  			\item The "Control Device"-button is at the bottom of the view
  			\item The list of available devices is in the middle of the view
  			\item The "ID"-label is placed at the top left of the list
- 			\item The "Addres"-label is placed at the top right of the list 
+ 			\item The "Address"-label is placed at the top right of the list 
  			\item The "Device name"-label is placed inbetween the "Address"- and the "ID"-label. 
 		\end{postcondition}
 		   
@@ -340,11 +345,14 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
  		\end{instruction}
  		\begin{postcondition}
  			\item The Sensor View is open
+ 			\item The sensor name is shown in the top of the view
+ 			\item The MAC address is shown in the top of the view
+ 			\item The temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration text fields are all empty
  		\end{postcondition}
 
 %When the "Control Device"-button in the MyDevices View is pressed and a sensor is selected, the Sensor view is opened (Req. 5.3.1).
 
-	\item Test of naming of sensor.
+	\item Test of naming of sensor. \\
 		Instructions for this test have been incorporated into \ref{SensorTest1}
 		
 %\item The sensor name and mac-address is shown in the top of the view (Req. 5.3.2, 5.3.3).
@@ -377,8 +385,9 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 			\item The labels preceding the six text fields are "T", "P", "H", "M", "G" and "A" respectively
 		\end{postcondition}
 %\item There are text fields preceded by "T", "P", "H", "M", "G", "A" that are used to, respectively, display temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration (Req. 5.3.5, 5.3.6, 5.3.7, 5.3.8, 5.3.9, 5.3.10).
-\newpage
-	\item Test of get-button functionality. \newline This test should be run once for each of the text fields and its corresponding physical observables.
+
+	\item Test of get-button functionality.
+		\newline This test should be run once for each of the text fields and its corresponding physical observables.
 		\begin{precondition}
 			\item The Sensor View is open
 			\item The on/off-status switch is set to on
@@ -393,10 +402,11 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\end{instruction}
 		\begin{postcondition}
 			\item The values of the corresponding sensors are retrieved if available and displayed
+			\item The retrieved value in step five is different from that in step two
 		\end{postcondition}
 %\item By pressing the corresponding "Get"-button, the values of the temperature, pressure, humidity, magnetic field strength, qyroscopic and acceleration sensors are retrieved if available and displayed (Req. 5.3.11, 5.3.12, 5.3.13, 5.3.14, 5.3.15, 5.3.16).
 
-	\item Test of "get all"-button functionality.
+	\item Test of "Get All"-button functionality.
 		\begin{precondition}
 			\item The Sensor View is open
 			\item The on/off-status switch is set to on
@@ -411,14 +421,14 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\end{instruction}
 		\begin{postcondition}
 			\item The new values for all six sensor's data are displayed in their corresponding text fields
+			\item The retrieved values in step five are different from those in step two
 		\end{postcondition}
 %\item The "Get All" -button gets the values for all six sensors and displays them (Req. 5.3.17).
 
-\newpage
-	\item Test of "clear all" button functionality.
+	\item Test of "Clear All"-button functionality.
 		\begin{precondition}
 			\item The Sensor View is open
-			\item Sensors data are displayed in the text fields
+			\item Sensor data are displayed in the text fields
 		\end{precondition}
 		\begin{instruction}
 			\item Press the "Clear All"-button
@@ -442,7 +452,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
     	\end{postcondition}
 %\item If there is no data to retrieve for any of the physical quantities: temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration when the corresponding "Get" button is pressed the corresponding, text fields display "No data available" (Req. 5.3.19, 5.3.20, 5.3.21, 5.3.22, 5.3.23, 5.3.24).
 
-	\item Test of on/off switch functionality.
+	\item Test of on/off-status switch functionality.
 		\begin{precondition}
 			\item The Sensor View is open
 		\end{precondition}
@@ -455,7 +465,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 
 %\item The on/off-switch is set according to the information from the REST API (Req. 5.3.25).
 
-	\item Test of back button functionality in Sensor View.
+	\item Test of back button functionality in the Sensor View.
 		\begin{precondition}
 			\item The Sensor View is open
 		\end{precondition}
@@ -500,7 +510,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 \subsection{Light Bulb View Test Instructions}
 \begin{testlist}
 
-    \item Test of transition from MyDevices View to Light Bulb View. \label{LightBulbTest1}
+    \item Test of transition from the MyDevices View to the Light Bulb View. \label{LightBulbTest1}
     	\begin{precondition}
     		\item The MyDevices View is open
     		\item At least one light bulb is in the list of available devices
@@ -511,6 +521,9 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
     	\end{instruction}
     	\begin{postcondition}
     		\item The Light Bulb View is open
+    		\item The name of the light bulb is shown in the top of the view
+    		\item The MAC address of the light bulb is shown at the top of the view
+    		\item The text fields specifying color are empty
     	\end{postcondition}
 
 	%\item The Light Bulb View opens when a light bulb is chosen in the MyDevices View and the "Control device" button is pressed. (Req 5.4.1)
@@ -550,7 +563,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
     % \item The field of R-, G-, B-, W-value is editable and preceded by "R:", "G:", "B:" and "W:" respectively (Req. 5.4.4, 5.4.5, 5.4.6, 5.4.7).
 
 	\item Test of starting values of text fields.\\
-		Instructions for this test have been incorporated into \ref{SensorTest1}  
+		Instructions for this test have been incorporated into \ref{LightBulbTest1}  
 %	\item When the Light Bulb View is opened, the fields are empty (Req. 5.4.8).
 
 	\item Test of "Get"-button functionality.
