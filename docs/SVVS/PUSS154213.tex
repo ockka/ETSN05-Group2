@@ -38,7 +38,7 @@ Oskar Fällström %Not entirely sure who this should be, possibly project leader
 ~
 \begin{minipage}{0.4\textwidth}
 \begin{flushright}
-PUSS154213 v1.0 %Dokumentnummer enl. projekthandledning s. 22-23 och insidan av pärmen
+PUSS154213 v1.1 %Dokumentnummer enl. projekthandledning s. 22-23 och insidan av pärmen
 \today
 \end{flushright}
 \end{minipage}\\[3cm]
@@ -72,6 +72,7 @@ Jonathan Lundholm
     \hline
     \textbf{Version}	& \textbf{Date}		& \textbf{Responsible}		& \textbf{Description}					\\ \hline
     1.0					& 150915 			& OF						& Baseline								\\ \hline
+    1.1					&	150925			&	UH \& ME				&	Added test A.1.12. \\ \hline
     \end{tabular}
 \end{center}
 
@@ -84,7 +85,7 @@ Jonathan Lundholm
 %--------------------Reference Documents ---------------------------------------
 \section{Reference Documents}
 \begin{enumerate}
-\item PUSS154212 - System Requirements Specification for the current project \label{refdocs:srs}
+\item PUSS154212 v1.2 - System Requirements Specification for the current project \label{refdocs:srs}
 \item Programvaruutveckling för Stora System - Projekthandledning v2.2 (\textit{Institutionen för datavetenskap}, Lunds Univeritet 2015) \label{refdocs:projekthandledning}
 \item PUSS154253 - Test Matrices for SVVS. \label{refdocs:matrices}
 \end{enumerate}
@@ -216,7 +217,9 @@ This is appendix A where we list all function test specifications.
     \item When the back button is pressed the application is closed (Req. 5.2.10)
     
     % Nytt requirement!
-    \item The layout of the MyDevices View resemble figure 1 in appendix  Ref \ref{refdocs:srs} (5.2.11).
+    \item The layout of the MyDevices View resemble figure 1 in appendix  Ref \ref{refdocs:srs} (Req. 5.2.11).
+    
+    \item The "Get Devices" button only displays the devices with the MAC addresses in Ref \ref{refdocs:srs} (Req. 5.2.12, 5.2.13)
 \end{testlist}
 
 %--------------------------Sensor view tests --------------------------------------
