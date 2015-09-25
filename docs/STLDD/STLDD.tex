@@ -88,47 +88,47 @@
 		Is the start screen of the application. Will contain a ListView and has methods for detecting devices and control a device that was selected from the ListView.
 		\item{\textbf{DeviceListAdapter:}} 
 		Adapter that handles the list in MyDevicesActivity, the ListView can display any data provided that it is wrapped in a ListAdapter.\\ 
-        - void addDevices(List<Device>) Will add a list of devices to the adapter to display it in the activity.
+        - void addDevices(List<Device>) will add a list of devices to the adapter to display it in the activity.
 		\item{\textbf{Device:}} 
-		Is an Abstract class that contains information about the two devices we are handling. \\
-        - String getMacAddress() Returns the String MacAddress value of a Device.\\
-        - String getId() Returns the String id number of a Device.\\
-        - String getName() Is a abstract method that is declared without an implementation in this class.
+		Is an abstract class that contains information about the two devices we are handling. \\
+        - String getMacAddress() returns the String MacAddress value of a Device.\\
+        - String getId() returns the String id number of a Device.\\
+        - String getName() Is an abstract method that is declared without an implementation in this class.
 		\item{\textbf{SensorDevice:}} 
 		Class containing the SensorDevice information.\\
-        - String getName() Returns the String Name of a Device.
+        - String getName() returns the String Name of a Device.
 		\item{\textbf{LightBulb:}}
 		Class containing the LightBulb information.\\
-        - String getName() Returns the String Name of a Device.
+        - String getName() returns the String Name of a Device.
 		\item{\textbf{DeviceActivity:}} 
 		Is an abstract class that holds the protected parameters deviceName, id and macAddress. It also contains a method toggle that toggles between the SensorDevice and LightBulbActivity.
 		\item{\textbf{SensorDeviceActivity:}} 
-		Is the controller in the interaction with the user in the SensorDevice acitvity. Handles the TextView fields and the buttons that will retrieve and present the information regarding the sensors from NetworkManager.
+		Is the controller in the interaction with the user in the SensorDeviceAcitvity. Handles the TextView fields and the buttons that will retrieve and present the information regarding the sensors from NetworkManager.
 		\item{\textbf{LightBulbActivity:}} 
 		Is the controller in the interaction with the user in the LightBulb View. Handles the EditText fields and the buttons that will retrieve and send information from/to the NetworkManager.
 		
 		\item{\textbf{NetworkManager:}} 
 		Handles all the communication with the API to access the backend. There are different methods for both receiving and setting data values.\\
         - void toggle(Device, Callback<Response>)\\
-        - List<Device> detectDevices(List<Device>, Callback<DeviceResponse>) Will return a List of Devices that will be displayed in the MyDeviceActivity using the adapter.\\
-        - Temperature getTemperature(Device, Callback<TemperatureResponse>)\\ Returns the Temperature received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
-        - Pressure getPressure(Device, Callback<PressureResponse>)\\ Returns the Pressure received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - List<Device> detectDevices(List<Device>, Callback<DeviceResponse>) will return a List of Devices that will be displayed in the MyDeviceActivity using the adapter.\\
+        - Temperature getTemperature(Device, Callback<TemperatureResponse>)\\ returns the Temperature received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - Pressure getPressure(Device, Callback<PressureResponse>)\\ returns the Pressure received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
         - Humidity getHumidity(Device, Callback<HumidityResponse>)\\ 
-        Returns the Humidity received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
-        - Magnetic getMagnetic(Device, Callback<MagneticResponse>)\\ Returns the Magnetic received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
-        - Gyroscopic getGyroscopic(Device, Callback<GyroscopicResponse>)\\ Returns the Gyroscopic received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
-        - Accelerometer getAccelerometer(Device, Callback<AccelerometerResponse>)\\ Returns the Accelerometer received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
-        - SensorValues getAllSensorValues(Device, Callback<AllSensorValuesResponse>)\\ Returns all the sensor values that could be retrieved from the API using a Callback. Device attribute to know to which host the connection should be made.\\
-        - Color getColor(Device, Callback<GetColorResponse>)\\ Returns the Color received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
-        - void setColor(Device, Color color,  Callback<ColorResponse>) Sets the color of the Lightbulb. Device to receive the correct host, Color to set the color and a Callback that will return from the API network.
+        returns the Humidity received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - Magnetic getMagnetic(Device, Callback<MagneticResponse>)\\ returns the Magnetic received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - Gyroscopic getGyroscopic(Device, Callback<GyroscopicResponse>)\\ returns the Gyroscopic received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - Accelerometer getAccelerometer(Device, Callback<AccelerometerResponse>)\\ returns the Accelerometer received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - SensorValues getAllSensorValues(Device, Callback<AllSensorValuesResponse>)\\ returns all the sensor values that could be retrieved from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - Color getColor(Device, Callback<GetColorResponse>)\\ returns the Color received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
+        - void setColor(Device, Color color,  Callback<ColorResponse>) Sets the color of the light bulb. Device to receive the correct host, Color to set the color and a Callback that will return from the API network.
 		\item{\textbf{SensorValues:}} 
 		A class the handles the information of the different sensors.\\
-        - Temperature getTemperature() Returns the class Temperature that have information regarding the temperature.\\
-        - Pressure getPressure() Returns the class Pressure that have information regarding the pressure data.\\
-        - Humidity getHumidity() Returns the class Humidity that have information regarding the humidity data.\\
-        - Magnetic getMagnetic() Returns the class Magnetic that have information regarding the magnetic data.\\
-        - Gyroscopic getGyroscopic() Returns the class Gyroscopic that have information regarding the gyroscopic data.\\
-         - Accelerometer getAccelerometer() Returns the class Accelerometer that have information regarding the accelerometer data.
+        - Temperature getTemperature() returns the class Temperature that has information regarding the temperature.\\
+        - Pressure getPressure() returns the class Pressure that has information regarding the pressure data.\\
+        - Humidity getHumidity() returns the class Humidity that has information regarding the humidity data.\\
+        - Magnetic getMagnetic() returns the class Magnetic that has information regarding the magnetic data.\\
+        - Gyroscopic getGyroscopic() returns the class Gyroscopic that have information regarding the gyroscopic data.\\
+         - Accelerometer getAccelerometer() returns the class Accelerometer that has information regarding the accelerometer data.
 	\item{\textbf{Temperature:}} 
     Handles the information regarding the temperature data.
     \item{\textbf{Pressure:}} 
@@ -168,7 +168,7 @@
 	
 	\begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{seq.png}
+    \includegraphics[width=0.6\textwidth]{seq.png} 
     \caption{Opening application and detecting devices.}
     \label{fig:seq}
 \end{figure}
@@ -176,14 +176,14 @@
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{seq1.png}
-    \caption{Turn on the light bulb with the user located in the LightBulb view.}
+    \caption{Turn on the light bulb with the user located in the LightBulbActivity.}
     \label{fig:seq1}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{seq2.png}
-    \caption{Get all sensor data with the user located in the SensorDevice view.}
+    \caption{Get all sensor data with the user located in the SensorDeviceActivity.}
     \label{fig:seq2}
 \end{figure}
 
