@@ -1,8 +1,5 @@
 package com.etsn05group2.lampcontroller.network;
 
-import android.graphics.Color;
-import android.telecom.Call;
-
 import com.etsn05group2.lampcontroller.network.data.DataAboutDevice;
 import com.etsn05group2.lampcontroller.network.data.DeviceData;
 import com.etsn05group2.lampcontroller.network.data.DeviceStatus;
@@ -25,15 +22,14 @@ public interface NetworkManagerApi {
     void getDataAboutAllDevices(Callback<List<DataAboutDevice>> callback);
 
     @GET("/data/device/{id}")
-    void getDeviceData(@Path("id") int deviceId, Callback<List<DeviceData>> callback);
+    void getDeviceData(@Path("id") long deviceId, Callback<List<DeviceData>> callback);
 
     @GET("/data/device/{id}/{sensorType}")
-    void getDeviceData(@Path("id") int deviceId, @Path("sensorType") String sensorType, Callback<List<DeviceData>> callback);
+    void getDeviceData(@Path("id") long deviceId, @Path("sensorType") String sensorType, Callback<List<DeviceData>> callback);
 
-
-
-    //@Multipart
     @PUT("/device/status")
-    void putDeviceStatus(@Body DeviceStatus status, Callback<DeviceStatus> respons);
+    void putDeviceStatus(@Body DeviceStatus status, Callback<DeviceStatus> response);
 
+    @PUT("/device/value")
+    void putDeviceValue(@Body DeviceStatus status, Callback<DeviceStatus> callback);
 }

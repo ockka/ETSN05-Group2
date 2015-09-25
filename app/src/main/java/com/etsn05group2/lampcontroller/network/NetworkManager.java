@@ -1,14 +1,12 @@
 package com.etsn05group2.lampcontroller.network;
 
-import android.provider.ContactsContract;
 import android.util.Log;
 
 import com.etsn05group2.lampcontroller.network.data.DataAboutDevice;
+import com.etsn05group2.lampcontroller.network.data.DeviceData;
 import com.etsn05group2.lampcontroller.network.data.DeviceStatus;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Semaphore;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -44,6 +42,55 @@ public class NetworkManager {
         api.putDeviceStatus(deviceStatus, toggleCallback());
     }
 
+    public void detectDevices(Callback<List<DataAboutDevice>> callback) {
+        api.getDataAboutAllDevices(callback);
+    }
+
+    public void getTemperature(long id, Callback<List<DeviceData>> callback) {
+        api.getDeviceData(id, "temperature", callback);
+    }
+
+    public void getPressure(long id, Callback<List<DeviceData>> callback) {
+        api.getDeviceData(id, "pressure", callback);
+    }
+
+    public void getHumidity(long id, Callback<List<DeviceData>> callback) {
+        api.getDeviceData(id, "humidity", callback);
+    }
+
+    public void getMagnetic(long id, Callback<List<DeviceData>> callback) {
+        api.getDeviceData(id, "magnometer", callback);
+    }
+
+    public void getAccelerometer(long id, Callback<List<DeviceData>> callback) {
+        api.getDeviceData(id, "accelerometer", callback);
+    }
+
+    public void getGyroscopic(long id, Callback<List<DeviceData>> callback) {
+        api.getDeviceData(id, "gyroscope", callback);   // is this right/
+    }
+
+    public void getAllSensorValues(long id, Callback<List<DeviceData>> callback) {
+        api.getDeviceData(id, callback);
+    }
+
+    public void getColor(long id, Callback<List<DeviceData>> callback) {
+        api.getDeviceData(id, callback);
+    }
+
+    public void setColor(String address, String color) {
+        api.putDeviceValue(new DeviceStatus(address, color), new Callback<DeviceStatus>() {
+            @Override
+            public void success(DeviceStatus deviceStatus, Response response) {
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
+    }
 
     /**
      * Placera in all Fulkod här under
