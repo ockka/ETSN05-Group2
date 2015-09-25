@@ -78,18 +78,8 @@ public class NetworkManager {
         api.getDeviceData(id, callback);
     }
 
-    public void setColor(String address, String color) {
-        api.putDeviceValue(new DeviceStatus(address, color), new Callback<DeviceStatus>() {
-            @Override
-            public void success(DeviceStatus deviceStatus, Response response) {
-
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-
-            }
-        });
+    public void setColor(String address, String color, Callback<DeviceStatus> callback) {
+        api.putDeviceValue(new DeviceStatus(address, color), callback);
     }
 
     /**

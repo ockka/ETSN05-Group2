@@ -38,7 +38,17 @@ public class testActivity extends Activity{
         //List<DataAboutDevice> detectedDevices = man.detectDevices();
         //printList(detectedDevices);
 
-        man.setColor(mac, "00FF0000");
+        man.setColor(mac, "10100000", new Callback<DeviceStatus>() {
+            @Override
+            public void success(DeviceStatus deviceStatus, Response response) {
+                
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
 
         /*
         man.detectDevices(new Callback<List<DataAboutDevice>>() {
