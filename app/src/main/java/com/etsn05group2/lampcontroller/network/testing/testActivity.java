@@ -30,18 +30,18 @@ public class testActivity extends Activity{
 
 
 
-        RestAdapter retrofit= new RestAdapter.Builder().setEndpoint(PATH).build();
-        NetworkManagerApi api = retrofit.create(NetworkManagerApi.class);
+        //RestAdapter retrofit= new RestAdapter.Builder().setEndpoint(PATH).build();
+        //NetworkManagerApi api = retrofit.create(NetworkManagerApi.class);
         String mac = "90:59:AF:2A:BD:19";
         String value = "0";
         //man.toggle(mac, value);
         //List<DataAboutDevice> detectedDevices = man.detectDevices();
         //printList(detectedDevices);
 
-        man.setColor(mac, "10100000", new Callback<DeviceStatus>() {
+        NetworkManager.setColor(mac, "01000000", new Callback<DeviceStatus>() {
             @Override
             public void success(DeviceStatus deviceStatus, Response response) {
-                
+
             }
 
             @Override
