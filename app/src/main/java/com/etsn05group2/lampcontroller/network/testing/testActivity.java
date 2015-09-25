@@ -38,7 +38,7 @@ public class testActivity extends Activity{
         //List<DataAboutDevice> detectedDevices = man.detectDevices();
         //printList(detectedDevices);
 
-        NetworkManager.setColor(mac, "01000000", new Callback<DeviceStatus>() {
+        NetworkManager.setColor(mac, "0000FF00", new Callback<DeviceStatus>() {
             @Override
             public void success(DeviceStatus deviceStatus, Response response) {
 
@@ -46,23 +46,10 @@ public class testActivity extends Activity{
 
             @Override
             public void failure(RetrofitError error) {
-
-            }
-        });
-
-        /*
-        man.detectDevices(new Callback<List<DataAboutDevice>>() {
-            @Override
-            public void success(List<DataAboutDevice> dataAboutDevices, Response response) {
-                printList(dataAboutDevices);
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
                 Log.d("failure", error.toString());
             }
         });
-        */
+
     }
     void printList(List<DataAboutDevice> data){
         for (DataAboutDevice device : data) {

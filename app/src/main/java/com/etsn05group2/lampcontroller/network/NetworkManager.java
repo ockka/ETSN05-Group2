@@ -2,6 +2,7 @@ package com.etsn05group2.lampcontroller.network;
 
 import android.util.Log;
 
+import com.etsn05group2.lampcontroller.model.Device;
 import com.etsn05group2.lampcontroller.network.data.DataAboutDevice;
 import com.etsn05group2.lampcontroller.network.data.DeviceData;
 import com.etsn05group2.lampcontroller.network.data.DeviceStatus;
@@ -33,9 +34,8 @@ public class NetworkManager {
         return detectedDevices;
     }
 
-    public static void toggle(String mac, String value){
-        deviceStatus = new DeviceStatus(mac, value);
-        api.putDeviceStatus(deviceStatus, toggleCallback());
+    public static void toggle(String mac, String value, Callback<DeviceStatus> callback) {
+        api.putDeviceStatus(new DeviceStatus(mac, value), callback);
     }
 
     public static void detectDevices(Callback<List<DataAboutDevice>> callback) {
