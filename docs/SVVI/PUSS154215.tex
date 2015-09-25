@@ -154,7 +154,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 \subsection{MyDevices View Test Instructions}
 \begin{testlist}
 
-    \item Test of startup screen of application.
+    \item Test of startup screen of application. \label{MyDevicesTest1}
     	\begin{precondition}
     		\item The application is not running
     	\end{precondition}
@@ -167,16 +167,10 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
     	\end{postcondition}
     %Test description: The first screen that is shown on startup is the MyDevicesView (Req. 5.2.1).
     
-	\item Test of device list on startup.
-		\begin{precondition}
-			\item Application is not running
-    	\end{precondition}
-    	\begin{instruction}
-    		\item Start the application
-    	\end{instruction}
-    	\begin{postcondition}
-    		\item The list of available devices is empty
-    	\end{postcondition}
+    
+	\item Test of device list on startup. \\
+		Instructions for this test have been incorporated into \ref{MyDevicesTest1}
+    
     %The list of available devices is empty on application start up. (Req. 5.2.2)
 
     \item Test of scrollability of device list.
@@ -216,7 +210,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
    			\item One device is selected
    		\end{precondition}
    		\begin{instruction}
-   			\item Select another device
+   			\item Select an other device
    		\end{instruction}
    		\begin{postcondition}
    			\item Only the last selected device is still selected
@@ -236,11 +230,16 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
     	\end{postcondition}
     %\item When no device is selected and the "Control Device" -button is pressed, a pop-up message "Please select a device" is displayed. (Req. 5.2.6)
    
-	\item Test of sensor naming.
+	\item Test of sensor naming. \label{MyDevicesTest2}
 		\begin{precondition}
 			\item The MyDevices View is open
 			\item There is at least one sensor in the list of available devices
 		\end{precondition}
+		\begin{instruction}
+			\item Check the name of each sensor
+			\item Check the address of each sensor
+			\item Check the id of each sensor
+		\end{instruction}
 		\begin{postcondition}
 			\item The name of each sensor device is "Sensor"
 			\item The address of each sensor is their MAC address
@@ -249,16 +248,9 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		   
     %\item Sensors are displayed in the list of available devices with "Sensor" as name, and it's MAC address as address and their indentifier as id. (Req. 5.2.7)
    
-	\item Test of naming of light bulbs.
-		\begin{precondition}
-			\item The MyDevices View is open
-			\item There is at least one light bulb in the list of available devices
-		\end{precondition}
-		\begin{postcondition}
-			\item The name of each light bulb is "Light Bulb"
-			\item The address of each light bulb is their MAC address
-			\item The id of each light bulb is their identifier
-		\end{postcondition}
+	\item Test of naming of light bulbs. \\
+		Instructions for this test have been incorporated into \ref{MyDevicesTest2}
+
 		   
     %\item Light bulbs are displayed in the list of available devices with "Light Bulb" as name and it's MAC address as address and their indentifier as id. (Req. 5.2.8)
    
@@ -294,8 +286,21 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\begin{precondition}
 			\item The MyDevices View is open
 		\end{precondition}
+		
+		\begin{instruction}
+			\item Identify the "Get Devices"-button
+			\item Identify the "Control Device"-button
+			\item Identify the list of available devices
+			\item Check the labels at the top of the list	
+		\end{instruction}		
+		
 		\begin{postcondition}
- 			\item The layout of the screen resembles Fig. 1 in the appendix of Ref. \ref{refdocs:srs}
+ 			\item The "Get Devices"-button is at the top of the view
+ 			\item The "Control Device"-button is at the bottom of the view
+ 			\item The list of available devices is in the middle of the view
+ 			\item The "ID"-label is placed at the top left of the list
+ 			\item The "Addres"-label is placed at the top right of the list 
+ 			\item The "Device name"-label is placed inbetween the "Address"- and the "ID"-label. 
 		\end{postcondition}
 		   
     %\item The layout of the MyDevices View resemble figure 1 in appendix  Ref \ref{refdocs:srs} (5.2.11).
@@ -304,7 +309,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 %--------------------------Sensor view tests --------------------------------------
 \subsection{Sensor View Test Instructions}
 \begin{testlist}
-	\item Test of transition from main view to sensor view.
+	\item Test of transition from main view to sensor view. \label{SensorTest1}
  		\begin{precondition}
  			\item The MyDevices View is open
  			\item A sensor device is available in the list
@@ -320,12 +325,8 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 %When the "Control Device"-button in the MyDevices View is pressed and a sensor is selected, the Sensor view is opened (Req. 5.3.1).
 
 	\item Test of naming of sensor.
-		\begin{precondition}
-			\item The Sensor View is open
-		\end{precondition}
-		\begin{postcondition}
-			\item The sensor name and MAC address is shown in the top of the view
-		\end{postcondition}
+		Instructions for this test have been incorporated into \ref{SensorTest1}
+		
 %\item The sensor name and mac-address is shown in the top of the view (Req. 5.3.2, 5.3.3).
 
 	\item Test of on/off switch.
@@ -346,8 +347,14 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\begin{precondition}
 			\item The Sensor View is open
 		\end{precondition}
+		
+		\begin{instruction}
+			\item Identify the six text fields
+			\item Check the labels preceding the six text fields
+		\end{instruction}		
+		
 		\begin{postcondition}
-			\item There are text fields preceded by "T", "P", "H", "M", "G", "A"
+			\item The labels preceding the six text fields are "T", "P", "H", "M", "G" and "A" respectively
 		\end{postcondition}
 %\item There are text fields preceded by "T", "P", "H", "M", "G", "A" that are used to, respectively, display temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration (Req. 5.3.5, 5.3.6, 5.3.7, 5.3.8, 5.3.9, 5.3.10).
 \newpage
@@ -441,17 +448,8 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 
 %\item When the back button is pressed in the Sensor View, the MyDevices View is opened (Req. 5.3.26).
 
-	\item Test of text fields on selecting new device.
-		\begin{precondition}
-			\item The MyDevices View is open
-		\end{precondition}
-		\begin{instruction}			
-			\item Select a sensor device
-			\item Press the "Control Device" -button
-		\end{instruction}
-		\begin{postcondition}
-			\item The temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration text fields are all empty
-		\end{postcondition}
+	\item Test of text fields on selecting new device. \\
+		Instructions for this test have been incorporated into \ref{SensorTest1}
 
 %\item When the sensor view is opened the temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration text fields are empty (Req. 5.3.27).
 
@@ -459,15 +457,30 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\begin{precondition}
 			\item The Sensor View is open
 		\end{precondition}
+		\begin{instruction}
+			\item Identify the text field showing the name and the MAC address
+			\item Identify the on/off-status switch
+			\item Identify the six text fields and their corresponding "Get"-buttons
+			\item Identify the "Get All"-button
+			\item Identify the "Clear All"-button
+		\end{instruction}
 		\begin{postcondition}
-			\item The layout of the screen resembles Fig. 2 in appendix A in Ref. \ref{refdocs:srs}
+			\item The text field showing the name and the MAC address is placed at the top of the view
+			\item The on/off-status switch is placed below the text field described above
+			\item The six text fields are aligned
+			\item The six text fields are placed below the on/off-status switch
+			\item The "Get"-buttons are aligned vertically
+			\item The "Get"-buttons are aligned with their respective text fields
+			\item The "Get All"-button is placed at the bottom left of the view
+			\item The "Clear All"-button is placed at the bottom right of the view
+			\item The "Get All"- and the "Clear All"-button are aligned horizontally
 		\end{postcondition}
 \end{testlist}
 
 \subsection{Light Bulb View Test Instructions}
 \begin{testlist}
 
-    \item Test of transition from MyDevices View to Light Bulb View.
+    \item Test of transition from MyDevices View to Light Bulb View. \label{LightBulbTest1}
     	\begin{precondition}
     		\item The MyDevices View is open
     		\item At least one light bulb is in the list of available devices
@@ -482,13 +495,8 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 
 	%\item The Light Bulb View opens when a light bulb is chosen in the MyDevices View and the "Control device" button is pressed. (Req 5.4.1)
 	
-	\item Test of naming of light bulb.
-		\begin{precondition}
-			\item The Light Bulb View is open
-		\end{precondition}
-    	\begin{postcondition}
-    		\item The name and MAC address of the light bulb is shown at the top of the view
-    	\end{postcondition}
+	\item Test of naming of light bulb.\\
+		Instructions for this test have been incorporated into \ref{LightBulbTest1}
     	
 	%\item The name of the selected light bulb is shown at the top of the View (Req 5.4.2).
 	
@@ -521,19 +529,8 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 
     % \item The field of R-, G-, B-, W-value is editable and preceded by "R:", "G:", "B:" and "W:" respectively (Req. 5.4.4, 5.4.5, 5.4.6, 5.4.7).
 
-	\item Test of starting values of text fields.
-		\begin{precondition}
-			\item The MyDevices View is open
-			\item There is a light bulb available
-		\end{precondition}
-		\begin{instruction}
-			\item Select a light bulb
-			\item Press the "Control Device"-button
-		\end{instruction}
-		\begin{postcondition}
-			\item The Light Bulb View is open
-			\item The fields specified in Req. 5.4.4-5.4.7 (ref. \ref{refdocs:srs}) are empty
-		\end{postcondition}	   
+	\item Test of starting values of text fields.\\
+		Instructions for this test have been incorporated into \ref{SensorTest1}  
 %	\item When the Light Bulb View is opened, the fields are empty (Req. 5.4.8).
 
 	\item Test of "Get"-button functionality.
@@ -667,6 +664,11 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 			\item The Light Bulb View is open
 			\item The light bulb is off
 		\end{precondition}
+		
+		\begin{instruction}
+			\item Identify the "Set"-button
+		\end{instruction}
+
 		\begin{postcondition}
 			\item The "Set"-button is unavailable
 		\end{postcondition}
@@ -688,8 +690,21 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\begin{precondition}
 			\item The Light Bulb View is open
 		\end{precondition}
+		\begin{instruction}
+			\item Identify the text field showing the name and the MAC address
+			\item Identify the on/off-status switch
+			\item Identify the four text fields
+			\item Identify the "Get"-button
+			\item Identify the "Set"-button
+		\end{instruction}
 		\begin{postcondition}
-			\item The layout of the screen resembles Fig. 3 in the appendix of Ref. \ref{refdocs:srs}
+			\item The text field showing the name and the MAC address is placed at the top of the view
+			\item The on/off-status switch is placed below the text field described above
+			\item The four text fields are aligned
+			\item The four text fields are placed below the on/off-status switch
+			\item The "Get"-button is placed at the bottom left of the view
+			\item The "Set"-button is placed at the bottom right of the view
+			\item The "Get"- and the "Set"-button are aligned horizontally
 		\end{postcondition}
 %    \item The layout of the Light Bulb View resemble figure 3 in appendix  Ref \ref{refdocs:srs} (Req. 5.4.18).
 
@@ -732,7 +747,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 		\end{postcondition}
 	%SVVS: Exception 1 described in scenario 5.1.1 can be generated by removing the devices from range while attempting scenario 5.1.1 (Req 5.1.1).
 	
-	\item Test of Scenario 5.1.2.
+	\item Test of Scenario 5.1.2. \label{SystemTest1}
 		\begin{precondition}
 			\item The MyDevices View is open
 			\item A light bulb is available
@@ -773,17 +788,9 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 		\end{postcondition}
 %	\item Scenario 5.1.3 in Ref \ref{refdocs:srs} is supported (Req. 5.1.3).
 
-	\item  Test exception handling in Scenario 5.1.3.
-		\begin{precondition}
-			\item The Sensor View is open
-			\item A sensor device is available
-		\end{precondition}
-		\begin{instruction}
-			\item Press the "Control Device"-button
-		\end{instruction}
-		\begin{postcondition}
-			\item A pop-up message with the text "Please select a device" is shown
-		\end{postcondition}
+
+	\item  Test exception handling in Scenario 5.1.3. \\
+		Instructions for this test have been incorporated into \ref{SystemTest1}
 %	\item Exception 1 described in scenario 5.1.3 can be generated by not selecting a device in step 1 (Req. 5.1.3). 
 
 	\item  Test of Scenario 5.1.4.
