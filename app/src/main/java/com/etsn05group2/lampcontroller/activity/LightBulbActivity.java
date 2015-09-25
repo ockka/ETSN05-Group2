@@ -14,6 +14,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.etsn05group2.lampcontroller.R;
+import com.etsn05group2.lampcontroller.model.LightBulb;
 import com.etsn05group2.lampcontroller.network.NetworkManager;
 import com.etsn05group2.lampcontroller.network.data.DeviceData;
 import com.etsn05group2.lampcontroller.network.data.DeviceStatus;
@@ -53,11 +54,34 @@ public class LightBulbActivity extends Activity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     isOn = true;
-                    NetworkManager.toggle("90:59:AF:2A:BD:19","1");
+                    LightBulb lb = new LightBulb("nextTurn","90:59:AF:2A:BD:19",24);
+                    NetworkManager.toggle(lb, "1", new Callback<DeviceStatus>() {
+                        @Override
+                        public void success(DeviceStatus deviceStatus, Response response) {
+
+                        }
+
+                        @Override
+                        public void failure(RetrofitError error) {
+
+                        }
+                    });
                 } else {
                     isOn = false;
-                    NetworkManager.toggle("90:59:AF:2A:BD:19","0");
-                }
+                    LightBulb lb = new LightBulb("nextTurn","90:59:AF:2A:BD:19",24);
+                    NetworkManager.toggle(lb, "0", new Callback<DeviceStatus>() {
+                        @Override
+                        public void success(DeviceStatus deviceStatus, Response response) {
+
+                        }
+                        @Override
+                        public void failure(RetrofitError error) {
+
+                        }
+                    });
+
+
+                    }
             }
         });
     }
@@ -92,7 +116,8 @@ public class LightBulbActivity extends Activity {
             String whitetext = white.getText().toString();
             String color = (redtext.length() > 1 ? redtext : "00") + (greentext.length() > 1 ? greentext : "00") + (bluetext.length() > 1 ? bluetext : "00") + (whitetext.length() > 1 ? whitetext : "00");
             //Log.w("Testar", color);
-            NetworkManager.setColor("90:59:AF:2A:BD:19", color, new Callback<DeviceStatus>() {
+            LightBulb lb = new LightBulb("nextTurn","90:59:AF:2A:BD:19",24);
+            NetworkManager.setColor(lb, color, new Callback<DeviceStatus>() {
                 @Override
                 public void success(DeviceStatus deviceStatus, Response response) {
                     toast = Toast.makeText(context,"Color successfully changed.",duration);
@@ -114,7 +139,8 @@ public class LightBulbActivity extends Activity {
 
     public void getValues(View v){
         if(isOn){
-            NetworkManager.getColor(24, new Callback<List<DeviceData>>() {
+            LightBulb lb = new LightBulb("nextTurn","90:59:AF:2A:BD:19",24);
+            NetworkManager.getColor(lb, new Callback<List<DeviceData>>() {
                 @Override
                 public void success(List<DeviceData> deviceDatas, Response response) {
                     String color = deviceDatas.get(deviceDatas.size() - 1).value;
