@@ -44,7 +44,7 @@ This test should be run #1 times with the following configurations:
 {\end{itemize}}
 
 \title{SVVI - Software Verification and Validation Instruction}
-\newcommand{\version}{v0.2}
+\newcommand{\version}{v0.9}
 \newcommand{\SVVI}{PUSS154215}
 \author{Testgroup, Team 2}
 
@@ -74,7 +74,7 @@ Oskar Fällström %Not entirely sure who this should be, possibly project leader
 \textsc{\LARGE Team 2}\\[0.5cm]
 
 \HRule \\[0.4cm]
-{ \huge \bfseries SVVI - Software Verification and Validation Instruction }\\[0.4cm] % Title of your document
+{ \huge \bfseries SVVI - Software Verification and Validation Instruction}\\[0.4cm] % Title of your document
 \HRule \\[1.5cm]
 
 \vfill
@@ -100,7 +100,8 @@ Jonathan Lundholm
     \textbf{Version}		& \textbf{Date}		& \textbf{Responsible}					& \textbf{Description}					\\ \hline
     0.0						& 150916 			& UH									& Document created						\\ \hline
     0.1						& 150918			& HA									& All instructions written				\\ \hline
-    0.2						& 150921			& UH									& Document ready for informal review \\ \hline
+    0.2						& 150921			& UH									& Document ready for informal review 	\\ \hline
+    0.9						& 150925			& HA									& Document ready for formal review		\\ \hline
     \end{tabular}
 \end{center}
 
@@ -113,10 +114,10 @@ Jonathan Lundholm
 %--------------------Reference Documents ---------------------------------------
 \section{Reference Documents}
 \begin{enumerate}
-\item PUSS154212 - System Requirements Specification v1.1 \label{refdocs:srs} 
+\item PUSS154212 - System Requirements Specification v1.2 \label{refdocs:srs} 
 \item Programvaruutveckling för Stora System - Projekthandledning v2.2 \newline (\textit{Institutionen för datavetenskap}, Lunds Univeritet 2015) \label{refdocs:projekthandledning}
-\item PUSS154213 - Software Verification and Validation Specification v1.0 \label{redocs:SVVS}
-\item PUSS154253 - Test Matrices for SVVS v1.0 \label{refdocs:matrices}
+\item PUSS154213 - Software Verification and Validation Specification v1.1 \label{redocs:SVVS}
+\item PUSS154253 - Test Matrices for SVVS v1.1 \label{refdocs:matrices}
 \end{enumerate}
 
 %--------------------Introduction ---------------------------------------
@@ -126,10 +127,11 @@ This document contains the test instructions for the tests specified in PUSS1542
 
 \subsection{Terminology}
 \begin{description}
+\item[Device] refers to a Light Bulb or a Sensor Device that the application can interact with.
 \item[Device available] is used when a device is connected to the MVD.
-\item[Swiping] or \textbf{to drag} is a meant to be a relatively smooth motion with a finger (or similar device) on the screen of the telephone.
-\item[Off] or \textbf{On} refers to the device's state of transmitting data, not whether the device is receiving electrical power or not.
-\item[Light bulb] refers to the physical object that shines that we can interact with. While the \textbf{Light} refers to photons emitted from the  \textit{light bulb}.
+\item[Swiping] or \textbf{to drag} is meant to be a relatively smooth motion with a finger (or similar device) on the screen of the telephone.
+\item[Off] or \textbf{On} refers to the device's state of transmitting data (in case of the sensor) or light (in case of the light bulb), not whether the device is receiving electrical power or not.
+\item[Light bulb] refers to the physical object that shines that we can interact with, while the \textbf{Light} refers to photons emitted from the  \textit{light bulb}.
 \item[Controlled environment] refers to a environment where we can control at least one of the following physical observables:
 	\begin{itemize}
 	\item Temperature
@@ -140,7 +142,7 @@ This document contains the test instructions for the tests specified in PUSS1542
 	\item Acceleration
 	\end{itemize}
 \item[Environmental variable] refers to one of the physical observables listed above.
-\item[Scenario], this means the corresponding scenario in \ref{refdocs:srs}.
+\item[Scenario] refers to the corresponding scenario in \ref{refdocs:srs}.
 \end{description}
 %--------------------Appendix A: Function test Specification ----------------
 \newpage
@@ -154,7 +156,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 \subsection{MyDevices View Test Instructions}
 \begin{testlist}
 
-    \item Test of startup screen of application.
+    \item Test of startup screen of application. \label{MyDevicesTest1}
     	\begin{precondition}
     		\item The application is not running
     	\end{precondition}
@@ -164,19 +166,14 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
     	\begin{postcondition}
     		\item The application is running
     		\item The MyDevices View is open
+    		\item The list of available devices is empty
     	\end{postcondition}
     %Test description: The first screen that is shown on startup is the MyDevicesView (Req. 5.2.1).
     
-	\item Test of device list on startup.
-		\begin{precondition}
-			\item Application is not running
-    	\end{precondition}
-    	\begin{instruction}
-    		\item Start the application
-    	\end{instruction}
-    	\begin{postcondition}
-    		\item The list of available devices is empty
-    	\end{postcondition}
+    
+	\item Test of device list on startup. \\
+		Instructions for this test have been incorporated into \ref{MyDevicesTest1}
+    
     %The list of available devices is empty on application start up. (Req. 5.2.2)
 
     \item Test of scrollability of device list.
@@ -205,7 +202,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 			\item Select one device
 		\end{instruction}
 		\begin{postcondition}
-			\item The device is highlighted and "Control Device"-button is enabled
+			\item The device is highlighted and the "Control Device"-button is enabled
 		\end{postcondition}
     %\item The devices on the list are selectable. (Req 5.2.4)
    
@@ -216,7 +213,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
    			\item One device is selected
    		\end{precondition}
    		\begin{instruction}
-   			\item Select another device
+   			\item Select an other device
    		\end{instruction}
    		\begin{postcondition}
    			\item Only the last selected device is still selected
@@ -235,36 +232,38 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
     		\item A pop-up message "Please select a device" is displayed
     	\end{postcondition}
     %\item When no device is selected and the "Control Device" -button is pressed, a pop-up message "Please select a device" is displayed. (Req. 5.2.6)
-   
-	\item Test of sensor naming.
+   \newpage
+	\item Test of device naming. \label{MyDevicesTest2}
 		\begin{precondition}
 			\item The MyDevices View is open
 			\item There is at least one sensor in the list of available devices
+			\item There is at least one light bulb in the list of available devices
 		\end{precondition}
+		\begin{instruction}
+			\item Check the name of each device
+			\item Check the address of each device
+			\item Check the id of each device
+		\end{instruction}
 		\begin{postcondition}
 			\item The name of each sensor device is "Sensor"
-			\item The address of each sensor is their MAC address
-			\item The id of each sensor is their identifier
+			\item The name of each light bulb is "Light Bulb"
+			\item The address of each device is their MAC address
+			\item The id of each device is their identifier
 		\end{postcondition}
 		   
     %\item Sensors are displayed in the list of available devices with "Sensor" as name, and it's MAC address as address and their indentifier as id. (Req. 5.2.7)
    
-	\item Test of naming of light bulbs.
-		\begin{precondition}
-			\item The MyDevices View is open
-			\item There is at least one light bulb in the list of available devices
-		\end{precondition}
-		\begin{postcondition}
-			\item The name of each light bulb is "Light Bulb"
-			\item The address of each light bulb is their MAC address
-			\item The id of each light bulb is their identifier
-		\end{postcondition}
+	\item Test of naming of light bulbs. \\
+		Instructions for this test have been incorporated into \ref{MyDevicesTest2}
+
 		   
     %\item Light bulbs are displayed in the list of available devices with "Light Bulb" as name and it's MAC address as address and their indentifier as id. (Req. 5.2.8)
    
 	\item Test of scanning function.
 		\begin{precondition}
 			\item The MyDevices View is open
+			\item There is at least one available device within range of the MVD
+			\item The list of available devices is empty
 		\end{precondition}
 		\begin{instruction}
 			\item Press the "Get Devices"-button
@@ -294,17 +293,50 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\begin{precondition}
 			\item The MyDevices View is open
 		\end{precondition}
+		
+		\begin{instruction}
+			\item Identify the "Get Devices"-button
+			\item Identify the "Control Device"-button
+			\item Identify the list of available devices
+			\item Check the labels at the top of the list	
+		\end{instruction}		
+		
 		\begin{postcondition}
- 			\item The layout of the screen resembles Fig. 1 in the appendix of Ref. \ref{refdocs:srs}
+ 			\item The "Get Devices"-button is at the top of the view
+ 			\item The "Control Device"-button is at the bottom of the view
+ 			\item The list of available devices is in the middle of the view
+ 			\item The "ID"-label is placed at the top left of the list
+ 			\item The "Address"-label is placed at the top right of the list 
+ 			\item The "Device name"-label is placed inbetween the "Address"- and the "ID"-label. 
 		\end{postcondition}
 		   
     %\item The layout of the MyDevices View resemble figure 1 in appendix  Ref \ref{refdocs:srs} (5.2.11).
+    
+	\item Test of MAC addresses
+		\begin{precondition}
+			\item The "MyDevices View" is open
+			\item The devices with the MAC addresses in Ref \ref{refdocs:srs} are within range of the MVD
+			\item At least one device with an unknown MAC address is within range of the MVD
+			\item All devices are active
+		\end{precondition}
+		
+		\begin{instruction}
+			\item Press the "Get Devices"-button
+		\end{instruction}
+		
+		\begin{postcondition}
+			\item The two devices with the MAC addresses in Ref \ref{refdocs:srs} are available
+			\item No other devices are available
+		\end{postcondition}
+    
+    %Test A.1.12: The "Get Devices" button only displays the devices with the MAC-addresses in Ref \ref{refdocs:srs} (Req. 5.2.12, 5.2.13)
 \end{testlist}
 
+\newpage
 %--------------------------Sensor view tests --------------------------------------
 \subsection{Sensor View Test Instructions}
 \begin{testlist}
-	\item Test of transition from main view to sensor view.
+	\item Test of transition from main view to sensor view. \label{SensorTest1}
  		\begin{precondition}
  			\item The MyDevices View is open
  			\item A sensor device is available in the list
@@ -315,17 +347,16 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
  		\end{instruction}
  		\begin{postcondition}
  			\item The Sensor View is open
+ 			\item The sensor name is shown in the top of the view
+ 			\item The MAC address is shown in the top of the view
+ 			\item The temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration text fields are all empty
  		\end{postcondition}
 
 %When the "Control Device"-button in the MyDevices View is pressed and a sensor is selected, the Sensor view is opened (Req. 5.3.1).
 
-	\item Test of naming of sensor.
-		\begin{precondition}
-			\item The Sensor View is open
-		\end{precondition}
-		\begin{postcondition}
-			\item The sensor name and MAC address is shown in the top of the view
-		\end{postcondition}
+	\item Test of naming of sensor. \\
+		Instructions for this test have been incorporated into \ref{SensorTest1}
+		
 %\item The sensor name and mac-address is shown in the top of the view (Req. 5.3.2, 5.3.3).
 
 	\item Test of on/off switch.
@@ -346,12 +377,19 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\begin{precondition}
 			\item The Sensor View is open
 		\end{precondition}
+		
+		\begin{instruction}
+			\item Identify the six text fields
+			\item Check the labels preceding the six text fields
+		\end{instruction}		
+		
 		\begin{postcondition}
-			\item There are text fields preceded by "T", "P", "H", "M", "G", "A"
+			\item The labels preceding the six text fields are "T", "P", "H", "M", "G" and "A" respectively
 		\end{postcondition}
 %\item There are text fields preceded by "T", "P", "H", "M", "G", "A" that are used to, respectively, display temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration (Req. 5.3.5, 5.3.6, 5.3.7, 5.3.8, 5.3.9, 5.3.10).
-\newpage
-	\item Test of get-button functionality. \newline This test should be run once for each of the text fields and its corresponding physical observables.
+
+	\item Test of get-button functionality.
+		\newline This test should be run once for each of the text fields and its corresponding physical observables.
 		\begin{precondition}
 			\item The Sensor View is open
 			\item The on/off-status switch is set to on
@@ -366,10 +404,11 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\end{instruction}
 		\begin{postcondition}
 			\item The values of the corresponding sensors are retrieved if available and displayed
+			\item The retrieved value in step five is different from that in step two
 		\end{postcondition}
 %\item By pressing the corresponding "Get"-button, the values of the temperature, pressure, humidity, magnetic field strength, qyroscopic and acceleration sensors are retrieved if available and displayed (Req. 5.3.11, 5.3.12, 5.3.13, 5.3.14, 5.3.15, 5.3.16).
 
-	\item Test of "get all"-button functionality.
+	\item Test of "Get All"-button functionality.
 		\begin{precondition}
 			\item The Sensor View is open
 			\item The on/off-status switch is set to on
@@ -384,14 +423,16 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\end{instruction}
 		\begin{postcondition}
 			\item The new values for all six sensor's data are displayed in their corresponding text fields
+			\item The retrieved values in step five are different from those in step two
 		\end{postcondition}
 %\item The "Get All" -button gets the values for all six sensors and displays them (Req. 5.3.17).
 
 \newpage
-	\item Test of "clear all" button functionality.
+
+	\item Test of "Clear All"-button functionality.
 		\begin{precondition}
 			\item The Sensor View is open
-			\item Sensors data are displayed in the text fields
+			\item Sensor data are displayed in the text fields
 		\end{precondition}
 		\begin{instruction}
 			\item Press the "Clear All"-button
@@ -415,7 +456,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
     	\end{postcondition}
 %\item If there is no data to retrieve for any of the physical quantities: temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration when the corresponding "Get" button is pressed the corresponding, text fields display "No data available" (Req. 5.3.19, 5.3.20, 5.3.21, 5.3.22, 5.3.23, 5.3.24).
 
-	\item Test of on/off switch functionality.
+	\item Test of on/off-status switch functionality.
 		\begin{precondition}
 			\item The Sensor View is open
 		\end{precondition}
@@ -428,7 +469,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 
 %\item The on/off-switch is set according to the information from the REST API (Req. 5.3.25).
 
-	\item Test of back button functionality in Sensor View.
+	\item Test of back button functionality in the Sensor View.
 		\begin{precondition}
 			\item The Sensor View is open
 		\end{precondition}
@@ -441,17 +482,8 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 
 %\item When the back button is pressed in the Sensor View, the MyDevices View is opened (Req. 5.3.26).
 
-	\item Test of text fields on selecting new device.
-		\begin{precondition}
-			\item The MyDevices View is open
-		\end{precondition}
-		\begin{instruction}			
-			\item Select a sensor device
-			\item Press the "Control Device" -button
-		\end{instruction}
-		\begin{postcondition}
-			\item The temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration text fields are all empty
-		\end{postcondition}
+	\item Test of text fields on selecting new device. \\
+		Instructions for this test have been incorporated into \ref{SensorTest1}
 
 %\item When the sensor view is opened the temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration text fields are empty (Req. 5.3.27).
 
@@ -459,15 +491,30 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\begin{precondition}
 			\item The Sensor View is open
 		\end{precondition}
+		\begin{instruction}
+			\item Identify the text field showing the name and the MAC address
+			\item Identify the on/off-status switch
+			\item Identify the six text fields and their corresponding "Get"-buttons
+			\item Identify the "Get All"-button
+			\item Identify the "Clear All"-button
+		\end{instruction}
 		\begin{postcondition}
-			\item The layout of the screen resembles Fig. 2 in appendix A in Ref. \ref{refdocs:srs}
+			\item The text field showing the name and the MAC address is placed at the top of the view
+			\item The on/off-status switch is placed below the text field described above
+			\item The six text fields are aligned
+			\item The six text fields are placed below the on/off-status switch
+			\item The "Get"-buttons are aligned vertically
+			\item The "Get"-buttons are aligned with their respective text fields
+			\item The "Get All"-button is placed at the bottom left of the view
+			\item The "Clear All"-button is placed at the bottom right of the view
+			\item The "Get All"- and the "Clear All"-button are aligned horizontally
 		\end{postcondition}
 \end{testlist}
 
 \subsection{Light Bulb View Test Instructions}
 \begin{testlist}
 
-    \item Test of transition from MyDevices View to Light Bulb View.
+    \item Test of transition from the MyDevices View to the Light Bulb View. \label{LightBulbTest1}
     	\begin{precondition}
     		\item The MyDevices View is open
     		\item At least one light bulb is in the list of available devices
@@ -478,17 +525,15 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
     	\end{instruction}
     	\begin{postcondition}
     		\item The Light Bulb View is open
+    		\item The name of the light bulb is shown in the top of the view
+    		\item The MAC address of the light bulb is shown at the top of the view
+    		\item The text fields specifying color are empty
     	\end{postcondition}
 
 	%\item The Light Bulb View opens when a light bulb is chosen in the MyDevices View and the "Control device" button is pressed. (Req 5.4.1)
 	
-	\item Test of naming of light bulb.
-		\begin{precondition}
-			\item The Light Bulb View is open
-		\end{precondition}
-    	\begin{postcondition}
-    		\item The name and MAC address of the light bulb is shown at the top of the view
-    	\end{postcondition}
+	\item Test of naming of light bulb.\\
+		Instructions for this test have been incorporated into \ref{LightBulbTest1}
     	
 	%\item The name of the selected light bulb is shown at the top of the View (Req 5.4.2).
 	
@@ -521,19 +566,8 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 
     % \item The field of R-, G-, B-, W-value is editable and preceded by "R:", "G:", "B:" and "W:" respectively (Req. 5.4.4, 5.4.5, 5.4.6, 5.4.7).
 
-	\item Test of starting values of text fields.
-		\begin{precondition}
-			\item The MyDevices View is open
-			\item There is a light bulb available
-		\end{precondition}
-		\begin{instruction}
-			\item Select a light bulb
-			\item Press the "Control Device"-button
-		\end{instruction}
-		\begin{postcondition}
-			\item The Light Bulb View is open
-			\item The fields specified in Req. 5.4.4-5.4.7 (ref. \ref{refdocs:srs}) are empty
-		\end{postcondition}	   
+	\item Test of starting values of text fields.\\
+		Instructions for this test have been incorporated into \ref{LightBulbTest1}  
 %	\item When the Light Bulb View is opened, the fields are empty (Req. 5.4.8).
 
 	\item Test of "Get"-button functionality.
@@ -551,13 +585,16 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\end{postcondition}
 %	\item The "Get"-button retrieves the R-, G-, B-, W-values and present them in their corresponding fields (Req. 5.4.9). 
 
+\newpage
+
 	\item Test of changeability of color of light bulb.
-		\begin{config}[five]
+		\begin{config}[six]
 			\item A=FF, B=00, C=00, D=00 (color: Red)
 			\item A=00, B=FF, C=00, D=00 (color: Green)
 			\item A=00, B=00, C=FF, D=00 (color: Blue)
 			\item A=00, B=00, C=00, D=FF (color: White)
-			\item A=10, B=10, C=10, D=10 (color: White)
+			\item A=F0, B=F0, C=F0, D=F0 (color: White)
+			\item A=ff, B=ff, C=ff, D=ff (color: White)
 		\end{config}
 		\begin{precondition}
 			\item The Light Bulb View is open
@@ -615,15 +652,16 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 			\item The light bulb is on
 		\end{precondition}
 		\begin{instruction}
-			\item Enter A into the "R:"-field
-			\item Enter A into the "G:"-field
-			\item Enter A into the "B:"-field
-			\item Enter A into the "W:"-field
+			\item Try to enter A into the "R:"-field
+			\item Try to enter A into the "G:"-field
+			\item Try to enter A into the "B:"-field
+			\item Try to enter A into the "W:"-field
 		\end{instruction}
 		\begin{postcondition}
 			\item The value A is not accepted
 		\end{postcondition}
 %    \item The fields only accepts two characters that represent hexadecimal numbers (e.g. 00 to FF and all combinations inbetween) (Req 5.4.12, Req 5.4.13).
+\newpage
 
 	\item Test of user feedback when color is changed.
 		\begin{precondition}
@@ -648,6 +686,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\begin{precondition}
 			\item The Light Bulb View is open
 			\item The light bulb is on
+			\item The light bulb glows red
 			\item The color of the light bulb can not be changed
 		\end{precondition}
 		\begin{instruction}
@@ -659,20 +698,26 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\end{instruction}
 		\begin{postcondition}
 			\item A pop-up message saying "Error: Could not change color." is displayed
+			\item The light bulb glows red
 		\end{postcondition}
 %    \item A pop-up message saying "Error: Could not change color." is displayed when the values of the light bulb were unsuccessfully set. (Req 5.4.15)
-
+\newpage
 	\item Test of set button characteristics.
 		\begin{precondition}
 			\item The Light Bulb View is open
 			\item The light bulb is off
 		\end{precondition}
+		
+		\begin{instruction}
+			\item Identify the "Set"-button
+		\end{instruction}
+
 		\begin{postcondition}
 			\item The "Set"-button is unavailable
 		\end{postcondition}
 %    \item When the light bulb is off, the "Set"-button is unavailable (Req. 5.4.16).
 
-	\item Test of back button functionality in Light Bulb View.
+	\item Test of back button functionality in the Light Bulb View.
 		\begin{precondition}
 			\item The Light Bulb View is open
 		\end{precondition}
@@ -688,8 +733,21 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\begin{precondition}
 			\item The Light Bulb View is open
 		\end{precondition}
+		\begin{instruction}
+			\item Identify the text field showing the name and the MAC address
+			\item Identify the on/off-status switch
+			\item Identify the four text fields
+			\item Identify the "Get"-button
+			\item Identify the "Set"-button
+		\end{instruction}
 		\begin{postcondition}
-			\item The layout of the screen resembles Fig. 3 in the appendix of Ref. \ref{refdocs:srs}
+			\item The text field showing the name and the MAC address is placed at the top of the view
+			\item The on/off-status switch is placed below the text field described above
+			\item The four text fields are aligned
+			\item The four text fields are placed below the on/off-status switch
+			\item The "Get"-button is placed at the bottom left of the view
+			\item The "Set"-button is placed at the bottom right of the view
+			\item The "Get"- and the "Set"-button are aligned horizontally
 		\end{postcondition}
 %    \item The layout of the Light Bulb View resemble figure 3 in appendix  Ref \ref{refdocs:srs} (Req. 5.4.18).
 
@@ -706,8 +764,8 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 	\item Test of Scenario 5.1.1.
 		\begin{precondition}
 			\item The MyDevices View is open
-			\item There is a light bulb and a sensor device within scan range of the MVD
-			\item No other devices are within range of the MVD
+			\item There is a light bulb and a sensor device with MAC addresses as specified in Ref \ref{refdocs:srs} within scan range of the MVD
+			\item No other known devices are within range of the MVD
 		\end{precondition}
 		\begin{instruction}
 			\item Press the "Get Devices"-button
@@ -721,7 +779,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 	\item Test of exception handling in Scenario 5.1.1.
 		\begin{precondition}
 			\item The MyDevices View is open
-			\item No devices are within range of the MVD
+			\item No known devices are within range of the MVD
 		\end{precondition}
 		\begin{instruction}
 			\item Press the "Get Devices"-button
@@ -732,7 +790,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 		\end{postcondition}
 	%SVVS: Exception 1 described in scenario 5.1.1 can be generated by removing the devices from range while attempting scenario 5.1.1 (Req 5.1.1).
 	
-	\item Test of Scenario 5.1.2.
+	\item Test of Scenario 5.1.2. 
 		\begin{precondition}
 			\item The MyDevices View is open
 			\item A light bulb is available
@@ -746,10 +804,10 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 		\end{postcondition}
 %	\item Scenario 5.1.2 in Ref \ref{refdocs:srs} is supported (Req. 5.1.2).
 
-	\item Test exception in Scenario 5.1.2.
+	\item Test exception in Scenario 5.1.2. \label{SystemTest1}
 		\begin{precondition}
 			\item The MyDevices View is open
-			\item A light bulb is available
+			\item A light bulb and a sensor device is available
 		\end{precondition}
 		\begin{instruction}
 			\item Press the "Control Device"-button
@@ -773,17 +831,9 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 		\end{postcondition}
 %	\item Scenario 5.1.3 in Ref \ref{refdocs:srs} is supported (Req. 5.1.3).
 
-	\item  Test exception handling in Scenario 5.1.3.
-		\begin{precondition}
-			\item The Sensor View is open
-			\item A sensor device is available
-		\end{precondition}
-		\begin{instruction}
-			\item Press the "Control Device"-button
-		\end{instruction}
-		\begin{postcondition}
-			\item A pop-up message with the text "Please select a device" is shown
-		\end{postcondition}
+
+	\item  Test exception handling in Scenario 5.1.3. \\
+		Instructions for this test have been incorporated into \ref{SystemTest1}
 %	\item Exception 1 described in scenario 5.1.3 can be generated by not selecting a device in step 1 (Req. 5.1.3). 
 
 	\item  Test of Scenario 5.1.4.
@@ -798,7 +848,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 			\item The light bulb is off
 		\end{postcondition}
 %	\item Scenario 5.1.4 in Ref \ref{refdocs:srs} is supported (Req. 5.1.4).
-
+\newpage
 	\item  Test of Scenario 5.1.5.
 		\begin{precondition}
 			\item The Light Bulb View is open
@@ -837,7 +887,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 			\item The sensor device is on
 		\end{postcondition}
 %	\item Scenario 5.1.7 in Ref \ref{refdocs:srs} is supported (Req. 5.1.7).
-
+\newpage
 	\item  Test of Scenario 5.1.8.
 		\begin{precondition}
 			\item The Light Bulb View is open
@@ -864,24 +914,28 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 			\item The Light Bulb View is open
 			\item The light bulb is on
 			\item The light bulb glows yellow
+			\item The R-value of the light bulb is FF
+			\item The G-value of the light bulb is FF
+			\item The B-value of the light bulb is 00
+			\item The W-value of the light bulb is 00
 		\end{precondition}
 		\begin{instruction}
 			\item Press the "Get"-button
 		\end{instruction}
 		\begin{postcondition}
-			\item The "R:"-field displays a value greater than F0
-			\item The "G:"-field displays a value greater than F0
-			\item The "B:"-field displays a value less than 10
-			\item The "W:"-field displays a value less than 10
+			\item The "R:"-field displays FF
+			\item The "G:"-field displays FF
+			\item The "B:"-field displays 00
+			\item The "W:"-field displays 00
 		\end{postcondition}
 %	\item Scenario 5.1.9 in Ref \ref{refdocs:srs} is supported (Req. 5.1.9).
-
+\newpage
 	\item  Test if no data is available in Scenario 5.1.9.
 		\begin{precondition}
 			\item The Light Bulb View is open
 			\item The light bulb is on
 			\item The light bulb glows yellow
-			\item One or more fields are unavailable
+			\item One or more R-, G-, B-, W-values are unavailable
 		\end{precondition}
 		\begin{instruction}
 			\item Press the "Get"-button
@@ -918,7 +972,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 		\end{postcondition}
         
 %	\item If some data is unavailable when attempting scenario 5.1.10, the text in the corresponding field is set to "No data available." (Req. 5.1.10).
-
+\newpage
 	\item  Test of Scenario 5.1.11.
 		\begin{precondition} 
 			\item The Sensor Device View is open
@@ -960,7 +1014,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 %	\item Scenario 5.1.12 in Ref \ref{refdocs:srs} is supported (Req. 5.1.12).
 
 \end{testlist}
-
+\newpage
 \subsection{Quality Test Instructions}
 
 \begin{testlist}
@@ -968,7 +1022,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 	\item User friendlyness test \newline
 		Measure the time it takes to perform this test
 		\begin{precondition}
-			\item 5 persons is chosen without prior knowledge of the project or the application
+			\item 5 persons without prior knowledge of the project or the application are chosen
 		\end{precondition}
 		\begin{instruction}
 			\item Give the test persons a minor introduction of what the application is able to do
@@ -981,8 +1035,9 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 		\end{postcondition}
 %	\item Test of usability using persons without prior knowledge of the project or the app (Req. 6.1).
 
+\newpage
 	\item Interaction time test. \newline
-		For each step in the instruction below, measure the response time for the application. For a test to pass, the response time should be less than 2 seconds.
+		For each step in the instruction below, measure the response time for the application. For the test to pass, the response time for each step should be less than 2 seconds.
 		\begin{precondition}
 			\item The application is not running
 		\end{precondition}
@@ -1009,9 +1064,9 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 			\item Application is not running
 		\end{postcondition}
 %	\item The response time for any interaction with the system is below two seconds (Req. 6.2).
-
+\newpage
 	\item Test of response time for error messages.\newline
-		For each step in the instruction below, measure the time until an error message is displayed. For a test to pass, the error message response time should be 15 seconds.
+		For each step in the instruction below, measure the time until an error message is displayed. For the test to pass, the error message response time for each step should be 15 seconds.
 		\begin{precondition} 
 			\item In each step, the corresponding device should be out of range of the MVD
 			\item In each step, first navigate to the appropriate view (some devices may need to be connected for this. In that case, remove them from range before the test instruction is performed)

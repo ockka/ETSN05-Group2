@@ -1,14 +1,13 @@
 package com.etsn05group2.lampcontroller.network;
 
-import android.provider.ContactsContract;
 import android.util.Log;
 
+import com.etsn05group2.lampcontroller.model.Device;
 import com.etsn05group2.lampcontroller.network.data.DataAboutDevice;
+import com.etsn05group2.lampcontroller.network.data.DeviceData;
 import com.etsn05group2.lampcontroller.network.data.DeviceStatus;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Semaphore;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -21,17 +20,13 @@ import retrofit.client.Response;
 public class NetworkManager {
 
     private static final String PATH = "http://vm39.cs.lth.se:9000/";
-    static private NetworkManagerApi api;
-    static DeviceStatus deviceStatus;
-
+    private static NetworkManagerApi api = new RestAdapter.Builder().setEndpoint(PATH).build().create(NetworkManagerApi.class);
+    private static DeviceStatus deviceStatus;
 
     // Holds data about all the detected devices.
-    static private List<DataAboutDevice> detectedDevices;
+    private static List<DataAboutDevice> detectedDevices;
 
     public NetworkManager() {
-        RestAdapter retrofit = new RestAdapter.Builder().setEndpoint(PATH).build();
-        api = retrofit.create(NetworkManagerApi.class);
-
     }
 
     public static List<DataAboutDevice> detectDevices() {
@@ -39,11 +34,49 @@ public class NetworkManager {
         return detectedDevices;
     }
 
-    public static void toggle(String mac, String value){
-        deviceStatus = new DeviceStatus(mac, value);
-        api.putDeviceStatus(deviceStatus, toggleCallback());
+    public static void toggle(Device device, String value, Callback<DeviceStatus> callback) {
+        api.putDeviceStatus(new DeviceStatus(device.getMacAddress(), value), callback);
     }
 
+    public static void detectDevices(Callback<List<DataAboutDevice>> callback) {
+        api.getDataAboutAllDevices(callback);
+    }
+
+    public static void getTemperature(Device device, Callback<List<DeviceData>> callback) {
+        api.getDeviceData(device.getId(), "temperature", callback);
+    }
+
+    public static void getPressure(Device device, Callback<List<DeviceData>> callback) {
+        api.getDeviceData(device.getId(), "pressure", callback);
+    }
+
+    public static void getHumidity(Device device, Callback<List<DeviceData>> callback) {
+        api.getDeviceData(device.getId(), "humidity", callback);
+    }
+
+    public static void getMagnetic(Device device, Callback<List<DeviceData>> callback) {
+        api.getDeviceData(device.getId(), "magnometer", callback);
+    }
+
+    public static void getAccelerometer(Device device, Callback<List<DeviceData>> callback) {
+        api.getDeviceData(device.getId(), "accelerometer", callback);
+    }
+
+    public static void getGyroscopic(Device device, Callback<List<DeviceData>> callback) {
+        api.getDeviceData(device.getId(), "gyroscope", callback);   // is this right/
+    }
+
+    public static void getAllSensorValues(Device device, Callback<List<DeviceData>> callback) {
+        api.getDeviceData(device.getId(), callback);
+    }
+
+    public static void getColor(Device device, Callback<List<DeviceData>> callback) {
+        api.getDeviceData(device.getId(), callback);
+    }
+
+    public static void setColor(Device device, String color, Callback<DeviceStatus> callback) {
+        api.putDeviceValue(new DeviceStatus(device.getMacAddress(), color), callback);
+    }
 
     /**
      * Placera in all Fulkod här under
