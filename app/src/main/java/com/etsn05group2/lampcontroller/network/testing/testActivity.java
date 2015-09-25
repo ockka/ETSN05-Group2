@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.etsn05group2.lampcontroller.model.Device;
+import com.etsn05group2.lampcontroller.model.LightBulb;
 import com.etsn05group2.lampcontroller.network.NetworkManager;
 import com.etsn05group2.lampcontroller.network.NetworkManagerApi;
 import com.etsn05group2.lampcontroller.network.data.DataAboutDevice;
@@ -38,7 +40,7 @@ public class testActivity extends Activity{
         //List<DataAboutDevice> detectedDevices = man.detectDevices();
         //printList(detectedDevices);
 
-        NetworkManager.setColor(mac, "0000FF00", new Callback<DeviceStatus>() {
+        NetworkManager.setColor(new LightBulb("", mac, 24L),"00FF0000", new Callback<DeviceStatus>() {
             @Override
             public void success(DeviceStatus deviceStatus, Response response) {
 
