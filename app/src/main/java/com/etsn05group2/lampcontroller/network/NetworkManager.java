@@ -19,17 +19,13 @@ import retrofit.client.Response;
 public class NetworkManager {
 
     private static final String PATH = "http://vm39.cs.lth.se:9000/";
-    static private NetworkManagerApi api;
-    static DeviceStatus deviceStatus;
-
+    private static NetworkManagerApi api = new RestAdapter.Builder().setEndpoint(PATH).build().create(NetworkManagerApi.class);
+    private static DeviceStatus deviceStatus;
 
     // Holds data about all the detected devices.
-    static private List<DataAboutDevice> detectedDevices;
+    private static List<DataAboutDevice> detectedDevices;
 
     public NetworkManager() {
-        RestAdapter retrofit = new RestAdapter.Builder().setEndpoint(PATH).build();
-        api = retrofit.create(NetworkManagerApi.class);
-
     }
 
     public static List<DataAboutDevice> detectDevices() {
@@ -42,43 +38,43 @@ public class NetworkManager {
         api.putDeviceStatus(deviceStatus, toggleCallback());
     }
 
-    public void detectDevices(Callback<List<DataAboutDevice>> callback) {
+    public static void detectDevices(Callback<List<DataAboutDevice>> callback) {
         api.getDataAboutAllDevices(callback);
     }
 
-    public void getTemperature(long id, Callback<List<DeviceData>> callback) {
+    public static void getTemperature(long id, Callback<List<DeviceData>> callback) {
         api.getDeviceData(id, "temperature", callback);
     }
 
-    public void getPressure(long id, Callback<List<DeviceData>> callback) {
+    public static void getPressure(long id, Callback<List<DeviceData>> callback) {
         api.getDeviceData(id, "pressure", callback);
     }
 
-    public void getHumidity(long id, Callback<List<DeviceData>> callback) {
+    public static void getHumidity(long id, Callback<List<DeviceData>> callback) {
         api.getDeviceData(id, "humidity", callback);
     }
 
-    public void getMagnetic(long id, Callback<List<DeviceData>> callback) {
+    public static void getMagnetic(long id, Callback<List<DeviceData>> callback) {
         api.getDeviceData(id, "magnometer", callback);
     }
 
-    public void getAccelerometer(long id, Callback<List<DeviceData>> callback) {
+    public static void getAccelerometer(long id, Callback<List<DeviceData>> callback) {
         api.getDeviceData(id, "accelerometer", callback);
     }
 
-    public void getGyroscopic(long id, Callback<List<DeviceData>> callback) {
+    public static void getGyroscopic(long id, Callback<List<DeviceData>> callback) {
         api.getDeviceData(id, "gyroscope", callback);   // is this right/
     }
 
-    public void getAllSensorValues(long id, Callback<List<DeviceData>> callback) {
+    public static void getAllSensorValues(long id, Callback<List<DeviceData>> callback) {
         api.getDeviceData(id, callback);
     }
 
-    public void getColor(long id, Callback<List<DeviceData>> callback) {
+    public static void getColor(long id, Callback<List<DeviceData>> callback) {
         api.getDeviceData(id, callback);
     }
 
-    public void setColor(String address, String color, Callback<DeviceStatus> callback) {
+    public static void setColor(String address, String color, Callback<DeviceStatus> callback) {
         api.putDeviceValue(new DeviceStatus(address, color), callback);
     }
 
