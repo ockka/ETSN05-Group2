@@ -5,7 +5,7 @@ package com.etsn05group2.lampcontroller.model;
  */
 public class LightBulb extends Device {
 
-    public LightBulb(String deviceName, String macAddress, Long id){
+    public LightBulb(String deviceName, String macAddress, long id){
         super(deviceName, macAddress, id);
     }
 

@@ -14,6 +14,15 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.etsn05group2.lampcontroller.R;
+import com.etsn05group2.lampcontroller.network.NetworkManager;
+import com.etsn05group2.lampcontroller.network.data.DeviceData;
+import com.etsn05group2.lampcontroller.network.data.DeviceStatus;
+
+import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 
 public class LightBulbActivity extends Activity {
@@ -44,8 +53,10 @@ public class LightBulbActivity extends Activity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     isOn = true;
+                    NetworkManager.toggle("90:59:AF:2A:BD:19","1");
                 } else {
                     isOn = false;
+                    NetworkManager.toggle("90:59:AF:2A:BD:19","0");
                 }
             }
         });
@@ -81,6 +92,19 @@ public class LightBulbActivity extends Activity {
             String whitetext = white.getText().toString();
             String color = (redtext.length() > 1 ? redtext : "00") + (greentext.length() > 1 ? greentext : "00") + (bluetext.length() > 1 ? bluetext : "00") + (whitetext.length() > 1 ? whitetext : "00");
             //Log.w("Testar", color);
+            NetworkManager.setColor("90:59:AF:2A:BD:19", color, new Callback<DeviceStatus>() {
+                @Override
+                public void success(DeviceStatus deviceStatus, Response response) {
+                    toast = Toast.makeText(context,"Color successfully changed.",duration);
+                    toast.show();
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+                    toast = Toast.makeText(context,"Error: Could not change color.",duration);
+                    toast.show();
+                }
+            });
 
         }else{
             toast = Toast.makeText(context,"Lamp is not turned on",duration);
@@ -90,7 +114,22 @@ public class LightBulbActivity extends Activity {
 
     public void getValues(View v){
         if(isOn){
+            NetworkManager.getColor(24, new Callback<List<DeviceData>>() {
+                @Override
+                public void success(List<DeviceData> deviceDatas, Response response) {
+                    String color = deviceDatas.get(deviceDatas.size() - 1).value;
+                    red.setText(color.substring(0,2));
+                    green.setText(color.substring(2, 4));
+                    blue.setText(color.substring(4, 6));
+                    white.setText(color.substring(6, 8));
+                }
 
+                @Override
+                public void failure(RetrofitError error) {
+                    toast = Toast.makeText(context,"Error: Could not get color values.",duration);
+                    toast.show();
+                }
+            });
         }else{
             toast = Toast.makeText(context,"Lamp is not turned on",duration);
             toast.show();

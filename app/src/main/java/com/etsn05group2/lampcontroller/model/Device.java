@@ -6,9 +6,9 @@ package com.etsn05group2.lampcontroller.model;
 public abstract class Device {
     protected String deviceName;
     protected String macAddress;
-    protected Long id;
+    protected long id;
 
-    public Device(String deviceName, String macAddress, Long id){
+    public Device(String deviceName, String macAddress, long id){
         this.deviceName = deviceName;
         this.macAddress = macAddress;
         this.id = id;
@@ -19,7 +19,7 @@ public abstract class Device {
         return macAddress;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 }
