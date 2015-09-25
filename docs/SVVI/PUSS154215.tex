@@ -304,6 +304,25 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\end{postcondition}
 		   
     %\item The layout of the MyDevices View resemble figure 1 in appendix  Ref \ref{refdocs:srs} (5.2.11).
+    
+	\item Test of MAC addresses
+		\begin{precondition}
+			\item The "MyDevices View" is open
+			\item The devices with the MAC addresses in Ref \ref{refdocs:srs} are within range of the MVD
+			\item At least one device with an unknown MAC address is within range of the MVD
+			\item All devices are active
+		\end{precondition}
+		
+		\begin{instruction}
+			\item Press the "Get Devices"-button
+		\end{instruction}
+		
+		\begin{postcondition}
+			\item The two devices with the MAC addresses in Ref \ref{refdocs:srs} are available
+			\item No other devices are available
+		\end{postcondition}
+    
+    %Test A.1.12: The "Get Devices" button only displays the devices with the MAC-addresses in Ref \ref{refdocs:srs} (Req. 5.2.12, 5.2.13)
 \end{testlist}
 
 %--------------------------Sensor view tests --------------------------------------
