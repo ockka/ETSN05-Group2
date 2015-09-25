@@ -231,7 +231,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
     		\item A pop-up message "Please select a device" is displayed
     	\end{postcondition}
     %\item When no device is selected and the "Control Device" -button is pressed, a pop-up message "Please select a device" is displayed. (Req. 5.2.6)
-   
+   \newpage
 	\item Test of device naming. \label{MyDevicesTest2}
 		\begin{precondition}
 			\item The MyDevices View is open
@@ -331,6 +331,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
     %Test A.1.12: The "Get Devices" button only displays the devices with the MAC-addresses in Ref \ref{refdocs:srs} (Req. 5.2.12, 5.2.13)
 \end{testlist}
 
+\newpage
 %--------------------------Sensor view tests --------------------------------------
 \subsection{Sensor View Test Instructions}
 \begin{testlist}
@@ -424,6 +425,8 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 			\item The retrieved values in step five are different from those in step two
 		\end{postcondition}
 %\item The "Get All" -button gets the values for all six sensors and displays them (Req. 5.3.17).
+
+\newpage
 
 	\item Test of "Clear All"-button functionality.
 		\begin{precondition}
@@ -581,13 +584,16 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\end{postcondition}
 %	\item The "Get"-button retrieves the R-, G-, B-, W-values and present them in their corresponding fields (Req. 5.4.9). 
 
+\newpage
+
 	\item Test of changeability of color of light bulb.
-		\begin{config}[five]
+		\begin{config}[six]
 			\item A=FF, B=00, C=00, D=00 (color: Red)
 			\item A=00, B=FF, C=00, D=00 (color: Green)
 			\item A=00, B=00, C=FF, D=00 (color: Blue)
 			\item A=00, B=00, C=00, D=FF (color: White)
-			\item A=10, B=10, C=10, D=10 (color: White)
+			\item A=F0, B=F0, C=F0, D=F0 (color: White)
+			\item A=ff, B=ff, C=ff, D=ff (color: White)
 		\end{config}
 		\begin{precondition}
 			\item The Light Bulb View is open
@@ -645,15 +651,16 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 			\item The light bulb is on
 		\end{precondition}
 		\begin{instruction}
-			\item Enter A into the "R:"-field
-			\item Enter A into the "G:"-field
-			\item Enter A into the "B:"-field
-			\item Enter A into the "W:"-field
+			\item Try to enter A into the "R:"-field
+			\item Try to enter A into the "G:"-field
+			\item Try to enter A into the "B:"-field
+			\item Try to enter A into the "W:"-field
 		\end{instruction}
 		\begin{postcondition}
 			\item The value A is not accepted
 		\end{postcondition}
 %    \item The fields only accepts two characters that represent hexadecimal numbers (e.g. 00 to FF and all combinations inbetween) (Req 5.4.12, Req 5.4.13).
+\newpage
 
 	\item Test of user feedback when color is changed.
 		\begin{precondition}
@@ -678,6 +685,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\begin{precondition}
 			\item The Light Bulb View is open
 			\item The light bulb is on
+			\item The light bulb glows red
 			\item The color of the light bulb can not be changed
 		\end{precondition}
 		\begin{instruction}
@@ -689,9 +697,10 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\end{instruction}
 		\begin{postcondition}
 			\item A pop-up message saying "Error: Could not change color." is displayed
+			\item The light bulb glows red
 		\end{postcondition}
 %    \item A pop-up message saying "Error: Could not change color." is displayed when the values of the light bulb were unsuccessfully set. (Req 5.4.15)
-
+\newpage
 	\item Test of set button characteristics.
 		\begin{precondition}
 			\item The Light Bulb View is open
@@ -707,7 +716,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\end{postcondition}
 %    \item When the light bulb is off, the "Set"-button is unavailable (Req. 5.4.16).
 
-	\item Test of back button functionality in Light Bulb View.
+	\item Test of back button functionality in the Light Bulb View.
 		\begin{precondition}
 			\item The Light Bulb View is open
 		\end{precondition}
@@ -754,8 +763,8 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 	\item Test of Scenario 5.1.1.
 		\begin{precondition}
 			\item The MyDevices View is open
-			\item There is a light bulb and a sensor device within scan range of the MVD
-			\item No other devices are within range of the MVD
+			\item There is a light bulb and a sensor device with MAC addresses as specified in Ref \ref{refdocs:srs} within scan range of the MVD
+			\item No other known devices are within range of the MVD
 		\end{precondition}
 		\begin{instruction}
 			\item Press the "Get Devices"-button
@@ -769,7 +778,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 	\item Test of exception handling in Scenario 5.1.1.
 		\begin{precondition}
 			\item The MyDevices View is open
-			\item No devices are within range of the MVD
+			\item No known devices are within range of the MVD
 		\end{precondition}
 		\begin{instruction}
 			\item Press the "Get Devices"-button
@@ -780,7 +789,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 		\end{postcondition}
 	%SVVS: Exception 1 described in scenario 5.1.1 can be generated by removing the devices from range while attempting scenario 5.1.1 (Req 5.1.1).
 	
-	\item Test of Scenario 5.1.2. \label{SystemTest1}
+	\item Test of Scenario 5.1.2. 
 		\begin{precondition}
 			\item The MyDevices View is open
 			\item A light bulb is available
@@ -794,10 +803,10 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 		\end{postcondition}
 %	\item Scenario 5.1.2 in Ref \ref{refdocs:srs} is supported (Req. 5.1.2).
 
-	\item Test exception in Scenario 5.1.2.
+	\item Test exception in Scenario 5.1.2. \label{SystemTest1}
 		\begin{precondition}
 			\item The MyDevices View is open
-			\item A light bulb is available
+			\item A light bulb and a sensor device is available
 		\end{precondition}
 		\begin{instruction}
 			\item Press the "Control Device"-button
@@ -838,7 +847,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 			\item The light bulb is off
 		\end{postcondition}
 %	\item Scenario 5.1.4 in Ref \ref{refdocs:srs} is supported (Req. 5.1.4).
-
+\newpage
 	\item  Test of Scenario 5.1.5.
 		\begin{precondition}
 			\item The Light Bulb View is open
@@ -877,7 +886,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 			\item The sensor device is on
 		\end{postcondition}
 %	\item Scenario 5.1.7 in Ref \ref{refdocs:srs} is supported (Req. 5.1.7).
-
+\newpage
 	\item  Test of Scenario 5.1.8.
 		\begin{precondition}
 			\item The Light Bulb View is open
@@ -904,24 +913,28 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 			\item The Light Bulb View is open
 			\item The light bulb is on
 			\item The light bulb glows yellow
+			\item The R-value of the light bulb is FF
+			\item The G-value of the light bulb is FF
+			\item The B-value of the light bulb is 00
+			\item The W-value of the light bulb is 00
 		\end{precondition}
 		\begin{instruction}
 			\item Press the "Get"-button
 		\end{instruction}
 		\begin{postcondition}
-			\item The "R:"-field displays a value greater than F0
-			\item The "G:"-field displays a value greater than F0
-			\item The "B:"-field displays a value less than 10
-			\item The "W:"-field displays a value less than 10
+			\item The "R:"-field displays FF
+			\item The "G:"-field displays FF
+			\item The "B:"-field displays 00
+			\item The "W:"-field displays 00
 		\end{postcondition}
 %	\item Scenario 5.1.9 in Ref \ref{refdocs:srs} is supported (Req. 5.1.9).
-
+\newpage
 	\item  Test if no data is available in Scenario 5.1.9.
 		\begin{precondition}
 			\item The Light Bulb View is open
 			\item The light bulb is on
 			\item The light bulb glows yellow
-			\item One or more fields are unavailable
+			\item One or more R-, G-, B-, W-values are unavailable
 		\end{precondition}
 		\begin{instruction}
 			\item Press the "Get"-button
@@ -958,7 +971,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 		\end{postcondition}
         
 %	\item If some data is unavailable when attempting scenario 5.1.10, the text in the corresponding field is set to "No data available." (Req. 5.1.10).
-
+\newpage
 	\item  Test of Scenario 5.1.11.
 		\begin{precondition} 
 			\item The Sensor Device View is open
@@ -1000,7 +1013,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 %	\item Scenario 5.1.12 in Ref \ref{refdocs:srs} is supported (Req. 5.1.12).
 
 \end{testlist}
-
+\newpage
 \subsection{Quality Test Instructions}
 
 \begin{testlist}
@@ -1008,7 +1021,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 	\item User friendlyness test \newline
 		Measure the time it takes to perform this test
 		\begin{precondition}
-			\item 5 persons is chosen without prior knowledge of the project or the application
+			\item 5 persons without prior knowledge of the project or the application are chosen
 		\end{precondition}
 		\begin{instruction}
 			\item Give the test persons a minor introduction of what the application is able to do
@@ -1021,8 +1034,9 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 		\end{postcondition}
 %	\item Test of usability using persons without prior knowledge of the project or the app (Req. 6.1).
 
+\newpage
 	\item Interaction time test. \newline
-		For each step in the instruction below, measure the response time for the application. For a test to pass, the response time should be less than 2 seconds.
+		For each step in the instruction below, measure the response time for the application. For the test to pass, the response time for each step should be less than 2 seconds.
 		\begin{precondition}
 			\item The application is not running
 		\end{precondition}
@@ -1049,9 +1063,9 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 			\item Application is not running
 		\end{postcondition}
 %	\item The response time for any interaction with the system is below two seconds (Req. 6.2).
-
+\newpage
 	\item Test of response time for error messages.\newline
-		For each step in the instruction below, measure the time until an error message is displayed. For a test to pass, the error message response time should be 15 seconds.
+		For each step in the instruction below, measure the time until an error message is displayed. For the test to pass, the error message response time for each step should be 15 seconds.
 		\begin{precondition} 
 			\item In each step, the corresponding device should be out of range of the MVD
 			\item In each step, first navigate to the appropriate view (some devices may need to be connected for this. In that case, remove them from range before the test instruction is performed)
