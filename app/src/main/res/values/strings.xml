@@ -13,5 +13,10 @@
     <string name="title_activity_base">BaseActivity</string>
     <string name="title_activity_device">DeviceActivity</string>
     <string name="title_activity_my_devices">MyDevicesActivity</string>
+    <string name="get_devices">Get Devices</string>
+    <string name="control_device">Control Devices</string>
+    <string name="id">ID</string>
+    <string name="device_name">Device Name</string>
+    <string name="address">Address</string>
 
 </resources>

@@ -43,4 +43,7 @@ public class DeviceActivity extends BaseActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    protected void toggle(Boolean bool){
+
+    }
 }
