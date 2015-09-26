@@ -5,13 +5,13 @@ package com.etsn05group2.lampcontroller.model;
  */
 public class LightBulb extends Device {
 
-    public LightBulb(String deviceName, String macAddress, long id){
-        super(deviceName, macAddress, id);
+    public LightBulb(String macAddress, long id){
+        super(macAddress, id);
     }
 
     @Override
     public String getName() {
-        return deviceName;
+        return "LightBulb";
     }
 
 }
