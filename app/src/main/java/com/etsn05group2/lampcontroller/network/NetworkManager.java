@@ -26,11 +26,11 @@ public class NetworkManager {
 
     // Holds data about all the detected devices.
     private static List<DataAboutDevice> detectedDevices;
+    static String color= "000000ff";
 
     private List<DeviceData> deviceData = new ArrayList<DeviceData>();
 
     public NetworkManager() {
-
     }
 
     public static List<DataAboutDevice> detectDevices() {
@@ -40,6 +40,7 @@ public class NetworkManager {
 
     public static void toggle(Device device, boolean value, Callback<DeviceStatus> callback) {
         api.putDeviceStatus(new DeviceStatus(device.getMacAddress(), (value ? "1" : "0")), callback);
+        setColor(device,color, colorCall());
     }
 
     public static void detectDevices(Callback<List<DataAboutDevice>> callback) {
@@ -79,6 +80,7 @@ public class NetworkManager {
     }
 
     public static void setColor(Device device, String color, Callback<DeviceStatus> callback) {
+        NetworkManager.color = color;
         api.putDeviceValue(new DeviceStatus(device.getMacAddress(), color), callback);
     }
 
@@ -90,6 +92,19 @@ public class NetworkManager {
      *
      */
 
+    static private Callback<DeviceStatus> colorCall(){
+        return new Callback<DeviceStatus>() {
+            @Override
+            public void success(DeviceStatus device, Response response) {
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        };
+    }
 
     static private Callback<List<DataAboutDevice>> allDevicesCall(){
         Callback<List<DataAboutDevice>> call = new Callback<List<DataAboutDevice>>(){
