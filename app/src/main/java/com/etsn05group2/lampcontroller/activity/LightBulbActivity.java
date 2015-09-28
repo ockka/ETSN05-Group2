@@ -54,7 +54,7 @@ public class LightBulbActivity extends Activity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     isOn = true;
-                    LightBulb lb = new LightBulb("nextTurn","90:59:AF:2A:BD:19",24);
+                    LightBulb lb = new LightBulb("90:59:AF:2A:BD:19", 24);
                     NetworkManager.toggle(lb, "1", new Callback<DeviceStatus>() {
                         @Override
                         public void success(DeviceStatus deviceStatus, Response response) {
@@ -68,7 +68,7 @@ public class LightBulbActivity extends Activity {
                     });
                 } else {
                     isOn = false;
-                    LightBulb lb = new LightBulb("nextTurn","90:59:AF:2A:BD:19",24);
+                    LightBulb lb = new LightBulb("90:59:AF:2A:BD:19",24);
                     NetworkManager.toggle(lb, "0", new Callback<DeviceStatus>() {
                         @Override
                         public void success(DeviceStatus deviceStatus, Response response) {
