@@ -101,11 +101,10 @@ public class SensorDeviceActivity extends DeviceActivity {
     }
 
     protected void getPressure(View v) {
-        /*
-        manager.getPressure(device, new Callback<List<DeviceData>>() {
+        NetworkManager.getPressure(device, new Callback<List<DeviceData>>() {
             @Override
             public void success(List<DeviceData> deviceDatas, Response response) {
-                DeviceData deviceData = deviceDatas.body().get(deviceDatas.body().size() - 1);
+                DeviceData deviceData = deviceDatas.get(deviceDatas.size() - 1);
                 TextView textView = (TextView) findViewById(R.id.pressureValueTextView);
                 textView.setText(deviceData.value.toString());
             }
@@ -115,16 +114,14 @@ public class SensorDeviceActivity extends DeviceActivity {
 
             }
         });
-        */
     }
 
     protected void getHumidity(View v) {
-        /*
-        manager.getHumidity(device, new Callback<List<DeviceData>>() {
+        NetworkManager.getHumidity(device, new Callback<List<DeviceData>>() {
             @Override
             public void success(List<DeviceData> deviceDatas, Response response) {
-                DeviceData deviceData = deviceDatas.body().get(deviceDatas.body().size() - 1);
-                TextView textView = (TextView) findViewById(R.id.humidityValueTextView);
+                DeviceData deviceData = deviceDatas.get(deviceDatas.size() - 1);
+                TextView textView = (TextView) findViewById(R.id.pressureValueTextView);
                 textView.setText(deviceData.value.toString());
             }
 
@@ -133,15 +130,13 @@ public class SensorDeviceActivity extends DeviceActivity {
 
             }
         });
-        */
     }
     protected void getMagnetic(View v) {
-        /*
-        manager.getMagnetic(device, new Callback<List<DeviceData>>() {
+        NetworkManager.getMagnetic(device, new Callback<List<DeviceData>>() {
             @Override
             public void success(List<DeviceData> deviceDatas, Response response) {
-                DeviceData deviceData = deviceDatas.body().get(deviceDatas.body().size() - 1);
-                TextView textView = (TextView) findViewById(R.id.magneticValueTextView);
+                DeviceData deviceData = deviceDatas.get(deviceDatas.size() - 1);
+                TextView textView = (TextView) findViewById(R.id.pressureValueTextView);
                 textView.setText(deviceData.value.toString());
             }
 
@@ -150,15 +145,13 @@ public class SensorDeviceActivity extends DeviceActivity {
 
             }
         });
-        */
     }
     protected void getGyroscopic(View v) {
-        /*
-        manager.getGyroscopic(device, new Callback<List<DeviceData>>() {
+        NetworkManager.getGyroscopic(device, new Callback<List<DeviceData>>() {
             @Override
             public void success(List<DeviceData> deviceDatas, Response response) {
-                DeviceData deviceData = deviceDatas.body().get(deviceDatas.body().size() - 1);
-                TextView textView = (TextView) findViewById(R.id.gyroscopicValueTextView);
+                DeviceData deviceData = deviceDatas.get(deviceDatas.size() - 1);
+                TextView textView = (TextView) findViewById(R.id.pressureValueTextView);
                 textView.setText(deviceData.value.toString());
             }
 
@@ -167,15 +160,13 @@ public class SensorDeviceActivity extends DeviceActivity {
 
             }
         });
-        */
     }
     protected void getAccelerometer(View v) {
-        /*
-        manager.getAccelerometer(device, new Callback<List<DeviceData>>() {
+        NetworkManager.getAccelerometer(device, new Callback<List<DeviceData>>() {
             @Override
             public void success(List<DeviceData> deviceDatas, Response response) {
-                DeviceData deviceData = deviceDatas.body().get(deviceDatas.body().size() - 1);
-                TextView textView = (TextView) findViewById(R.id.accelerometerValueTextView);
+                DeviceData deviceData = deviceDatas.get(deviceDatas.size() - 1);
+                TextView textView = (TextView) findViewById(R.id.pressureValueTextView);
                 textView.setText(deviceData.value.toString());
             }
 
@@ -184,7 +175,6 @@ public class SensorDeviceActivity extends DeviceActivity {
 
             }
         });
-        */
     }
     protected void getAll(View v) {
 
