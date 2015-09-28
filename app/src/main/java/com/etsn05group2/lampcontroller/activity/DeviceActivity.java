@@ -11,9 +11,6 @@ import com.etsn05group2.lampcontroller.model.Device;
 public abstract class DeviceActivity extends BaseActivity {
     protected Device device;
 
-    public DeviceActivity(){
-        super();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -9,11 +9,7 @@ import com.etsn05group2.lampcontroller.R;
 import com.etsn05group2.lampcontroller.network.NetworkManager;
 
 public abstract class BaseActivity extends Activity {
-    protected NetworkManager manager;
 
-    public BaseActivity(){
-        manager = new NetworkManager();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
