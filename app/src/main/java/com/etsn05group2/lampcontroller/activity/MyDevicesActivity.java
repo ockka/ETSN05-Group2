@@ -1,15 +1,23 @@
 package com.etsn05group2.lampcontroller.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
 import com.etsn05group2.lampcontroller.R;
 import com.etsn05group2.lampcontroller.adapter.DeviceListAdapter;
 import com.etsn05group2.lampcontroller.model.Device;
+import com.etsn05group2.lampcontroller.model.LightBulb;
+import com.etsn05group2.lampcontroller.model.SensorDevice;
+import com.etsn05group2.lampcontroller.network.NetworkManager;
 import com.etsn05group2.lampcontroller.network.data.DataAboutDevice;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit.Callback;
@@ -19,6 +27,7 @@ import retrofit.client.Response;
 
 public class MyDevicesActivity extends BaseActivity {
     private DeviceListAdapter listAdapter;
+    List<Device> devices;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +58,8 @@ public class MyDevicesActivity extends BaseActivity {
     }
 
     private void detectDevices(){
-        manager.detectDevices(createCallback());
+        NetworkManager.detectDevices(createCallback());
+
 
     }
 
@@ -62,7 +72,7 @@ public class MyDevicesActivity extends BaseActivity {
             @Override
             public void success(List<DataAboutDevice> dataAboutDevices, Response response) {
                 Log.d("hämtar lista","");
-                //fixa listor
+                saveList(dataAboutDevices);
             }
 
             @Override
@@ -73,5 +83,25 @@ public class MyDevicesActivity extends BaseActivity {
             }
         };
         return call;
+    }
+    private void saveList(List<DataAboutDevice> list){
+        devices = new ArrayList<Device>();
+        for(DataAboutDevice d: list){
+            if(d.name == "Nexturn"){
+                devices.add(new LightBulb(d.deviceAddress, d.id));
+            }
+            if(d.description == "WICED sense kit"){
+                devices.add(new SensorDevice(d.deviceAddress, d.id));
+            }
+        }
+        return;
+    }
+    public void startSensorDeviceActivity(View v){
+        Intent intent = new Intent(this, SensorDeviceActivity.class);
+        startActivity(intent);
+    }
+    public void startLighyBulbActivity(View v){
+        Intent intent = new Intent(this, LightBulbActivity.class);
+        startActivity(intent);
     }
 }

@@ -12,7 +12,8 @@
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:id="@+id/linearLayout">
 
         <Button
             android:layout_width="wrap_content"
@@ -20,6 +21,28 @@
             android:text="@string/get_devices"
             android:id="@+id/button"
             android:layout_gravity="center_horizontal" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lampvy"
+                android:onClick="startLighyBulbActivity"
+                android:id="@+id/button3" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sensorvy"
+                android:onClick="startSensorDeviceActivity"
+                android:id="@+id/button4" />
+        </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -65,5 +88,7 @@
             android:text="@string/control_device"
             android:id="@+id/button2"
             android:layout_gravity="center_horizontal" />
+
     </LinearLayout>
+
 </RelativeLayout>
