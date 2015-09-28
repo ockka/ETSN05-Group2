@@ -40,7 +40,7 @@ public class testActivity extends Activity{
         //List<DataAboutDevice> detectedDevices = man.detectDevices();
         //printList(detectedDevices);
 
-        NetworkManager.setColor(new LightBulb("", mac, 24L),"00FF0000", new Callback<DeviceStatus>() {
+        NetworkManager.setColor(new LightBulb(mac, 24L),"00FF0000", new Callback<DeviceStatus>() {
             @Override
             public void success(DeviceStatus deviceStatus, Response response) {
 
