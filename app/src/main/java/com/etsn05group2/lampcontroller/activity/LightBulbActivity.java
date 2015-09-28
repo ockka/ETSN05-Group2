@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.etsn05group2.lampcontroller.R;
@@ -49,6 +50,10 @@ public class LightBulbActivity extends DeviceActivity {
         status = (Switch) findViewById(R.id.lightBulbSwitch);
         context = getApplicationContext();
         duration = Toast.LENGTH_SHORT;
+        TextView name = (TextView)findViewById(R.id.NameId);
+        name.setText(device.getName() + " " + device.getId());
+        TextView mac = (TextView)findViewById(R.id.Mac);
+        mac.setText(device.getMacAddress());
         status.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -76,6 +81,7 @@ public class LightBulbActivity extends DeviceActivity {
                         public void success(DeviceStatus deviceStatus, Response response) {
 
                         }
+
                         @Override
                         public void failure(RetrofitError error) {
 
@@ -83,7 +89,7 @@ public class LightBulbActivity extends DeviceActivity {
                     });
 
 
-                    }
+                }
             }
         });
     }

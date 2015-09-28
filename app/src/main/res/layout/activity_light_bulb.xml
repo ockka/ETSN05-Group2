@@ -11,10 +11,19 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/NameId"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="Nexturn ID\nMacAdress"
+            android:text=""
+            android:textSize="40sp"
+            android:layout_gravity="center_horizontal"/>
+        <TextView
+            android:id="@+id/Mac"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text=""
             android:textSize="40sp"
             android:layout_gravity="center_horizontal"/>
     </LinearLayout>
