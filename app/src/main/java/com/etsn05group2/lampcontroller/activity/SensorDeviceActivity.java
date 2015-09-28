@@ -5,17 +5,59 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.etsn05group2.lampcontroller.R;
 import com.etsn05group2.lampcontroller.network.NetworkManager;
+import com.etsn05group2.lampcontroller.network.data.DeviceData;
+import com.etsn05group2.lampcontroller.network.data.DeviceStatus;
 
-public class SensorDeviceActivity extends Activity {
+import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+
+public class SensorDeviceActivity extends DeviceActivity {
+
+    private Switch sensorSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sensor_device);
+        sensorSwitch = (Switch) findViewById(R.id.sensorSwitch);
+        /*
+        sensorSwitch.setChecked(manager.getToggledState(device, new Callback<ToggledStateResponse>() {
+            @Override
+            public void success(Response<DeviceStatus> response) {
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                sensorSwitch.setChecked(false);
+            }
+        }));
+        sensorSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, final boolean isChecked) {
+                manager.toggle(device, isChecked, new Callback<Response>() {
+                    @Override
+                    public void success(Response<DeviceStatus> response) {
+
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        sensorSwitch.setChecked(!isChecked);
+                    }
+                });
+            }
+        });
+        */
     }
 
     @Override
@@ -41,64 +83,120 @@ public class SensorDeviceActivity extends Activity {
     }
 
     protected void getTemperature(View v) {
-        //String result = NetworkManager.getTemperature().getValue();
-        String result = "24,7";
-        TextView textView = (TextView)findViewById(R.id.temperatureValueTextView);
-        textView.setText(result);
+        /*
+        manager.getTemperature(device, new Callback<List<DeviceData>>() {
+            @Override
+            public void success(List<DeviceData> deviceDatas, Response response) {
+                DeviceData deviceData = response.body().get(response.body().size() - 1);
+                TextView textView = (TextView) findViewById(R.id.temperatureValueTextView);
+                textView.setText(deviceData.value.toString());
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
+        */
     }
 
     protected void getPressure(View v) {
-        //String result = NetworkManager.getPressure().getValue();
-        String result = "24,7";
-        TextView textView = (TextView)findViewById(R.id.pressureValueTextView);
-        textView.setText(result);
+        /*
+        manager.getPressure(device, new Callback<List<DeviceData>>() {
+            @Override
+            public void success(List<DeviceData> deviceDatas, Response response) {
+                DeviceData deviceData = deviceDatas.body().get(deviceDatas.body().size() - 1);
+                TextView textView = (TextView) findViewById(R.id.pressureValueTextView);
+                textView.setText(deviceData.value.toString());
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
+        */
     }
 
     protected void getHumidity(View v) {
-        //String result = NetworkManager.getHumidity().getValue();
-        String result = "24,7";
-        TextView textView = (TextView)findViewById(R.id.humidityValueTextView);
-        textView.setText(result);
+        /*
+        manager.getHumidity(device, new Callback<List<DeviceData>>() {
+            @Override
+            public void success(List<DeviceData> deviceDatas, Response response) {
+                DeviceData deviceData = deviceDatas.body().get(deviceDatas.body().size() - 1);
+                TextView textView = (TextView) findViewById(R.id.humidityValueTextView);
+                textView.setText(deviceData.value.toString());
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
+        */
     }
     protected void getMagnetic(View v) {
-        //String result = NetworkManager.getMagnetic().getValue();
-        String result = "24,7";
-        TextView textView = (TextView)findViewById(R.id.magneticValueTextView);
-        textView.setText(result);
+        /*
+        manager.getMagnetic(device, new Callback<List<DeviceData>>() {
+            @Override
+            public void success(List<DeviceData> deviceDatas, Response response) {
+                DeviceData deviceData = deviceDatas.body().get(deviceDatas.body().size() - 1);
+                TextView textView = (TextView) findViewById(R.id.magneticValueTextView);
+                textView.setText(deviceData.value.toString());
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
+        */
     }
     protected void getGyroscopic(View v) {
-        //String result = NetworkManager.getGyroscopic().getValue();
-        String result = "24,7";
-        TextView textView = (TextView)findViewById(R.id.gyroscopicValueTextView);
-        textView.setText(result);
+        /*
+        manager.getGyroscopic(device, new Callback<List<DeviceData>>() {
+            @Override
+            public void success(List<DeviceData> deviceDatas, Response response) {
+                DeviceData deviceData = deviceDatas.body().get(deviceDatas.body().size() - 1);
+                TextView textView = (TextView) findViewById(R.id.gyroscopicValueTextView);
+                textView.setText(deviceData.value.toString());
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
+        */
     }
     protected void getAccelerometer(View v) {
-        //String result = NetworkManager.getAccelerometer().getValue();
-        String result = "24,7";
-        TextView textView = (TextView)findViewById(R.id.accelerometerValueTextView);
-        textView.setText(result);
+        /*
+        manager.getAccelerometer(device, new Callback<List<DeviceData>>() {
+            @Override
+            public void success(List<DeviceData> deviceDatas, Response response) {
+                DeviceData deviceData = deviceDatas.body().get(deviceDatas.body().size() - 1);
+                TextView textView = (TextView) findViewById(R.id.accelerometerValueTextView);
+                textView.setText(deviceData.value.toString());
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
+        */
     }
     protected void getAll(View v) {
-        //SensorValues sensorValues = NetworkManager.getAllSensorValues();
-        String result = "24,7";
-        TextView textView = (TextView)findViewById(R.id.temperatureValueTextView);
-        textView.setText(result);
+
     }
 
     protected void clearAll(View v) {
-        TextView textViewT = (TextView)findViewById(R.id.temperatureValueTextView);
-        TextView textViewP = (TextView)findViewById(R.id.pressureValueTextView);
-        TextView textViewH = (TextView)findViewById(R.id.humidityValueTextView);
-        TextView textViewM = (TextView)findViewById(R.id.magneticValueTextView);
-        TextView textViewG = (TextView)findViewById(R.id.gyroscopicValueTextView);
-        TextView textViewA = (TextView)findViewById(R.id.accelerometerValueTextView);
-
-        textViewT.setText("");
-        textViewP.setText("");
-        textViewH.setText("");
-        textViewM.setText("");
-        textViewG.setText("");
-        textViewA.setText("");
+        ((TextView) findViewById(R.id.temperatureValueTextView)).setText("");
+        ((TextView) findViewById(R.id.pressureValueTextView)).setText("");
+        ((TextView) findViewById(R.id.humidityValueTextView)).setText("");
+        ((TextView) findViewById(R.id.magneticValueTextView)).setText("");
+        ((TextView) findViewById(R.id.gyroscopicValueTextView)).setText("");
+        ((TextView) findViewById(R.id.accelerometerValueTextView)).setText("");
     }
 
 }
