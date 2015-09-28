@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 
 import com.etsn05group2.lampcontroller.R;
 import com.etsn05group2.lampcontroller.adapter.DeviceListAdapter;
@@ -59,6 +60,7 @@ public class MyDevicesActivity extends BaseActivity {
 
     private void detectDevices(){
         NetworkManager.detectDevices(createCallback());
+        //ListView listView = (ListView) findViewById(R.id.)
 
 
     }
