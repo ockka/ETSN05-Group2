@@ -39,8 +39,21 @@ public class testActivity extends Activity{
         //man.toggle(mac, value);
         //List<DataAboutDevice> detectedDevices = man.detectDevices();
         //printList(detectedDevices);
+        Device device = new LightBulb(mac,24L);
 
         Log.d("hej", "hej");
+        NetworkManager.toggle(device, true, new Callback<DeviceStatus>() {
+            @Override
+            public void success(DeviceStatus deviceStatus, Response response) {
+
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
+
 
         NetworkManager.detectDevices(new Callback<List<DataAboutDevice>>() {
             @Override
