@@ -7,6 +7,7 @@ import com.etsn05group2.lampcontroller.network.data.DataAboutDevice;
 import com.etsn05group2.lampcontroller.network.data.DeviceData;
 import com.etsn05group2.lampcontroller.network.data.DeviceStatus;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit.Callback;
@@ -26,7 +27,10 @@ public class NetworkManager {
     // Holds data about all the detected devices.
     private static List<DataAboutDevice> detectedDevices;
 
+    private List<DeviceData> deviceData = new ArrayList<DeviceData>();
+
     public NetworkManager() {
+
     }
 
     public static List<DataAboutDevice> detectDevices() {
@@ -34,8 +38,8 @@ public class NetworkManager {
         return detectedDevices;
     }
 
-    public static void toggle(Device device, String value, Callback<DeviceStatus> callback) {
-        api.putDeviceStatus(new DeviceStatus(device.getMacAddress(), value), callback);
+    public static void toggle(Device device, boolean value, Callback<DeviceStatus> callback) {
+        api.putDeviceStatus(new DeviceStatus(device.getMacAddress(), (value ? "1" : "0")), callback);
     }
 
     public static void detectDevices(Callback<List<DataAboutDevice>> callback) {

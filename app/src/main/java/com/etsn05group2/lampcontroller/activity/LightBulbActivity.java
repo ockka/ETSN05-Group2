@@ -55,7 +55,7 @@ public class LightBulbActivity extends Activity {
                 if (isChecked) {
                     isOn = true;
                     LightBulb lb = new LightBulb("90:59:AF:2A:BD:19", 24);
-                    NetworkManager.toggle(lb, "1", new Callback<DeviceStatus>() {
+                    NetworkManager.toggle(lb, true, new Callback<DeviceStatus>() {
                         @Override
                         public void success(DeviceStatus deviceStatus, Response response) {
 
@@ -69,7 +69,7 @@ public class LightBulbActivity extends Activity {
                 } else {
                     isOn = false;
                     LightBulb lb = new LightBulb("90:59:AF:2A:BD:19",24);
-                    NetworkManager.toggle(lb, "0", new Callback<DeviceStatus>() {
+                    NetworkManager.toggle(lb, false, new Callback<DeviceStatus>() {
                         @Override
                         public void success(DeviceStatus deviceStatus, Response response) {
 

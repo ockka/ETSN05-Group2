@@ -40,6 +40,22 @@ public class testActivity extends Activity{
         //List<DataAboutDevice> detectedDevices = man.detectDevices();
         //printList(detectedDevices);
 
+        Log.d("hej", "hej");
+
+        NetworkManager.detectDevices(new Callback<List<DataAboutDevice>>() {
+            @Override
+            public void success(List<DataAboutDevice> dataAboutDevices, Response response) {
+                Log.d("success", "success");
+                printList(dataAboutDevices);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Log.d("failure", error.toString());
+            }
+        });
+
+        /*
         NetworkManager.setColor(new LightBulb(mac, 24L),"00FF0000", new Callback<DeviceStatus>() {
             @Override
             public void success(DeviceStatus deviceStatus, Response response) {
@@ -51,6 +67,7 @@ public class testActivity extends Activity{
                 Log.d("failure", error.toString());
             }
         });
+        */
 
     }
     void printList(List<DataAboutDevice> data){
