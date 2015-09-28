@@ -6,11 +6,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.etsn05group2.lampcontroller.R;
+import com.etsn05group2.lampcontroller.model.Device;
 
-public class DeviceActivity extends BaseActivity {
-    protected String deviceName;
-    protected String macAddress;
-    protected String id;
+public abstract class DeviceActivity extends BaseActivity {
+    protected Device device;
 
     public DeviceActivity(){
         super();
@@ -44,6 +43,6 @@ public class DeviceActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
     protected void toggle(Boolean bool){
-
+        //toggla via networkmanager
     }
 }

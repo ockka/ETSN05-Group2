@@ -2,13 +2,23 @@ package com.etsn05group2.lampcontroller.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import com.etsn05group2.lampcontroller.R;
+import com.etsn05group2.lampcontroller.adapter.DeviceListAdapter;
 import com.etsn05group2.lampcontroller.model.Device;
+import com.etsn05group2.lampcontroller.network.data.DataAboutDevice;
+import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+
 
 public class MyDevicesActivity extends BaseActivity {
+    private DeviceListAdapter listAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +49,29 @@ public class MyDevicesActivity extends BaseActivity {
     }
 
     private void detectDevices(){
+        manager.detectDevices(createCallback());
 
     }
 
     private void controlDevice(Device device){
 
+    }
+
+    private Callback<List<DataAboutDevice>> createCallback(){
+        Callback<List<DataAboutDevice>> call = new Callback<List<DataAboutDevice>>() {
+            @Override
+            public void success(List<DataAboutDevice> dataAboutDevices, Response response) {
+                Log.d("hämtar lista","");
+                //fixa listor
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Log.d("NÅGOT GICK VÄLDIGT FEL","");
+                // popup med att det inte funkade att hitta listor
+
+            }
+        };
+        return call;
     }
 }
