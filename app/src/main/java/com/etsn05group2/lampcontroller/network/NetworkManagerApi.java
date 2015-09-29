@@ -1,7 +1,9 @@
 package com.etsn05group2.lampcontroller.network;
 
+import com.etsn05group2.lampcontroller.model.Device;
 import com.etsn05group2.lampcontroller.network.data.DataAboutDevice;
 import com.etsn05group2.lampcontroller.network.data.DeviceData;
+import com.etsn05group2.lampcontroller.network.data.DeviceDataList;
 import com.etsn05group2.lampcontroller.network.data.DeviceStatus;
 
 
@@ -32,4 +34,7 @@ public interface NetworkManagerApi {
 
     @PUT("/device/value")
     void putDeviceValue(@Body DeviceStatus status, Callback<DeviceStatus> callback);
+
+    @GET("/device/{id}")
+    void getDataAboutDevice(@Path("id") long deviceId, Callback<? extends DeviceDataList> callback);
 }
