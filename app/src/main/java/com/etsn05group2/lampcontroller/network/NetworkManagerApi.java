@@ -36,5 +36,5 @@ public interface NetworkManagerApi {
     void putDeviceValue(@Body DeviceStatus status, Callback<DeviceStatus> callback);
 
     @GET("/device/{id}")
-    void getDataAboutDevice(@Path("id") long deviceId, Callback<? extends DeviceDataList> callback);
+    void getDataAboutDevice(@Path("id") long deviceId, Callback<DataAboutDevice> callback);
 }

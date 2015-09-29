@@ -45,7 +45,7 @@ public class NetworkManager {
     }
 
 
-    public static void getToggledState(Device device, Callback<ToggledStateResponse> callback) {
+    public static void getToggledState(Device device, Callback<DataAboutDevice> callback) {
         api.getDataAboutDevice(device.getId(), callback);
     }
 
