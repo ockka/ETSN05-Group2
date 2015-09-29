@@ -6,6 +6,7 @@ import com.etsn05group2.lampcontroller.model.Device;
 import com.etsn05group2.lampcontroller.network.data.DataAboutDevice;
 import com.etsn05group2.lampcontroller.network.data.DeviceData;
 import com.etsn05group2.lampcontroller.network.data.DeviceStatus;
+import com.etsn05group2.lampcontroller.network.data.ToggledStateResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +41,12 @@ public class NetworkManager {
 
     public static void toggle(Device device, boolean value, Callback<DeviceStatus> callback) {
         api.putDeviceStatus(new DeviceStatus(device.getMacAddress(), (value ? "1" : "0")), callback);
-        setColor(device,color, colorCall());
+        setColor(device, color, colorCall());
+    }
+
+
+    public static void getToggledState(Device device, Callback<ToggledStateResponse> callback) {
+        api.getDataAboutDevice(device.getId(), callback);
     }
 
     public static void detectDevices(Callback<List<DataAboutDevice>> callback) {
