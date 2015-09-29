@@ -60,8 +60,10 @@ public class MyDevicesActivity extends BaseActivity {
 
     private void detectDevices(){
         NetworkManager.detectDevices(createCallback());
-        //ListView listView = (ListView) findViewById(R.id.)
+        ListView listView = (ListView) findViewById(R.id.listView);
 
+        DeviceListAdapter customAdapter = new DeviceListAdapter(this, R.layout.itemlistrow, devices);
+        listView.setAdapter(customAdapter);
 
     }
 
