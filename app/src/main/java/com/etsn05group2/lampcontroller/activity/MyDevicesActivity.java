@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.etsn05group2.lampcontroller.R;
@@ -29,6 +30,15 @@ import retrofit.client.Response;
 public class MyDevicesActivity extends BaseActivity {
     private DeviceListAdapter listAdapter;
     List<Device> devices;
+    Device chosen;
+
+    public MyDevicesActivity(){
+        devices =new ArrayList<Device>();
+        Device d = new LightBulb("A2:B3:C4:D5:E6:F7",2);
+        devices.add(d);
+        Device dd = new SensorDevice("2A:3B:4C:5D:6E:7F",3);
+        devices.add(dd);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,15 +69,40 @@ public class MyDevicesActivity extends BaseActivity {
     }
 
     private void detectDevices(){
-        NetworkManager.detectDevices(createCallback());
-        ListView listView = (ListView) findViewById(R.id.listView);
+        //NetworkManager.detectDevices(createCallback());
+
+        final ListView listView = (ListView) findViewById(R.id.listView);
 
         DeviceListAdapter customAdapter = new DeviceListAdapter(this, R.layout.itemlistrow, devices);
         listView.setAdapter(customAdapter);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                chosen = (Device) listView.getItemAtPosition(position);
+            }
+        });
+
     }
 
-    private void controlDevice(Device device){
+    public void controlDevice(View view){
+        controlDevice(chosen);
+    }
+
+    private void controlDevice(Device deviceToBeControlled){
+        if(deviceToBeControlled != null){
+            if(deviceToBeControlled.getName() == "LightBulb"){
+                //skicka med devicen
+                Intent intent = new Intent(this, LightBulbActivity.class);
+                String[] s = {deviceToBeControlled.getName(), deviceToBeControlled.getMacAddress(),String.valueOf(deviceToBeControlled.getId())};
+                intent.putExtra("deviceInfo",s);
+                startActivity(intent);
+            }else if(deviceToBeControlled.getName() == "SensorDevice"){
+                //skicka med devicen
+                Intent intent = new Intent(this, SensorDeviceActivity.class);
+                startActivity(intent);
+            }
+        }
 
     }
 
@@ -107,5 +142,9 @@ public class MyDevicesActivity extends BaseActivity {
     public void startLighyBulbActivity(View v){
         Intent intent = new Intent(this, LightBulbActivity.class);
         startActivity(intent);
+    }
+
+    public void getDevices(View v){
+        detectDevices();
     }
 }

@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:text="@string/get_devices"
             android:id="@+id/button"
+            android:onClick="getDevices"
             android:layout_gravity="center_horizontal" />
 
         <LinearLayout
@@ -80,6 +81,8 @@
             android:layout_height="0dp"
             android:id="@+id/listView"
             android:layout_gravity="center_horizontal"
+            android:choiceMode="singleChoice"
+            android:listSelector="#BBBBBB"
             android:layout_weight="0.9" />
 
         <Button
@@ -87,6 +90,7 @@
             android:layout_height="wrap_content"
             android:text="@string/control_device"
             android:id="@+id/button2"
+            android:onClick="controlDevice"
             android:layout_gravity="center_horizontal" />
 
     </LinearLayout>
