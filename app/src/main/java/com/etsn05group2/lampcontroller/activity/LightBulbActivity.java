@@ -58,33 +58,31 @@ public class LightBulbActivity extends DeviceActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    isOn = true;
                     //LightBulb lb = new LightBulb("90:59:AF:2A:BD:19", 24);
                     //NetworkManager.toggle(lb, true, new Callback<DeviceStatus>() {
                     NetworkManager.toggle(device, true, new Callback<DeviceStatus>() {
                         @Override
                         public void success(DeviceStatus deviceStatus, Response response) {
-
+                            isOn = true;
                         }
 
                         @Override
                         public void failure(RetrofitError error) {
-
+                            status.setChecked(false);
                         }
                     });
                 } else {
-                    isOn = false;
                     //LightBulb lb = new LightBulb("90:59:AF:2A:BD:19",24);
                     //NetworkManager.toggle(lb, false, new Callback<DeviceStatus>() {
                     NetworkManager.toggle(device, false, new Callback<DeviceStatus>() {
                         @Override
                         public void success(DeviceStatus deviceStatus, Response response) {
-
+                            isOn = false;
                         }
 
                         @Override
                         public void failure(RetrofitError error) {
-
+                            status.setChecked(true);
                         }
                     });
 
