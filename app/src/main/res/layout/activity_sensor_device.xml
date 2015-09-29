@@ -7,17 +7,17 @@
     android:orientation="vertical"
     tools:context="com.etsn05group2.lampcontroller.activity.SensorDeviceActivity">
 
-    <TextView android:text="Title"
+    <TextView android:text="Device name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/titleTextView"
+        android:id="@+id/device_name"
         android:textSize="40sp"
         android:layout_gravity="center"/>
 
     <TextView android:text="Mac-address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/macAddressTextView"
+        android:id="@+id/mac_address"
         android:textSize="28sp"
         android:layout_gravity="center" />
 
@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:id="@+id/sensorSwitch"
+        android:id="@+id/sensor_switch"
         android:layout_marginTop="10dp" />
 
     <TableLayout
@@ -39,18 +39,17 @@
             android:layout_height="wrap_content">
 
             <TextView android:text="T:"
-                android:id="@+id/temperatureTextView"
                 android:textSize="28sp" />
 
-            <TextView android:text="!"
+            <TextView android:text=""
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:id="@+id/temperatureValueTextView"
+                android:id="@+id/temperature_value"
                 android:textSize="28sp" />
 
             <Button android:text="@string/get"
-                android:id="@+id/temperatureButton"
+                android:id="@+id/temperature_button"
                 android:layout_gravity="right"
                 android:onClick="getTemperature" />
         </TableRow>
@@ -60,18 +59,17 @@
             android:layout_height="wrap_content">
 
             <TextView android:text="P:"
-                android:id="@+id/pressureTextView"
                 android:textSize="28sp" />
 
-            <TextView android:text="!"
+            <TextView android:text=""
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:id="@+id/pressureValueTextView"
+                android:id="@+id/pressure_value"
                 android:textSize="28sp" />
 
             <Button android:text="@string/get"
-                android:id="@+id/pressureButton"
+                android:id="@+id/pressure_button"
                 android:layout_gravity="right"
                 android:onClick="getPressure" />
         </TableRow>
@@ -81,18 +79,17 @@
             android:layout_height="wrap_content">
 
             <TextView android:text="H:"
-                android:id="@+id/humidityTextView"
                 android:textSize="28sp" />
 
-            <TextView android:text="!"
+            <TextView android:text=""
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:id="@+id/humidityValueTextView"
+                android:id="@+id/humidity_value"
                 android:textSize="28sp" />
 
             <Button android:text="@string/get"
-                android:id="@+id/humidityButton"
+                android:id="@+id/humidity_button"
                 android:layout_gravity="right"
                 android:onClick="getHumidity" />
         </TableRow>
@@ -102,18 +99,17 @@
             android:layout_height="wrap_content">
 
             <TextView android:text="M:"
-                android:id="@+id/magneticTextView"
                 android:textSize="28sp" />
 
-            <TextView android:text="!"
+            <TextView android:text=""
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:id="@+id/magneticValueTextView"
+                android:id="@+id/magnetic_value"
                 android:textSize="28sp" />
 
             <Button android:text="@string/get"
-                android:id="@+id/magneticButton"
+                android:id="@+id/magnetic_button"
                 android:layout_gravity="right"
                 android:onClick="getMagnetic" />
         </TableRow>
@@ -123,18 +119,17 @@
             android:layout_height="wrap_content">
 
             <TextView android:text="G:"
-                android:id="@+id/gyroscopicTextView"
                 android:textSize="28sp" />
 
-            <TextView android:text="!"
+            <TextView android:text=""
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:id="@+id/gyroscopicValueTextView"
+                android:id="@+id/gyroscopic_value"
                 android:textSize="28sp" />
 
             <Button android:text="@string/get"
-                android:id="@+id/gyroscopicButton"
+                android:id="@+id/gyroscopic_button"
                 android:layout_gravity="right"
                 android:onClick="getGyroscopic" />
         </TableRow>
@@ -144,18 +139,17 @@
             android:layout_height="wrap_content">
 
             <TextView android:text="A:"
-                android:id="@+id/accelerometerTextView"
                 android:textSize="28sp" />
 
-            <TextView android:text="!"
+            <TextView android:text=""
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:id="@+id/accelerometerValueTextView"
+                android:id="@+id/accelerometer_value"
                 android:textSize="28sp" />
 
             <Button android:text="@string/get"
-                android:id="@+id/accelerometerButton"
+                android:id="@+id/accelerometer_button"
                 android:layout_gravity="right"
                 android:onClick="getAccelerometer" />
         </TableRow>
@@ -167,14 +161,14 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/getAllButton"
+            android:id="@+id/get_all"
             android:text="@string/get_all"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/clearAllButton"
+            android:id="@+id/clear_all"
             android:text="@string/clear_all"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
