@@ -34,9 +34,13 @@ public class MyDevicesActivity extends BaseActivity {
 
     public MyDevicesActivity(){
         devices =new ArrayList<Device>();
-        Device d = new LightBulb("90:59:AF:2A:BD:19",24); //tror MACen stämmer
+        Device d = new LightBulb("90:59:AF:2A:BD:19",24); //MACen stämmer
         devices.add(d);
-        Device dd = new SensorDevice("00:10:18:01:23:3A",25); //Påhittad MAC
+
+       // Device dd = new SensorDevice("00:10:18:01:23:3A",25); //Påhittad MAC
+
+        Device dd = new SensorDevice("00:10:18:01:23:3A",25); //rätt MAC
+
         devices.add(dd);
     }
 
