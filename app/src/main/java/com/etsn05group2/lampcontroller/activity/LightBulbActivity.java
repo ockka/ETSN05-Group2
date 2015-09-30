@@ -65,7 +65,7 @@ public class LightBulbActivity extends DeviceActivity {
 
             @Override
             public void failure(RetrofitError error) {
-                toast.setText("Could not get status");
+                toast = Toast.makeText(context, "Could not get Status", duration);
                 toast.show();
             }
         });

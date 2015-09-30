@@ -16,7 +16,6 @@ public abstract class DeviceActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_device);
 
         Bundle extras = getIntent().getExtras();
         if(extras != null){

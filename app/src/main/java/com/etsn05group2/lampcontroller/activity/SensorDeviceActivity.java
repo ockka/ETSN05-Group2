@@ -1,6 +1,7 @@
 package com.etsn05group2.lampcontroller.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -9,9 +10,11 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.etsn05group2.lampcontroller.R;
 import com.etsn05group2.lampcontroller.network.NetworkManager;
+import com.etsn05group2.lampcontroller.network.data.DataAboutDevice;
 import com.etsn05group2.lampcontroller.network.data.DeviceData;
 import com.etsn05group2.lampcontroller.network.data.DeviceStatus;
 
@@ -24,6 +27,9 @@ import retrofit.client.Response;
 public class SensorDeviceActivity extends DeviceActivity {
 
     private Switch sensorSwitch;
+    Context context;
+    int duration;
+    Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +37,24 @@ public class SensorDeviceActivity extends DeviceActivity {
         setContentView(R.layout.activity_sensor_device);
         sensorSwitch = (Switch) findViewById(R.id.sensor_switch);
         final TextView deviceName = (TextView) findViewById(R.id.device_name);
-        deviceName.setText(device.getName() + "" + device.getId());
+        deviceName.setText(device.getName() + " " + device.getId());
         TextView macAddress = (TextView) findViewById(R.id.mac_address);
         macAddress.setText(device.getMacAddress());
-        /* TODO: Check if device is on
-        sensorSwitch.setChecked(manager.getToggledState(device, new Callback<DeviceStatus>() {
+
+        context = getApplicationContext();
+        duration = Toast.LENGTH_SHORT;
+
+    //Fixxade till lite/Carl
+        NetworkManager.getToggledState(device, new Callback<DataAboutDevice>() {
             @Override
-            public void success(DeviceStatus deviceStatus, Response response) {
-                sensorSwitch.setChecked(deviceStatus.value());
+            public void success(DataAboutDevice dataAboutDevice, Response response) {
+                //sensorSwitch.setChecked(deviceStatus.value());
+                if(dataAboutDevice.status == 1){
+                    sensorSwitch.setChecked(true);
+                } else { sensorSwitch.setChecked(false);}
+
+                toast = Toast.makeText(context, "Response received", duration);
+                toast.show();
             }
 
             @Override
@@ -46,7 +62,7 @@ public class SensorDeviceActivity extends DeviceActivity {
                 sensorSwitch.setChecked(false);
                 Log.d("failure", error.toString());
             }
-        }));*/
+        });
 
         sensorSwitch.setChecked(false);
         sensorSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -183,26 +199,31 @@ public class SensorDeviceActivity extends DeviceActivity {
             }
         });
     }
+    //Fixxade till lite
     public void getAll(View v) {
         NetworkManager.getAllSensorValues(device, new Callback<List<DeviceData>>() {
             @Override
             public void success(List<DeviceData> deviceDatas, Response response) {
+
+                toast = Toast.makeText(context, "Success", duration);
+                toast.show();
+
                 /* TODO: Get all sensor values */
                 for(int i = 0;i<deviceDatas.size();i++){
                     DeviceData newDevice = deviceDatas.get(i);
                     if(newDevice.sensorType.equals("temperature")){ //Stor bokstav på sensor typerna?
                         TextView textView = (TextView) findViewById(R.id.temperature_value);
                         textView.setText(newDevice.value.toString());
-                    }else if(newDevice.sensorType.equals("pressure(")){
+                    }else if(newDevice.sensorType.equals("pressure")){
                         TextView textView = (TextView) findViewById(R.id.pressure_value);
                         textView.setText(newDevice.value.toString());
                     }else if(newDevice.sensorType.equals("humidity")){
                         TextView textView = (TextView) findViewById(R.id.humidity_value);
                         textView.setText(newDevice.value.toString());
-                    }else if(newDevice.sensorType.equals("magnetic")){
+                    }else if(newDevice.sensorType.equals("magnometer")){
                         TextView textView = (TextView) findViewById(R.id.magnetic_value);
                         textView.setText(newDevice.value.toString());
-                    }else if(newDevice.sensorType.equals("gyroscopic")){
+                    }else if(newDevice.sensorType.equals("gyroscope")){
                         TextView textView = (TextView) findViewById(R.id.gyroscopic_value);
                         textView.setText(newDevice.value.toString());
                     }else if(newDevice.sensorType.equals("accelerometer")){
@@ -215,6 +236,9 @@ public class SensorDeviceActivity extends DeviceActivity {
             @Override
             public void failure(RetrofitError error) {
                 Log.d("failure", error.toString());
+
+                toast = Toast.makeText(context, "Could not get Status", duration);
+                toast.show();
             }
         });
     }

@@ -27,7 +27,6 @@ public class NetworkManager {
 
     // Holds data about all the detected devices.
     private static List<DataAboutDevice> detectedDevices;
-    static String color= "000000ff";
 
     private List<DeviceData> deviceData = new ArrayList<DeviceData>();
 
@@ -41,7 +40,6 @@ public class NetworkManager {
 
     public static void toggle(Device device, boolean value, Callback<DeviceStatus> callback) {
         api.putDeviceStatus(new DeviceStatus(device.getMacAddress(), (value ? "1" : "0")), callback);
-        setColor(device, color, colorCall());
     }
 
 
@@ -86,7 +84,6 @@ public class NetworkManager {
     }
 
     public static void setColor(Device device, String color, Callback<DeviceStatus> callback) {
-        NetworkManager.color = color;
         api.putDeviceValue(new DeviceStatus(device.getMacAddress(), color), callback);
     }
 
