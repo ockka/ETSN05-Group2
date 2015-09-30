@@ -34,9 +34,9 @@ public class MyDevicesActivity extends BaseActivity {
 
     public MyDevicesActivity(){
         devices =new ArrayList<Device>();
-        Device d = new LightBulb("A2:B3:C4:D5:E6:F7",2);
+        Device d = new LightBulb("90:59:AF:2A:BD:19",24); //tror MACen stämmer
         devices.add(d);
-        Device dd = new SensorDevice("2A:3B:4C:5D:6E:7F",3);
+        Device dd = new SensorDevice("2A:3B:4C:5D:6E:7F",3); //Påhittad MAC
         devices.add(dd);
     }
 
@@ -91,15 +91,17 @@ public class MyDevicesActivity extends BaseActivity {
 
     private void controlDevice(Device deviceToBeControlled){
         if(deviceToBeControlled != null){
-            if(deviceToBeControlled.getName() == "LightBulb"){
+            if(deviceToBeControlled.getName().equals("LightBulb")){
                 //skicka med devicen
                 Intent intent = new Intent(this, LightBulbActivity.class);
                 String[] s = {deviceToBeControlled.getName(), deviceToBeControlled.getMacAddress(),String.valueOf(deviceToBeControlled.getId())};
                 intent.putExtra("deviceInfo",s);
                 startActivity(intent);
-            }else if(deviceToBeControlled.getName() == "SensorDevice"){
+            }else if(deviceToBeControlled.getName().equals("SensorDevice")){
                 //skicka med devicen
                 Intent intent = new Intent(this, SensorDeviceActivity.class);
+                String[] s = {deviceToBeControlled.getName(), deviceToBeControlled.getMacAddress(),String.valueOf(deviceToBeControlled.getId())};
+                intent.putExtra("deviceInfo",s);
                 startActivity(intent);
             }
         }
@@ -134,14 +136,6 @@ public class MyDevicesActivity extends BaseActivity {
             }
         }
         return;
-    }
-    public void startSensorDeviceActivity(View v){
-        Intent intent = new Intent(this, SensorDeviceActivity.class);
-        startActivity(intent);
-    }
-    public void startLighyBulbActivity(View v){
-        Intent intent = new Intent(this, LightBulbActivity.class);
-        startActivity(intent);
     }
 
     public void getDevices(View v){

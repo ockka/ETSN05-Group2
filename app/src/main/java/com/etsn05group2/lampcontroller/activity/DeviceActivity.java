@@ -12,51 +12,26 @@ import com.etsn05group2.lampcontroller.model.SensorDevice;
 
 public abstract class DeviceActivity extends BaseActivity {
     protected Device device;
-/*
-    public DeviceActivity(){
-        Bundle extras = getIntent().getExtras();
-        if(extras != null){
-            String[] s = new String[3];
-            s = extras.getStringArray("deviceInfo");
-            if(s[0] == "LightBulb"){
-
-                device = new LightBulb(s[1], Long.valueOf(s[2]).longValue());
-
-
-            }else if(s[0] == "SensorDevice"){
-
-                device = new SensorDevice(s[1], Long.valueOf(s[2]).longValue());
-
-            }
-        }
-
-
-    }*/
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device);
-        /*
 
         Bundle extras = getIntent().getExtras();
         if(extras != null){
             String[] s = new String[3];
             s = extras.getStringArray("deviceInfo");
-            if(s[0] == "LightBulb"){
+            if(s[0].equals("LightBulb")){
 
                 device = new LightBulb(s[1], Long.valueOf(s[2]).longValue());
 
-
-            }else if(s[0] == "SensorDevice"){
+            }else if(s[0].equals("SensorDevice")){
 
                 device = new SensorDevice(s[1], Long.valueOf(s[2]).longValue());
 
             }
         }
-        */
-
 
     }
 

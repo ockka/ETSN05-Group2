@@ -30,7 +30,7 @@ import retrofit.client.Response;
 
 
 public class LightBulbActivity extends DeviceActivity {
-    LightBulb device = new LightBulb("90:59:AF:2A:BD:19", 24);
+    //LightBulb device = new LightBulb("90:59:AF:2A:BD:19", 24);
     private EditText red;
     private EditText green;
     private EditText blue;
