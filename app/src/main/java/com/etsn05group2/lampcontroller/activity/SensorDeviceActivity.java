@@ -188,6 +188,28 @@ public class SensorDeviceActivity extends DeviceActivity {
             @Override
             public void success(List<DeviceData> deviceDatas, Response response) {
                 /* TODO: Get all sensor values */
+                for(int i = 0;i<deviceDatas.size();i++){
+                    DeviceData newDevice = deviceDatas.get(i);
+                    if(newDevice.sensorType.equals("temperature")){ //Stor bokstav på sensor typerna?
+                        TextView textView = (TextView) findViewById(R.id.temperature_value);
+                        textView.setText(newDevice.value.toString());
+                    }else if(newDevice.sensorType.equals("pressure(")){
+                        TextView textView = (TextView) findViewById(R.id.pressure_value);
+                        textView.setText(newDevice.value.toString());
+                    }else if(newDevice.sensorType.equals("humidity")){
+                        TextView textView = (TextView) findViewById(R.id.humidity_value);
+                        textView.setText(newDevice.value.toString());
+                    }else if(newDevice.sensorType.equals("magnetic")){
+                        TextView textView = (TextView) findViewById(R.id.magnetic_value);
+                        textView.setText(newDevice.value.toString());
+                    }else if(newDevice.sensorType.equals("gyroscopic")){
+                        TextView textView = (TextView) findViewById(R.id.gyroscopic_value);
+                        textView.setText(newDevice.value.toString());
+                    }else if(newDevice.sensorType.equals("accelerometer")){
+                        TextView textView = (TextView) findViewById(R.id.accelerometer_value);
+                        textView.setText(newDevice.value.toString());
+                    }
+                }
             }
 
             @Override
