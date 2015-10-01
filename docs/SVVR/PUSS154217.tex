@@ -1,0 +1,124 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage[english]{babel}
+\usepackage{enumitem}%can be used for automatic numbering of requirements/tests.
+\usepackage{hyperref}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{color} % Used to write in red,blue,green etc.
+\usepackage{float}
+\usepackage[titletoc]{appendix}
+
+\title{SVVR - Software Verification and Validation Report}
+\newcommand{\version}{v0.0}
+\newcommand{\SVVR}{PUSS154217}
+\author{Testgroup, Team 2}
+
+\newcommand{\testdate}{NOT SET}
+
+%-------------------------TITLE-----------------------------------------
+
+\begin{document}
+\begin{titlepage}
+\newgeometry{left=2cm,top=1cm,right=2cm}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\begin{minipage}{0.5\textwidth}
+\begin{flushleft} % Responsible persons, write on separate lines
+\textit{Responsible for this document:}\\
+Oskar Fällström %Not entirely sure who this should be, possibly project leaders as well?
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright}
+\SVVR\ \version\ %Dokumentnummer enl. projekthandledning s. 22-23 och insidan av pärmen
+\today
+\end{flushright}
+\end{minipage}\\[3cm]
+
+\centering
+\textsc{\LARGE Team 2}\\[0.5cm]
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Software Verification and Validation Report}\\[0.4cm] % Title of your document
+\HRule \\[1.5cm]
+
+\vfill
+\begin{flushleft}
+\textit{Authors of this document:}\\
+Måns Andersson \\
+Hanna Autio \\
+Moa Eklöf \\
+Oskar Fällström \\
+Ulf Hörndahl \\
+Jonathan Lundholm
+\end{flushleft}
+
+
+\end{titlepage}
+\pagenumbering{gobble}
+
+\begin{center}
+\textit{\large Version History}
+
+    \begin{tabular}{ | l | l | l | p{5cm} |}
+    \hline
+    \textbf{Version}		& \textbf{Date}		& \textbf{Responsible}					& \textbf{Description}					\\ \hline
+    0.0						& 151001 			& UH									& Document created						\\ \hline
+    \end{tabular}
+\end{center}
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+
+%--------------------Reference Documents ---------------------------------------
+\section*{Reference Documents}
+\begin{enumerate}
+\item PUSS154212 - System Requirements Specification v1.2 \label{refdocs:srs} 
+\item Programvaruutveckling för Stora System - Projekthandledning v2.2 \newline (\textit{Institutionen för datavetenskap}, Lunds Univeritet 2015) \label{refdocs:projekthandledning}
+\item PUSS154213 - Software Verification and Validation Specification v1.1 \label{refdocs:SVVS}
+\item PUSS154253 - Test Matrices for SVVS v1.1 \label{refdocs:matrices}
+\item PUSS154215 - Software Verification and Validation Instruction v?? \label{refdocs:SVVI}
+\end{enumerate}
+
+%--------------------Introduction ---------------------------------------
+\section{Known bugs}
+
+\subsection{Backend}
+
+\subsection{Other}
+
+\clearpage
+\section{Functional tests}
+
+\input{mall/MDV-mall.tex}
+
+\subsection{MyDevices View}
+
+\input{mall/MDV-mall.tex}
+
+\subsection{Sensor View}
+
+\input{mall/sensor-mall.tex}
+
+\subsection{Light Bulb View}
+\input{mall/LBV-mall.tex}
+
+\newpage
+\section{System tests}
+
+\subsection{Tests for use cases}
+\input{mall/usecase-mall.tex}
+
+\subsection{Quality tests}
+\input{mall/quality-mall.tex}
+
+\end{document}
