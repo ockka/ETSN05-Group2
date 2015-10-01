@@ -84,6 +84,7 @@ public class MyDevicesActivity extends BaseActivity {
     }
 
     private void detectDevices() {
+        chosen=null;
         NetworkManager.detectDevices(createCallback());
     }
 
@@ -106,6 +107,9 @@ public class MyDevicesActivity extends BaseActivity {
                 intent.putExtra("deviceInfo",s);
                 startActivity(intent);
             }
+        }else{
+            toast = Toast.makeText(context, "Please select a device", duration);
+            toast.show();
         }
 
     }
