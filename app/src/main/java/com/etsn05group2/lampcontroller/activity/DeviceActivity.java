@@ -21,7 +21,7 @@ public abstract class DeviceActivity extends BaseActivity {
         if(extras != null){
             String[] s = new String[3];
             s = extras.getStringArray("deviceInfo");
-            if(s[0].equals("LightBulb")){
+            if(s[0].equals("Light Bulb")){
 
                 device = new LightBulb(s[1], Long.valueOf(s[2]).longValue());
 

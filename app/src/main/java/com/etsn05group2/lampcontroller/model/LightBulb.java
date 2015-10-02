@@ -11,7 +11,7 @@ public class LightBulb extends Device {
 
     @Override
     public String getName() {
-        return "LightBulb";
+        return "Light Bulb";
     }
 
 }

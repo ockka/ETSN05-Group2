@@ -16,7 +16,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:text=""
-            android:textSize="30sp"
+            android:textSize="40sp"
             android:layout_gravity="center_horizontal"/>
         <TextView
             android:id="@+id/Mac"
@@ -24,7 +24,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:text=""
-            android:textSize="20sp"
+            android:textSize="28sp"
             android:layout_gravity="center_horizontal"/>
     </LinearLayout>
 

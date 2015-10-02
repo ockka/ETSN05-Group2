@@ -94,7 +94,7 @@ public class MyDevicesActivity extends BaseActivity {
 
     private void controlDevice(Device deviceToBeControlled){
         if(deviceToBeControlled != null){
-            if(deviceToBeControlled.getName().equals("LightBulb")){
+            if(deviceToBeControlled.getName().equals("Light Bulb")){
                 //skicka med devicen
                 Intent intent = new Intent(this, LightBulbActivity.class);
                 String[] s = {deviceToBeControlled.getName(), deviceToBeControlled.getMacAddress(),String.valueOf(deviceToBeControlled.getId())};
