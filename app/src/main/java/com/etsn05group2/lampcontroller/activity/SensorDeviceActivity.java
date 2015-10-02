@@ -44,40 +44,36 @@ public class SensorDeviceActivity extends DeviceActivity {
         context = getApplicationContext();
         duration = Toast.LENGTH_SHORT;
 
-    //Fixxade till lite/Carl
         NetworkManager.getToggledState(device, new Callback<DataAboutDevice>() {
             @Override
             public void success(DataAboutDevice dataAboutDevice, Response response) {
-                //sensorSwitch.setChecked(deviceStatus.value());
-                if(dataAboutDevice.status == 1){
-                    sensorSwitch.setChecked(true);
-                } else { sensorSwitch.setChecked(false);}
-
-                toast = Toast.makeText(context, "Response received", duration);
-                toast.show();
+                sensorSwitch.setChecked(dataAboutDevice.status==1?true:false);
             }
 
             @Override
             public void failure(RetrofitError error) {
                 sensorSwitch.setChecked(false);
-                Log.d("failure", error.toString());
+                toast = Toast.makeText(context, "Could not get Status", duration);
+                toast.show();
             }
         });
 
-        sensorSwitch.setChecked(false);
         sensorSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, final boolean isChecked) {
                 NetworkManager.toggle(device, isChecked, new Callback<DeviceStatus>() {
                     @Override
                     public void success(DeviceStatus deviceStatus, Response response) {
-
+                        toast = Toast.makeText(context, "Success", duration);
+                        toast.show();
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
-                        sensorSwitch.setChecked(!isChecked);
-                        Log.d("failure", error.toString());
+                        sensorSwitch.setChecked(false);
+                        toast = Toast.makeText(context, "Error 'HTTP Status-Code' occurred", duration);
+                        toast.show();
+
                     }
                 });
             }
@@ -117,7 +113,8 @@ public class SensorDeviceActivity extends DeviceActivity {
 
             @Override
             public void failure(RetrofitError error) {
-                Log.d("failure", error.toString());
+                toast = Toast.makeText(context, "No data available", duration);
+                toast.show();
             }
         });
 
@@ -134,7 +131,8 @@ public class SensorDeviceActivity extends DeviceActivity {
 
             @Override
             public void failure(RetrofitError error) {
-                Log.d("failure", error.toString());
+                toast = Toast.makeText(context, "No data available", duration);
+                toast.show();
             }
         });
     }
@@ -150,7 +148,8 @@ public class SensorDeviceActivity extends DeviceActivity {
 
             @Override
             public void failure(RetrofitError error) {
-                Log.d("failure", error.toString());
+                toast = Toast.makeText(context, "No data available", duration);
+                toast.show();
             }
         });
     }
@@ -165,7 +164,8 @@ public class SensorDeviceActivity extends DeviceActivity {
 
             @Override
             public void failure(RetrofitError error) {
-                Log.d("failure", error.toString());
+                toast = Toast.makeText(context, "No data available", duration);
+                toast.show();
             }
         });
     }
@@ -180,7 +180,8 @@ public class SensorDeviceActivity extends DeviceActivity {
 
             @Override
             public void failure(RetrofitError error) {
-                Log.d("failure", error.toString());
+                toast = Toast.makeText(context, "No data available", duration);
+                toast.show();
             }
         });
     }
@@ -195,7 +196,8 @@ public class SensorDeviceActivity extends DeviceActivity {
 
             @Override
             public void failure(RetrofitError error) {
-                Log.d("failure", error.toString());
+                toast = Toast.makeText(context, "No data available", duration);
+                toast.show();
             }
         });
     }
@@ -235,9 +237,7 @@ public class SensorDeviceActivity extends DeviceActivity {
 
             @Override
             public void failure(RetrofitError error) {
-                Log.d("failure", error.toString());
-
-                toast = Toast.makeText(context, "Could not get Status", duration);
+                toast = Toast.makeText(context, "No data available", duration);
                 toast.show();
             }
         });
