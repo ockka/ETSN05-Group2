@@ -31,8 +31,8 @@ import retrofit.client.Response;
 
 public class MyDevicesActivity extends BaseActivity {
     private DeviceListAdapter listAdapter;
-    List<Device> devices;
-    Device chosen;
+    private List<Device> devices;
+    private Device chosen;
     private Toast toast;
     private Context context;
     private int duration;

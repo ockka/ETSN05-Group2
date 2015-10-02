@@ -17,10 +17,11 @@ import java.util.List;
  */
 public class DeviceListAdapter  extends ArrayAdapter<Device> {
     //private List<Device> devices;
+    /*
 
     public DeviceListAdapter(Context context, int textViewResourceId){
         super(context, textViewResourceId);
-    }
+    }*/
 
     public DeviceListAdapter(Context context, int resource, List<Device> devices){
         super(context, resource, devices);
@@ -28,7 +29,7 @@ public class DeviceListAdapter  extends ArrayAdapter<Device> {
 
     public View getView(int position, View convertView, ViewGroup parent){
 
-        View v = convertView;
+         View v = convertView;
 
         if(v == null){
             LayoutInflater vi;
