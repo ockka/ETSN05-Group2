@@ -58,14 +58,8 @@ public class DeviceListAdapter  extends ArrayAdapter<Device> {
         }
         return v;
     }
-
-
-
-
-
-
-
+/*
     public void addDevices(List<Device> devices){
         //this.devices = devices;
-    }
+    }*/
 }

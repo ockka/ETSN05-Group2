@@ -9,7 +9,7 @@ import com.etsn05group2.lampcontroller.R;
 import com.etsn05group2.lampcontroller.network.NetworkManager;
 
 public abstract class BaseActivity extends Activity {
-
+/*
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,5 +36,5 @@ public abstract class BaseActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }

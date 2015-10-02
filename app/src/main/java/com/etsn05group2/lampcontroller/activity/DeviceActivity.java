@@ -33,7 +33,7 @@ public abstract class DeviceActivity extends BaseActivity {
         }
 
     }
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -54,7 +54,7 @@ public abstract class DeviceActivity extends BaseActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
     protected void toggle(Boolean bool){
         //toggla via networkmanager
     }
