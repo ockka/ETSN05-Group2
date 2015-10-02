@@ -106,7 +106,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:id="@+id/magnetic_value"
-                android:textSize="28sp" />
+                android:textSize="18sp" />
 
             <Button android:text="@string/get"
                 android:id="@+id/magnetic_button"
