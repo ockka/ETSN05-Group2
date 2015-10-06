@@ -8,13 +8,21 @@ import com.etsn05group2.lampcontroller.network.data.DeviceData;
 import com.etsn05group2.lampcontroller.network.data.DeviceStatus;
 import com.etsn05group2.lampcontroller.network.data.ToggledStateResponse;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
+import retrofit.client.OkClient;
 import retrofit.client.Response;
+
+import java.util.Calendar;
+
+
 
 /**
  * Created by Niklas on 2015-09-22.
@@ -22,20 +30,19 @@ import retrofit.client.Response;
 public class NetworkManager {
 
     private static final String PATH = "http://vm39.cs.lth.se:9000/";
-    private static NetworkManagerApi api = new RestAdapter.Builder().setEndpoint(PATH).build().create(NetworkManagerApi.class);
-    private static DeviceStatus deviceStatus;
+    private static OkHttpClient client;
+    private static NetworkManagerApi api;
 
-    // Holds data about all the detected devices.
-    private static List<DataAboutDevice> detectedDevices;
-
-    private List<DeviceData> deviceData = new ArrayList<DeviceData>();
-
-    public NetworkManager() {
+    static {
+        long timeout = 15L;
+        client = new OkHttpClient();
+        client.setReadTimeout(timeout, TimeUnit.SECONDS);
+        client.setWriteTimeout(timeout, TimeUnit.SECONDS);
+        client.setConnectTimeout(timeout, TimeUnit.SECONDS);
+        api = new RestAdapter.Builder().setEndpoint(PATH).setClient(new OkClient(client)).build().create(NetworkManagerApi.class);
     }
 
-    public static List<DataAboutDevice> detectDevices() {
-        api.getDataAboutAllDevices(allDevicesCall());
-        return detectedDevices;
+    public NetworkManager() {
     }
 
     public static void toggle(Device device, boolean value, Callback<DeviceStatus> callback) {
@@ -86,6 +93,7 @@ public class NetworkManager {
     public static void setColor(Device device, String color, Callback<DeviceStatus> callback) {
         api.putDeviceValue(new DeviceStatus(device.getMacAddress(), color), callback);
     }
+<<<<<<< HEAD
 
     /**
      * Placera in all Fulkod här under
@@ -109,13 +117,19 @@ public class NetworkManager {
         };
     }
 
+
+
+
+
+
+
     static private Callback<List<DataAboutDevice>> allDevicesCall(){
         Callback<List<DataAboutDevice>> call = new Callback<List<DataAboutDevice>>(){
 
             @Override
             public void success(List<DataAboutDevice> dataAboutDevices, Response response) {
-                Log.d("DEN HÄMTAR SKIT", "");
-                detectedDevices = dataAboutDevices;
+                Log.d("Succes", "");
+               //detectedDevices = dataAboutDevices;
             }
 
             @Override
@@ -124,5 +138,60 @@ public class NetworkManager {
         return call;
     }
 
+    static private String currentTime(){
+        Calendar calendar = Calendar.getInstance();
+        DateFormat df = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
+        String time = (df.format(calendar.getTime()));
+        return time;
+    }
+
+    static private String previousTime() {
+        Calendar calendar = Calendar.getInstance();
+
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DATE);
+        int hours = calendar.get(Calendar.HOUR_OF_DAY);
+        int minutes = calendar.get(Calendar.MINUTE);
+        int seconds = calendar.get(Calendar.SECOND);
+
+        minutes = (minutes - 10) % 60;
+        if (minutes < 0) {
+            minutes += 60;
+            hours--;
+        }
+        if (hours < 0) {
+            hours += 24;
+            hours--;
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append(year);
+        sb.append("-");
+        if (month < 10) {
+            sb.append("0");
+        }
+        sb.append(month);
+        sb.append("-");
+        if (day < 10) {
+            sb.append("0");
+        }
+        sb.append(day);
+        sb.append(" ");
+        if (hours < 10) {
+            sb.append("0");
+        }
+        sb.append(hours);
+        sb.append(":");
+        if (minutes < 10) {
+            sb.append("0");
+        }
+        sb.append(minutes);
+        if (seconds < 10) {
+            sb.append("0");
+        }
+        sb.append(":");
+        sb.append(seconds);
+        return sb.toString();
+    }
 
 }
