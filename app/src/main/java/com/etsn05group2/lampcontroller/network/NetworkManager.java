@@ -7,13 +7,16 @@ import com.etsn05group2.lampcontroller.network.data.DataAboutDevice;
 import com.etsn05group2.lampcontroller.network.data.DeviceData;
 import com.etsn05group2.lampcontroller.network.data.DeviceStatus;
 import com.etsn05group2.lampcontroller.network.data.ToggledStateResponse;
+import com.squareup.okhttp.OkHttpClient;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
+import retrofit.client.OkClient;
 import retrofit.client.Response;
 
 /**
@@ -22,20 +25,19 @@ import retrofit.client.Response;
 public class NetworkManager {
 
     private static final String PATH = "http://vm39.cs.lth.se:9000/";
-    private static NetworkManagerApi api = new RestAdapter.Builder().setEndpoint(PATH).build().create(NetworkManagerApi.class);
-    private static DeviceStatus deviceStatus;
+    private static OkHttpClient client;
+    private static NetworkManagerApi api;
 
-    // Holds data about all the detected devices.
-    private static List<DataAboutDevice> detectedDevices;
-
-    private List<DeviceData> deviceData = new ArrayList<DeviceData>();
-
-    public NetworkManager() {
+    static {
+        long timeout = 15L;
+        client = new OkHttpClient();
+        client.setReadTimeout(timeout, TimeUnit.SECONDS);
+        client.setWriteTimeout(timeout, TimeUnit.SECONDS);
+        client.setConnectTimeout(timeout, TimeUnit.SECONDS);
+        api = new RestAdapter.Builder().setEndpoint(PATH).setClient(new OkClient(client)).build().create(NetworkManagerApi.class);
     }
 
-    public static List<DataAboutDevice> detectDevices() {
-        api.getDataAboutAllDevices(allDevicesCall());
-        return detectedDevices;
+    public NetworkManager() {
     }
 
     public static void toggle(Device device, boolean value, Callback<DeviceStatus> callback) {
@@ -86,43 +88,4 @@ public class NetworkManager {
     public static void setColor(Device device, String color, Callback<DeviceStatus> callback) {
         api.putDeviceValue(new DeviceStatus(device.getMacAddress(), color), callback);
     }
-
-    /**
-     * Placera in all Fulkod här under
-     *
-     *
-     *
-     *
-     */
-
-    static private Callback<DeviceStatus> colorCall(){
-        return new Callback<DeviceStatus>() {
-            @Override
-            public void success(DeviceStatus device, Response response) {
-
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-
-            }
-        };
-    }
-
-    static private Callback<List<DataAboutDevice>> allDevicesCall(){
-        Callback<List<DataAboutDevice>> call = new Callback<List<DataAboutDevice>>(){
-
-            @Override
-            public void success(List<DataAboutDevice> dataAboutDevices, Response response) {
-                Log.d("DEN HÄMTAR SKIT", "");
-                detectedDevices = dataAboutDevices;
-            }
-
-            @Override
-            public void failure(RetrofitError error) { Log.d("failure", error.toString()); }
-        };
-        return call;
-    }
-
-
 }
