@@ -7,6 +7,7 @@ import com.etsn05group2.lampcontroller.network.data.DataAboutDevice;
 import com.etsn05group2.lampcontroller.network.data.DeviceData;
 import com.etsn05group2.lampcontroller.network.data.DeviceStatus;
 import com.etsn05group2.lampcontroller.network.data.ToggledStateResponse;
+import com.squareup.okhttp.OkHttpClient;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -93,7 +94,6 @@ public class NetworkManager {
     public static void setColor(Device device, String color, Callback<DeviceStatus> callback) {
         api.putDeviceValue(new DeviceStatus(device.getMacAddress(), color), callback);
     }
-<<<<<<< HEAD
 
     /**
      * Placera in all Fulkod här under
