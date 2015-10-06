@@ -100,7 +100,7 @@ public class MyDevicesActivity extends BaseActivity {
                 String[] s = {deviceToBeControlled.getName(), deviceToBeControlled.getMacAddress(),String.valueOf(deviceToBeControlled.getId())};
                 intent.putExtra("deviceInfo",s);
                 startActivity(intent);
-            }else if(deviceToBeControlled.getName().equals("SensorDevice")){
+            }else if(deviceToBeControlled.getName().equals("Sensor")){
                 //skicka med devicen
                 Intent intent = new Intent(this, SensorDeviceActivity.class);
                 String[] s = {deviceToBeControlled.getName(), deviceToBeControlled.getMacAddress(),String.valueOf(deviceToBeControlled.getId())};

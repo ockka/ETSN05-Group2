@@ -11,6 +11,6 @@ public class SensorDevice extends Device {
 
     @Override
     public String getName() {
-        return "SensorDevice";
+        return "Sensor";
     }
 }

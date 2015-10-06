@@ -25,7 +25,7 @@ public abstract class DeviceActivity extends BaseActivity {
 
                 device = new LightBulb(s[1], Long.valueOf(s[2]).longValue());
 
-            }else if(s[0].equals("SensorDevice")){
+            }else if(s[0].equals("Sensor")){
 
                 device = new SensorDevice(s[1], Long.valueOf(s[2]).longValue());
 
