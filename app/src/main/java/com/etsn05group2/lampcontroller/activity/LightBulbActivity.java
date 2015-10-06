@@ -38,6 +38,10 @@ public class LightBulbActivity extends DeviceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        init();
+    }
+
+    private void init() {
         setContentView(R.layout.activity_light_bulb);
         red = (EditText) findViewById(R.id.Red);
         green = (EditText) findViewById(R.id.Green);
@@ -46,10 +50,10 @@ public class LightBulbActivity extends DeviceActivity {
         lightBulbSwitch = (Switch) findViewById(R.id.lightBulbSwitch);
         context = getApplicationContext();
         duration = Toast.LENGTH_SHORT;
+        toast = Toast.makeText(context,"",duration);
         TextView name = (TextView) findViewById(R.id.NameId);
         name.setText(device.getName() + " " + device.getId());
         TextView mac = (TextView) findViewById(R.id.Mac);
-
         mac.setText(device.getMacAddress());
         NetworkManager.getToggledState(device, new Callback<DataAboutDevice>() {
             @Override
@@ -60,7 +64,7 @@ public class LightBulbActivity extends DeviceActivity {
             @Override
             public void failure(RetrofitError error) {
                 lightBulbSwitch.setChecked(false);
-                toast = Toast.makeText(context, "Could not get Status", duration);
+                toast.setText("Could not get Status");
                 toast.show();
             }
         });
@@ -71,42 +75,20 @@ public class LightBulbActivity extends DeviceActivity {
                 NetworkManager.toggle(device, isChecked, new Callback<DeviceStatus>() {
                     @Override
                     public void success(DeviceStatus deviceStatus, Response response) {
-                        toast = Toast.makeText(context, "Success", duration);
+                        toast.setText("Success");
                         toast.show();
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
                         lightBulbSwitch.setChecked(false);
-                        toast = Toast.makeText(context, "Error 'HTTP Status-Code' occurred", duration);
+                        toast.setText("Error 'HTTP Status-Code' occurred");
                         toast.show();
 
                     }
                 });
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_light_bulb, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     public void setValues(View v) {
@@ -127,19 +109,19 @@ public class LightBulbActivity extends DeviceActivity {
             NetworkManager.setColor(device, color.toLowerCase(), new Callback<DeviceStatus>() {
                 @Override
                 public void success(DeviceStatus deviceStatus, Response response) {
-                    toast = Toast.makeText(context, "Color successfully changed.", duration);
+                    toast.setText("Color successfully changed.");
                     toast.show();
                 }
 
                 @Override
                 public void failure(RetrofitError error) {
-                    toast = Toast.makeText(context, "Error 'HTTP Status-Code' occurred", duration);
+                    toast.setText("Error 'HTTP Status-Code' occurred");
                     toast.show();
                 }
             });
 
         } else {
-            toast = Toast.makeText(context, "Lamp is not turned on", duration);
+            toast.setText("Lamp is not turned on");
             toast.show();
         }
     }
@@ -157,7 +139,7 @@ public class LightBulbActivity extends DeviceActivity {
 
             @Override
             public void failure(RetrofitError error) {
-                toast = Toast.makeText(context, "Error: Could not get color values.", duration);
+                toast.setText("Error: Could not get color values.");
                 toast.show();
             }
         });
