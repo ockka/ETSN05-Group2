@@ -60,31 +60,45 @@ public class NetworkManager {
     }
 
     public static void getTemperature(Device device, Callback<List<DeviceData>> callback) {
-        api.getDeviceData(device.getId(), "temperature", callback);
+        String startDate = previousTime();
+        String endDate = currentTime();
+        api.getDeviceDataTimeLimit(device.getId(), "temperature", startDate, endDate, callback);
     }
 
     public static void getPressure(Device device, Callback<List<DeviceData>> callback) {
-        api.getDeviceData(device.getId(), "pressure", callback);
+        String startDate = previousTime();
+        String endDate = currentTime();
+        api.getDeviceDataTimeLimit(device.getId(), "pressure", startDate, endDate, callback);
     }
 
     public static void getHumidity(Device device, Callback<List<DeviceData>> callback) {
-        api.getDeviceData(device.getId(), "humidity", callback);
+        String startDate = previousTime();
+        String endDate = currentTime();
+        api.getDeviceDataTimeLimit(device.getId(), "humidity", startDate, endDate, callback);
     }
 
     public static void getMagnetic(Device device, Callback<List<DeviceData>> callback) {
-        api.getDeviceData(device.getId(), "magnometer", callback);
+        String startDate = previousTime();
+        String endDate = currentTime();
+        api.getDeviceDataTimeLimit(device.getId(), "magnometer", startDate, endDate, callback);
     }
 
     public static void getAccelerometer(Device device, Callback<List<DeviceData>> callback) {
-        api.getDeviceData(device.getId(), "accelerometer", callback);
+        String startDate = previousTime();
+        String endDate = currentTime();
+        api.getDeviceDataTimeLimit(device.getId(), "accelerometer", startDate, endDate, callback);
     }
 
     public static void getGyroscopic(Device device, Callback<List<DeviceData>> callback) {
-        api.getDeviceData(device.getId(), "gyroscope", callback);   // is this right/
+        String startDate = previousTime();
+        String endDate = currentTime();
+        api.getDeviceDataTimeLimit(device.getId(), "gyroscope", startDate, endDate, callback);   // is this right/
     }
 
     public static void getAllSensorValues(Device device, Callback<List<DeviceData>> callback) {
-        api.getDeviceData(device.getId(), callback);
+        String startDate = previousTime();
+        String endDate = currentTime();
+        api.getDeviceDataTimeLimit(device.getId(),startDate, endDate,callback);
     }
 
     public static void getColor(Device device, Callback<List<DeviceData>> callback) {
