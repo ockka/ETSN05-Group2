@@ -16,12 +16,6 @@ import java.util.List;
  * Created by David on 2015-09-25.
  */
 public class DeviceListAdapter  extends ArrayAdapter<Device> {
-    //private List<Device> devices;
-    /*
-
-    public DeviceListAdapter(Context context, int textViewResourceId){
-        super(context, textViewResourceId);
-    }*/
 
     public DeviceListAdapter(Context context, int resource, List<Device> devices){
         super(context, resource, devices);
@@ -44,23 +38,19 @@ public class DeviceListAdapter  extends ArrayAdapter<Device> {
             TextView tt2 = (TextView) v.findViewById(R.id.device_name);
             TextView tt3 = (TextView) v.findViewById(R.id.device_address);
 
-            if(tt1 != null){
+            //if(tt1 != null){
                 tt1.setText(String.valueOf(d.getId()));
-            }
+           // }
 
-            if(tt2 != null){
+            //if(tt2 != null){
                 tt2.setText(d.getName());
-            }
+           // }
 
-            if(tt3 != null){
+            //if(tt3 != null){
                 tt3.setText(d.getMacAddress());
-            }
+           // }
 
         }
         return v;
     }
-/*
-    public void addDevices(List<Device> devices){
-        //this.devices = devices;
-    }*/
 }

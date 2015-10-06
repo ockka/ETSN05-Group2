@@ -29,7 +29,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 
-public class MyDevicesActivity extends BaseActivity {
+public class MyDevicesActivity extends Activity {
     private DeviceListAdapter listAdapter;
     private List<Device> devices;
     private Device chosen;
@@ -39,17 +39,6 @@ public class MyDevicesActivity extends BaseActivity {
 
     public MyDevicesActivity(){
         devices =new ArrayList<Device>();
-
-        /*
-        Device d = new LightBulb("90:59:AF:2A:BD:19",24); //MACen stämmer
-        devices.add(d);
-
-        Device dd = new SensorDevice("00:10:18:01:23:3A",25); //rätt MAC
-
-        devices.add(dd);
-
-        */
-
     }
 
     @Override
@@ -59,28 +48,7 @@ public class MyDevicesActivity extends BaseActivity {
 
         context = getApplicationContext();
         duration = Toast.LENGTH_SHORT;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_my_devices, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        toast = Toast.makeText(context, "", duration);
     }
 
     private void detectDevices() {
@@ -108,7 +76,7 @@ public class MyDevicesActivity extends BaseActivity {
                 startActivity(intent);
             }
         }else{
-            toast = Toast.makeText(context, "Please select a device", duration);
+            toast.setText("Please select a device");
             toast.show();
         }
 
@@ -137,7 +105,7 @@ public class MyDevicesActivity extends BaseActivity {
             @Override
             public void failure(RetrofitError error) {
                 Log.d("NÅGOT GICK VÄLDIGT FEL","");
-                toast = Toast.makeText(context, "Could not find any devices", duration);
+                toast.setText("Could not find any devices");
                 toast.show();
                 // popup med att det inte funkade att hitta listor
 
@@ -155,7 +123,6 @@ public class MyDevicesActivity extends BaseActivity {
                 devices.add(new SensorDevice(d.deviceAddress, d.id));
             }
         }
-        return;
     }
 
     public void getDevices(View v){

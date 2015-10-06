@@ -10,7 +10,7 @@ import com.etsn05group2.lampcontroller.model.Device;
 import com.etsn05group2.lampcontroller.model.LightBulb;
 import com.etsn05group2.lampcontroller.model.SensorDevice;
 
-public abstract class DeviceActivity extends BaseActivity {
+public abstract class DeviceActivity extends Activity {
     protected Device device;
 
     @Override
@@ -33,8 +33,4 @@ public abstract class DeviceActivity extends BaseActivity {
         }
 
     }
-/*
-    protected void toggle(Boolean bool){
-        //toggla via networkmanager
-    }*/
 }
