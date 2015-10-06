@@ -125,15 +125,4 @@ public class NetworkManager {
     }
 
 
-    static private Callback<DeviceStatus> toggleCallback(){
-        Callback<DeviceStatus> toggleCall = new Callback<DeviceStatus>() {
-            @Override
-            public void success(DeviceStatus deviceStatus, Response response) {}
-
-            @Override
-            public void failure(RetrofitError error) { Log.d("failure", error.toString()); }
-        };
-        return toggleCall;
-    }
-
 }
