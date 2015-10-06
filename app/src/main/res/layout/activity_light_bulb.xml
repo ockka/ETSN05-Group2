@@ -1,3 +1,11 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.etsn05group2.lampcontroller.activity.LightBulbActivity">
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -54,8 +62,8 @@
             android:layout_width="0sp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:digits="0123456789abcdef"
-            android:inputType="text|textEmailAddress"
+            android:digits="0123456789ABCDEF"
+            android:inputType="textCapCharacters"
             android:imeOptions="actionNext"
             android:singleLine="true"
             android:maxLength="2" />
@@ -75,8 +83,8 @@
             android:layout_width="0sp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:digits="0123456789abcdef"
-            android:inputType="text|textEmailAddress"
+            android:digits="0123456789ABCDEF"
+            android:inputType="textCapCharacters"
             android:imeOptions="actionNext"
             android:singleLine="true"
             android:maxLength="2" />
@@ -96,8 +104,8 @@
             android:layout_width="0sp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:digits="0123456789abcdef"
-            android:inputType="text|textEmailAddress"
+            android:digits="0123456789ABCDEF"
+            android:inputType="textCapCharacters"
             android:imeOptions="actionNext"
             android:singleLine="true"
             android:maxLength="2" />
@@ -117,8 +125,8 @@
             android:layout_width="0sp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:digits="0123456789abcdef"
-            android:inputType="text|textEmailAddress"
+            android:digits="0123456789ABCDEF"
+            android:inputType="textCapCharacters"
             android:imeOptions="actionDone"
             android:singleLine="true"
             android:maxLength="2" />
@@ -149,3 +157,4 @@
 
     </LinearLayout>
 </LinearLayout>
+</ScrollView>

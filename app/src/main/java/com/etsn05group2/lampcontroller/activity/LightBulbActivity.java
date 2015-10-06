@@ -112,11 +112,19 @@ public class LightBulbActivity extends DeviceActivity {
     public void setValues(View v) {
         if (lightBulbSwitch.isChecked()) {
             String redtext = red.getText().toString();
+            if(redtext.length() == 1)
+                    redtext = "0" + redtext;
             String greentext = green.getText().toString();
+            if(greentext.length() == 1)
+                greentext = "0" + greentext;
             String bluetext = blue.getText().toString();
+            if(bluetext.length() == 1)
+                bluetext = "0" + bluetext;
             String whitetext = white.getText().toString();
+            if(whitetext.length() == 1)
+                whitetext = "0" + whitetext;
             String color = (redtext.length() > 1 ? redtext : "00") + (greentext.length() > 1 ? greentext : "00") + (bluetext.length() > 1 ? bluetext : "00") + (whitetext.length() > 1 ? whitetext : "00");
-            NetworkManager.setColor(device, color, new Callback<DeviceStatus>() {
+            NetworkManager.setColor(device, color.toLowerCase(), new Callback<DeviceStatus>() {
                 @Override
                 public void success(DeviceStatus deviceStatus, Response response) {
                     toast = Toast.makeText(context, "Color successfully changed.", duration);
@@ -125,7 +133,7 @@ public class LightBulbActivity extends DeviceActivity {
 
                 @Override
                 public void failure(RetrofitError error) {
-                    toast = Toast.makeText(context, "Error: Could not change color.", duration);
+                    toast = Toast.makeText(context, "Error 'HTTP Status-Code' occurred", duration);
                     toast.show();
                 }
             });
@@ -141,10 +149,10 @@ public class LightBulbActivity extends DeviceActivity {
             @Override
             public void success(List<DeviceData> deviceDatas, Response response) {
                 String color = deviceDatas.get(deviceDatas.size() - 1).value;
-                red.setText(color.substring(0, 2));
-                green.setText(color.substring(2, 4));
-                blue.setText(color.substring(4, 6));
-                white.setText(color.substring(6, 8));
+                red.setText(color.substring(0, 2).toUpperCase());
+                green.setText(color.substring(2, 4).toUpperCase());
+                blue.setText(color.substring(4, 6).toUpperCase());
+                white.setText(color.substring(6, 8).toUpperCase());
             }
 
             @Override
