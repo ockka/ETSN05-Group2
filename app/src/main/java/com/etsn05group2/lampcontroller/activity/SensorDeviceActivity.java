@@ -27,20 +27,32 @@ import retrofit.client.Response;
 public class SensorDeviceActivity extends DeviceActivity {
 
     private Switch sensorSwitch;
-    Context context;
-    int duration;
-    Toast toast;
+    private TextView temperature;
+    private TextView pressure;
+    private TextView humidity;
+    private TextView magnometer;
+    private TextView gyroscope;
+    private TextView accelerometer;
+    private Context context;
+    private int duration;
+    private Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sensor_device);
-        sensorSwitch = (Switch) findViewById(R.id.sensor_switch);
         final TextView deviceName = (TextView) findViewById(R.id.device_name);
         deviceName.setText(device.getName() + " " + device.getId());
         TextView macAddress = (TextView) findViewById(R.id.mac_address);
         macAddress.setText(device.getMacAddress());
 
+        sensorSwitch = (Switch) findViewById(R.id.sensor_switch);
+        temperature = (TextView) findViewById(R.id.temperature_value);
+        pressure = (TextView) findViewById(R.id.pressure_value);
+        humidity = (TextView) findViewById(R.id.humidity_value);
+        magnometer = (TextView) findViewById(R.id.magnetic_value);
+        gyroscope = (TextView) findViewById(R.id.gyroscopic_value);
+        accelerometer = (TextView) findViewById(R.id.accelerometer_value);
         context = getApplicationContext();
         duration = Toast.LENGTH_SHORT;
 
@@ -80,61 +92,29 @@ public class SensorDeviceActivity extends DeviceActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_sensor_device, menu);
-        return true;
-    }
+    private Callback<List<DeviceData>> getValue(final TextView textView) {
+        Callback<List<DeviceData>> call = new Callback<List<DeviceData>>() {
+            @Override
+            public void success(List<DeviceData> deviceDatas, Response response) {
+                DeviceData deviceData = deviceDatas.get(deviceDatas.size() - 1);
+                textView.setText(deviceData.value.toString());
+            }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+            @Override
+            public void failure(RetrofitError error) {
+                toast = Toast.makeText(context, "No data available", duration);
+                toast.show();
+            }
+        };
+        return call;
     }
 
     public void getTemperature(View v) {
-        NetworkManager.getTemperature(device, new Callback<List<DeviceData>>() {
-            @Override
-            public void success(List<DeviceData> deviceDatas, Response response) {
-                DeviceData deviceData = deviceDatas.get(deviceDatas.size() - 1);
-                TextView textView = (TextView) findViewById(R.id.temperature_value);
-                textView.setText(deviceData.value.toString());
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                toast = Toast.makeText(context, "No data available", duration);
-                toast.show();
-            }
-        });
-
+        NetworkManager.getTemperature(device, getValue(temperature));
     }
 
     public void getPressure(View v) {
-        NetworkManager.getPressure(device, new Callback<List<DeviceData>>() {
-            @Override
-            public void success(List<DeviceData> deviceDatas, Response response) {
-                DeviceData deviceData = deviceDatas.get(deviceDatas.size() - 1);
-                TextView textView = (TextView) findViewById(R.id.pressure_value);
-                textView.setText(deviceData.value.toString());
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                toast = Toast.makeText(context, "No data available", duration);
-                toast.show();
-            }
-        });
+        NetworkManager.getPressure(device, getValue(pressure));
     }
 
     public void getHumidity(View v) {
@@ -142,8 +122,7 @@ public class SensorDeviceActivity extends DeviceActivity {
             @Override
             public void success(List<DeviceData> deviceDatas, Response response) {
                 DeviceData deviceData = deviceDatas.get(deviceDatas.size() - 1);
-                TextView textView = (TextView) findViewById(R.id.humidity_value);
-                textView.setText(deviceData.value.toString());
+                humidity.setText(deviceData.value.toString());
             }
 
             @Override
@@ -158,8 +137,7 @@ public class SensorDeviceActivity extends DeviceActivity {
             @Override
             public void success(List<DeviceData> deviceDatas, Response response) {
                 DeviceData deviceData = deviceDatas.get(deviceDatas.size() - 1);
-                TextView textView = (TextView) findViewById(R.id.magnetic_value);
-                textView.setText(deviceData.value.toString());
+                magnometer.setText(deviceData.value.toString());
             }
 
             @Override
@@ -174,8 +152,7 @@ public class SensorDeviceActivity extends DeviceActivity {
             @Override
             public void success(List<DeviceData> deviceDatas, Response response) {
                 DeviceData deviceData = deviceDatas.get(deviceDatas.size() - 1);
-                TextView textView = (TextView) findViewById(R.id.gyroscopic_value);
-                textView.setText(deviceData.value.toString());
+                gyroscope.setText(deviceData.value.toString());
             }
 
             @Override
@@ -190,8 +167,7 @@ public class SensorDeviceActivity extends DeviceActivity {
             @Override
             public void success(List<DeviceData> deviceDatas, Response response) {
                 DeviceData deviceData = deviceDatas.get(deviceDatas.size() - 1);
-                TextView textView = (TextView) findViewById(R.id.accelerometer_value);
-                textView.setText(deviceData.value.toString());
+                accelerometer.setText(deviceData.value.toString());
             }
 
             @Override
@@ -201,7 +177,7 @@ public class SensorDeviceActivity extends DeviceActivity {
             }
         });
     }
-    //Fixxade till lite
+
     public void getAll(View v) {
         NetworkManager.getAllSensorValues(device, new Callback<List<DeviceData>>() {
             @Override
@@ -214,23 +190,17 @@ public class SensorDeviceActivity extends DeviceActivity {
                 for(int i = 0;i<deviceDatas.size();i++){
                     DeviceData newDevice = deviceDatas.get(i);
                     if(newDevice.sensorType.equals("temperature")){ //Stor bokstav på sensor typerna?
-                        TextView textView = (TextView) findViewById(R.id.temperature_value);
-                        textView.setText(newDevice.value.toString());
+                        temperature.setText(newDevice.value.toString());
                     }else if(newDevice.sensorType.equals("pressure")){
-                        TextView textView = (TextView) findViewById(R.id.pressure_value);
-                        textView.setText(newDevice.value.toString());
+                        pressure.setText(newDevice.value.toString());
                     }else if(newDevice.sensorType.equals("humidity")){
-                        TextView textView = (TextView) findViewById(R.id.humidity_value);
-                        textView.setText(newDevice.value.toString());
+                        humidity.setText(newDevice.value.toString());
                     }else if(newDevice.sensorType.equals("magnometer")){
-                        TextView textView = (TextView) findViewById(R.id.magnetic_value);
-                        textView.setText(newDevice.value.toString());
+                        magnometer.setText(newDevice.value.toString());
                     }else if(newDevice.sensorType.equals("gyroscope")){
-                        TextView textView = (TextView) findViewById(R.id.gyroscopic_value);
-                        textView.setText(newDevice.value.toString());
+                        gyroscope.setText(newDevice.value.toString());
                     }else if(newDevice.sensorType.equals("accelerometer")){
-                        TextView textView = (TextView) findViewById(R.id.accelerometer_value);
-                        textView.setText(newDevice.value.toString());
+                        accelerometer.setText(newDevice.value.toString());
                     }
                 }
             }
@@ -244,12 +214,12 @@ public class SensorDeviceActivity extends DeviceActivity {
     }
 
     public void clearAll(View v) {
-        ((TextView) findViewById(R.id.temperature_value)).setText("");
-        ((TextView) findViewById(R.id.pressure_value)).setText("");
-        ((TextView) findViewById(R.id.humidity_value)).setText("");
-        ((TextView) findViewById(R.id.magnetic_value)).setText("");
-        ((TextView) findViewById(R.id.gyroscopic_value)).setText("");
-        ((TextView) findViewById(R.id.accelerometer_value)).setText("");
+        temperature.setText("");
+        pressure.setText("");
+        humidity.setText("");
+        magnometer.setText("");
+        gyroscope.setText("");
+        accelerometer.setText("");
     }
 
 }
