@@ -158,7 +158,7 @@ public class NetworkManager {
         TimeZone timezone = TimeZone.getDefault();
         timezone.setID("Europe/Stockholm");
         calendar.setTimeZone(timezone);
-        calendar.set(Calendar.HOUR_OF_DAY, Calendar.HOUR_OF_DAY + 4);
+        calendar.set(Calendar.HOUR_OF_DAY, Calendar.HOUR_OF_DAY + 7);
         /*
         calendar.set(Calendar.HOUR_OF_DAY, Calendar.HOUR_OF_DAY + 3);
         calendar.set(Calendar.YEAR, 2015);
@@ -217,7 +217,7 @@ public class NetworkManager {
 
     static private String previousTime() {
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, Calendar.HOUR_OF_DAY + 4);
+        calendar.set(Calendar.HOUR_OF_DAY, Calendar.HOUR_OF_DAY + 7);
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         month = month + 1;
