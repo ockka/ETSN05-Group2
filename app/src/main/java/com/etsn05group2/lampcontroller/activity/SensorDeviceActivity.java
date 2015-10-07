@@ -112,82 +112,27 @@ public class SensorDeviceActivity extends DeviceActivity {
     public void getTemperature(View v) {
         NetworkManager.getTemperature(device, getValue(temperature));
     }
-
     public void getPressure(View v) {
         NetworkManager.getPressure(device, getValue(pressure));
     }
-
     public void getHumidity(View v) {
-        NetworkManager.getHumidity(device, new Callback<List<DeviceData>>() {
-            @Override
-            public void success(List<DeviceData> deviceDatas, Response response) {
-                DeviceData deviceData = deviceDatas.get(deviceDatas.size() - 1);
-                humidity.setText(deviceData.value.toString());
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                toast = Toast.makeText(context, "No data available", duration);
-                toast.show();
-            }
-        });
+        NetworkManager.getHumidity(device, getValue(humidity));
     }
     public void getMagnetic(View v) {
-        NetworkManager.getMagnetic(device, new Callback<List<DeviceData>>() {
-            @Override
-            public void success(List<DeviceData> deviceDatas, Response response) {
-                DeviceData deviceData = deviceDatas.get(deviceDatas.size() - 1);
-                magnometer.setText(deviceData.value.toString());
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                toast = Toast.makeText(context, "No data available", duration);
-                toast.show();
-            }
-        });
+        NetworkManager.getMagnetic(device, getValue(magnometer));
     }
     public void getGyroscopic(View v) {
-        NetworkManager.getGyroscopic(device, new Callback<List<DeviceData>>() {
-            @Override
-            public void success(List<DeviceData> deviceDatas, Response response) {
-                DeviceData deviceData = deviceDatas.get(deviceDatas.size() - 1);
-                gyroscope.setText(deviceData.value.toString());
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                toast = Toast.makeText(context, "No data available", duration);
-                toast.show();
-            }
-        });
+        NetworkManager.getGyroscopic(device, getValue(gyroscope));
     }
     public void getAccelerometer(View v) {
-        NetworkManager.getAccelerometer(device, new Callback<List<DeviceData>>() {
-            @Override
-            public void success(List<DeviceData> deviceDatas, Response response) {
-                DeviceData deviceData = deviceDatas.get(deviceDatas.size() - 1);
-                accelerometer.setText(deviceData.value.toString());
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                toast = Toast.makeText(context, "No data available", duration);
-                toast.show();
-            }
-        });
+        NetworkManager.getAccelerometer(device, getValue(accelerometer));
     }
 
     public void getAll(View v) {
         NetworkManager.getAllSensorValues(device, new Callback<List<DeviceData>>() {
             @Override
             public void success(List<DeviceData> deviceDatas, Response response) {
-
-                toast = Toast.makeText(context, "Success", duration);
-                toast.show();
-
-                /* TODO: Get all sensor values */
-                for(int i = 0;i<deviceDatas.size();i++){
+                for(int i = 0; i < deviceDatas.size(); i++){
                     DeviceData newDevice = deviceDatas.get(i);
                     if(newDevice.sensorType.equals("temperature")){ //Stor bokstav på sensor typerna?
                         temperature.setText(newDevice.value.toString());
@@ -203,6 +148,7 @@ public class SensorDeviceActivity extends DeviceActivity {
                         accelerometer.setText(newDevice.value.toString());
                     }
                 }
+
             }
 
             @Override
