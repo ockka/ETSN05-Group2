@@ -33,7 +33,7 @@ public interface NetworkManagerApi {
     /**
      * Added for receiveing just 10 minutes of database input of sensor values
      */
-    @GET("/device/{id}/{sensorType}/{startDate}/{endDate}")
+    @GET("/data/device/{id}/{sensorType}/{startDate}/{endDate}")
     void getDeviceDataTimeLimit(@Path("id") long deviceId, @Path("sensorType") String sensorType, @Path("startDate") String startDate, @Path("endDate") String endDate,Callback<List<DeviceData>> callback);
 
     @PUT("/device/status")
