@@ -92,12 +92,12 @@ public class SensorDeviceActivity extends DeviceActivity {
         });
     }
 
-    public void getTemperature(View v) {
-        NetworkManager.getTemperature(device, new Callback<List<DeviceData>>() {
+    private Callback<List<DeviceData>> getValue(final TextView textView) {
+        Callback<List<DeviceData>> call = new Callback<List<DeviceData>>() {
             @Override
             public void success(List<DeviceData> deviceDatas, Response response) {
                 DeviceData deviceData = deviceDatas.get(deviceDatas.size() - 1);
-                temperature.setText(deviceData.value.toString());
+                textView.setText(deviceData.value.toString());
             }
 
             @Override
@@ -105,24 +105,16 @@ public class SensorDeviceActivity extends DeviceActivity {
                 toast = Toast.makeText(context, "No data available", duration);
                 toast.show();
             }
-        });
+        };
+        return call;
+    }
 
+    public void getTemperature(View v) {
+        NetworkManager.getTemperature(device, getValue(temperature));
     }
 
     public void getPressure(View v) {
-        NetworkManager.getPressure(device, new Callback<List<DeviceData>>() {
-            @Override
-            public void success(List<DeviceData> deviceDatas, Response response) {
-                DeviceData deviceData = deviceDatas.get(deviceDatas.size() - 1);
-                pressure.setText(deviceData.value.toString());
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-                toast = Toast.makeText(context, "No data available", duration);
-                toast.show();
-            }
-        });
+        NetworkManager.getPressure(device, getValue(pressure));
     }
 
     public void getHumidity(View v) {
@@ -185,7 +177,7 @@ public class SensorDeviceActivity extends DeviceActivity {
             }
         });
     }
-    //Fixxade till lite
+
     public void getAll(View v) {
         NetworkManager.getAllSensorValues(device, new Callback<List<DeviceData>>() {
             @Override
