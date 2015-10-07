@@ -41,6 +41,7 @@ public class SensorDeviceActivity extends DeviceActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sensor_device);
+
         final TextView deviceName = (TextView) findViewById(R.id.device_name);
         deviceName.setText(device.getName() + " " + device.getId());
         TextView macAddress = (TextView) findViewById(R.id.mac_address);
@@ -55,6 +56,7 @@ public class SensorDeviceActivity extends DeviceActivity {
         accelerometer = (TextView) findViewById(R.id.accelerometer_value);
         context = getApplicationContext();
         duration = Toast.LENGTH_SHORT;
+        toast = Toast.makeText(context, "", duration);
 
         NetworkManager.getToggledState(device, new Callback<DataAboutDevice>() {
             @Override
@@ -65,7 +67,7 @@ public class SensorDeviceActivity extends DeviceActivity {
             @Override
             public void failure(RetrofitError error) {
                 sensorSwitch.setChecked(false);
-                toast = Toast.makeText(context, "Could not get Status", duration);
+                toast.setText("Could not get Status");
                 toast.show();
             }
         });
@@ -76,14 +78,14 @@ public class SensorDeviceActivity extends DeviceActivity {
                 NetworkManager.toggle(device, isChecked, new Callback<DeviceStatus>() {
                     @Override
                     public void success(DeviceStatus deviceStatus, Response response) {
-                        toast = Toast.makeText(context, "Success", duration);
+                        toast.setText("Success");
                         toast.show();
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
                         sensorSwitch.setChecked(false);
-                        toast = Toast.makeText(context, "Error 'HTTP Status-Code' occurred", duration);
+                        toast.setText("Error 'HTTP Status-Code' occurred");
                         toast.show();
 
                     }
@@ -102,7 +104,7 @@ public class SensorDeviceActivity extends DeviceActivity {
 
             @Override
             public void failure(RetrofitError error) {
-                toast = Toast.makeText(context, "No data available", duration);
+                toast.setText("No data available");
                 toast.show();
             }
         };
@@ -134,7 +136,7 @@ public class SensorDeviceActivity extends DeviceActivity {
             public void success(List<DeviceData> deviceDatas, Response response) {
                 for(int i = 0; i < deviceDatas.size(); i++){
                     DeviceData newDevice = deviceDatas.get(i);
-                    if(newDevice.sensorType.equals("temperature")){ //Stor bokstav på sensor typerna?
+                    if(newDevice.sensorType.equals("temperature")){
                         temperature.setText(newDevice.value.toString());
                     }else if(newDevice.sensorType.equals("pressure")){
                         pressure.setText(newDevice.value.toString());
@@ -153,7 +155,7 @@ public class SensorDeviceActivity extends DeviceActivity {
 
             @Override
             public void failure(RetrofitError error) {
-                toast = Toast.makeText(context, "No data available", duration);
+                toast.setText("No data available");
                 toast.show();
             }
         });
