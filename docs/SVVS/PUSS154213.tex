@@ -244,7 +244,7 @@ This is appendix A where we list all function test specifications.
 
 \item The "Clear All" button clears all sensor text fields from data (Req. 5.3.18).
 
-\item If there is no data to retrieve for any of the physical quantities: temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration when the corresponding "Get" button is pressed the corresponding, text fields display "No data available" (Req. 5.3.19, 5.3.20, 5.3.21, 5.3.22, 5.3.23, 5.3.24).
+\item If there is no data to retrieve for any of the physical quantities: temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration when the corresponding "Get" button is pressed a pop-up message is shown. (Req. 5.3.19, 5.3.20, 5.3.21, 5.3.22, 5.3.23, 5.3.24).
 
 \item The on/off-switch is set according to the information from the REST API (Req. 5.3.25).
 
@@ -255,7 +255,7 @@ This is appendix A where we list all function test specifications.
 % Nytt requirement!
 \item The layout of the Sensor View resemble figure 2 in appendix  Ref \ref{refdocs:srs} (Req. 5.3.28).
 
-\item If there is no data from the past ten minutes, pressing a "Get"-button causes the text fields to display "No data available"
+\item If there is no data from the past ten minutes, pressing a ''Get''-button causes a pop-up message.  (Req. 5.3.29).
 
 \end{testlist}
 
@@ -281,7 +281,7 @@ This is appendix A where we list all function test specifications.
     
     \item A pop-up message saying "Color successfully changed" is displayed when the values of the light bulb were successfully set. (Req 5.4.14)
     
-    \item A pop-up message saying "Error: Could not change color." is displayed when the values of the light bulb were unsuccessfully set. (Req 5.4.15)
+    \item A pop-up is displayed when the values of the light bulb were unsuccessfully set. (Req 5.4.15)
     
     %\item The application checks the input values when the "Set"-button is pressed. If the values are out the specified range, a pop-up message is displayed saying: "Input values out of range" (Req 5.4.13 and Req 5.4.15)
     
@@ -327,15 +327,15 @@ This is appendix B where we list all system test specifications.
 	
 	\item Scenario 5.1.9 in Ref \ref{refdocs:srs} is supported (Req. 5.1.9).
 	
-	\item If some data is unavailable when attempting scenario 5.1.9, the text in the corresponding field is set to "No data available." (Req. 5.1.9).
+	\item If some data is unavailable when attempting scenario 5.1.9, a pop-up message is shown (Req. 5.1.9).
 	
 	\item Scenario 5.1.10 in Ref \ref{refdocs:srs} is supported (Req. 5.1.10).
 	
-	\item If some data is unavailable when attempting scenario 5.1.10, the text in the corresponding field is set to "No data available." (Req. 5.1.10).
+	\item If some data is unavailable when attempting scenario 5.1.10, a pop-up message is shown (Req. 5.1.10).
 	
 	\item Scenario 5.1.11 in Ref \ref{refdocs:srs} is supported (Req. 5.1.11).
 	
-	\item If some data is unavailable when attempting scenario 5.1.11, the text in the corresponding field is set to "No data available." (Req. 5.1.11).
+	\item If some data is unavailable when attempting scenario 5.1.11, a pop-up message is shown (Req. 5.1.11).
 	
 	\item Scenario 5.1.12 in Ref \ref{refdocs:srs} is supported (Req. 5.1.12).
 	

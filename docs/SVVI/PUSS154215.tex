@@ -452,7 +452,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 			\item Press the corresponding "Get"-button to the text field
     	\end{instruction}
     	\begin{postcondition}
-    		\item The text field displays "No data available" if no sensor data is available
+    		\item A pop-up messaged with the text ''Error occurred''.
     	\end{postcondition}
 %\item If there is no data to retrieve for any of the physical quantities: temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration when the corresponding "Get" button is pressed the corresponding, text fields display "No data available" (Req. 5.3.19, 5.3.20, 5.3.21, 5.3.22, 5.3.23, 5.3.24).
 
@@ -519,10 +519,10 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 		\begin{instruction}
 			\item Press the "Get"-button corresponding to each text field
 			\item Press the "Get All"-button
-			\item Check the text fields
+			\item Check the pop-up message.
 		\end{instruction}
 		\begin{postcondition}
-			\item "No data available" is displayed in each of the text fields
+			\item A pop-up message with the text "Error occurred" is shown.
 		\end{postcondition}
 \end{testlist}
 
@@ -712,7 +712,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 			\item Press the "Set"-button
 		\end{instruction}
 		\begin{postcondition}
-			\item A pop-up message saying "Error: Could not change color." is displayed
+			\item A pop-up message saying "Error occurred" is displayed
 			\item The light bulb glows red
 		\end{postcondition}
 %    \item A pop-up message saying "Error: Could not change color." is displayed when the values of the light bulb were unsuccessfully set. (Req 5.4.15)
@@ -955,9 +955,10 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 		\end{precondition}
 		\begin{instruction}
 			\item Press the "Get"-button
+			\item Confirm the pop-up message
 		\end{instruction}
 		\begin{postcondition}
-			\item One or more fields are updated to "No data available"
+			\item A pop-up message saying "Error occurred" is shown
 		\end{postcondition}
 %	\item If some data is unavailable when attempting scenario 5.1.9, the text in the corresponding field is set to "No data available." (Req. 5.1.9).
 
@@ -984,7 +985,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 			\item Press the "Get"-button next to the "T:"-field
 		\end{instruction}
 		\begin{postcondition}
-			\item The text in the "T:"-field is set to "No data available"
+			\item A pop-up message saying "Error occurred" is shown
 		\end{postcondition}
         
 %	\item If some data is unavailable when attempting scenario 5.1.10, the text in the corresponding field is set to "No data available." (Req. 5.1.10).
@@ -1012,7 +1013,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 			\item Press the "Get All"-button
 		\end{instruction}
 		\begin{postcondition} 
-			\item The field corresponding to the data that were unavailable is set to "No data available"
+			\item A pop-up message saying "Error occurred" is shown
 		\end{postcondition}
 %  		\item If some data is unavailable when attempting scenario 5.1.11, the text in the corresponding field is set to "No data available." (Req. 5.1.11).
 
