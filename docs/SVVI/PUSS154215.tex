@@ -176,19 +176,18 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
     
     %The list of available devices is empty on application start up. (Req. 5.2.2)
 
-    \item Test of scrollability of device list.
+    \item Verification that devices are presented in a list.
     	\begin{precondition}
     		\item MyDevices View is open
-    		\item At least one device is available
+    		\item At least two devices are available
             %tankar: Kan listan reagera olika på om det finns en eller flera enheter i den?
             % Funkar det att dra i en lista med bara ett listobjekt?
     	\end{precondition}
     	\begin{instruction}
-			\item Drag the list downward
-			\item Drag the list upward
+			\item Verify that the devices are in a list
 		\end{instruction}
 		\begin{postcondition}
-			\item The list responds to the input
+			\item The devices are in a list
             %hur mäter vi att den svarar på input? Om den är instabil och rör sig mer än vad vi petat på den, då är testet godkänt, men appen är ju kass. Likaså om man drar över hela skärmen och den rör sig bara ett par millimeter, så är ju testet passerat, men appen är ju helt omöjlig att använda?
 		\end{postcondition}
    %\item The list on the MyDevices view is scrollable. (Req. 5.2.3)
