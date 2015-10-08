@@ -77,15 +77,7 @@ Linnéa Claesson
 %---------------------- Introduction ---------------------------------------------%
 \section{Introduction}
 
-
-
-
-
-From homepage:
-This document presents describes the delivered system, and details which version
-each document is in. It also specifies limitations of the delivered system,
-and possible differences between the requirements specification and the delivered
-system.
+The intent of this document is to describe the different parts of the delivered system, with current version number and appendices of each document. Additionally, limitations of the delivered systems and larger changes made after Specification Baseline of the System Requirements Specification are included.
 
 
 
@@ -95,18 +87,18 @@ system.
 The delivered system consists of the following documents/parts:
 
 \begin{center}
-\begin{tabular}{| l | l | l | p{5cm} |}
+\begin{tabular}{| l | c | c | p{5cm} |}
     \hline
     \textbf{Doc./part} & \textbf{Doc. number} & \textbf{Version} & \textbf{Comments} \\ \hline
-    SDP & 11 &  & With appendices: Veckoschema PUSS 154251 and Gantt-schema PUSS154252 \\ \hline
+    SDP & 11 & 1.0 & With appendices: Veckoschema PUSS 154251 and Gantt-schema PUSS154252 \\ \hline
     SRS & 12 &  & \\ \hline
     SVVS & 13 & & With appendix: Test Matrices PUSS154253 \\ \hline
     STLDD & 14 & & \\ \hline
     SVVI & 15 & & \\ \hline
     SDDD & 16 & & \\ \hline
     SVVR & 17 & & \\ \hline
-    SSD & 18 & & \\ \hline
-    PFR & 19 & & \\ \hline
+    SSD & 18 & 1.0 & \\ \hline
+    PFR & 19 & 1.0 & \\ \hline
 
 \end{tabular}
 \end{center}
@@ -114,15 +106,26 @@ The delivered system consists of the following documents/parts:
 %---------------------- Limitations ----------------------------------------------%
 \section{Limitations}
 
+
 \subsection{System Objective}
+The intention was that the delivered system should be launched as an application for the public Android market. Due to bugs in the back end of the system, this is not reasonable before they are fixed. 
+
+The system has not yet been tested on real users, i.e. users not connected with this project, since the system has been assessed not fit for the market as long as the bugs in the back end remain.  
 
 \subsection{Differences Compared to the Software Requirements Specification (SRS)}
-
+Fråga SG
 
 
 %------------------- Installation Instructions -----------------------------------%
 \section{Installation Instructions}
+Since the application is not released on Google Play, the application needs to be installed using the source code. 
 
+\begin{enumerate}
+\item Make sure you have an Android phone and USB Debugging is turned on.
+\item Connect the phone to a computer via USB and make sure the computer can find it.
+\item Open the source code in Android Studio and run it on your phone.
+\end{enumerate}
 
+If the application is later released, it can be downloaded and installed directly from Google Play.
 
 \end{document}
