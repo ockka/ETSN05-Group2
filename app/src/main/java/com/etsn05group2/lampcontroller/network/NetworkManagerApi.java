@@ -22,17 +22,17 @@ public interface NetworkManagerApi {
     void getDataAboutAllDevices(Callback<List<DataAboutDevice>> callback);
 
     @GET("/data/device/{id}/{startDate}/{endDate}")
-    void getDeviceDataTimeLimit(@Path("id") long deviceId, @Path("startDate") String startDate, @Path("endDate") String endDate, Callback<List<DeviceData>> callback);
+    void getDeviceData(@Path("id") long deviceId, @Path("startDate") String startDate, @Path("endDate") String endDate, Callback<List<DeviceData>> callback);
 
     @GET("/data/device/{id}")
-    void getDeviceData(@Path("id") long deviceId, Callback<List<DeviceData>> callback);
+    void getDeviceDataColor(@Path("id") long deviceId, Callback<List<DeviceData>> callback);
 
 
     /**
      * Added for receiveing just 10 minutes of database input of sensor values
      */
     @GET("/data/device/{id}/{sensorType}/{startDate}/{endDate}")
-    void getDeviceDataTimeLimit(@Path("id") long deviceId, @Path("sensorType") String sensorType, @Path("startDate") String startDate, @Path("endDate") String endDate, Callback<List<DeviceData>> callback);
+    void getDeviceDataSensor(@Path("id") long deviceId, @Path("sensorType") String sensorType, @Path("startDate") String startDate, @Path("endDate") String endDate, Callback<List<DeviceData>> callback);
 
     @PUT("/device/status")
     void putDeviceStatus(@Body DeviceStatus status, Callback<DeviceStatus> response);

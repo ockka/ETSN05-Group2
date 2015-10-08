@@ -57,47 +57,47 @@ public class NetworkManager {
     public static void getTemperature(Device device, Callback<List<DeviceData>> callback) {
         String startDate = previousTime();
         String endDate = currentTime();
-        api.getDeviceDataTimeLimit(device.getId(), "temperature", startDate, endDate, callback);
+        api.getDeviceDataSensor(device.getId(), "temperature", startDate, endDate, callback);
     }
 
     public static void getPressure(Device device, Callback<List<DeviceData>> callback) {
         String startDate = previousTime();
         String endDate = currentTime();
-        api.getDeviceDataTimeLimit(device.getId(), "pressure", startDate, endDate, callback);
+        api.getDeviceDataSensor(device.getId(), "pressure", startDate, endDate, callback);
     }
 
     public static void getHumidity(Device device, Callback<List<DeviceData>> callback) {
         String startDate = previousTime();
         String endDate = currentTime();
-        api.getDeviceDataTimeLimit(device.getId(), "humidity", startDate, endDate, callback);
+        api.getDeviceDataSensor(device.getId(), "humidity", startDate, endDate, callback);
     }
 
     public static void getMagnetic(Device device, Callback<List<DeviceData>> callback) {
         String startDate = previousTime();
         String endDate = currentTime();
-        api.getDeviceDataTimeLimit(device.getId(), "magnometer", startDate, endDate, callback);
+        api.getDeviceDataSensor(device.getId(), "magnometer", startDate, endDate, callback);
     }
 
     public static void getAccelerometer(Device device, Callback<List<DeviceData>> callback) {
         String startDate = previousTime();
         String endDate = currentTime();
-        api.getDeviceDataTimeLimit(device.getId(), "accelerometer", startDate, endDate, callback);
+        api.getDeviceDataSensor(device.getId(), "accelerometer", startDate, endDate, callback);
     }
 
     public static void getGyroscopic(Device device, Callback<List<DeviceData>> callback) {
         String startDate = previousTime();
         String endDate = currentTime();
-        api.getDeviceDataTimeLimit(device.getId(), "gyroscope", startDate, endDate, callback);   // is this right/
+        api.getDeviceDataSensor(device.getId(), "gyroscope", startDate, endDate, callback);   // is this right/
     }
 
     public static void getAllSensorValues(Device device, Callback<List<DeviceData>> callback) {
         String startDate = previousTime();
         String endDate = currentTime();
-        api.getDeviceDataTimeLimit(device.getId(), startDate, endDate, callback);
+        api.getDeviceData(device.getId(), startDate, endDate, callback);
     }
 
     public static void getColor(Device device, Callback<List<DeviceData>> callback) {
-        api.getDeviceData(device.getId(), callback);
+        api.getDeviceDataColor(device.getId(), callback);
     }
 
     public static void setColor(Device device, String color, Callback<DeviceStatus> callback) {
