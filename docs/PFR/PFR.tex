@@ -7,6 +7,8 @@
 \usepackage{graphicx}
 \usepackage{geometry}
 \usepackage{footnote}
+\usepackage[section]{placeins}
+\usepackage{pdfpages}
 
 \makesavenoteenv{tabular}
 
@@ -84,7 +86,7 @@ Linnéa Claesson
 
 
 \section{Introduction}
-This document aims to analyse and evaluate the team's continuous work and the system to be delivered. At the time this report is being written, the product is not completely finished. Estimations on the last week's work and expected quality of the finished product has therefore been made in this report. 
+At the time this report is being written, the product is not completely finished. This document aims to analyse and evaluate the team's continuous work and the system to be delivered. Estimations on the last week's work and expected quality of the finished product have therefore been made. 
 
 Metrics data has been collected throughout the work, which is presented in section~\ref{sec:metr} and evaluated in section~\ref{sec:meval}.
 
@@ -95,7 +97,7 @@ The team has during the work been divided into four subgroups with different res
 \begin{description}
 \item[Project Managers] Two people responsible for the entire project, planning and making sure everything is delivered on time and up to standard.
 \item[System Architects] Responsible for the technical part of the project and communications between the developers and testers. Consisted of three people, one of whom was system manager.
-\item[Developers] Eight developers have been responsible for the coding of the application.
+\item[Developers] Eight developers have been responsible for the implementation of the application.
 \item[Test Group] Six testers have been responsible for testing the developed system, one of whom has been acting as test manager.
 \end{description}
 
@@ -106,6 +108,8 @@ The shared opinion within the team is that this has been a well executed project
 % Vad är det som har hänt? Siffror, tabeller och diagram. Jämförelser och uppvisande av data. 
 \section{Project Metrics}
 \label{sec:metr}
+
+\includepdf[pages={1}]{gantt.pdf}
 
 \begin{table}[h!]
 \centering
@@ -130,7 +134,7 @@ SSD & 12 & 6 & & \\ \hline
 
 Om du vill referera till tabellen ovan skriv "In table~\ref{table:time} bla bla bla".
 
-
+\FloatBarrier
 %------------------------- Project Evaluation -----------------------------------%
 % Utvärdering av vad som gick bra/dåligt
 % Varför ser datan ut som den gör? Analys av de siffror man samlat in. Ex fasernas tidsåtgång, dokumentens antal timmar (UIFO), gruppernas timmar / vecka
@@ -145,7 +149,7 @@ Om du vill referera till tabellen ovan skriv "In table~\ref{table:time} bla bla 
 
 \subsection{Evaluation of Delivered System and Performance of Team}
 \label{sec:teval}
-As part of the project evaluation, a questionnaire was sent out for all team members to fill out. The replies to this questionnaire were used to evaluate the team's performance during this project.
+As part of the project evaluation, a questionnaire was sent out for all team members to fill out. The replies to this questionnaire were used to evaluate the team's performance during this project and are presented in this section. 
 
 Overall, the general consensus has been very positive and everyone seems very satisfied with both their own and the team's contribution to the project.
 
@@ -153,26 +157,26 @@ Overall, the general consensus has been very positive and everyone seems very sa
 %----------------------- Time Planning ---------------------------------%
 
 \subsubsection{Time Planning}
-The scheduling and time planning within the group have received very positive response from the group. The project managers put a lot of time into working out a reasonable schedule that would also make sure that the project was delivered prior to external commitments the team members had at the end of the time period scheduled for this project. This means that the deadlines sometimes were relatively tight, but the team has been motivated to meet them due to it being to their personal advantage. At the time of this report being written, the deadlines have all been successfully met. 
+The scheduling and time planning of the project have received very positive response from the team. The project managers put a lot of time into working out a reasonable schedule that would also make sure that the project was delivered prior to external commitments the team members had at the end of the time period scheduled for this project. This lead to some tight deadlines, but the team was motivated to meet them due to it being to their personal advantage. At the time of this report being written, the deadlines have all been successfully met. 
 
 The Weekly Schedule and Gantt Chart, Ref1 and Ref2 respectively, produced by the project managers could have been referred to more often throughout the project. Overall though, the team members have stated that they have known what they needed to do and when they needed to do it. It has been stated that the pace of the project has been high, but that it has been good so the project can be finished before the external commitments previously mentioned. 
 
-Once a week a project meeting has been held where all team members have been expected to attend. The group meetings have been a great help in keeping the members of the team updated on upcoming deadlines and providing a chance for the project managers to make sure that they could be met. Both the attendance and replies to the questionnaire have shown that these meetings were greatly appreciated and well carried out.
+Once a week a project meeting has been held where all team members have been expected to attend. The group meetings have been a great help in keeping the members of the team updated on upcoming deadlines and providing a chance for the project managers to make sure that the team is where it should be. Both the attendance and replies to the questionnaire have shown that these meetings were greatly appreciated and well carried out.
 
 The developers did not have as much work in the beginning as the others, but this changed once they started implementing the code and they had to put in a couple of weekends to finish. This seems to have worked fine, even though there were some who could not attend these weekend group sessions.
 
-The testers were sometimes dependent on the system architects to finish their report before the testers could finish their own, which added a bit of pressure at the final stages of the writing of the reports. A slightly earlier deadline was then set for the system architects than the testers, but they were not given much extra time either since this would affect the system architects negatively.
+The testers were sometimes dependent on the system architects to finish their reports before the testers could finish their own, which added a bit of pressure at the final stages of the writing of the reports. A slightly earlier deadline was often set for the system architects than the testers, but they were not given much extra time either since this would affect the system architects negatively.
 
 
 %---------------------- Work Distribution ------------------------------%
 
 \subsubsection{Work Distribution}
 
-Responsible person(s) for each task have been decided at the group meetings. Then division of the larger tasks into smaller have been done internally within each subgroup, sometimes in collaboration with other subgroups (such as system architects and developers). This system has worked very well for this project. The project managers have always known who to talk to about each specific task to make sure everything is coming along as expected and that person can in turn make sure everyone within his or her subgroup is making the progress they should.
+A responsible person for each task was decided at the group meetings. The division of the larger tasks into smaller has then been done internally within each subgroup, sometimes in collaboration with other subgroups (such as system architects and developers). This system has worked very well for this project. The project managers have always known who to talk to about each specific task to make sure everything is coming along as expected and that person can in turn make sure everyone within his or her subgroup is making the progress they should. 
 
-The responsibilities between the two project managers were easily shared. They had prior knowledges that complemented each other well and therefore found natural ways to divide the tasks between them.
+The responsibilities between the two project managers were easily shared. They had prior knowledges that complemented each other well and therefore found natural ways to divide the tasks between them. They regularly met to plan meetings and deadlines together and update each other on their respective tasks' progresses. 
 
-The same arrangements were made within the system architects group, were some had more technical skill sets and therefore took on greater responsibilities in those areas. Others had more prior experience in working with this kind of project were a lot of reports were to be produced at a certain standard and could therefore take on more responsibility there.
+The same arrangements were made within the system architects group. Some had more technical skill sets and therefore took on greater responsibilities in those areas, whereas others had more experience in working with this kind of project were a lot of reports were to be produced at a certain standard and could therefore take on more responsibility in those areas. 
 
 Even though one of the system architects has acted as system manager, the organisation within their group has been very flat. They have met often to make sure everyone is on the same page with everything and they have all truly contributed to this project.
 
@@ -180,16 +184,16 @@ It was a bit unclear in the beginning how much responsibility the system archite
 
 The developers have worked in pairs with their assignments. Most of them had no previous experience with Android development. Working in pairs really helped overcoming something that at first might have seemed very difficult, but still making each member responsible for a part of the project. The division of what each pair should do came as a suggestion from the system architect group, who had prior experience with Android development and knew approximately how much time each task should take. There was one part of the project that was slightly larger than the others and the pair working on it had some difficulties, but the system architects stepped in and offered help so they could finish on time.
 
-Overall the distribution of work among the developers has worked fine. Some of them have not seemed to prioritise this project and instead go and work on other things (everyone in the team has other commitments). This has slowed down the development of the product, which could have been finished at an earlier stage had not some members postponed their tasks to the last minute. 
+Overall the distribution of work among the developers has worked fine. Some of them have not seemed to prioritise this project and instead go and work on other things (everyone in the team has other commitments). This slowed down the development of the product, which could have been finished at an earlier stage had not some members postponed their tasks to the last minute. This was not a real problem though, considering the deadlines were met. 
 
-The work among the testers has also worked very well. There has been some inequalities in work load due to the fact only a couple of people within the group had previous knowledge of LaTex and GitHub. This meant that they had to pull a larger weight in fixing problems for the entire group.
+The work among the testers has also worked very well. There have been some inequalities in work load due to the fact only a couple of people within the group had previous knowledge of LaTex and GitHub. This meant that they had to pull a larger weight in fixing problems for the entire group.
 
 
 
 %----------------- Communication -----------------------------%
 
 \subsubsection{Communication}
-One thing in particular that has worked very well throughout the project is the communication within the team, within each subgroup and also between the subgroups of the team. The developers have reported that there has been exceptional communications between them and the system architects, who have been a great help and contribution in the developers success.
+One thing in particular that has worked very well throughout the project is the communication within the team, within each subgroup and also between the subgroups of the team. The developers have reported that there has been exceptional communications between them and the system architects, who have been a great help and contribution in the developers' progress and success.
 
 A big contribution to the communication within the group functioning so well has been the weekly project group meetings. The meetings have been held at the same time and place each week, to avoid confusion and people missing meetings due to unclear scheduling. 
 
@@ -197,7 +201,7 @@ At these meetings information to the team was given from the project managers an
 
 The group meetings were also a place for discussion and gave an opportunity to ask the other team members questions and raise concerns. It also helped keep the project managers updated in how the work was going in each subgroup and making sure deadlines could be met.
 
-Meeting protocols were written each time and posted afterwards both on the team's joint Drive and Git repository, to be available for later reference and/or read by those who might have missed a meeting.
+Meeting protocols were constructed for each meeting and posted afterwards both on the team's joint Drive and Git repository, to be available for later reference and/or read by those who might have missed a meeting.
 
 The subgroups have also had their own internal group meetings whenever they needed, to discuss topics not needed to be addressed at the larger group meetings. These topics include e.g. division of assignments and internal deadlines.
 
@@ -211,7 +215,7 @@ Communications with the customer and experts have not been as well functioning a
 %---------------- Knowledge -------------------------------------%
 
 \subsubsection{Knowledge}
-Both among the project managers and the system architects, the members had different sets of knowledge when coming into this project. Some had more technical skills, such as prior experience with the tools used (GitHub, LaTex and Android Studio) whereas others had more experience with this kind of administrative work and report writing. In both groups this worked very well, since they complemented each other and made the groups more knowledgeable as whole than each individual. Everyone could make great contributions and bring value to the work.
+Both among the project managers and the system architects, the members had different sets of knowledge when coming into this project. Some had more technical skills, such as prior experience with the tools used (GitHub, LaTex and Android Studio) whereas others had more experience with this kind of administrative work and report writing. In both groups this worked very well, since they complemented each other and made the groups more knowledgeable as a whole than each individual. Everyone could make valuable contributions to the project.
 
 Not many among the developers had previously worked with Android development, LaTex and/or GitHub. Since the external training that was provided came far too late in the process, the system architects had to step in and take a large part in training the developers in these areas. The external training also only covered Android development and not the other tools used for this project.
 
@@ -230,21 +234,19 @@ Some technical issues were encountered during the work on this project, most of 
 
 Bugs were discovered in the back end product, which the group had no control over or ability to fix and therefore had to work around.
 
-Android Studio was not properly installed and available on the computers provided for this project. This meant that the developers had to use their own computers and install Android Studio on them. This caused issues for some members of the group who only owned stationary computers and therefore could not work together with the rest of the group. Some installation issues were also encountered but eventually fixed, but a lot of unnecessary time was spent on this process that otherwise could have been spent on development of the product.
+Android Studio was not properly installed and available on the computers provided for this project, which meant that the developers had to use their own computers and install Android Studio on them. This caused issues for some members of the group who only owned stationary computers and therefore could not work together with the rest of the group. Some installation issues were also encountered but eventually fixed, but unnecessary time was spent on this process that otherwise could have been spent on development of the product.
 
 The team was also supposed to use Piazza as a means of communications, both within the group and with the experts and customers. Piazza was not made available from the beginning of the project and therefore other tools were established before the team could start using Piazza and its advantages were then lost.
 
 E-puss was also not available from the beginning, which caused some discomfort but no lasting consequences.
 
 
-\subsubsection{Reports and Final Product}
+\subsubsection{Documents and Final Product}
 When the questionnaire was sent out and this report written, the product was not yet completely finished. Estimations have therefore been made with respect to how satisfied the team will be with the final product. A lot of confidence was shown throughout the replies of the questionnaire, that the developers will be able to present an application that reflects the team's efforts and hard work. 
 
 The system architects have made sure that the Software Top Level Design Document (STLDD) has been followed. As always, things could always have been implemented differently but at the time of the writing of this report, everything looks good and the system architects have faith in the developers ability to deliver the product ordered, based on the competence and hard work they already have put into it.  
 
-The project managers are very satisfied with the quality of the documents so far delivered and believe without a doubt that with the help of the system architects and testers, the developers will be able to finish the application on schedule and to a satisfactory result.
-
-The structure of the team and the time line that was established at the beginning of this project have been followed and worked very well throughout the project.
+The project managers are very satisfied with the quality of the documents so far delivered and believe without a doubt that with the help of the system architects and testers, the developers will be able to finish the application on schedule and with a satisfactory result.
 
 Most of the documents are based on templates provided by the customer, to make sure they follow a certain format and standard. This has been really helpful, since it has been very clear from the beginning what the customer has expected.
 
@@ -252,7 +254,7 @@ The system architects are satisfied with their work and results. They have put a
 
 Since there has been a very high level of competence among the system architects, the system leader would have liked to see an even higher level on the documents they delivered. The time and fast pace have been limiting factors for this, though. 
 
-There has been some dependence between some of the documents the team has delivered. It has been up to the system architects to manage this and make sure that everyone concerned has gotten the information they need to update their documents according to the changes made in another. A lot of work has been put into this and the other groups have seemed satisfied with the result, although there were some miscommunication in the beginning of this process concerning documents produced by the system architects that affected documents produced by the testers. 
+There has been some dependence between some of the documents the team has delivered. It has been up to the system architects to manage this and make sure that everyone concerned has gotten the information they need to update their documents according to the changes made in another. A lot of work has been put into this and the other groups have seemed satisfied with the result. There were some miscommunication in the beginning of this process though, concerning documents produced by the system architects that affected documents produced by the testers. This was partly due to the project managers not communicating clearly from the beginning how these situations should be handled. 
 
 The developers started to implement the code in parallel with the STLDD being written. This caused some issues when changes were made in STLDD that affected the code, but overall the product could be finished faster in doing so. 
 
@@ -296,7 +298,7 @@ The group managers of each group should at an earlier stage establish a good com
 A good idea would also be for the group managers to have a meeting once a week to update each other on each group's respective progress, in addition to the larger project meetings held once a week. 
 
 
-
+Orättvis fördelning då vissa hade mer tekniska kunskaper, låt de andra göra med av jobbet för att kompensera för detta. 
 
 
 
