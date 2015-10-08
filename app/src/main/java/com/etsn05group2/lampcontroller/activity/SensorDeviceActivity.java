@@ -98,8 +98,19 @@ public class SensorDeviceActivity extends DeviceActivity {
             @Override
             public void success(List<DeviceData> deviceDatas, Response response) {
                 if (deviceDatas.size() != 0) {
+                    String[] values = deviceDatas.get(deviceDatas.size() - 1).value.split(";");
+                    String text;
+                    if (values.length == 1) {
+                        text = values[0];
+                    } else {
+                        text = String.format("x: %s\ny: %s\nz: %s", values[0], values[1], values[2]);
+                    }
+                    textView.setText(text);
+
+                    /*
                     DeviceData deviceData = deviceDatas.get(deviceDatas.size() - 1);
                     textView.setText(deviceData.value.toString());
+                    */
                 } else {
                     toast.setText("No data available");
                     toast.show();
