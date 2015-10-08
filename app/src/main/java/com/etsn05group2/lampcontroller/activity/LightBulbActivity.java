@@ -32,7 +32,6 @@ public class LightBulbActivity extends DeviceActivity {
     private EditText white;
     private Switch lightBulbSwitch;
     private Toast toast;
-    private Context context;
     private int duration;
 
     @Override
@@ -48,9 +47,8 @@ public class LightBulbActivity extends DeviceActivity {
         blue = (EditText) findViewById(R.id.Blue);
         white = (EditText) findViewById(R.id.White);
         lightBulbSwitch = (Switch) findViewById(R.id.lightBulbSwitch);
-        context = getApplicationContext();
         duration = Toast.LENGTH_SHORT;
-        toast = Toast.makeText(context,"",duration);
+        toast = Toast.makeText(getApplicationContext(),"",duration);
         TextView name = (TextView) findViewById(R.id.NameId);
         name.setText(device.getName() + " " + device.getId());
         TextView mac = (TextView) findViewById(R.id.Mac);
@@ -64,7 +62,7 @@ public class LightBulbActivity extends DeviceActivity {
             @Override
             public void failure(RetrofitError error) {
                 lightBulbSwitch.setChecked(false);
-                toast.setText("Could not get Status");
+                toast.setText("Error occurred");
                 toast.show();
             }
         });
@@ -82,7 +80,7 @@ public class LightBulbActivity extends DeviceActivity {
                     @Override
                     public void failure(RetrofitError error) {
                         lightBulbSwitch.setChecked(false);
-                        toast.setText("Error 'HTTP Status-Code' occurred");
+                        toast.setText("Error occurred");
                         toast.show();
 
                     }
@@ -115,7 +113,7 @@ public class LightBulbActivity extends DeviceActivity {
 
                 @Override
                 public void failure(RetrofitError error) {
-                    toast.setText("Error 'HTTP Status-Code' occurred");
+                    toast.setText("Error occurred");
                     toast.show();
                 }
             });
@@ -139,7 +137,7 @@ public class LightBulbActivity extends DeviceActivity {
 
             @Override
             public void failure(RetrofitError error) {
-                toast.setText("Error: Could not get color values.");
+                toast.setText("Error occurred");
                 toast.show();
             }
         });
