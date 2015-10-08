@@ -1,6 +1,5 @@
 skinparam classAttributeIconSize 0
 package "activity" #DDDDDD {
-  class BaseActivity
   class MyDevicesActivity
   class SensorDeviceActivity
   class LightBulbActivity
@@ -9,6 +8,14 @@ package "activity" #DDDDDD {
 }
 package "network" #DDDDDD {
   class NetworkManager
+  interface NetworkManagerApi
+  package "data" #DDDDDD {
+   class DataAboutDevice
+   class DeviceData 
+   class DeviceDataList 
+   class DeviceStatus 
+   class ToggledStateResponse
+  }
 }
 package "adapter" #DDDDDD {
   class DeviceListAdapter
@@ -17,16 +24,24 @@ package "model" #DDDDDD {
   class Device
   class LightBulb
   class SensorDevice
-  class SensorValues
-  class Temperature
-  class Pressure
-  class Humidity
-  class Magnetic
-  class Gyroscopic
-  class Accelerometer
 }
 
  class NetworkManager{
+ +void toggle(Device, boolean, Callback<Response>)
+ +void getToggledState(Device, Callback<ToggledStateResponse>)
+ +void detectDevices(List<Device>, Callback<DevicesResponse>)
+ +void getTemperature(Device, Callback<TemperatureResponse>)
+ +void getPressure(Device, Callback<PressureResponse>)
+ +void getHumidity(Device, Callback<HumidityResponse>)
+ +void getMagnetic(Device, Callback<MagneticResponse>)
+ +void getGyroscopic(Device, Callback<GyroscopicResponse>)
+ +void getAccelerometer(Device, Callback<AccelerometerResponse>)
+ +void getAllSensorValues(Device, Callback<AllSensorValuesResponse>)
+ +void getColor(Device, Callback<GetColorResponse>)
+ +void setColor(Device, Color, Callback<Response>)
+}
+
+interface NetworkManagerApi{
  +{static} void toggle(Device, boolean, Callback<Response>)
  +{static} void getToggledState(Device, Callback<ToggledStateResponse>)
  +{static} void detectDevices(List<Device>, Callback<DevicesResponse>)
@@ -41,14 +56,19 @@ package "model" #DDDDDD {
  +{static} void setColor(Device, Color, Callback<Response>)
 }
 
-abstract class BaseActivity{
-}
 
 class DeviceListAdapter {
- +void addDevices(List<Device>)
+ +DeviceListaAdapter(Context, int, List) 
 }
 
 class MyDevicesActivity{
+ -Device chosen; 
+ -Toast toast; 
+ -int duration; 
+ +void getDevices(View)
+ +void controlDevice(View)
+ -Callback createCallback()
+ -void saveList(List)
  -void detectDevices()
  -void controlDevice(Device)
 }
@@ -78,16 +98,17 @@ class LightBulbActivity{
  -EditText green
  -EditText blue
  -EditText white
- -void getValues()
- -void setValues(int r, int g, int b, inte w)
+ -Switch lightBulbSwitch; 
+ -Toast toast
+ -int duration; 
+ -void init()
+ +void getValues(View v)
+ +void setValues(View v)
 }
 
 abstract class DeviceActivity{
  #Device device
- #String macAddress
- #void toggle(boolean)
 }
-
 
 abstract class Device{
  #long id;
@@ -105,23 +126,6 @@ class LightBulb{
  +String getName()
 }
 
-class SensorValues {
- -Temperature temperature
- -Pressure pressure
- -Humidity humidity
- -Magnetic magnetic
- -Gyroscopic gyroscopic
- -Accelerometer accelerometer
- +Temperature getTemperature()
- +Pressure getPressure()
- +Humidity getHumidity()
- +Magnetic getMagnetic()
- +Gyroscopic getGyroscopic()
- +Accelerometer getAccelerometer()
-}
-
-BaseActivity <|-- MyDevicesActivity
-BaseActivity <|-- DeviceActivity
 DeviceActivity <|-- SensorDeviceActivity
 DeviceActivity <|-- LightBulbActivity
 
@@ -130,4 +134,3 @@ Device <|-- LightBulb
 
 MyDevicesActivity "1" *-- "1" DeviceListAdapter
 DeviceListAdapter "1" o-- "*" Device
-BaseActivity "1" o-- "1" NetworkManager
