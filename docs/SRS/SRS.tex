@@ -123,13 +123,6 @@ The application is comprised of three views called MyDevices View, Sensor Device
 \item \label{1} The user presses the "Get Devices"-button.
 \end{enumerate}
 
-\item[Exceptions:]
-\item[]
-\begin{itemize}
-\item [\ref{1}:] One or more devices not found.
-\item The user is notified by the pop-up message: "Device(s) not found.".
-\end{itemize}
-
 \item[]
 
 \item[Scenario 5.1.2] Connecting to the light bulb.
@@ -193,7 +186,7 @@ The application is comprised of three views called MyDevices View, Sensor Device
 \begin{enumerate}
 \item An error during the process occurred.
 \begin{itemize}
-\item The user is notified by the pop-up message: "Error "HTTP Status-Code" occurred".
+\item The user is notified by the pop-up message: "Error occurred".
 \end{itemize}
 \end{enumerate}
 
@@ -211,7 +204,7 @@ The application is comprised of three views called MyDevices View, Sensor Device
 \begin{enumerate}
 \item An error during the process occurred.
 \begin{itemize}
-\item The user is notified by the pop-up message: "Error "HTTP Status-Code" occurred".
+\item The user is notified by the pop-up message: "Error occurred".
 \end{itemize}
 \end{enumerate}
 
@@ -230,7 +223,7 @@ The application is comprised of three views called MyDevices View, Sensor Device
 \begin{enumerate}
 \item An error during the process occurred.
 \begin{itemize}
-\item The user is notified by the pop-up message: "Error "HTTP Status-Code" occurred".
+\item The user is notified by the pop-up message: "Error occurred".
 \end{itemize}
 \end{enumerate}
 
@@ -249,7 +242,7 @@ The application is comprised of three views called MyDevices View, Sensor Device
 \begin{enumerate}
 \item An error during the process occurred.
 \begin{itemize}
-\item The user is notified by the pop-up message: "Error "HTTP Status-Code" occurred".
+\item The user is notified by the pop-up message: "Error occurred".
 \end{itemize}
 \end{enumerate}
 
@@ -270,7 +263,7 @@ The application is comprised of three views called MyDevices View, Sensor Device
 \begin{enumerate}
 \item An error during the process occurred.
 \begin{itemize}
-\item The user is notified by the pop-up message: "Error "HTTP Status-Code" occurred".
+\item The user is notified by the pop-up message: "Error occurred".
 \end{itemize}
 \end{enumerate}
 
@@ -288,8 +281,8 @@ The application is comprised of three views called MyDevices View, Sensor Device
 \item[]
 
 \begin{itemize}
-\item [\ref{4}:] One or more fields are empty.
-\item The text field is updated to: "No data available.".
+\item [\ref{4}:] The color values could not be recived.
+\item The user is notified by the pop-up message: "Error occurred".
 \end{itemize}
 
 \item[]
@@ -481,7 +474,7 @@ The application is comprised of three views called MyDevices View, Sensor Device
 
 \item[Requirement 5.4.15] If the values of the light bulb were unsuccessfully set a pop-up message "Error: Could not change color." is displayed.
 
-\item[Requirement 5.4.16] The "Set"-button is disabled when the light bulb is turned off.
+\item[Requirement 5.4.16] If the "Set"-button is used when the light bulb is turned off a pop-up message "Lamp is not turned on" is displayed.
 
 \item[Requirement 5.4.17:] When the back button is pressed the MyDevices View should be opened.
 
