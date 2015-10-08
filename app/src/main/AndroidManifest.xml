@@ -18,10 +18,6 @@
             android:label="@string/title_activity_light_bulb" >
         </activity>
         <activity
-            android:name=".activity.DeviceActivity"
-            android:label="@string/title_activity_device" >
-        </activity>
-        <activity
             android:name=".activity.MyDevicesActivity"
             android:label="@string/title_activity_my_devices" >
             <intent-filter>
