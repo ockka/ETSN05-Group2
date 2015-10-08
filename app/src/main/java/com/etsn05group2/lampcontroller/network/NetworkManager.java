@@ -6,26 +6,18 @@ import com.etsn05group2.lampcontroller.model.Device;
 import com.etsn05group2.lampcontroller.network.data.DataAboutDevice;
 import com.etsn05group2.lampcontroller.network.data.DeviceData;
 import com.etsn05group2.lampcontroller.network.data.DeviceStatus;
-import com.etsn05group2.lampcontroller.network.data.ToggledStateResponse;
 import com.squareup.okhttp.OkHttpClient;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
-import retrofit.RetrofitError;
 import retrofit.client.OkClient;
-import retrofit.client.Response;
 
 import java.util.Calendar;
-
-
 
 /**
  * Created by Niklas on 2015-09-22.
@@ -45,7 +37,8 @@ public class NetworkManager {
         api = new RestAdapter.Builder().setEndpoint(PATH).setClient(new OkClient(client)).build().create(NetworkManagerApi.class);
     }
 
-    public NetworkManager() {
+    /* All methods are static, we dont need to create instances of this class. */
+    private NetworkManager() {
     }
 
     public static void toggle(Device device, boolean value, Callback<DeviceStatus> callback) {
@@ -100,7 +93,7 @@ public class NetworkManager {
     public static void getAllSensorValues(Device device, Callback<List<DeviceData>> callback) {
         String startDate = previousTime();
         String endDate = currentTime();
-        api.getDeviceDataTimeLimit(device.getId(),startDate, endDate,callback);
+        api.getDeviceDataTimeLimit(device.getId(), startDate, endDate, callback);
     }
 
     public static void getColor(Device device, Callback<List<DeviceData>> callback) {
@@ -111,73 +104,29 @@ public class NetworkManager {
         api.putDeviceValue(new DeviceStatus(device.getMacAddress(), color), callback);
     }
 
-    /**
-     * Placera in all Fulkod här under
-     *
-     *
-     *
-     *
-     */
-
-    static private Callback<DeviceStatus> colorCall(){
-        return new Callback<DeviceStatus>() {
-            @Override
-            public void success(DeviceStatus device, Response response) {
-
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-
-            }
-        };
-    }
-
-
-
-
-
-
-
-    static private Callback<List<DataAboutDevice>> allDevicesCall(){
-        Callback<List<DataAboutDevice>> call = new Callback<List<DataAboutDevice>>(){
-
-            @Override
-            public void success(List<DataAboutDevice> dataAboutDevices, Response response) {
-                Log.d("Succes", "");
-               //detectedDevices = dataAboutDevices;
-            }
-
-            @Override
-            public void failure(RetrofitError error) { Log.d("failure", error.toString()); }
-        };
-        return call;
-    }
-
-    static private String currentTime(){
+    static private String currentTime() {
         Calendar cal = Calendar.getInstance();
         Date current = cal.getTime();
-        String newstring = "";
-        try{
-            newstring = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(current);
-            Log.d("Current time: ","" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(current) );
-        } catch (Exception e){}
-        return newstring;
+        String newString = "";
+        try {
+            newString = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(current);
+        } catch (Exception e) {
+            Log.d("Exception", e.getMessage());
+        }
+        return newString;
     }
 
     static private String previousTime() {
-        TimeZone timeZone = TimeZone.getTimeZone("Europe/Stockholm");
-        Calendar cal = Calendar.getInstance(timeZone);
-        cal.add(Calendar.MINUTE, -50);
+        int minutesBack = 10;
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MINUTE, -minutesBack);
         Date tenMinutesBack = cal.getTime();
-        String newstring = "";
-        try{
-            newstring = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(tenMinutesBack);
-            Log.d("tenMinutesBack: ","" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(tenMinutesBack) );
-        } catch (Exception e){
-            Log.d("ERROR: ", "" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(tenMinutesBack));
+        String newString = "";
+        try {
+            newString = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(tenMinutesBack);
+        } catch (Exception e) {
+            Log.d("Exception", e.getMessage());
         }
-        return newstring;
+        return newString;
     }
-
 }
