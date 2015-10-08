@@ -12,6 +12,7 @@ import com.squareup.okhttp.OkHttpClient;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
@@ -154,122 +155,29 @@ public class NetworkManager {
     }
 
     static private String currentTime(){
-        Calendar calendar = Calendar.getInstance();
-        TimeZone timezone = TimeZone.getDefault();
-        timezone.setID("Europe/Stockholm");
-        calendar.setTimeZone(timezone);
-        calendar.set(Calendar.HOUR_OF_DAY, Calendar.HOUR_OF_DAY + 7);
-        /*
-        calendar.set(Calendar.HOUR_OF_DAY, Calendar.HOUR_OF_DAY + 3);
-        calendar.set(Calendar.YEAR, 2015);
-
-        DateFormat df = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
-        String time = (df.format(calendar.getTime()));
-        Log.d("Current = ", "" + df.format(calendar.getTime()));
-        Log.d("TimeZone = ", "" + timezone.getID());
-        */
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        month = month + 1;
-        int day = calendar.get(Calendar.DATE);
-        int hours = calendar.get(Calendar.HOUR_OF_DAY);
-        int minutes = calendar.get(Calendar.MINUTE);
-        int seconds = calendar.get(Calendar.SECOND);
-        if (minutes < 0) {
-            minutes += 60;
-            hours--;
-        }
-        if (hours < 0) {
-            hours += 24;
-            hours--;
-        }
-        StringBuilder sb = new StringBuilder();
-        sb.append(year);
-        sb.append("-");
-        if (month < 10) {
-            sb.append("0");
-        }
-        sb.append(month);
-        sb.append("-");
-        if (day < 10) {
-            sb.append("0");
-        }
-        sb.append(day);
-        sb.append(" ");
-        if (hours < 10) {
-            sb.append("0");
-        }
-        sb.append(hours);
-        sb.append(":");
-        if (minutes < 10) {
-            sb.append("0");
-        }
-        sb.append(minutes);
-        sb.append(":");
-        if (seconds < 10) {
-            sb.append("0");
-        }
-        sb.append(seconds);
-        Log.d("Current time", "" + sb.toString());
-        return sb.toString();
-        //return time;
+        Calendar cal = Calendar.getInstance();
+        Date current = cal.getTime();
+        String newstring = "";
+        try{
+            newstring = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(current);
+            Log.d("Current time: ","" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(current) );
+        } catch (Exception e){}
+        return newstring;
     }
 
     static private String previousTime() {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.HOUR_OF_DAY, Calendar.HOUR_OF_DAY + 7);
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        month = month + 1;
-        int day = calendar.get(Calendar.DATE);
-        int hours = calendar.get(Calendar.HOUR_OF_DAY);
-        int minutes = calendar.get(Calendar.MINUTE);
-        int seconds = calendar.get(Calendar.SECOND);
-
-        minutes = (minutes - 50) % 60;
-        if (minutes < 0) {
-            minutes += 60;
-            hours--;
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MINUTE, -50);
+        Date tenMinutesBack = cal.getTime();
+        String newstring = "";
+        try{
+            newstring = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(tenMinutesBack);
+            Log.d("tenMinutesBack: ","" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(tenMinutesBack) );
+        } catch (Exception e){
+            Log.d("ERROR: ","" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(tenMinutesBack) );
         }
-        if (hours < 0) {
-            hours += 24;
-            hours--;
-        }
-        StringBuilder sb = new StringBuilder();
-        sb.append(year);
-        sb.append("-");
-        if (month < 10) {
-            sb.append("0");
-        }
-        sb.append(month);
-        sb.append("-");
-        if (day < 10) {
-            sb.append("0");
-        }
-        sb.append(day);
-        sb.append(" ");
-        if (hours < 10) {
-            sb.append("0");
-        }
-        sb.append(hours);
-        sb.append(":");
-        if (minutes < 10) {
-            sb.append("0");
-        }
-        sb.append(minutes);
-        sb.append(":");
-        if (seconds < 10) {
-            sb.append("0");
-        }
-
-        sb.append(seconds);
-        Log.d("TID:", "=" + sb.toString());
-        Log.d("Month", "= " + month);
-        Log.d("day", "= " + day);
-        Log.d("hour", "= " + hours);
-        Log.d("minute", "= " + minutes);
-        Log.d("second", "= " + seconds);
-        return sb.toString();
+        return newstring;
+        //return sb.toString();
     }
 
 }
