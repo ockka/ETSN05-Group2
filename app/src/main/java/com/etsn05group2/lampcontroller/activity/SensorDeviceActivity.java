@@ -19,6 +19,7 @@ import com.etsn05group2.lampcontroller.network.data.DeviceData;
 import com.etsn05group2.lampcontroller.network.data.DeviceStatus;
 
 import java.util.List;
+import java.util.StringTokenizer;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -146,17 +147,23 @@ public class SensorDeviceActivity extends DeviceActivity {
                     for (int i = 0; i < deviceDatas.size(); i++) {
                         DeviceData newDevice = deviceDatas.get(i);
                         if (newDevice.sensorType.equals("temperature")) {
-                            temperature.setText(newDevice.value.toString());
+                            temperature.setText(newDevice.value.toString() + " \u2103");
                         } else if (newDevice.sensorType.equals("pressure")) {
-                            pressure.setText(newDevice.value.toString());
+                            pressure.setText(newDevice.value.toString() + " mBar");
                         } else if (newDevice.sensorType.equals("humidity")) {
-                            humidity.setText(newDevice.value.toString());
+                            humidity.setText(newDevice.value.toString() + " %");
                         } else if (newDevice.sensorType.equals("magnometer")) {
-                            magnometer.setText(newDevice.value.toString());
+                            String[] coords = newDevice.value.split(";");
+                            String text = String.format("x: %s\ny: %s\nz: %s", coords[0], coords[1], coords[2]);
+                            magnometer.setText(text);
                         } else if (newDevice.sensorType.equals("gyroscope")) {
-                            gyroscope.setText(newDevice.value.toString());
+                            String[] coords = newDevice.value.split(";");
+                            String text = String.format("x: %s\ny: %s\nz: %s", coords[0], coords[1], coords[2]);
+                            gyroscope.setText(text);
                         } else if (newDevice.sensorType.equals("accelerometer")) {
-                            accelerometer.setText(newDevice.value.toString());
+                            String[] coords = newDevice.value.split(";");
+                            String text = String.format("x: %s\ny: %s\nz: %s", coords[0], coords[1], coords[2]);
+                            accelerometer.setText(text);
                         }
                     }
                 } else {
