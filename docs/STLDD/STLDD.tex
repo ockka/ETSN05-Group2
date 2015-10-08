@@ -30,7 +30,7 @@
 		~
 		\begin{minipage}{0.4\textwidth}
 			\begin{flushright}
-				PUSS154214 v1.0
+				PUSS154214 v1.1
 				\today
 			\end{flushright}
 		\end{minipage}\\[3cm]
@@ -62,6 +62,7 @@
 			\hline
 			\textbf{Version} 	& \textbf{Date} 	& \textbf{Responsible} 	& \textbf{Description} 		\\ \hline
 			1.0				 	& 240915 			& DO, JM, OA			&  Baseline. 				\\ \hline
+			1.1 			 	& 081015 			& DO					&  PR7, PR9, PR10, PR11, PR15. \\ \hline			
 		\end{tabular}
 	\end{center}
 	
@@ -123,44 +124,27 @@
         - void getAllSensorValues(Device, Callback<AllSensorValuesResponse>) returns all the sensor values that could be retrieved from the API using a Callback. Device attribute to know to which host the connection should be made.\\
         - void getColor(Device, Callback<GetColorResponse>) returns the Color received from the API using a Callback. Device attribute to know to which host the connection should be made.\\
         - void setColor(Device, Color color,  Callback<ColorResponse>) sets the color of the light bulb. Device to receive the correct host, Color to set the color and a Callback that will return from the API network.
-		\item{\textbf{SensorValues:}} 
-		A class the handles the information of the different sensors.\\
-        - Temperature getTemperature() returns the class Temperature that has information regarding the temperature.\\
-        - Pressure getPressure() returns the class Pressure that has information regarding the pressure data.\\
-        - Humidity getHumidity() returns the class Humidity that has information regarding the humidity data.\\
-        - Magnetic getMagnetic() returns the class Magnetic that has information regarding the magnetic data.\\
-        - Gyroscopic getGyroscopic() returns the class Gyroscopic that have information regarding the gyroscopic data.\\
-         - Accelerometer getAccelerometer() returns the class Accelerometer that has information regarding the accelerometer data.
-	\item{\textbf{Temperature:}} 
-    Handles the information regarding the temperature data.
-    \item{\textbf{Pressure:}} 
-    Handles the information regarding the pressure data.
-    \item{\textbf{Humidity:}} 
-    Handles the information regarding the humidity data.
-    \item{\textbf{Magnetic:}} 
-    Handles the information regarding the magnetic data.
-    \item{\textbf{Gyroscopic:}} 
-    Handles the information regarding the gyroscopic data.
-    \item{\textbf{Accelerometer:}} 
-    Handles the information regarding the accelerometer data.
+		
 	\end{itemize}
 
 	\subsection{Packages}
 	\begin{itemize}
-		\item {\textbf{Network}} \\
+		\item {\textbf{network}} \\
         Handles the network communication and contains the class NetworkManager.
-		\item {\textbf{Activity}}\\
+        \item {\textbf{network.data}} \\
+        Subpackage in network with responses from the server.
+		\item {\textbf{activity}}\\
         Handles the Activities for the different views. Contains the classes BaseActivity, DeviceActivity, MyDeviceActivity, SensorDeviceActivity and LighBulbActivity.
-		\item {\textbf{Adapter}}\\
+		\item {\textbf{adapter}}\\
         The Adapter to the ListView used in MyDeviceActivity contains the class DeviceListAdapter.
-		\item {\textbf{Model}}\\
-        Handels the information about the different devices contains the classes Device, SensorDevice and LightBulb, SensorValues, Temperature, Pressure, Humidity, Magnetic, Gyroscopic and Accelerometer.
+		\item {\textbf{model}}\\
+        Handles the information about the different devices contains the classes Device, SensorDevice and LightBulb.
 	\end{itemize}
 \subsection{UML diagram}
 	\begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{class_diagram.png}
-    \caption{The design of the system.}
+    \includegraphics[width=0.9\textwidth]{class_diagram.png}
+    \caption{The design of the system. onCreate methods for each activity are not shown.}
     \label{fig:uml}
 \end{figure}
 

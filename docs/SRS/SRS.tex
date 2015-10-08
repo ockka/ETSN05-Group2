@@ -116,7 +116,7 @@ The application is comprised of three views called MyDevices View, Sensor Device
 \subsection{Use cases}
 \begin{description}
 \item[Scenario 5.1.1] Detecting devices
-\item[Precondition:] The user is in the MyDevices View. There is a light bulb and a sensor device within scan range for the MVD.
+\item[Precondition:] The user is in the MyDevices View.
 \item[Postcondition:] The light bulb and the sensor device are displayed in the MyDevices view.
 \item[Use Case:]\mbox{}
 \begin{enumerate}
@@ -126,7 +126,7 @@ The application is comprised of three views called MyDevices View, Sensor Device
 \item[]
 
 \item[Scenario 5.1.2] Connecting to the light bulb.
-\item[Precondition:] The user is in the MyDevices View and a light bulb is detected.
+\item[Precondition:] The user is in the MyDevices View.
 \item[Postcondition:] The user is in the Light Bulb View.
 \item[Use Case:]\mbox{}
 \begin{enumerate}
@@ -139,10 +139,6 @@ The application is comprised of three views called MyDevices View, Sensor Device
 \item No device selected.
 \begin{itemize}
 \item The user is notified by the pop-up message: "Please select a device.".
-\end{itemize}
-\item Device disconnected.
-\begin{itemize}
-\item The user is notified by the pop-up message: "Device not found".
 \end{itemize}
 
 \end{enumerate}
@@ -164,10 +160,6 @@ The application is comprised of three views called MyDevices View, Sensor Device
 \item No device selected.
 \begin{itemize}
 \item The user is notified by the pop-up message: "Please select a device.".
-\end{itemize}
-\item Device disconnected.
-\begin{itemize}
-\item The user is notified by the pop-up message: "Device not found".
 \end{itemize}
 \end{enumerate}
 
@@ -300,8 +292,8 @@ The application is comprised of three views called MyDevices View, Sensor Device
 \item[]
 
 \begin{itemize}
-\item [\ref{7}:] No data available.
-\item The text field is updated to: "No data available.".
+\item [\ref{7}:] An error during the process occurred.
+\item The user is notified by the pop-up message: "Error occurred".
 \end{itemize}
 
 \item[]
@@ -319,8 +311,8 @@ The application is comprised of three views called MyDevices View, Sensor Device
 \item[]
 
 \begin{itemize}
-\item [\ref{7}:] No data available.
-\item The text field is updated to: "No data available.".
+\item [\ref{7}:] An error during the process occurred.
+\item The user is notified by the pop-up message: "Error occurred".
 \end{itemize}
 
 \item[]
@@ -418,17 +410,17 @@ The application is comprised of three views called MyDevices View, Sensor Device
 
 \item[Requirement 5.3.18:] There is a "Clear all"-button that clears content in the text field for all the sensor data.
 
-\item[Requirement 5.3.19:] If the "Get"-button for temperature is pressed while the temperature sensor has no available data a message "No data available." is displayed in the temperature value field.
+\item[Requirement 5.3.19:] If the "Get"-button for temperature is pressed while the temperature sensor has no available data a pop-up message "Error occurred" is displayed.
 
-\item[Requirement 5.3.20:] If the "Get"-button for pressure is pressed while the pressure sensor has no available data a message "No data available." is displayed in the pressure value field.
+\item[Requirement 5.3.20:] If the "Get"-button for pressure is pressed while the pressure sensor has no available data a pop-up message "Error occurred" is displayed.
 
-\item[Requirement 5.3.21:] If the "Get"-button for humidity is pressed while the humidity sensor has no available data a message "No data available." is displayed in the humidity value field.
+\item[Requirement 5.3.21:] If the "Get"-button for humidity is pressed while the humidity sensor has no available data a pop-up message "Error occurred" is displayed.
 
-\item[Requirement 5.3.22:] If the "Get"-button for magnetic field is pressed while the magnetic field sensor has no available data a message "No data available." is displayed in the magnetic field data field.
+\item[Requirement 5.3.22:] If the "Get"-button for magnetic field is pressed while the magnetic field sensor has no available data a pop-up message "Error occurred" is displayed.
 
-\item[Requirement 5.3.23:] If the "Get"-button for gyroscope is pressed while the gyroscopic sensor has no available data a message "No data available." is displayed in the gyroscopic data field.
+\item[Requirement 5.3.23:] If the "Get"-button for gyroscope is pressed while the gyroscopic sensor has no available data a pop-up message "Error occurred" is displayed.
 
-\item[Requirement 5.3.24:] If the "Get"-button for acceleration is pressed while the acceleration sensor has no available data a message "No data available." is displayed in the acceleration data field.
+\item[Requirement 5.3.24:] If the "Get"-button for acceleration is pressed while the acceleration sensor has no available data a pop-up message "Error occurred" is displayed.
 
 \item[Requirement 5.3.25:] The on/off-switch is set according to the information from the back-end data which is accessed through the REST API.
 
@@ -438,7 +430,7 @@ The application is comprised of three views called MyDevices View, Sensor Device
 
 \item[Requirement 5.3.28:] The layout of the Sensor View should resemble figure \ref{fig:mysensorview} in Appendix.
 
-\item[Requirement 5.3.29:] Data older than 10 minutes will not be collected by the application. If no data avaliable will the text field be updated to: "No data available.".
+\item[Requirement 5.3.29:] Data older than 10 minutes will not be collected by the application. If no data avaliable a pop-up message "Error occurred" is displayed.
 
 \end{description}
 
@@ -474,7 +466,7 @@ The application is comprised of three views called MyDevices View, Sensor Device
 
 \item[Requirement 5.4.14] If the values of the light bulb were successfully set a pop-up message "Color successfully changed." is displayed.
 
-\item[Requirement 5.4.15] If the values of the light bulb were unsuccessfully set a pop-up message "Error: Could not change color." is displayed.
+\item[Requirement 5.4.15] If the values of the light bulb were unsuccessfully set a pop-up message "Error occurred" is displayed.
 
 \item[Requirement 5.4.16] If the "Set"-button is used when the light bulb is turned off a pop-up message "Lamp is not turned on" is displayed.
 
