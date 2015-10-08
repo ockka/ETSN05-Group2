@@ -98,8 +98,12 @@ public class SensorDeviceActivity extends DeviceActivity {
         Callback<List<DeviceData>> call = new Callback<List<DeviceData>>() {
             @Override
             public void success(List<DeviceData> deviceDatas, Response response) {
-                DeviceData deviceData = deviceDatas.get(deviceDatas.size() - 1);
-                textView.setText(deviceData.value.toString());
+                if (deviceDatas.size() != 0) {
+                    DeviceData deviceData = deviceDatas.get(deviceDatas.size() - 1);
+                    textView.setText(deviceData.value.toString());
+                } else {
+                    toast.setText("No data available");
+                }
             }
 
             @Override
