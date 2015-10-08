@@ -1,9 +1,7 @@
 package com.etsn05group2.lampcontroller.network;
 
-import com.etsn05group2.lampcontroller.model.Device;
 import com.etsn05group2.lampcontroller.network.data.DataAboutDevice;
 import com.etsn05group2.lampcontroller.network.data.DeviceData;
-import com.etsn05group2.lampcontroller.network.data.DeviceDataList;
 import com.etsn05group2.lampcontroller.network.data.DeviceStatus;
 
 

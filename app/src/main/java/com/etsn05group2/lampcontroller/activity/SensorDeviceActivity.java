@@ -33,7 +33,6 @@ public class SensorDeviceActivity extends DeviceActivity {
     private TextView magnometer;
     private TextView gyroscope;
     private TextView accelerometer;
-    private Context context;
     private int duration;
     private Toast toast;
 
@@ -54,20 +53,19 @@ public class SensorDeviceActivity extends DeviceActivity {
         magnometer = (TextView) findViewById(R.id.magnetic_value);
         gyroscope = (TextView) findViewById(R.id.gyroscopic_value);
         accelerometer = (TextView) findViewById(R.id.accelerometer_value);
-        context = getApplicationContext();
         duration = Toast.LENGTH_SHORT;
-        toast = Toast.makeText(context, "", duration);
+        toast = Toast.makeText(getApplicationContext(), "", duration);
 
         NetworkManager.getToggledState(device, new Callback<DataAboutDevice>() {
             @Override
             public void success(DataAboutDevice dataAboutDevice, Response response) {
-                sensorSwitch.setChecked(dataAboutDevice.status==1?true:false);
+                sensorSwitch.setChecked(dataAboutDevice.status == 1 ? true : false);
             }
 
             @Override
             public void failure(RetrofitError error) {
                 sensorSwitch.setChecked(false);
-                toast.setText("Could not get Status");
+                toast.setText("Error occurred");
                 toast.show();
             }
         });
@@ -85,7 +83,7 @@ public class SensorDeviceActivity extends DeviceActivity {
                     @Override
                     public void failure(RetrofitError error) {
                         sensorSwitch.setChecked(false);
-                        toast.setText("Error 'HTTP Status-Code' occurred");
+                        toast.setText("Error occurred");
                         toast.show();
 
                     }
@@ -119,18 +117,23 @@ public class SensorDeviceActivity extends DeviceActivity {
     public void getTemperature(View v) {
         NetworkManager.getTemperature(device, getValue(temperature));
     }
+
     public void getPressure(View v) {
         NetworkManager.getPressure(device, getValue(pressure));
     }
+
     public void getHumidity(View v) {
         NetworkManager.getHumidity(device, getValue(humidity));
     }
+
     public void getMagnetic(View v) {
         NetworkManager.getMagnetic(device, getValue(magnometer));
     }
+
     public void getGyroscopic(View v) {
         NetworkManager.getGyroscopic(device, getValue(gyroscope));
     }
+
     public void getAccelerometer(View v) {
         NetworkManager.getAccelerometer(device, getValue(accelerometer));
     }
@@ -139,24 +142,29 @@ public class SensorDeviceActivity extends DeviceActivity {
         NetworkManager.getAllSensorValues(device, new Callback<List<DeviceData>>() {
             @Override
             public void success(List<DeviceData> deviceDatas, Response response) {
-                for(int i = 0; i < deviceDatas.size(); i++){
-                    DeviceData newDevice = deviceDatas.get(i);
-                    if(newDevice.sensorType.equals("temperature")){
-                        temperature.setText(newDevice.value.toString());
-                    }else if(newDevice.sensorType.equals("pressure")){
-                        pressure.setText(newDevice.value.toString());
-                    }else if(newDevice.sensorType.equals("humidity")){
-                        humidity.setText(newDevice.value.toString());
-                    }else if(newDevice.sensorType.equals("magnometer")){
-                        magnometer.setText(newDevice.value.toString());
-                    }else if(newDevice.sensorType.equals("gyroscope")){
-                        gyroscope.setText(newDevice.value.toString());
-                    }else if(newDevice.sensorType.equals("accelerometer")){
-                        accelerometer.setText(newDevice.value.toString());
+                if (deviceDatas.size() != 0) {
+                    for (int i = 0; i < deviceDatas.size(); i++) {
+                        DeviceData newDevice = deviceDatas.get(i);
+                        if (newDevice.sensorType.equals("temperature")) {
+                            temperature.setText(newDevice.value.toString());
+                        } else if (newDevice.sensorType.equals("pressure")) {
+                            pressure.setText(newDevice.value.toString());
+                        } else if (newDevice.sensorType.equals("humidity")) {
+                            humidity.setText(newDevice.value.toString());
+                        } else if (newDevice.sensorType.equals("magnometer")) {
+                            magnometer.setText(newDevice.value.toString());
+                        } else if (newDevice.sensorType.equals("gyroscope")) {
+                            gyroscope.setText(newDevice.value.toString());
+                        } else if (newDevice.sensorType.equals("accelerometer")) {
+                            accelerometer.setText(newDevice.value.toString());
+                        }
                     }
+                } else {
+                    toast.setText("No data available");
+                    toast.show();
                 }
-
             }
+
 
             @Override
             public void failure(RetrofitError error) {
