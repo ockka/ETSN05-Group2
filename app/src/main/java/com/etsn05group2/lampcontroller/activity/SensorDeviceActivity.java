@@ -103,6 +103,7 @@ public class SensorDeviceActivity extends DeviceActivity {
                     textView.setText(deviceData.value.toString());
                 } else {
                     toast.setText("No data available");
+                    toast.show();
                 }
             }
 
