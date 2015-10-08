@@ -166,7 +166,8 @@ public class NetworkManager {
     }
 
     static private String previousTime() {
-        Calendar cal = Calendar.getInstance();
+        TimeZone timeZone = TimeZone.getTimeZone("Europe/Stockholm");
+        Calendar cal = Calendar.getInstance(timeZone);
         cal.add(Calendar.MINUTE, -50);
         Date tenMinutesBack = cal.getTime();
         String newstring = "";
@@ -174,10 +175,9 @@ public class NetworkManager {
             newstring = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(tenMinutesBack);
             Log.d("tenMinutesBack: ","" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(tenMinutesBack) );
         } catch (Exception e){
-            Log.d("ERROR: ","" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(tenMinutesBack) );
+            Log.d("ERROR: ", "" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(tenMinutesBack));
         }
         return newstring;
-        //return sb.toString();
     }
 
 }
