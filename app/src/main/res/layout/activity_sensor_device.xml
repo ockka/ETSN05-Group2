@@ -110,7 +110,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:id="@+id/magnetic_value"
-                    android:textSize="18sp" />
+                    android:textSize="28sp" />
 
                 <Button android:text="@string/get"
                     android:id="@+id/magnetic_button"
@@ -130,7 +130,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:id="@+id/gyroscopic_value"
-                    android:textSize="18sp" />
+                    android:textSize="28sp" />
 
                 <Button android:text="@string/get"
                     android:id="@+id/gyroscopic_button"
@@ -150,7 +150,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:id="@+id/accelerometer_value"
-                    android:textSize="18sp" />
+                    android:textSize="28sp" />
 
                 <Button android:text="@string/get"
                     android:id="@+id/accelerometer_button"

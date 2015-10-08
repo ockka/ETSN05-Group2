@@ -93,6 +93,24 @@ public class SensorDeviceActivity extends DeviceActivity {
         });
     }
 
+    private String getUnit(final TextView textView) {
+        if (textView == temperature) {
+            return "\u2103";
+        } else if (textView == pressure) {
+            return "mBar";
+        } else if (textView == humidity) {
+            return "%";
+        } else if (textView == magnometer) {
+            return "";
+        } else if (textView == accelerometer) {
+            return "";
+        } else if (textView == gyroscope) {
+            return "";
+        } else {
+            return "";
+        }
+    }
+
     private Callback<List<DeviceData>> getValue(final TextView textView) {
         Callback<List<DeviceData>> call = new Callback<List<DeviceData>>() {
             @Override
@@ -101,9 +119,9 @@ public class SensorDeviceActivity extends DeviceActivity {
                     String[] values = deviceDatas.get(deviceDatas.size() - 1).value.split(";");
                     String text;
                     if (values.length == 1) {
-                        text = values[0];
+                        text = values[0] + " " + getUnit(textView);
                     } else {
-                        text = String.format("x: %s\ny: %s\nz: %s", values[0], values[1], values[2]);
+                        text = String.format("x: %s %s\ny: %s %s\nz: %s %s", values[0], getUnit(textView), values[1], getUnit(textView), values[2], getUnit(textView));
                     }
                     textView.setText(text);
 
