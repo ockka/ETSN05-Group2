@@ -93,6 +93,7 @@ public class SensorDeviceActivity extends DeviceActivity {
         });
     }
 
+    /* Returns the unit that should be used in the specified TextView. */
     private String getUnit(final TextView textView) {
         if (textView == temperature) {
             return "\u2103";
@@ -121,14 +122,10 @@ public class SensorDeviceActivity extends DeviceActivity {
                     if (values.length == 1) {
                         text = values[0] + " " + getUnit(textView);
                     } else {
+                        // One coordinate on each row.
                         text = String.format("x: %s %s\ny: %s %s\nz: %s %s", values[0], getUnit(textView), values[1], getUnit(textView), values[2], getUnit(textView));
                     }
                     textView.setText(text);
-
-                    /*
-                    DeviceData deviceData = deviceDatas.get(deviceDatas.size() - 1);
-                    textView.setText(deviceData.value.toString());
-                    */
                 } else {
                     toast.setText("No data available");
                     toast.show();
@@ -218,5 +215,4 @@ public class SensorDeviceActivity extends DeviceActivity {
         gyroscope.setText("");
         accelerometer.setText("");
     }
-
 }
