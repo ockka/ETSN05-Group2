@@ -186,7 +186,7 @@ The application is comprised of three views called MyDevices View, Sensor Device
 \begin{enumerate}
 \item An error during the process occurred.
 \begin{itemize}
-\item The user is notified by the pop-up message: "Error "HTTP Status-Code" occurred".
+\item The user is notified by the pop-up message: "Error occurred".
 \end{itemize}
 \end{enumerate}
 
@@ -204,7 +204,7 @@ The application is comprised of three views called MyDevices View, Sensor Device
 \begin{enumerate}
 \item An error during the process occurred.
 \begin{itemize}
-\item The user is notified by the pop-up message: "Error "HTTP Status-Code" occurred".
+\item The user is notified by the pop-up message: "Error occurred".
 \end{itemize}
 \end{enumerate}
 
@@ -223,7 +223,7 @@ The application is comprised of three views called MyDevices View, Sensor Device
 \begin{enumerate}
 \item An error during the process occurred.
 \begin{itemize}
-\item The user is notified by the pop-up message: "Error "HTTP Status-Code" occurred".
+\item The user is notified by the pop-up message: "Error occurred".
 \end{itemize}
 \end{enumerate}
 
@@ -242,7 +242,7 @@ The application is comprised of three views called MyDevices View, Sensor Device
 \begin{enumerate}
 \item An error during the process occurred.
 \begin{itemize}
-\item The user is notified by the pop-up message: "Error "HTTP Status-Code" occurred".
+\item The user is notified by the pop-up message: "Error occurred".
 \end{itemize}
 \end{enumerate}
 
@@ -263,7 +263,7 @@ The application is comprised of three views called MyDevices View, Sensor Device
 \begin{enumerate}
 \item An error during the process occurred.
 \begin{itemize}
-\item The user is notified by the pop-up message: "Error "HTTP Status-Code" occurred".
+\item The user is notified by the pop-up message: "Error occurred".
 \end{itemize}
 \end{enumerate}
 
@@ -281,8 +281,8 @@ The application is comprised of three views called MyDevices View, Sensor Device
 \item[]
 
 \begin{itemize}
-\item [\ref{4}:] One or more fields are empty.
-\item The text field is updated to: "No data available.".
+\item [\ref{4}:] The color values could not be recived.
+\item The user is notified by the pop-up message: "Error occurred".
 \end{itemize}
 
 \item[]
@@ -354,7 +354,7 @@ The application is comprised of three views called MyDevices View, Sensor Device
 
 \item[Requirement 5.2.2:] When the application is started the list of available devices is empty.
 
-\item[Requirement 5.2.3:] Available devices should be presented in a scrollable list.
+\item[Requirement 5.2.3:] Available devices should be presented in a list.
 
 \item[Requirement 5.2.4:] Devices in the list should be selectable.
 
@@ -438,6 +438,8 @@ The application is comprised of three views called MyDevices View, Sensor Device
 
 \item[Requirement 5.3.28:] The layout of the Sensor View should resemble figure \ref{fig:mysensorview} in Appendix.
 
+\item[Requirement 5.3.29:] Data older than 10 minutes will not be collected by the application. If no data avaliable will the text field be updated to: "No data available.".
+
 \end{description}
 
 
@@ -474,7 +476,7 @@ The application is comprised of three views called MyDevices View, Sensor Device
 
 \item[Requirement 5.4.15] If the values of the light bulb were unsuccessfully set a pop-up message "Error: Could not change color." is displayed.
 
-\item[Requirement 5.4.16] The "Set"-button is disabled when the light bulb is turned off.
+\item[Requirement 5.4.16] If the "Set"-button is used when the light bulb is turned off a pop-up message "Lamp is not turned on" is displayed.
 
 \item[Requirement 5.4.17:] When the back button is pressed the MyDevices View should be opened.
 
