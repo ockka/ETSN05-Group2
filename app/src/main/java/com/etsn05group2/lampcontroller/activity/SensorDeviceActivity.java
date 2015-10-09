@@ -134,7 +134,7 @@ public class SensorDeviceActivity extends DeviceActivity {
 
             @Override
             public void failure(RetrofitError error) {
-                toast.setText("No data available");
+                toast.setText("Error occurred");
                 toast.show();
             }
         };
@@ -201,7 +201,7 @@ public class SensorDeviceActivity extends DeviceActivity {
 
             @Override
             public void failure(RetrofitError error) {
-                toast.setText("No data available");
+                toast.setText("Error occurred");
                 toast.show();
             }
         });
