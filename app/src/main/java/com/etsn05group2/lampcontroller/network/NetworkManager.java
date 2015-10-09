@@ -19,7 +19,10 @@ import retrofit.client.OkClient;
 
 import java.util.Calendar;
 
+// Im going to tag the shit out of this baseline
+
 /**
+ *
  * Created by Niklas on 2015-09-22.
  */
 public class NetworkManager {
