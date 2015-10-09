@@ -44,7 +44,7 @@ This test should be run #1 times with the following configurations:
 {\end{itemize}}
 
 \title{SVVI - Software Verification and Validation Instruction}
-\newcommand{\version}{v1.3}
+\newcommand{\version}{v1.4}
 \newcommand{\SVVI}{PUSS154215}
 \author{Testgroup, Team 2}
 
@@ -102,6 +102,8 @@ Jonathan Lundholm
     1.1						& 151008			& HA									& Changes according to PR8				\\ \hline
     1.2						& 151008			& HA									& Changes according to PR12 		\\ \hline
     1.3						& 151008			& HA									& Changes according to PR13		\\ \hline
+    1.4						& 151008			& OF									& Changes according to SRS v.1.4		\\ \hline
+    1.5						& 151009			& OF									& Changes according to PR19	\\ \hline
     \end{tabular}
 \end{center}
 
@@ -114,9 +116,9 @@ Jonathan Lundholm
 %--------------------Reference Documents ---------------------------------------
 \section{Reference Documents}
 \begin{enumerate}
-\item PUSS154212 - System Requirements Specification v1.2 \label{refdocs:srs} 
+\item PUSS154212 - System Requirements Specification v1.4 \label{refdocs:srs} 
 \item Programvaruutveckling för Stora System - Projekthandledning v2.2 \newline (\textit{Institutionen för datavetenskap}, Lunds Univeritet 2015) \label{refdocs:projekthandledning}
-\item PUSS154213 - Software Verification and Validation Specification v1.2 \label{redocs:SVVS}
+\item PUSS154213 - Software Verification and Validation Specification v1.4 \label{redocs:SVVS}
 \item PUSS154253 - Test Matrices for SVVS v1.2 \label{refdocs:matrices}
 \end{enumerate}
 
@@ -369,7 +371,6 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 	  	\end{instruction}
 	  	\begin{postcondition}
 	  		\item The on/off-status switch of the selected sensor is on
-	  		\item The status lamp on the sensor device is lit
 	  	\end{postcondition}
 %\item It is possible to change the on/off -status of the selected sensor with a switch (Req. 5.3.4).
 
@@ -452,7 +453,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 			\item Press the corresponding "Get"-button to the text field
     	\end{instruction}
     	\begin{postcondition}
-    		\item A pop-up messaged with the text ''Error occurred''.
+    		\item A pop-up message with the text "Error occurred" is displayed
     	\end{postcondition}
 %\item If there is no data to retrieve for any of the physical quantities: temperature, pressure, humidity, magnetic field strength, gyroscopic data and acceleration when the corresponding "Get" button is pressed the corresponding, text fields display "No data available" (Req. 5.3.19, 5.3.20, 5.3.21, 5.3.22, 5.3.23, 5.3.24).
 
@@ -464,7 +465,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 			\item Change the status of the on/off-status switch
 		\end{instruction}
 		\begin{postcondition}
-			\item The on/off-status switch corresponds to the status light on the sensor device
+			\item The on/off-status switch corresponds to the status sent from the REST API.
 		\end{postcondition}
 
 %\item The on/off-switch is set according to the information from the REST API (Req. 5.3.25).
@@ -522,7 +523,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 			\item Check the pop-up message.
 		\end{instruction}
 		\begin{postcondition}
-			\item A pop-up message with the text "Error occurred" is shown.
+			\item A pop-up message with the text "Error occurred" is displayed
 		\end{postcondition}
 \end{testlist}
 
@@ -712,7 +713,7 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 			\item Press the "Set"-button
 		\end{instruction}
 		\begin{postcondition}
-			\item A pop-up message saying "Error occurred" is displayed
+			\item A pop-up message with the text "Error occurred" is displayed
 			\item The light bulb glows red
 		\end{postcondition}
 %    \item A pop-up message saying "Error: Could not change color." is displayed when the values of the light bulb were unsuccessfully set. (Req 5.4.15)
@@ -958,7 +959,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 			\item Confirm the pop-up message
 		\end{instruction}
 		\begin{postcondition}
-			\item A pop-up message saying "Error occurred" is shown
+			\item pop-up message with the text "Error occurred" is displayed
 		\end{postcondition}
 %	\item If some data is unavailable when attempting scenario 5.1.9, the text in the corresponding field is set to "No data available." (Req. 5.1.9).
 
@@ -985,7 +986,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 			\item Press the "Get"-button next to the "T:"-field
 		\end{instruction}
 		\begin{postcondition}
-			\item A pop-up message saying "Error occurred" is shown
+			\item A pop-up message with the text "Error occurred" is displayed
 		\end{postcondition}
         
 %	\item If some data is unavailable when attempting scenario 5.1.10, the text in the corresponding field is set to "No data available." (Req. 5.1.10).
@@ -1013,7 +1014,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 			\item Press the "Get All"-button
 		\end{instruction}
 		\begin{postcondition} 
-			\item A pop-up message saying "Error occurred" is shown
+			\item A pop-up message with the text "Error occurred" is displayed
 		\end{postcondition}
 %  		\item If some data is unavailable when attempting scenario 5.1.11, the text in the corresponding field is set to "No data available." (Req. 5.1.11).
 
@@ -1068,7 +1069,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 			\item Set the on/off-status switch to off
 		\end{instruction}
 		\begin{postcondition}
-			\item A pop-up message with the text "Error occurred" 
+			\item A pop-up message with the text "Error occurred" is displayed 
 		\end{postcondition}
 	
 	\item  Test of Exception 1 in Scenario 5.1.5.
@@ -1081,7 +1082,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 			\item Set the on/off-status switch to on
 		\end{instruction}
 		\begin{postcondition}
-			\item A pop-up message with the text "Error occurred"
+			\item A pop-up message with the text "Error occurred" is displayed
 		\end{postcondition}	
 	
 	\item  Test of Exception 1 in Scenario 5.1.6.
@@ -1094,7 +1095,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 			\item Set the on/off-status switch to off
 		\end{instruction}
 		\begin{postcondition}
-			\item A pop-up message with the text "Error occurred"
+			\item A pop-up message with the text "Error occurred" is displayed
 		\end{postcondition}
 		
 	\item Test of Exception 1 in Scenario 5.1.7.
@@ -1107,7 +1108,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 			\item Set the on/off-status switch to on
 		\end{instruction}
 		\begin{postcondition}
-			\item A pop-up message with the text "Error occurred"
+			\item A pop-up message with the text "Error occurred" is displayed
 		\end{postcondition}
 		
 	\item  Test of Exception 1 in Scenario 5.1.8.
@@ -1128,7 +1129,7 @@ This is appendix \ref{appendix:section:systemtest} where we list all system test
 			\item Press the "Set"-button
 		\end{instruction}
 		\begin{postcondition}
-			\item A pop-up message with the text "Error occurred"
+			\item A pop-up message with the text "Error occurred" is displayed
 		\end{postcondition}
 		
 \end{testlist}
