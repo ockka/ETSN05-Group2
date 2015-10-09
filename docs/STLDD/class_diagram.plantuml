@@ -27,18 +27,18 @@ package "model" #DDDDDD {
 }
 
  class NetworkManager{
- +void toggle(Device, boolean, Callback<Response>)
- +void getToggledState(Device, Callback<ToggledStateResponse>)
- +void detectDevices(List<Device>, Callback<DevicesResponse>)
- +void getTemperature(Device, Callback<TemperatureResponse>)
- +void getPressure(Device, Callback<PressureResponse>)
- +void getHumidity(Device, Callback<HumidityResponse>)
- +void getMagnetic(Device, Callback<MagneticResponse>)
- +void getGyroscopic(Device, Callback<GyroscopicResponse>)
- +void getAccelerometer(Device, Callback<AccelerometerResponse>)
- +void getAllSensorValues(Device, Callback<AllSensorValuesResponse>)
- +void getColor(Device, Callback<GetColorResponse>)
- +void setColor(Device, Color, Callback<Response>)
+ +void toggle(Device, boolean, Callback<DeviceStatus>)
+ +void getToggledState(Device, Callback<DataAboutDevice>)
+ +void detectDevices(List<Device>, Callback<List<DataAboutDevice>>)
+ +void getTemperature(Device, Callback<List<DeviceData>>)
+ +void getPressure(Device, Callback<List<DeviceData>>)
+ +void getHumidity(Device, Callback<List<DeviceData>>)
+ +void getMagnetic(Device, Callback<List<DeviceData>>)
+ +void getGyroscopic(Device, Callback<List<DeviceData>>)
+ +void getAccelerometer(Device, Callback<List<DeviceData>>)
+ +void getAllSensorValues(Device, Callback<List<DeviceData>>)
+ +void getColor(Device, Callback<List<DeviceData>>)
+ +void setColor(Device, Color, Callback<DeviceStatus>)
 }
 
 interface NetworkManagerApi{
