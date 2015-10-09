@@ -72,24 +72,21 @@
 	\pagenumbering{arabic}
 	
 	\section{Introduction}
-	This document describes the top level design of the Lamp Controller Application. The application can connect to a light bulb and a sensor device, these devices can also be controlled and data can be received using a MVD. The application is developed as a project within the course "Software Development for Large Systems - ETSN05" at LTH.
+	This document describes the top level design of the Device Controller Application. The application can connect to a light bulb and a sensor device, these devices can also be controlled and data can be received using a MVD. The application is developed as a project within the course "Software Development for Large Systems - ETSN05" at LTH.
 	
 	\section{Reference Documents}
 	PUSS154212 - System Requirements Specification for the current project
 	
 	
 	\section{Overview}
-	The main purpose of the Lamp Controller Application is to provide an graphical interface used to control a light bulb and a sensor device from an MVD via a REST API provided by the backend. The application will provide three different views to detect and control the different devices. A UML diagram have been created to visualize the design of a system figure \ref{fig:uml}. Several sequence diagram have been created to visualize the interaction and can be viewed in figures 2-5.
+	The main purpose of the Device Controller Application is to provide an graphical interface used to control a light bulb and a sensor device from an MVD via a REST API provided by the backend. The application will provide three different views to detect and control the different devices. A UML diagram have been created to visualize the design of a system figure \ref{fig:uml}. Several sequence diagram have been created to visualize the interaction and can be viewed in figures 2-5.
 	
 	\subsection{Controller Application}
 	\begin{itemize}
-		\item{\textbf{BaseActivity:}} 
-		The BaseActivity for the application that will connect the Activities with the NetworkManager. Is an abstract class that both DeviceActivity and MyDeviceActivity inherits from.
 		\item{\textbf{MyDeviceActivity:}} 
 		Is the start screen of the application. Will contain a ListView and has methods for detecting devices and control a device that was selected from the ListView.
 		\item{\textbf{DeviceListAdapter:}} 
 		Adapter that handles the list in MyDevicesActivity, the ListView can display any data provided that it is wrapped in a ListAdapter.\\ 
-        - void addDevices(List<Device>) will add a list of devices to the adapter to display it in the activity.
 		\item{\textbf{Device:}} 
 		Is an abstract class that contains information about the two devices we are handling. \\
         - String getMacAddress() returns the String MacAddress value of a Device.\\
@@ -134,7 +131,7 @@
         \item {\textbf{network.data}} \\
         Subpackage in network with responses from the server.
 		\item {\textbf{activity}}\\
-        Handles the Activities for the different views. Contains the classes BaseActivity, DeviceActivity, MyDeviceActivity, SensorDeviceActivity and LighBulbActivity.
+        Handles the Activities for the different views. Contains the classes DeviceActivity, MyDeviceActivity, SensorDeviceActivity and LighBulbActivity.
 		\item {\textbf{adapter}}\\
         The Adapter to the ListView used in MyDeviceActivity contains the class DeviceListAdapter.
 		\item {\textbf{model}}\\

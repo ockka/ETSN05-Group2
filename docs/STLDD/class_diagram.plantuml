@@ -42,18 +42,13 @@ package "model" #DDDDDD {
 }
 
 interface NetworkManagerApi{
- +{static} void toggle(Device, boolean, Callback<Response>)
- +{static} void getToggledState(Device, Callback<ToggledStateResponse>)
- +{static} void detectDevices(List<Device>, Callback<DevicesResponse>)
- +{static} void getTemperature(Device, Callback<TemperatureResponse>)
- +{static} void getPressure(Device, Callback<PressureResponse>)
- +{static} void getHumidity(Device, Callback<HumidityResponse>)
- +{static} void getMagnetic(Device, Callback<MagneticResponse>)
- +{static} void getGyroscopic(Device, Callback<GyroscopicResponse>)
- +{static} void getAccelerometer(Device, Callback<AccelerometerResponse>)
- +{static} void getAllSensorValues(Device, Callback<AllSensorValuesResponse>)
- +{static} void getColor(Device, Callback<GetColorResponse>)
- +{static} void setColor(Device, Color, Callback<Response>)
+ ~void getDataAboutAllDevices(Callback); 
+ ~void getDeviceData(long deviceId, String startDate, String endDate, Callback); 
+ ~void getDeviceDataColor(long deviceId, Callback); 
+ ~void getDeviceDataSensor(ong deviceId, String sensorType, String startDate, String endDate, Callback); 
+ ~void putDeviceStatus(DeviceStatus, Callback); 
+ ~void putDeviceValue(DeviceStatus, Callback); 
+ ~void getDataAboutDevice(long deviceId, Callback);
 }
 
 
