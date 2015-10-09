@@ -12,6 +12,7 @@
 \usepackage{color} % Used to write in red,blue,green etc.
 \usepackage{float}
 \usepackage[titletoc]{appendix}
+\usepackage{pdfpages} % Append pdf files
 
 \title{SVVR - Software Verification and Validation Report}
 \newcommand{\version}{v0.0}
@@ -90,14 +91,14 @@ Jonathan Lundholm
 \end{enumerate}
 
 %--------------------Introduction ---------------------------------------
-\section{Known bugs}
+\section{Known Bugs}
 
 \subsection{Backend}
 
 \subsection{Other}
 
 \clearpage
-\section{Functional tests}
+\section{Functional Tests}
 Here are all the test protocols collected
 
 \subsection{MyDevices View}
@@ -115,22 +116,29 @@ Here are all the test protocols collected
 \input{LBV-tests/LBV_151008.tex}
 
 \newpage
-\section{System tests}
+\section{System Tests}
 
-\subsection{Tests for use cases}
+\subsection{Tests for Use Cases}
 \input{system-tests/systemtest_151005.tex}
 \input{system-tests/systemtest_151008.tex}
 
-\subsection{Quality tests}
+\subsection{Quality Tests}
 \input{system-tests/qualitytest_151005.tex}
 \input{system-tests/qualitytest_151008.tex}
 
 \newpage
-\section{Review protocols - informal}
+\section{Review Protocols - Informal}
 Here is a collection of the protocols from the informal reviews.
 
-\newpage
-\section{Review protocols - formal}
-Here is a collection of the protocols from the formal reviews.
+\includepdf[pages=-]{Reviews/Informal/Informal_Review_Protocol_SDP.pdf}
+
+\includepdf[pages=-]{Reviews/Informal/Informal_Review_Protocol_SRS.pdf}
+\includepdf[pages=-]{Reviews/Informal/Informal_Review_Protocol_SVVS.pdf}
+
+\includepdf[pages=-]{Reviews/Informal/Informal_Review_Protocol_STLDD.pdf}
+\includepdf[pages=-]{Reviews/Informal/Informal_Review_Protocol_SVVI.pdf}
+
+\includepdf[pages=-]{Reviews/Informal/Informal_Review_Protocol_SDDD.pdf}
+
 
 \end{document}
