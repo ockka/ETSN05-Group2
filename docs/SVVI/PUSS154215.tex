@@ -365,13 +365,21 @@ This is appendix \ref{appendix:section:functiontest} where we list all function 
 	\item Test of on/off switch.
 		\begin{precondition}
 			\item The Sensor View is open
-			\item The on/off-status switch is set to off
+			\item The on/off-status switch is set to on
 		\end{precondition}
 		\begin{instruction}
+			\item Set the on/off-status switch to off
+			\item Wait for ten minutes
+			\item Press the "Get All"-button
+			\item Check the error message \label{label_instruction_on_off_switch}
 			\item Set the on/off-status switch to on
+			\item Press the "Get All"-button
+			\item Check the text fields
 	  	\end{instruction}
 	  	\begin{postcondition}
 	  		\item The on/off-status switch of the selected sensor is on
+	  		\item An error message with the text "Error Occurred" was displayed in instruction \ref{label_instruction_on_off_switch} 
+	  		\item Text fields have values
 	  	\end{postcondition}
 %\item It is possible to change the on/off -status of the selected sensor with a switch (Req. 5.3.4).
 

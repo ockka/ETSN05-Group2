@@ -15,7 +15,7 @@
 \usepackage{pdfpages} % Append pdf files
 
 \title{SVVR - Software Verification and Validation Report}
-\newcommand{\version}{v0.9}
+\newcommand{\version}{v1.0}
 \newcommand{\SVVR}{PUSS154217}
 \author{Testgroup, Team 2}
 
@@ -70,8 +70,7 @@ Jonathan Lundholm
     \begin{tabular}{ | l | l | l | p{5cm} |}
     \hline
     \textbf{Version}		& \textbf{Date}		& \textbf{Responsible}					& \textbf{Description}					\\ \hline
-    0.0						& 2015-10-01 			& UH									& Document created						\\ \hline
-    0.9						& 2015-10-13			& HA									& Modified according to informal review\\ \hline
+    1.0						& 2015-10-14			& OF									& Baseline\\ \hline
     \end{tabular}
 \end{center}
 
@@ -119,18 +118,26 @@ Below are the test protocols from the function tests.
 \subsection{MyDevices View}
 
 \input{MDV-tests/MDV_151005.tex}
+
+\newpage
 \input{MDV-tests/MDV_151008.tex}
+\newpage
 \input{MDV-tests/MDV_151014.tex}
+\newpage
 
 \subsection{Sensor View}
-
 \input{SV-tests/SV_151005.tex}
+\newpage
 \input{SV-tests/SV_151008.tex}
+\newpage
 \input{SV-tests/SV_151014.tex}
+\newpage
 
 \subsection{Light Bulb View}
 \input{LBV-tests/LBV_151005.tex}
+\newpage
 \input{LBV-tests/LBV_151008.tex}
+\newpage
 \input{LBV-tests/LBV_151014.tex}
 
 \newpage
@@ -139,8 +146,11 @@ Below are the test protocols from the system tests.
 
 \subsection{Tests for Use Cases}
 \input{system-tests/systemtest_151005.tex}
+\newpage
 \input{system-tests/systemtest_151008.tex}
+\newpage
 \input{system-tests/systemtest_151014.tex}
+\newpage
 
 \subsection{Quality Tests}
 \input{system-tests/qualitytest_151005.tex}
@@ -149,7 +159,19 @@ Below are the test protocols from the system tests.
 
 \newpage
 \section{Review Protocols - Informal}
-Here is a collection of the protocols from the informal reviews.
+Here is a collection of the protocols from the informal reviews of the following documents:
+
+\begin{itemize}
+\item SDP (Review conducted 2015-09-10)
+\item SRS (Review conducted 2015-09-11)
+\item SVVS (Review conducted 2015-09-11)
+\item STLDD (Review conducted 2015-09-24)
+\item SVVI (Review conducted 2015-09-24)
+\item SDDD (Review conducted 2015-10-04)
+\end{itemize}
+
+The informal review for SVVR, SSD and PFR was cancelled due to the unforeseen event in 2015-10-12.
+
 
 \includepdf[pages=-]{Reviews/Informal/Informal_Review_Protocol_SDP.pdf}
 
