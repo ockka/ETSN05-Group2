@@ -127,7 +127,7 @@ public class SensorDeviceActivity extends DeviceActivity {
                     }
                     textView.setText(text);
                 } else {
-                    toast.setText("No data available");
+                    toast.setText("Error occurred");
                     toast.show();
                 }
             }
@@ -193,7 +193,7 @@ public class SensorDeviceActivity extends DeviceActivity {
                         }
                     }
                 } else {
-                    toast.setText("No data available");
+                    toast.setText("Error occurred");
                     toast.show();
                 }
             }
