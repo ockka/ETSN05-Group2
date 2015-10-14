@@ -93,10 +93,24 @@ Jonathan Lundholm
 
 %--------------------Introduction ---------------------------------------
 \section{Known Bugs}
+Here we list all known bugs with the back end and the MVD. The bug listed as \ref{bugs:active_device} in the back end is responsible for the majority of the errors.
 
-\subsection{Backend}
+\subsection{Back End}
+\begin{enumerate}
+	\item  There is no way of telling which devices are active or nearby via the MVD. This means that, for example, you get a 200 code (successful operation) when trying to change the color of a light bulb even if there is no light bulb connected. \label{bugs:active_device}
+
+	\item The back end database is not in sync with the actual status of the light bulb. E.g. if you manually disconnect the light bulb while it is on, the back end will report its status as still on, even though the light bulb is off.
+
+	\item Setting the color of the light bulb to FFFFFFFF causes the light bulb to turn off, and then on, and then disconnecting itself from the MVD. This requires a restart of both Scan App and Publish App to continue.
+
+\end{enumerate}
+
 
 \subsection{Other}
+\begin{enumerate}
+	\item When the phone hosting the MVD goes to “locked mode”, Scan App and Publish App stops working and thus, needs to be restarted.
+\end{enumerate}
+
 
 \clearpage
 \section{Functional Tests}
@@ -106,15 +120,18 @@ Below are the test protocols from the function tests.
 
 \input{MDV-tests/MDV_151005.tex}
 \input{MDV-tests/MDV_151008.tex}
+\input{MDV-tests/MDV_151014.tex}
 
 \subsection{Sensor View}
 
 \input{SV-tests/SV_151005.tex}
 \input{SV-tests/SV_151008.tex}
+\input{SV-tests/SV_151014.tex}
 
 \subsection{Light Bulb View}
 \input{LBV-tests/LBV_151005.tex}
 \input{LBV-tests/LBV_151008.tex}
+\input{LBV-tests/LBV_151014.tex}
 
 \newpage
 \section{System Tests}
@@ -123,10 +140,12 @@ Below are the test protocols from the system tests.
 \subsection{Tests for Use Cases}
 \input{system-tests/systemtest_151005.tex}
 \input{system-tests/systemtest_151008.tex}
+\input{system-tests/systemtest_151014.tex}
 
 \subsection{Quality Tests}
 \input{system-tests/qualitytest_151005.tex}
 \input{system-tests/qualitytest_151008.tex}
+\input{system-tests/qualitytest_151014.tex}
 
 \newpage
 \section{Review Protocols - Informal}
